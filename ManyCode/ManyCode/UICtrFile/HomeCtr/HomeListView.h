@@ -10,4 +10,11 @@
 
 @interface HomeListView : UIView
 
+/**
+ *  更新界面
+ *
+ *  @param parkingList 停车场列表
+ */
+- (void)refreshParkingList:(NSArray *)parkingList;
+
 @end

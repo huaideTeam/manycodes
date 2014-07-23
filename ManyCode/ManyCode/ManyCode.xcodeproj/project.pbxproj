@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28821280198016CA0087B65E /* DataSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2882127F198016CA0087B65E /* DataSourceModel.m */; };
+		28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
 		712FBFB8197CB2F400EA9F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB7197CB2F400EA9F32 /* UIKit.framework */; };
@@ -109,6 +111,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2882127E198016CA0087B65E /* DataSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceModel.h; sourceTree = "<group>"; };
+		2882127F198016CA0087B65E /* DataSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceModel.m; sourceTree = "<group>"; };
+		28821281198016D70087B65E /* HomeListParkingListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListParkingListTableViewCell.h; sourceTree = "<group>"; };
+		28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListParkingListTableViewCell.m; sourceTree = "<group>"; };
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -343,6 +349,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2882127D198016CA0087B65E /* DataSourceModel */ = {
+			isa = PBXGroup;
+			children = (
+				2882127E198016CA0087B65E /* DataSourceModel.h */,
+				2882127F198016CA0087B65E /* DataSourceModel.m */,
+			);
+			path = DataSourceModel;
+			sourceTree = "<group>";
+		};
 		712FBFA7197CB2F400EA9F32 = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +476,7 @@
 		712FBFEA197CB6B600EA9F32 /* UICtrFile */ = {
 			isa = PBXGroup;
 			children = (
+				2882127D198016CA0087B65E /* DataSourceModel */,
 				7149004D197FCD7700DEFD83 /* HomeCtr */,
 				71B0B754197E94F000B06945 /* ParkingFile */,
 				71B0B74D197E480A00B06945 /* PersonalCtr */,
@@ -573,6 +589,8 @@
 		7149004D197FCD7700DEFD83 /* HomeCtr */ = {
 			isa = PBXGroup;
 			children = (
+				28821281198016D70087B65E /* HomeListParkingListTableViewCell.h */,
+				28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */,
 				71B0B801197FCDA600B06945 /* HomeMapView.h */,
 				71B0B802197FCDA600B06945 /* HomeMapView.mm */,
 				717666F8197FECFD00A635DA /* HomeListView.h */,
@@ -877,6 +895,7 @@
 				71B0B747197E3F3E00B06945 /* UIImageView+AFNetworking.m in Sources */,
 				7149002C197FB00500DEFD83 /* UIView+SBExtras.m in Sources */,
 				71B0B73F197E3F3E00B06945 /* AFURLConnectionOperation.m in Sources */,
+				28821280198016CA0087B65E /* DataSourceModel.m in Sources */,
 				71B0B6FD197E3B4D00B06945 /* SDImageCache.m in Sources */,
 				71B0B742197E3F3E00B06945 /* AFURLSessionManager.m in Sources */,
 				71490029197FB00500DEFD83 /* SBDoubleSidedLayer.m in Sources */,
@@ -892,6 +911,7 @@
 				71B0B746197E3F3E00B06945 /* UIButton+AFNetworking.m in Sources */,
 				71B0B73E197E3F3E00B06945 /* AFSecurityPolicy.m in Sources */,
 				71490041197FC0AB00DEFD83 /* RenderView.m in Sources */,
+				28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */,
 				71490040197FC0AB00DEFD83 /* PieChartView.m in Sources */,
 				712FBFC4197CB2F400EA9F32 /* AppDelegate.m in Sources */,
 				71B0B73D197E3F3E00B06945 /* AFNetworkReachabilityManager.m in Sources */,
