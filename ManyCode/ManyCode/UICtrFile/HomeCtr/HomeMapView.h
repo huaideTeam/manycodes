@@ -1,13 +1,13 @@
 //
-//  MapViewController.h
+//  HomeMapView.h
 //  ManyCode
 //
-//  Created by lichengfei on 14-7-21.
+//  Created by lichengfei on 14-7-23.
 //  Copyright (c) 2014年 lichengfei. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface MapViewController : UIViewController
+@interface HomeMapView : UIView
 
 @end

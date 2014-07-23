@@ -29,7 +29,6 @@
 @property (nonatomic,strong) NSMutableArray *colorArray2;
 @property (nonatomic,strong) PieChartView *pieChartView;
 @property (nonatomic,strong) UIView *pieContainer;
-@property (nonatomic)BOOL inOut;
 @property (nonatomic,strong) UILabel *selLabel;
 
 @end
@@ -90,7 +89,6 @@
     
     //饼图
     
-    self.inOut = YES;
     self.valueArray = [[NSMutableArray alloc] initWithObjects:
                        [NSNumber numberWithInt:2],
                        [NSNumber numberWithInt:3],
@@ -99,11 +97,6 @@
                        [NSNumber numberWithInt:3],
                        [NSNumber numberWithInt:4],
                        nil];
-    self.valueArray2 = [[NSMutableArray alloc] initWithObjects:
-                        [NSNumber numberWithInt:3],
-                        [NSNumber numberWithInt:2],
-                        [NSNumber numberWithInt:2],
-                        nil];
     
     self.colorArray = [NSMutableArray arrayWithObjects:
                        [UIColor colorWithHue:((0/8)%20)/20.0+0.02 saturation:(0%8+3)/10.0 brightness:91/100.0 alpha:1],
@@ -113,12 +106,6 @@
                        [UIColor colorWithHue:((4/8)%20)/20.0+0.02 saturation:(4%8+3)/10.0 brightness:91/100.0 alpha:1],
                        [UIColor colorWithHue:((5/8)%20)/20.0+0.02 saturation:(5%8+3)/10.0 brightness:91/100.0 alpha:1],
                        nil];
-    self.colorArray2 = [[NSMutableArray alloc] initWithObjects:
-                        [UIColor purpleColor],
-                        [UIColor orangeColor],
-                        [UIColor magentaColor],
-                        nil];
-    
     //add shadow img
     CGRect pieFrame = CGRectMake((self.view.frame.size.width - PIE_HEIGHT) / 2, 120, PIE_HEIGHT, PIE_HEIGHT);
     
@@ -176,22 +163,7 @@
 
 - (void)onCenterClick:(PieChartView *)pieChartView
 {
-    self.inOut = !self.inOut;
-    self.pieChartView.delegate = nil;
-    [self.pieChartView removeFromSuperview];
-    self.pieChartView = [[PieChartView alloc]initWithFrame:self.pieContainer.bounds withValue:self.inOut?self.valueArray:self.valueArray2 withColor:self.inOut?self.colorArray:self.colorArray2];
-    self.pieChartView.delegate = self;
-    [self.pieContainer addSubview:self.pieChartView];
-    [self.pieChartView reloadChart];
-    
-    if (self.inOut) {
-        [self.pieChartView setTitleText:@"支出总计"];
-        [self.pieChartView setAmountText:@"-2456.0"];
-        
-    }else{
-        [self.pieChartView setTitleText:@"收入总计"];
-        [self.pieChartView setAmountText:@"+567.23"];
-    }
+     [self.pieChartView reloadChart];
 }
 
 

@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 #import "UINavigationItem+Items.h"
-#import "MapViewController.h"
 #import "PersonalCenterViewController.h"
 #import "ParkDetailViewController.h"
 

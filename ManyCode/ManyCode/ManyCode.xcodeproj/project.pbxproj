@@ -22,7 +22,6 @@
 		712FBFEE197CB72A00EA9F32 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFED197CB72A00EA9F32 /* DDMenuController.m */; };
 		712FBFF1197CBB0E00EA9F32 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFF0197CBB0E00EA9F32 /* MainViewController.m */; };
 		712FBFF8197CBED700EA9F32 /* UINavigationItem+Items.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFF7197CBED700EA9F32 /* UINavigationItem+Items.m */; };
-		712FC04E197D36A300EA9F32 /* MapViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 712FC04D197D36A300EA9F32 /* MapViewController.mm */; };
 		712FC07B197D38D100EA9F32 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 712FC07A197D38D100EA9F32 /* mapapi.bundle */; };
 		712FC07E197D396100EA9F32 /* ExproAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FC07D197D396100EA9F32 /* ExproAnnotation.m */; };
 		712FC080197D3A1600EA9F32 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FC07F197D3A1600EA9F32 /* libbaidumapapi.a */; };
@@ -43,6 +42,9 @@
 		71490041197FC0AB00DEFD83 /* RenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149003D197FC0AB00DEFD83 /* RenderView.m */; };
 		71490042197FC0AB00DEFD83 /* RotatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149003F197FC0AB00DEFD83 /* RotatedView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71490046197FC9F300DEFD83 /* personButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490045197FC9F300DEFD83 /* personButton.png */; };
+		7149004A197FCC6000DEFD83 /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490047197FCC6000DEFD83 /* center.png */; };
+		7149004B197FCC6000DEFD83 /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490048197FCC6000DEFD83 /* select.png */; };
+		7149004C197FCC6000DEFD83 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490049197FCC6000DEFD83 /* shadow.png */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -86,6 +88,7 @@
 		71B0B75A197EAA2000B06945 /* PersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B759197EAA2000B06945 /* PersonalCell.m */; };
 		71B0B7F8197F970600B06945 /* JDFlipNumberView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71B0B7F5197F970600B06945 /* JDFlipNumberView.bundle */; };
 		71B0B7FC197F978100B06945 /* StartParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B7FB197F978100B06945 /* StartParkViewController.m */; };
+		71B0B803197FCDA600B06945 /* HomeMapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B802197FCDA600B06945 /* HomeMapView.mm */; };
 		71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B60D6F197CE58E00C26E48 /* tabbar@2x.png */; };
 		71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B60D78197CEEBD00C26E48 /* Security.framework */; };
 /* End PBXBuildFile section */
@@ -123,8 +126,6 @@
 		712FBFF0197CBB0E00EA9F32 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		712FBFF6197CBED700EA9F32 /* UINavigationItem+Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Items.h"; sourceTree = "<group>"; };
 		712FBFF7197CBED700EA9F32 /* UINavigationItem+Items.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+Items.m"; sourceTree = "<group>"; };
-		712FC04C197D36A300EA9F32 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		712FC04D197D36A300EA9F32 /* MapViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapViewController.mm; sourceTree = "<group>"; };
 		712FC051197D38D100EA9F32 /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		712FC052197D38D100EA9F32 /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		712FC053197D38D100EA9F32 /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -198,6 +199,9 @@
 		7149003E197FC0AB00DEFD83 /* RotatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatedView.h; sourceTree = "<group>"; };
 		7149003F197FC0AB00DEFD83 /* RotatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatedView.m; sourceTree = "<group>"; };
 		71490045197FC9F300DEFD83 /* personButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personButton.png; sourceTree = "<group>"; };
+		71490047197FCC6000DEFD83 /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center.png; sourceTree = "<group>"; };
+		71490048197FCC6000DEFD83 /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
+		71490049197FCC6000DEFD83 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 		71B0B7F5197F970600B06945 /* JDFlipNumberView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JDFlipNumberView.bundle; sourceTree = "<group>"; };
 		71B0B7FA197F978100B06945 /* StartParkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartParkViewController.h; sourceTree = "<group>"; };
 		71B0B7FB197F978100B06945 /* StartParkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartParkViewController.m; sourceTree = "<group>"; };
+		71B0B801197FCDA600B06945 /* HomeMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMapView.h; sourceTree = "<group>"; };
+		71B0B802197FCDA600B06945 /* HomeMapView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HomeMapView.mm; sourceTree = "<group>"; };
 		71B60D6F197CE58E00C26E48 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		71B60D78197CEEBD00C26E48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -410,6 +416,9 @@
 			children = (
 				71490045197FC9F300DEFD83 /* personButton.png */,
 				71B60D6F197CE58E00C26E48 /* tabbar@2x.png */,
+				71490047197FCC6000DEFD83 /* center.png */,
+				71490048197FCC6000DEFD83 /* select.png */,
+				71490049197FCC6000DEFD83 /* shadow.png */,
 			);
 			path = ImageFile;
 			sourceTree = "<group>";
@@ -435,13 +444,12 @@
 		712FBFEA197CB6B600EA9F32 /* UICtrFile */ = {
 			isa = PBXGroup;
 			children = (
+				7149004D197FCD7700DEFD83 /* HomeCtr */,
 				71B0B754197E94F000B06945 /* ParkingFile */,
 				71B0B74D197E480A00B06945 /* PersonalCtr */,
 				71B0B6C9197E3AEA00B06945 /* NetworkManager */,
 				712FC07C197D396100EA9F32 /* ExproAnnotation.h */,
 				712FC07D197D396100EA9F32 /* ExproAnnotation.m */,
-				712FC04C197D36A300EA9F32 /* MapViewController.h */,
-				712FC04D197D36A300EA9F32 /* MapViewController.mm */,
 			);
 			path = UICtrFile;
 			sourceTree = "<group>";
@@ -543,6 +551,15 @@
 				7149003F197FC0AB00DEFD83 /* RotatedView.m */,
 			);
 			path = ChartView;
+			sourceTree = "<group>";
+		};
+		7149004D197FCD7700DEFD83 /* HomeCtr */ = {
+			isa = PBXGroup;
+			children = (
+				71B0B801197FCDA600B06945 /* HomeMapView.h */,
+				71B0B802197FCDA600B06945 /* HomeMapView.mm */,
+			);
+			path = HomeCtr;
 			sourceTree = "<group>";
 		};
 		71B0B6C9197E3AEA00B06945 /* NetworkManager */ = {
@@ -793,10 +810,13 @@
 				712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */,
 				71B0B70B197E3B4D00B06945 /* SVProgressHUD.bundle in Resources */,
 				71490046197FC9F300DEFD83 /* personButton.png in Resources */,
+				7149004C197FCC6000DEFD83 /* shadow.png in Resources */,
+				7149004A197FCC6000DEFD83 /* center.png in Resources */,
 				712FC08D197D3CE100EA9F32 /* Main.storyboard in Resources */,
 				712FC07B197D38D100EA9F32 /* mapapi.bundle in Resources */,
 				712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */,
 				71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */,
+				7149004B197FCC6000DEFD83 /* select.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +859,7 @@
 				71490040197FC0AB00DEFD83 /* PieChartView.m in Sources */,
 				712FBFC4197CB2F400EA9F32 /* AppDelegate.m in Sources */,
 				71B0B73D197E3F3E00B06945 /* AFNetworkReachabilityManager.m in Sources */,
+				71B0B803197FCDA600B06945 /* HomeMapView.mm in Sources */,
 				71B0B741197E3F3E00B06945 /* AFURLResponseSerialization.m in Sources */,
 				71B0B749197E3F3E00B06945 /* UIWebView+AFNetworking.m in Sources */,
 				71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */,
@@ -849,7 +870,6 @@
 				71B0B70A197E3B4D00B06945 /* UIImageView+WebCache.m in Sources */,
 				7149002A197FB00500DEFD83 /* SBGradientOverlayLayer.m in Sources */,
 				712FC07E197D396100EA9F32 /* ExproAnnotation.m in Sources */,
-				712FC04E197D36A300EA9F32 /* MapViewController.mm in Sources */,
 				71B0B74C197E40E300B06945 /* NotifyManager.m in Sources */,
 				71B0B75A197EAA2000B06945 /* PersonalCell.m in Sources */,
 				71B0B6FE197E3B4D00B06945 /* SDWebImageCompat.m in Sources */,
