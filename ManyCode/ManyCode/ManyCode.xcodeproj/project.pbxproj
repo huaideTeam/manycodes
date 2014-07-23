@@ -45,6 +45,9 @@
 		7149004A197FCC6000DEFD83 /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490047197FCC6000DEFD83 /* center.png */; };
 		7149004B197FCC6000DEFD83 /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490048197FCC6000DEFD83 /* select.png */; };
 		7149004C197FCC6000DEFD83 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490049197FCC6000DEFD83 /* shadow.png */; };
+		717666F1197FD7EA00A635DA /* StartNavitationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */; };
+		717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F3197FDB8E00A635DA /* LoginViewController.m */; };
+		717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F6197FE3FF00A635DA /* UnderLineLabel.m */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -202,6 +205,12 @@
 		71490047197FCC6000DEFD83 /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center.png; sourceTree = "<group>"; };
 		71490048197FCC6000DEFD83 /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
 		71490049197FCC6000DEFD83 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
+		717666EF197FD7EA00A635DA /* StartNavitationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartNavitationViewController.h; sourceTree = "<group>"; };
+		717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartNavitationViewController.mm; sourceTree = "<group>"; };
+		717666F2197FDB8E00A635DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		717666F3197FDB8E00A635DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		717666F5197FE3FF00A635DA /* UnderLineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderLineLabel.h; sourceTree = "<group>"; };
+		717666F6197FE3FF00A635DA /* UnderLineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderLineLabel.m; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -697,6 +706,10 @@
 				71B0B74F197E482300B06945 /* PersonalCenterViewController.m */,
 				71B0B758197EAA2000B06945 /* PersonalCell.h */,
 				71B0B759197EAA2000B06945 /* PersonalCell.m */,
+				717666F2197FDB8E00A635DA /* LoginViewController.h */,
+				717666F3197FDB8E00A635DA /* LoginViewController.m */,
+				717666F5197FE3FF00A635DA /* UnderLineLabel.h */,
+				717666F6197FE3FF00A635DA /* UnderLineLabel.m */,
 			);
 			path = PersonalCtr;
 			sourceTree = "<group>";
@@ -708,6 +721,8 @@
 				71B0B756197E950700B06945 /* ParkDetailViewController.m */,
 				71B0B7FA197F978100B06945 /* StartParkViewController.h */,
 				71B0B7FB197F978100B06945 /* StartParkViewController.m */,
+				717666EF197FD7EA00A635DA /* StartNavitationViewController.h */,
+				717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */,
 			);
 			path = ParkingFile;
 			sourceTree = "<group>";
@@ -852,6 +867,7 @@
 				71B0B7FC197F978100B06945 /* StartParkViewController.m in Sources */,
 				71B0B750197E482300B06945 /* PersonalCenterViewController.m in Sources */,
 				71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */,
+				717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */,
 				71B0B746197E3F3E00B06945 /* UIButton+AFNetworking.m in Sources */,
 				71B0B73E197E3F3E00B06945 /* AFSecurityPolicy.m in Sources */,
 				71490041197FC0AB00DEFD83 /* RenderView.m in Sources */,
@@ -861,6 +877,7 @@
 				71B0B73D197E3F3E00B06945 /* AFNetworkReachabilityManager.m in Sources */,
 				71B0B803197FCDA600B06945 /* HomeMapView.mm in Sources */,
 				71B0B741197E3F3E00B06945 /* AFURLResponseSerialization.m in Sources */,
+				717666F1197FD7EA00A635DA /* StartNavitationViewController.mm in Sources */,
 				71B0B749197E3F3E00B06945 /* UIWebView+AFNetworking.m in Sources */,
 				71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */,
 				71B0B705197E3B4D00B06945 /* UIButton+WebCache.m in Sources */,
@@ -878,6 +895,7 @@
 				71B0B6FF197E3B4D00B06945 /* SDWebImageDecoder.m in Sources */,
 				71B0B704197E3B4D00B06945 /* SDWebImagePrefetcher.m in Sources */,
 				71B0B73A197E3F3E00B06945 /* AFHTTPRequestOperation.m in Sources */,
+				717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */,
 				71B0B715197E3EE600B06945 /* NetworkCenter.m in Sources */,
 				712FBFEE197CB72A00EA9F32 /* DDMenuController.m in Sources */,
 				71B0B744197E3F3E00B06945 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1025,9 +1043,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
-					"$(PROJECT_DIR)/ThirdPart/BaiduMap",
 					"$(PROJECT_DIR)/ThirdPart/BaiduMapSDK",
-					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1047,9 +1063,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
-					"$(PROJECT_DIR)/ThirdPart/BaiduMap",
 					"$(PROJECT_DIR)/ThirdPart/BaiduMapSDK",
-					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -76,8 +76,8 @@
 
 - (void)showLeftClick:(UIButton *)button
 {
-//    PersonalCenterViewController *viewCtr = [[PersonalCenterViewController alloc] init];
-    ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
+    PersonalCenterViewController *viewCtr = [[PersonalCenterViewController alloc] init];
+//    ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
     [self.navigationController pushViewController:viewCtr animated:YES];
     
 }

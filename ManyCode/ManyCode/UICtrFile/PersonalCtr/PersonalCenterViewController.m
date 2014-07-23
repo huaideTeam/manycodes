@@ -55,11 +55,12 @@
     }
     self.view.backgroundColor = [UIColor whiteColor];
     nameArray_ = @[@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新"];
-    mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, 320, kCurrentWindowHeight - 80)];
+    mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight )];
     mainTableView_.delegate = self;
     mainTableView_.dataSource = self;
     mainTableView_.backgroundColor = [UIColor clearColor];
     mainTableView_.backgroundView = nil;
+    [mainTableView_ setTableHeaderView:[self creatHeadView:nil]];
     [mainTableView_ setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:mainTableView_];
 
