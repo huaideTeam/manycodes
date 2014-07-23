@@ -42,6 +42,7 @@
 		71490040197FC0AB00DEFD83 /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149003B197FC0AB00DEFD83 /* PieChartView.m */; };
 		71490041197FC0AB00DEFD83 /* RenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149003D197FC0AB00DEFD83 /* RenderView.m */; };
 		71490042197FC0AB00DEFD83 /* RotatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149003F197FC0AB00DEFD83 /* RotatedView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		71490046197FC9F300DEFD83 /* personButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 71490045197FC9F300DEFD83 /* personButton.png */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -196,6 +197,7 @@
 		7149003D197FC0AB00DEFD83 /* RenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderView.m; sourceTree = "<group>"; };
 		7149003E197FC0AB00DEFD83 /* RotatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatedView.h; sourceTree = "<group>"; };
 		7149003F197FC0AB00DEFD83 /* RotatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatedView.m; sourceTree = "<group>"; };
+		71490045197FC9F300DEFD83 /* personButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personButton.png; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				71490045197FC9F300DEFD83 /* personButton.png */,
 				71B60D6F197CE58E00C26E48 /* tabbar@2x.png */,
 			);
 			path = ImageFile;
@@ -789,6 +792,7 @@
 				71B0B7F8197F970600B06945 /* JDFlipNumberView.bundle in Resources */,
 				712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */,
 				71B0B70B197E3B4D00B06945 /* SVProgressHUD.bundle in Resources */,
+				71490046197FC9F300DEFD83 /* personButton.png in Resources */,
 				712FC08D197D3CE100EA9F32 /* Main.storyboard in Resources */,
 				712FC07B197D38D100EA9F32 /* mapapi.bundle in Resources */,
 				712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */,

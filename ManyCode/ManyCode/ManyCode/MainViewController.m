@@ -58,10 +58,10 @@
     
     //返回按钮
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 30, 21.f);
+    btnHome.frame = CGRectMake(0, 0.f, 24, 25.f);
     [btnHome setBackgroundColor:[UIColor clearColor]];
-    [btnHome setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [btnHome setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
+    [btnHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
+    [btnHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
 	[btnHome addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
