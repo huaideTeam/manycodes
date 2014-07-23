@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 
 
-static NSString *const EPHttpApiBaseURL = @"http://114.215.172.240:8080/fishingCircle/api/";
+static NSString *const EPHttpApiBaseURL = @"http://www.manycode.com.cn/switch.php/Switchuser/";
 
 
 /**

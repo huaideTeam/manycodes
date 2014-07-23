@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "UINavigationItem+Items.h"
 #import "UnderLineLabel.h"
+#import "KeyboardSegment.h"
 
 @interface LoginViewController ()
 {
@@ -93,7 +94,6 @@
     
     [self addAccountView];
     
-   
 }
 
 - (void)addAccountView
@@ -110,6 +110,7 @@
     
     accountText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 0, 250, 30)];
     accountText_.placeholder = @"请输入手机号码";
+    [accountText_ addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     accountText_.borderStyle = UITextBorderStyleNone;
     accountText_.keyboardType = UIKeyboardTypeNumberPad;
     [accountView addSubview:accountText_];
@@ -125,13 +126,15 @@
     
     passwordText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 65, 250, 30)];
     passwordText_.placeholder = @"请输入密码";
+    [passwordText_ addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     passwordText_.borderStyle = UITextBorderStyleNone;
     passwordText_.keyboardType = UIKeyboardTypeNumberPad;
     [accountView addSubview:passwordText_];
     
     UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 150, 300, 55)];
     [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
-    [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpOutside];
+    [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
+    loginButton.backgroundColor = [UIColor redColor];
     [accountView addSubview:loginButton];
     
    UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(30, 220, 80, 30)];
@@ -168,7 +171,43 @@
 
 - (void)loginClick:(UIButton *)button
 {
+    [self.view endEditing:YES];
+    [self.view endEditing:NO];
+    //判断账户和密码不能为空
+    if (accountText_.text.length == 0 || passwordText_.text.length == 0) {
+        [[Hud defaultInstance] showMessage:@"手机号码或者密码为空"];
+        return;
+    }
     
+    NSString * regex   = @"^[0-9]*$";
+    
+    NSPredicate * pred  = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    
+    BOOL isAccountMatch    = [pred evaluateWithObject:accountText_.text];
+    
+    NSString * regex1  = @"^[A-Za-z0-9]+$";
+    
+    NSPredicate * pred2  = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex1];
+    
+    BOOL isPasswordMatch   = [pred2 evaluateWithObject:passwordText_.text];
+    
+    if (isAccountMatch && isPasswordMatch)
+    {
+    
+        NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+        [tempDic setObject:accountText_.text forKey:@"mobile"];
+        [tempDic setObject:passwordText_.text forKey:@"password"];
+        
+        [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"checkLogin" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+            
+        } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+    }else
+    {
+        [[Hud defaultInstance] showMessage:@"用户名或者密码错误"];
+        return;
+    }
 }
 
 - (void)forgotPasswdClick:(id)sender
@@ -179,5 +218,10 @@
 - (void)changePasswdClick:(id)sender
 {
     
+}
+
+-(void)doneClicked:(UIBarButtonItem*)barButton
+{
+    [self.view endEditing:YES];
 }
 @end
