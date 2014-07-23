@@ -39,6 +39,9 @@
 		7149002B197FB00500DEFD83 /* SBTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490026197FB00500DEFD83 /* SBTickerView.m */; };
 		7149002C197FB00500DEFD83 /* UIView+SBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490028197FB00500DEFD83 /* UIView+SBExtras.m */; };
 		7149002F197FB2B800DEFD83 /* SBTickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7149002E197FB2B800DEFD83 /* SBTickView.m */; };
+		71490037197FB4B300DEFD83 /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490032197FB4B300DEFD83 /* PieChartView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		71490038197FB4B300DEFD83 /* RenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490034197FB4B300DEFD83 /* RenderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		71490039197FB4B300DEFD83 /* RotatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490036197FB4B300DEFD83 /* RotatedView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -187,6 +190,12 @@
 		71490028197FB00500DEFD83 /* UIView+SBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SBExtras.m"; sourceTree = "<group>"; };
 		7149002D197FB2B800DEFD83 /* SBTickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTickView.h; sourceTree = "<group>"; };
 		7149002E197FB2B800DEFD83 /* SBTickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTickView.m; sourceTree = "<group>"; };
+		71490031197FB4B300DEFD83 /* PieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartView.h; sourceTree = "<group>"; };
+		71490032197FB4B300DEFD83 /* PieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartView.m; sourceTree = "<group>"; };
+		71490033197FB4B300DEFD83 /* RenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderView.h; sourceTree = "<group>"; };
+		71490034197FB4B300DEFD83 /* RenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderView.m; sourceTree = "<group>"; };
+		71490035197FB4B300DEFD83 /* RotatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatedView.h; sourceTree = "<group>"; };
+		71490036197FB4B300DEFD83 /* RotatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatedView.m; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -405,6 +414,7 @@
 		712FBFE9197CB6B600EA9F32 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				71490030197FB4B300DEFD83 /* ChartView */,
 				71B0B7F4197F970600B06945 /* FlijayFille */,
 				71B0B716197E3F3E00B06945 /* AFNetworking */,
 				71B0B6CD197E3B4D00B06945 /* JSONKit */,
@@ -517,6 +527,19 @@
 				712FC0D6197D4C3D00EA9F32 /* UPPayPluginDelegate.h */,
 			);
 			path = UPPayPlugin;
+			sourceTree = "<group>";
+		};
+		71490030197FB4B300DEFD83 /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				71490031197FB4B300DEFD83 /* PieChartView.h */,
+				71490032197FB4B300DEFD83 /* PieChartView.m */,
+				71490033197FB4B300DEFD83 /* RenderView.h */,
+				71490034197FB4B300DEFD83 /* RenderView.m */,
+				71490035197FB4B300DEFD83 /* RotatedView.h */,
+				71490036197FB4B300DEFD83 /* RotatedView.m */,
+			);
+			path = ChartView;
 			sourceTree = "<group>";
 		};
 		71B0B6C9197E3AEA00B06945 /* NetworkManager */ = {
@@ -799,6 +822,7 @@
 				71B0B6FD197E3B4D00B06945 /* SDImageCache.m in Sources */,
 				71B0B742197E3F3E00B06945 /* AFURLSessionManager.m in Sources */,
 				71490029197FB00500DEFD83 /* SBDoubleSidedLayer.m in Sources */,
+				71490039197FB4B300DEFD83 /* RotatedView.m in Sources */,
 				71B0B740197E3F3E00B06945 /* AFURLRequestSerialization.m in Sources */,
 				71B0B708197E3B4D00B06945 /* UIImage+WebP.m in Sources */,
 				71B0B7FC197F978100B06945 /* StartParkViewController.m in Sources */,
@@ -806,7 +830,9 @@
 				71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */,
 				71B0B746197E3F3E00B06945 /* UIButton+AFNetworking.m in Sources */,
 				71B0B73E197E3F3E00B06945 /* AFSecurityPolicy.m in Sources */,
+				71490038197FB4B300DEFD83 /* RenderView.m in Sources */,
 				71B0B70C197E3B4D00B06945 /* SVProgressHUD.m in Sources */,
+				71490037197FB4B300DEFD83 /* PieChartView.m in Sources */,
 				712FBFC4197CB2F400EA9F32 /* AppDelegate.m in Sources */,
 				71B0B73D197E3F3E00B06945 /* AFNetworkReachabilityManager.m in Sources */,
 				71B0B741197E3F3E00B06945 /* AFURLResponseSerialization.m in Sources */,
