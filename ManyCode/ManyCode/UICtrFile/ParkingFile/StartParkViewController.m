@@ -11,7 +11,7 @@
 #import "SBTickView.h"
 #import "PieChartView.h"
 
-#define PIE_HEIGHT 280
+#define PIE_HEIGHT 200
 
 @interface StartParkViewController ()<PieChartDelegate>
 {

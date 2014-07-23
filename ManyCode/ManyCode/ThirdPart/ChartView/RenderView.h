@@ -27,8 +27,8 @@
 @end
 
 @interface RenderView : UIView
-@property(nonatomic, assign) id<RenderViewDataSource> dataSource;
-@property(nonatomic, assign) id<RenderViewtDelegate> delegate;
+@property(nonatomic, weak) id<RenderViewDataSource> dataSource;
+@property(nonatomic, weak) id<RenderViewtDelegate> delegate;
 @property(nonatomic, assign) CGFloat startPieAngle;
 @property(nonatomic, assign) CGFloat animationSpeed;
 @property(nonatomic, assign) CGPoint pieCenter;
@@ -39,7 +39,6 @@
 @property(nonatomic, assign) CGFloat selectedSliceStroke;
 @property(nonatomic, assign) CGFloat selectedSliceOffsetRadius;
 @property(nonatomic, assign) BOOL    showPercentage;
-
 - (id)initWithFrame:(CGRect)frame Center:(CGPoint)center Radius:(CGFloat)radius;
 - (void)reloadData;
 - (void)setPieBackgroundColor:(UIColor *)color;
