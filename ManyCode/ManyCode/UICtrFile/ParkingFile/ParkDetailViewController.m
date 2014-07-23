@@ -8,6 +8,7 @@
 
 #import "ParkDetailViewController.h"
 #import "UINavigationItem+Items.h"
+#import "StartParkViewController.h"
 
 @interface ParkDetailViewController ()
 {
@@ -111,6 +112,11 @@
     detailLable.font = FONT(13);
     [titleView addSubview:detailLable];
     
+    UIButton *parkButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 70, 100, 30)];
+    [parkButton addTarget:self action:@selector(startParkClick:) forControlEvents:UIControlEventTouchUpInside];
+    parkButton.backgroundColor = [UIColor redColor];
+    [titleView addSubview:parkButton];
+    
     return titleView;
 }
 
@@ -136,5 +142,13 @@
     detailLable.font = FONT(15);
     [middleView addSubview:detailLable];
     return middleView;
+}
+
+#pragma mark - 停车
+
+- (void)startParkClick:(UIButton *)button
+{
+    StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
 }
 @end

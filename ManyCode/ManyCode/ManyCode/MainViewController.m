@@ -10,10 +10,11 @@
 #import "UINavigationItem+Items.h"
 #import "MapViewController.h"
 #import "PersonalCenterViewController.h"
+#import "ParkDetailViewController.h"
 
-@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController ()
 {
-    UITableView *mainTableView_;
+   
 }
 
 @end
@@ -68,70 +69,19 @@
     else {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
-    
-//    mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, 320, kCurrentWindowHeight - 80)];
-//    mainTableView_.delegate = self;
-//    mainTableView_.dataSource = self;
-//    mainTableView_.backgroundColor = [UIColor clearColor];
-//    mainTableView_.backgroundView = nil;
-//    [mainTableView_ setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    [self.view addSubview:mainTableView_];
 
 }
 
 
 - (void)showLeftClick:(UIButton *)button
 {
-    PersonalCenterViewController *viewCtr = [[PersonalCenterViewController alloc] init];
+//    PersonalCenterViewController *viewCtr = [[PersonalCenterViewController alloc] init];
+    ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
     [self.navigationController pushViewController:viewCtr animated:YES];
     
 }
 
 #pragma mark - table delegate
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return 3;
-//}
-//
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *homeId = @"cellid";
-//    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:homeId];
-//    if (cell == nil) {
-//        cell = [[HomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeId];
-//    }
-//    
-//    [cell.detailButton addTarget:self action:@selector(detailClick:) forControlEvents:UIControlEventTouchUpInside];
-//    cell.detailButton.tag = indexPath.row;
-//    cell.titleLabel.text = @"1233";
-//    cell.distanceLabel.text = @"233";
-//    cell.parkLabel.text = @"ddgf";
-//    cell.backgroundColor = [UIColor clearColor];
-//    
-//    return cell;
-//}
-//
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    MainDetailViewController *viewCtr = [[MainDetailViewController alloc] init];
-//    [self.navigationController pushViewController:viewCtr animated:YES];
-//}
-//
-//#pragma mark - detail click
-//
-//- (void)detailClick:(UIButton *)button
-//{
-//    MapViewController *viewCtr = [[MapViewController alloc] init];
-//    UINavigationController *nav = self.navigationController;
-//    [nav pushViewController:viewCtr animated:YES];
-//}
+
 @end
