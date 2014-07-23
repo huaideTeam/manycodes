@@ -10,6 +10,7 @@
 #import "UINavigationItem+Items.h"
 #import "PersonalCenterViewController.h"
 #import "ParkDetailViewController.h"
+#import "HomeMapView.h"
 
 @interface MainViewController ()
 {
@@ -68,7 +69,8 @@
     else {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
-
+    HomeMapView *mapView = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight)];
+    [self.view addSubview:mapView];
 }
 
 

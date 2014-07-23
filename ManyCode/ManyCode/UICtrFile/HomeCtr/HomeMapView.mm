@@ -83,7 +83,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        
+        [self loadFunctionView ];
     }
     return self;
 }
@@ -185,9 +186,9 @@
         location_ = userLocation;
         BMKCoordinateSpan theSpan;
         
-        theSpan.latitudeDelta=0.1;
+        theSpan.latitudeDelta=0.01;
         
-        theSpan.longitudeDelta=0.1;
+        theSpan.longitudeDelta=0.01;
         BMKCoordinateRegion theRegion;
         
         theRegion.center= location_.location.coordinate;
