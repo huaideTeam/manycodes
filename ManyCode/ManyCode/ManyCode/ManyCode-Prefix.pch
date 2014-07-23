@@ -1,0 +1,38 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+
+#define IOS7                        ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0 ? YES : NO )
+
+
+#define DefaultFont    [UIFont systemFontOfSize:14]
+/*
+ 
+ 字体，颜色
+ 
+ */
+
+#define FONT(parameter)     [UIFont systemFontOfSize:(parameter)]
+#define BOLD(parameter)     [UIFont boldSystemFontOfSize:(parameter)]
+#define COLOR(r,g,b)        [UIColor colorWithRed:(r)/255.f green:(g)/255.f blue:(b)/255.f alpha:1.f]
+
+
+#define kStatueHeight ([[UIDevice currentDevice] systemVersion].floatValue >=7.0?20:0)
+
+#define kFullWindowHeight [[UIScreen mainScreen] bounds].size.height
+
+#define kCurrentWindowHeight [[UIScreen mainScreen] applicationFrame].size.height
