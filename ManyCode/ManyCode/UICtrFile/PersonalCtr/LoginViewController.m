@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "UINavigationItem+Items.h"
+#import "UnderLineLabel.h"
 
 @interface LoginViewController ()
 {
@@ -90,6 +91,8 @@
     mainScrollView_.backgroundColor = [UIColor clearColor];
     [self.view addSubview:mainScrollView_];
     
+    [self addAccountView];
+    
    
 }
 
@@ -130,6 +133,24 @@
     [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpOutside];
     [accountView addSubview:loginButton];
+    
+   UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(30, 220, 80, 30)];
+   passwordLable.shouldUnderline = YES;
+    passwordLable.backgroundColor = [UIColor clearColor];
+    passwordLable.textColor = [UIColor darkGrayColor];
+    passwordLable.text = @"忘记密码?";
+   [passwordLable addTarget:self action:@selector(forgotPasswdClick:)];
+    [accountView addSubview:passwordLable];
+    
+    UnderLineLabel *changePasswordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(200, 220, 80, 30)];
+    changePasswordLable.shouldUnderline = YES;
+    changePasswordLable.text = @"修改密码";
+    changePasswordLable.textColor = [UIColor darkGrayColor];
+    changePasswordLable.backgroundColor = [UIColor clearColor];
+    [changePasswordLable addTarget:self action:@selector(changePasswdClick:)];
+    [accountView addSubview:changePasswordLable];
+    
+    [mainScrollView_ addSubview:accountView];
 }
 
 
@@ -137,7 +158,7 @@
 
 - (void)showLeftClick:(UIButton *)button
 {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)registClick:(UIButton *)button
@@ -150,4 +171,13 @@
     
 }
 
+- (void)forgotPasswdClick:(id)sender
+{
+    
+}
+
+- (void)changePasswdClick:(id)sender
+{
+    
+}
 @end

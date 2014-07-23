@@ -8,6 +8,7 @@
 
 #import "PersonalCenterViewController.h"
 #import "PersonalCell.h"
+#import "LoginViewController.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -114,6 +115,8 @@
 
 - (void)loginClick:(UIButton *)button
 {
+    LoginViewController *viewCtr = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
     
 }
 

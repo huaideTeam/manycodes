@@ -74,7 +74,7 @@
     }
     
     //搜索界面
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
     headView.backgroundColor = [UIColor clearColor];
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
     backImage.backgroundColor = COLOR(197.0, 206.0, 195.0);
