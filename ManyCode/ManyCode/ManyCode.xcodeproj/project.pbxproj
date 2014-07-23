@@ -927,9 +927,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
-					/Users/xuxingdu/Desktop/ManyCode/ManyCode/ThirdPart/BaiduMap,
-					/Users/xuxingdu/Desktop/ManyCode/ManyCode/ThirdPart/BaiduMapSDK,
-					/Users/xuxingdu/Desktop/ManyCode/ManyCode/ThirdPart/UPPayPlugin,
+					"$(PROJECT_DIR)/ThirdPart/BaiduMap",
+					"$(PROJECT_DIR)/ThirdPart/BaiduMapSDK",
+					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -949,9 +949,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
-					/Users/xuxingdu/Desktop/ManyCode/ManyCode/ThirdPart/BaiduMap,
-					/Users/xuxingdu/Desktop/ManyCode/ManyCode/ThirdPart/BaiduMapSDK,
-					/Users/xuxingdu/Desktop/ManyCode/ManyCode/ThirdPart/UPPayPlugin,
+					"$(PROJECT_DIR)/ThirdPart/BaiduMap",
+					"$(PROJECT_DIR)/ThirdPart/BaiduMapSDK",
+					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
