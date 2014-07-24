@@ -15,11 +15,13 @@
     if (self) {
         
         UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(9.f, 15.f, 297.f, 90.f)];
+        tempView.layer.borderColor = [UIColor grayColor].CGColor;
+        tempView.layer.cornerRadius = 5.f;
         _parkingName = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 7.f, 200.f, 20.f)];
         [_parkingName setBackgroundColor:[UIColor clearColor]];
         _parkingName.textColor = COLOR(51, 51, 51);
         [tempView addSubview:_parkingName];
-        [self.contentView addSubview:_parkingName];
+        [self.contentView addSubview:tempView];
         
         _parkingDistance = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(tempView.frame) - 100.f, CGRectGetMinY(_parkingName.frame), 90.f, CGRectGetHeight(_parkingName.frame))];
         [_parkingDistance setBackgroundColor:[UIColor clearColor]];
