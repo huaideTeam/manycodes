@@ -11,13 +11,17 @@
 #import "PersonalCenterViewController.h"
 #import "ParkDetailViewController.h"
 #import "HomeListView.h"
+#import "SearchCell.h"
 
-@interface MainViewController ()<UITextFieldDelegate>
+@interface MainViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UITextField *searchText_;
     HomeMapView *mapView_;
     HomeListView *listView_;
     NSMutableArray *dataArray_;
+    UITableView *mainTable_;
+    NSMutableArray *textArray_;
+    UIView *grayView_;
 }
 
 @end
@@ -82,8 +86,12 @@
     backImage.backgroundColor = COLOR(197.0, 206.0, 195.0);
     [headView addSubview:backImage];
     
-    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 5, 25, 25)];
-    searchButton.backgroundColor = [UIColor redColor];
+    UIImageView *searchImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 262, 30)];
+    searchImage.image = [UIImage imageNamed:@"搜索输入框.png"];
+    [headView addSubview:searchImage];
+    
+    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 7, 25, 25)];
+    searchButton.backgroundColor = [UIColor clearColor];
     [headView addSubview:searchButton];
     searchText_ = [[UITextField alloc]  initWithFrame:CGRectMake(40, 5, 200, 30)];
     searchText_.borderStyle = UITextBorderStyleNone;
@@ -106,6 +114,15 @@
     [self.view addSubview:listView_];
     
     [self.view addSubview:headView];
+    
+    grayView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40)];
+    grayView_.backgroundColor = COLOR(224, 224, 224);
+    mainTable_ = [[UITableView alloc] initWithFrame:CGRectMake(5, 40, 310, kCurrentWindowHeight-kTopImageHeight-40)];
+    mainTable_.delegate = self;
+    mainTable_.dataSource = self;
+    mainTable_.backgroundColor = [UIColor whiteColor];
+    mainTable_.backgroundView = nil;
+    [grayView_ addSubview:mainTable_];
     
 }
 
@@ -155,6 +172,43 @@
         default:
             break;
     }
+}
+
+
+#pragma mark - textfield  delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [grayView_ removeFromSuperview];
+    [self.view addSubview:grayView_];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
+}
+
+#pragma mark - table delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return textArray_.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *searchId = @"searchID";
+    SearchCell *cell = [tableView dequeueReusableCellWithIdentifier:searchId];
+    if (cell == nil) {
+        cell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:searchId];
+    }
+    cell.cityNameLable.text = @"南京长江隧道";
+    return cell;
 }
 
 #pragma mark - load data

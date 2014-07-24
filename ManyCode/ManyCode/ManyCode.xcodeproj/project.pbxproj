@@ -87,6 +87,7 @@
 		717667F91981238F00A635DA /* mapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 717667F41981238F00A635DA /* mapButton.png */; };
 		717667FA1981238F00A635DA /* mapButtonclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 717667F51981238F00A635DA /* mapButtonclick.png */; };
 		717667FC1981309A00A635DA /* HJSJ_iPhone_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 717667FB1981309A00A635DA /* HJSJ_iPhone_red.png */; };
+		717667FF19814D6F00A635DA /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 717667FE19814D6F00A635DA /* SearchCell.m */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -318,6 +319,8 @@
 		717667F41981238F00A635DA /* mapButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapButton.png; sourceTree = "<group>"; };
 		717667F51981238F00A635DA /* mapButtonclick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapButtonclick.png; sourceTree = "<group>"; };
 		717667FB1981309A00A635DA /* HJSJ_iPhone_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HJSJ_iPhone_red.png; sourceTree = "<group>"; };
+		717667FD19814D6F00A635DA /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		717667FE19814D6F00A635DA /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -516,6 +519,8 @@
 				712FC0D0197D421100EA9F32 /* ViewController.m */,
 				712FBFCB197CB2F400EA9F32 /* Images.xcassets */,
 				712FBFBA197CB2F400EA9F32 /* Supporting Files */,
+				717667FD19814D6F00A635DA /* SearchCell.h */,
+				717667FE19814D6F00A635DA /* SearchCell.m */,
 			);
 			path = ManyCode;
 			sourceTree = "<group>";
@@ -1165,6 +1170,7 @@
 				71B0B749197E3F3E00B06945 /* UIWebView+AFNetworking.m in Sources */,
 				71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */,
 				71B0B705197E3B4D00B06945 /* UIButton+WebCache.m in Sources */,
+				717667FF19814D6F00A635DA /* SearchCell.m in Sources */,
 				717667DC1980F49600A635DA /* NSDictionary_JSONExtensions.m in Sources */,
 				71B0B73C197E3F3E00B06945 /* AFHTTPSessionManager.m in Sources */,
 				717667EF1981019A00A635DA /* MapFootView.m in Sources */,
