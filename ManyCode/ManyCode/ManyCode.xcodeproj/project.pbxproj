@@ -80,6 +80,7 @@
 		717667E51980F49600A635DA /* libBNaviTTSManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667D21980F49600A635DA /* libBNaviTTSManager.a */; };
 		717667E81980F5AF00A635DA /* libbaiduNaviSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667E71980F5AF00A635DA /* libbaiduNaviSDK.a */; };
 		717667EA1980F60500A635DA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 717667E91980F60500A635DA /* Default.png */; };
+		717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 717667EB1980F65200A635DA /* baiduNaviSDK.bundle */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -304,6 +305,7 @@
 		717667D21980F49600A635DA /* libBNaviTTSManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBNaviTTSManager.a; sourceTree = "<group>"; };
 		717667E71980F5AF00A635DA /* libbaiduNaviSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaiduNaviSDK.a; sourceTree = "<group>"; };
 		717667E91980F60500A635DA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		717667EB1980F65200A635DA /* baiduNaviSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = baiduNaviSDK.bundle; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -716,6 +718,7 @@
 		7176679D1980F29100A635DA /* baidunav */ = {
 			isa = PBXGroup;
 			children = (
+				717667EB1980F65200A635DA /* baiduNaviSDK.bundle */,
 				717667E61980F5AF00A635DA /* libs */,
 				717667A91980F49600A635DA /* Statistic */,
 				717667CD1980F49600A635DA /* TTS */,
@@ -1070,6 +1073,7 @@
 			files = (
 				717667E41980F49600A635DA /* BNTTSSDK.bundle in Resources */,
 				71B0B7F8197F970600B06945 /* JDFlipNumberView.bundle in Resources */,
+				717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */,
 				712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */,
 				71490046197FC9F300DEFD83 /* personButton.png in Resources */,
 				7149004C197FCC6000DEFD83 /* shadow.png in Resources */,
