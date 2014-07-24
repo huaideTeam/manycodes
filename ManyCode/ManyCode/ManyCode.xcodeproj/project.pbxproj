@@ -240,6 +240,12 @@
 		7176674E1980EC8700A635DA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		717667501980EC9000A635DA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		717667A11980F45600A635DA /* BNCommonDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCommonDef.h; sourceTree = "<group>"; };
+		717667A21980F45600A635DA /* BNCoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNCoreServices.h; sourceTree = "<group>"; };
+		717667A31980F45600A635DA /* BNRoutePlanManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRoutePlanManagerProtocol.h; sourceTree = "<group>"; };
+		717667A41980F45600A635DA /* BNRoutePlanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRoutePlanModel.h; sourceTree = "<group>"; };
+		717667A51980F45600A635DA /* BNSoundManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNSoundManagerProtocol.h; sourceTree = "<group>"; };
+		717667A61980F45600A635DA /* BNUIManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNUIManagerProtocol.h; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -483,6 +489,7 @@
 		712FBFE9197CB6B600EA9F32 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				7176679D1980F29100A635DA /* baidunav */,
 				71490055198007F900DEFD83 /* MBProgressHUD */,
 				71490051198004AA00DEFD83 /* Keyboard */,
 				71490030197FB4B300DEFD83 /* ChartView */,
@@ -643,6 +650,27 @@
 				71490059198007F900DEFD83 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		7176679D1980F29100A635DA /* baidunav */ = {
+			isa = PBXGroup;
+			children = (
+				717667A01980F45600A635DA /* inc */,
+			);
+			path = baidunav;
+			sourceTree = "<group>";
+		};
+		717667A01980F45600A635DA /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				717667A11980F45600A635DA /* BNCommonDef.h */,
+				717667A21980F45600A635DA /* BNCoreServices.h */,
+				717667A31980F45600A635DA /* BNRoutePlanManagerProtocol.h */,
+				717667A41980F45600A635DA /* BNRoutePlanModel.h */,
+				717667A51980F45600A635DA /* BNSoundManagerProtocol.h */,
+				717667A61980F45600A635DA /* BNUIManagerProtocol.h */,
+			);
+			path = inc;
 			sourceTree = "<group>";
 		};
 		71B0B6C9197E3AEA00B06945 /* NetworkManager */ = {
@@ -1115,6 +1143,9 @@
 					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/libs",
 					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/Statistic",
 					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/TTS",
+					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/libs,
+					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/Statistic,
+					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/TTS,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1138,6 +1169,9 @@
 					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/libs",
 					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/Statistic",
 					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/TTS",
+					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/libs,
+					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/Statistic,
+					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/TTS,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
