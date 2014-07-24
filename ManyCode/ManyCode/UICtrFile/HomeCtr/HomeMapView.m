@@ -11,13 +11,15 @@
 #import "BMKUserLocation.h"
 #import "ExproAnnotation.h"
 #import "BMKTypes.h"
-
+#import "MapFootView.h"
+#import "AppDelegate.h"
 
 @interface HomeMapView ()<BMKMapViewDelegate,BMKLocationServiceDelegate>
 {
     BMKLocationService *locationManager_;
     BMKMapView *mymapkit_;
     BMKUserLocation * location_;
+    MapFootView *footView_;
 }
 
 @end
@@ -51,6 +53,8 @@
     locationManager_ = [[BMKLocationService alloc]init];
     locationManager_.delegate = self;
     [locationManager_ startUserLocationService];
+    
+    [self creatFootView];
 
 }
 
@@ -123,5 +127,26 @@
     NSLog(@"location error");
 }
 
+#pragma mark -  底部的停车场信息
 
+- (void)creatFootView
+{
+    footView_ = [[MapFootView alloc] initWithFrame:CGRectMake(0, kCurrentWindowHeight - kTopImageHeight - 100, 320, 120)];
+    footView_.parkingName.text = @"汇智大厦停车场";
+    footView_.parkingDistance.text = @"231米";
+    footView_.parkingAddress.text = @"宁双路28号";
+    footView_.parkingDistance.text = @"231米";
+    footView_.backgroundColor = [UIColor clearColor];
+    [footView_.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:footView_];
+}
+
+//开始导航
+- (void)startNav:(UIButton *)button
+{
+    CLLocationCoordinate2D startPoint;
+     CLLocationCoordinate2D endPoint;
+    AppDelegate *app = [AppDelegate appDelegate];
+    [app startNavi:startPoint end:endPoint];
+}
 @end

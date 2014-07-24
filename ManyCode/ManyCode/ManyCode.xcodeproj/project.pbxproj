@@ -81,6 +81,7 @@
 		717667E81980F5AF00A635DA /* libbaiduNaviSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667E71980F5AF00A635DA /* libbaiduNaviSDK.a */; };
 		717667EA1980F60500A635DA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 717667E91980F60500A635DA /* Default.png */; };
 		717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 717667EB1980F65200A635DA /* baiduNaviSDK.bundle */; };
+		717667EF1981019A00A635DA /* MapFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 717667EE1981019A00A635DA /* MapFootView.m */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -122,7 +123,7 @@
 		71B0B75A197EAA2000B06945 /* PersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B759197EAA2000B06945 /* PersonalCell.m */; };
 		71B0B7F8197F970600B06945 /* JDFlipNumberView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71B0B7F5197F970600B06945 /* JDFlipNumberView.bundle */; };
 		71B0B7FC197F978100B06945 /* StartParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B7FB197F978100B06945 /* StartParkViewController.m */; };
-		71B0B803197FCDA600B06945 /* HomeMapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B802197FCDA600B06945 /* HomeMapView.mm */; };
+		71B0B803197FCDA600B06945 /* HomeMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B802197FCDA600B06945 /* HomeMapView.m */; };
 		71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B60D6F197CE58E00C26E48 /* tabbar@2x.png */; };
 		71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B60D78197CEEBD00C26E48 /* Security.framework */; };
 /* End PBXBuildFile section */
@@ -306,6 +307,9 @@
 		717667E71980F5AF00A635DA /* libbaiduNaviSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaiduNaviSDK.a; sourceTree = "<group>"; };
 		717667E91980F60500A635DA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		717667EB1980F65200A635DA /* baiduNaviSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = baiduNaviSDK.bundle; sourceTree = "<group>"; };
+		717667ED1981019A00A635DA /* MapFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapFootView.h; sourceTree = "<group>"; };
+		717667EE1981019A00A635DA /* MapFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapFootView.m; sourceTree = "<group>"; };
+		717667F0198105E600A635DA /* StartNavDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartNavDelegate.h; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -391,7 +395,7 @@
 		71B0B7FA197F978100B06945 /* StartParkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartParkViewController.h; sourceTree = "<group>"; };
 		71B0B7FB197F978100B06945 /* StartParkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartParkViewController.m; sourceTree = "<group>"; };
 		71B0B801197FCDA600B06945 /* HomeMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMapView.h; sourceTree = "<group>"; };
-		71B0B802197FCDA600B06945 /* HomeMapView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HomeMapView.mm; sourceTree = "<group>"; };
+		71B0B802197FCDA600B06945 /* HomeMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMapView.m; sourceTree = "<group>"; };
 		71B60D6F197CE58E00C26E48 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		71B60D78197CEEBD00C26E48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -688,9 +692,11 @@
 				28821281198016D70087B65E /* HomeListParkingListTableViewCell.h */,
 				28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */,
 				71B0B801197FCDA600B06945 /* HomeMapView.h */,
-				71B0B802197FCDA600B06945 /* HomeMapView.mm */,
+				71B0B802197FCDA600B06945 /* HomeMapView.m */,
 				717666F8197FECFD00A635DA /* HomeListView.h */,
 				717666F9197FECFD00A635DA /* HomeListView.m */,
+				717667ED1981019A00A635DA /* MapFootView.h */,
+				717667EE1981019A00A635DA /* MapFootView.m */,
 			);
 			path = HomeCtr;
 			sourceTree = "<group>";
@@ -973,6 +979,7 @@
 				71B0B7FB197F978100B06945 /* StartParkViewController.m */,
 				717666EF197FD7EA00A635DA /* StartNavitationViewController.h */,
 				717666F0197FD7EA00A635DA /* StartNavitationViewController.m */,
+				717667F0198105E600A635DA /* StartNavDelegate.h */,
 			);
 			path = ParkingFile;
 			sourceTree = "<group>";
@@ -1134,7 +1141,7 @@
 				71490040197FC0AB00DEFD83 /* PieChartView.m in Sources */,
 				712FBFC4197CB2F400EA9F32 /* AppDelegate.m in Sources */,
 				71B0B73D197E3F3E00B06945 /* AFNetworkReachabilityManager.m in Sources */,
-				71B0B803197FCDA600B06945 /* HomeMapView.mm in Sources */,
+				71B0B803197FCDA600B06945 /* HomeMapView.m in Sources */,
 				71B0B741197E3F3E00B06945 /* AFURLResponseSerialization.m in Sources */,
 				71490054198004AA00DEFD83 /* KeyboardSegment.m in Sources */,
 				717667D91980F49600A635DA /* CJSONSerializedData.m in Sources */,
@@ -1144,6 +1151,7 @@
 				71B0B705197E3B4D00B06945 /* UIButton+WebCache.m in Sources */,
 				717667DC1980F49600A635DA /* NSDictionary_JSONExtensions.m in Sources */,
 				71B0B73C197E3F3E00B06945 /* AFHTTPSessionManager.m in Sources */,
+				717667EF1981019A00A635DA /* MapFootView.m in Sources */,
 				71B0B703197E3B4D00B06945 /* SDWebImageManager.m in Sources */,
 				712FBFF8197CBED700EA9F32 /* UINavigationItem+Items.m in Sources */,
 				71B0B70A197E3B4D00B06945 /* UIImageView+WebCache.m in Sources */,

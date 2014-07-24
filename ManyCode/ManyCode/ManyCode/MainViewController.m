@@ -12,8 +12,10 @@
 #import "ParkDetailViewController.h"
 #import "HomeMapView.h"
 #import "HomeListView.h"
+#import "StartNavDelegate.h"
+#import "StartNavitationViewController.h"
 
-@interface MainViewController ()<UITextFieldDelegate>
+@interface MainViewController ()<UITextFieldDelegate,StartNavDelegate>
 {
     UITextField *searchText_;
     HomeMapView *mapView_;
@@ -95,10 +97,11 @@
     changeButton.tag = 100;
     [headView addSubview:changeButton];
     
-    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight)];
+    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-kTopImageHeight)];
+    mapView_.delegate = self;
     [self.view addSubview:mapView_];
     
-    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight)];
+    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-kTopImageHeight)];
     listView_.hidden = YES;
     [self.view addSubview:listView_];
     
@@ -153,7 +156,14 @@
     }
 }
 
-#pragma mark - table delegate
+#pragma mark - nav delegate
 
+- (void)pushToStartNavWith:(CLLocationCoordinate2D)startPoint end:(CLLocationCoordinate2D)endPoint
+{
+    StartNavitationViewController *viewCtr = [[StartNavitationViewController alloc] init];
+    viewCtr.startPoint = startPoint;
+    viewCtr.endPoint = endPoint;
+    [self.navigationController pushViewController:viewCtr animated:YES];
+}
 
 @end

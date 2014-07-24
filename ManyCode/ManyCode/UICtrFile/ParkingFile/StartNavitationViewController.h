@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface StartNavitationViewController : UIViewController
+
+@property (nonatomic, assign) CLLocationCoordinate2D startPoint;
+
+@property (nonatomic, assign) CLLocationCoordinate2D endPoint;
 
 @end
