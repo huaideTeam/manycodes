@@ -178,7 +178,9 @@
 
 - (void)changeClick:(UIButton *)button
 {
-    [searchText_ resignFirstResponder];
+    if ([searchText_ isFirstResponder]) {
+        return;
+    }
     switch (button.tag) {
         case 100:
         {
@@ -270,6 +272,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+     NSDictionary *dic = [textArray_ objectAtIndex:indexPath.row];
+     NSString *name = [dic objectForKey:@"carparkname"];
 }
 
 #pragma mark - load data
