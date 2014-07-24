@@ -62,13 +62,19 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
     if (cell == nil) {
         cell = [[HomeListParkingListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifierForHomeListTableView];
     }
-    
-    ParkingItemModel *item = self.parkingListDataSource[indexPath.row];
-    cell.parkingName.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, item.carparkname];
-    cell.parkingDistance.text = item.distance;
-    cell.parkingAddress.text = item.address;
+    NSDictionary *itemDic = self.parkingListDataSource[indexPath.row];
+    cell.parkingName.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, [itemDic objectForKey:@"carparkname"]];
+    cell.parkingDistance.text = [itemDic objectForKey:@"distance"];
+    cell.parkingAddress.text = [itemDic objectForKey:@"address"];
     cell.parkingNavigation.tag = indexPath.row * 2;
     cell.parkingMyCar.tag = indexPath.row * 2 + 1;
+
+//    ParkingItemModel *item = self.parkingListDataSource[indexPath.row];
+//    cell.parkingName.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, item.carparkname];
+//    cell.parkingDistance.text = item.distance;
+//    cell.parkingAddress.text = item.address;
+//    cell.parkingNavigation.tag = indexPath.row * 2;
+//    cell.parkingMyCar.tag = indexPath.row * 2 + 1;
     return cell;
 }
 
