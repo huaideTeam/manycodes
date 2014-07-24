@@ -49,7 +49,7 @@
 		7149005A198007F900DEFD83 /* Hud.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490057198007F900DEFD83 /* Hud.m */; };
 		7149005B198007F900DEFD83 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490059198007F900DEFD83 /* MBProgressHUD.m */; };
 		714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900C61980EAFE00DEFD83 /* UIKit.framework */; };
-		717666F1197FD7EA00A635DA /* StartNavitationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */; };
+		717666F1197FD7EA00A635DA /* StartNavitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F0197FD7EA00A635DA /* StartNavitationViewController.m */; };
 		717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F3197FDB8E00A635DA /* LoginViewController.m */; };
 		717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F6197FE3FF00A635DA /* UnderLineLabel.m */; };
 		717666FA197FECFD00A635DA /* HomeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F9197FECFD00A635DA /* HomeListView.m */; };
@@ -247,7 +247,7 @@
 		71490059198007F900DEFD83 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		714900C61980EAFE00DEFD83 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		717666EF197FD7EA00A635DA /* StartNavitationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartNavitationViewController.h; sourceTree = "<group>"; };
-		717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartNavitationViewController.mm; sourceTree = "<group>"; };
+		717666F0197FD7EA00A635DA /* StartNavitationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartNavitationViewController.m; sourceTree = "<group>"; };
 		717666F2197FDB8E00A635DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		717666F3197FDB8E00A635DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		717666F5197FE3FF00A635DA /* UnderLineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderLineLabel.h; sourceTree = "<group>"; };
@@ -972,7 +972,7 @@
 				71B0B7FA197F978100B06945 /* StartParkViewController.h */,
 				71B0B7FB197F978100B06945 /* StartParkViewController.m */,
 				717666EF197FD7EA00A635DA /* StartNavitationViewController.h */,
-				717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */,
+				717666F0197FD7EA00A635DA /* StartNavitationViewController.m */,
 			);
 			path = ParkingFile;
 			sourceTree = "<group>";
@@ -1138,7 +1138,7 @@
 				71B0B741197E3F3E00B06945 /* AFURLResponseSerialization.m in Sources */,
 				71490054198004AA00DEFD83 /* KeyboardSegment.m in Sources */,
 				717667D91980F49600A635DA /* CJSONSerializedData.m in Sources */,
-				717666F1197FD7EA00A635DA /* StartNavitationViewController.mm in Sources */,
+				717666F1197FD7EA00A635DA /* StartNavitationViewController.m in Sources */,
 				71B0B749197E3F3E00B06945 /* UIWebView+AFNetworking.m in Sources */,
 				71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */,
 				71B0B705197E3B4D00B06945 /* UIButton+WebCache.m in Sources */,
