@@ -1340,15 +1340,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
 					"$(PROJECT_DIR)/ThirdPart/BaiduMapSDK",
-					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/libs",
-					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/Statistic",
-					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/TTS",
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/libs,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/Statistic,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/TTS,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baidunav/libs,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baidunav/Statistic,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baidunav/TTS,
+					"$(PROJECT_DIR)/ThirdPart/baidunav/libs",
+					"$(PROJECT_DIR)/ThirdPart/baidunav/Statistic",
+					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
+					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1369,15 +1364,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdPart/UPPayPlugin",
 					"$(PROJECT_DIR)/ThirdPart/BaiduMapSDK",
-					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/libs",
-					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/Statistic",
-					"$(PROJECT_DIR)/ThirdPart/baiduNaviSDK/TTS",
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/libs,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/Statistic,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baiduNaviSDK/TTS,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baidunav/libs,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baidunav/Statistic,
-					/Users/xuxingdu/Desktop/manyCode333/ThirdPart/baidunav/TTS,
+					"$(PROJECT_DIR)/ThirdPart/baidunav/libs",
+					"$(PROJECT_DIR)/ThirdPart/baidunav/Statistic",
+					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
+					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
