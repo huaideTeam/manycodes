@@ -11,14 +11,12 @@
 		28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
-		712FBFB8197CB2F400EA9F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB7197CB2F400EA9F32 /* UIKit.framework */; };
 		712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFBC197CB2F400EA9F32 /* InfoPlist.strings */; };
 		712FBFC0197CB2F400EA9F32 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFBF197CB2F400EA9F32 /* main.mm */; };
 		712FBFC4197CB2F400EA9F32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFC3197CB2F400EA9F32 /* AppDelegate.m */; };
 		712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFCB197CB2F400EA9F32 /* Images.xcassets */; };
 		712FBFD3197CB2F400EA9F32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFD2197CB2F400EA9F32 /* XCTest.framework */; };
 		712FBFD4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
-		712FBFD5197CB2F400EA9F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB7197CB2F400EA9F32 /* UIKit.framework */; };
 		712FBFDD197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFDB197CB2F400EA9F32 /* InfoPlist.strings */; };
 		712FBFDF197CB2F400EA9F32 /* ManyCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFDE197CB2F400EA9F32 /* ManyCodeTests.m */; };
 		712FBFEE197CB72A00EA9F32 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFED197CB72A00EA9F32 /* DDMenuController.m */; };
@@ -70,17 +68,18 @@
 		714900B51980E4E900DEFD83 /* BNaviSoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 714900A01980E4E900DEFD83 /* BNaviSoundManager.m */; };
 		714900B61980E4E900DEFD83 /* BNTTSSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 714900A21980E4E900DEFD83 /* BNTTSSDK.bundle */; };
 		714900B71980E4E900DEFD83 /* libBNaviTTSManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900A31980E4E900DEFD83 /* libBNaviTTSManager.a */; };
-		714900B91980E6EA00DEFD83 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900B81980E6EA00DEFD83 /* AudioToolbox.framework */; };
-		714900BB1980E6F500DEFD83 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900BA1980E6F500DEFD83 /* MediaPlayer.framework */; };
-		714900BD1980E70300DEFD83 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900BC1980E70300DEFD83 /* CoreTelephony.framework */; };
-		714900BF1980E70C00DEFD83 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900BE1980E70C00DEFD83 /* CoreMotion.framework */; };
-		714900C11980E76400DEFD83 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900C01980E76400DEFD83 /* libstdc++.6.0.9.dylib */; };
+		714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900C61980EAFE00DEFD83 /* UIKit.framework */; };
 		717666F1197FD7EA00A635DA /* StartNavitationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */; };
 		717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F3197FDB8E00A635DA /* LoginViewController.m */; };
 		717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F6197FE3FF00A635DA /* UnderLineLabel.m */; };
 		717666FA197FECFD00A635DA /* HomeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F9197FECFD00A635DA /* HomeListView.m */; };
 		717667451980C8C000A635DA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667441980C8C000A635DA /* MobileCoreServices.framework */; };
-		717667471980C8C700A635DA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667461980C8C700A635DA /* CFNetwork.framework */; };
+		717667491980EBFF00A635DA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667481980EBFF00A635DA /* CFNetwork.framework */; };
+		7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176674A1980EC7500A635DA /* AudioToolbox.framework */; };
+		7176674D1980EC7F00A635DA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176674C1980EC7F00A635DA /* MediaPlayer.framework */; };
+		7176674F1980EC8700A635DA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176674E1980EC8700A635DA /* CoreTelephony.framework */; };
+		717667511980EC9000A635DA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667501980EC9000A635DA /* CoreMotion.framework */; };
+		717667531980ECBA00A635DA /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -145,7 +144,6 @@
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		712FBFB7197CB2F400EA9F32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		712FBFBB197CB2F400EA9F32 /* ManyCode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ManyCode-Info.plist"; sourceTree = "<group>"; };
 		712FBFBD197CB2F400EA9F32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		712FBFBF197CB2F400EA9F32 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
@@ -290,11 +288,7 @@
 		714900A11980E4E900DEFD83 /* BNaviTTSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNaviTTSManager.h; sourceTree = "<group>"; };
 		714900A21980E4E900DEFD83 /* BNTTSSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BNTTSSDK.bundle; sourceTree = "<group>"; };
 		714900A31980E4E900DEFD83 /* libBNaviTTSManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBNaviTTSManager.a; sourceTree = "<group>"; };
-		714900B81980E6EA00DEFD83 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		714900BA1980E6F500DEFD83 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		714900BC1980E70300DEFD83 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		714900BE1980E70C00DEFD83 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		714900C01980E76400DEFD83 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		714900C61980EAFE00DEFD83 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		717666EF197FD7EA00A635DA /* StartNavitationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartNavitationViewController.h; sourceTree = "<group>"; };
 		717666F0197FD7EA00A635DA /* StartNavitationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartNavitationViewController.mm; sourceTree = "<group>"; };
 		717666F2197FDB8E00A635DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -304,7 +298,12 @@
 		717666F8197FECFD00A635DA /* HomeListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListView.h; sourceTree = "<group>"; };
 		717666F9197FECFD00A635DA /* HomeListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListView.m; sourceTree = "<group>"; };
 		717667441980C8C000A635DA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		717667461980C8C700A635DA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		717667481980EBFF00A635DA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7176674A1980EC7500A635DA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7176674C1980EC7F00A635DA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7176674E1980EC8700A635DA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		717667501980EC9000A635DA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -400,26 +399,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				714900C11980E76400DEFD83 /* libstdc++.6.0.9.dylib in Frameworks */,
+				712FC088197D3B3F00EA9F32 /* SystemConfiguration.framework in Frameworks */,
+				717667531980ECBA00A635DA /* libstdc++.6.0.9.dylib in Frameworks */,
+				712FC086197D3B2700EA9F32 /* ImageIO.framework in Frameworks */,
 				712FC082197D3A8A00EA9F32 /* CoreLocation.framework in Frameworks */,
-				714900BF1980E70C00DEFD83 /* CoreMotion.framework in Frameworks */,
-				714900BD1980E70300DEFD83 /* CoreTelephony.framework in Frameworks */,
-				714900BB1980E6F500DEFD83 /* MediaPlayer.framework in Frameworks */,
-				714900B91980E6EA00DEFD83 /* AudioToolbox.framework in Frameworks */,
+				717667511980EC9000A635DA /* CoreMotion.framework in Frameworks */,
+				7176674F1980EC8700A635DA /* CoreTelephony.framework in Frameworks */,
+				7176674D1980EC7F00A635DA /* MediaPlayer.framework in Frameworks */,
+				7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */,
+				717667491980EBFF00A635DA /* CFNetwork.framework in Frameworks */,
+				714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */,
 				714900B71980E4E900DEFD83 /* libBNaviTTSManager.a in Frameworks */,
 				714900A61980E4E900DEFD83 /* libBaiduMobStatForSDK.a in Frameworks */,
-				717667471980C8C700A635DA /* CFNetwork.framework in Frameworks */,
 				717667451980C8C000A635DA /* MobileCoreServices.framework in Frameworks */,
-				712FC088197D3B3F00EA9F32 /* SystemConfiguration.framework in Frameworks */,
 				712FC08A197D3B5300EA9F32 /* MessageUI.framework in Frameworks */,
 				714900A51980E4E900DEFD83 /* libbaiduNaviSDK.a in Frameworks */,
-				712FC086197D3B2700EA9F32 /* ImageIO.framework in Frameworks */,
 				712FC084197D3A9A00EA9F32 /* QuartzCore.framework in Frameworks */,
 				71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */,
 				712FC0D7197D4C3D00EA9F32 /* libUPPayPlugin.a in Frameworks */,
 				712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */,
 				712FC080197D3A1600EA9F32 /* libbaidumapapi.a in Frameworks */,
-				712FBFB8197CB2F400EA9F32 /* UIKit.framework in Frameworks */,
 				712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +428,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				712FBFD3197CB2F400EA9F32 /* XCTest.framework in Frameworks */,
-				712FBFD5197CB2F400EA9F32 /* UIKit.framework in Frameworks */,
 				712FBFD4197CB2F400EA9F32 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,12 +469,13 @@
 		712FBFB2197CB2F400EA9F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				714900C01980E76400DEFD83 /* libstdc++.6.0.9.dylib */,
-				714900BE1980E70C00DEFD83 /* CoreMotion.framework */,
-				714900BC1980E70300DEFD83 /* CoreTelephony.framework */,
-				714900BA1980E6F500DEFD83 /* MediaPlayer.framework */,
-				714900B81980E6EA00DEFD83 /* AudioToolbox.framework */,
-				717667461980C8C700A635DA /* CFNetwork.framework */,
+				717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */,
+				717667501980EC9000A635DA /* CoreMotion.framework */,
+				7176674E1980EC8700A635DA /* CoreTelephony.framework */,
+				7176674C1980EC7F00A635DA /* MediaPlayer.framework */,
+				7176674A1980EC7500A635DA /* AudioToolbox.framework */,
+				717667481980EBFF00A635DA /* CFNetwork.framework */,
+				714900C61980EAFE00DEFD83 /* UIKit.framework */,
 				717667441980C8C000A635DA /* MobileCoreServices.framework */,
 				712FC089197D3B5300EA9F32 /* MessageUI.framework */,
 				712FC087197D3B3F00EA9F32 /* SystemConfiguration.framework */,
@@ -486,7 +485,6 @@
 				71B60D78197CEEBD00C26E48 /* Security.framework */,
 				712FBFB3197CB2F400EA9F32 /* Foundation.framework */,
 				712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */,
-				712FBFB7197CB2F400EA9F32 /* UIKit.framework */,
 				712FBFD2197CB2F400EA9F32 /* XCTest.framework */,
 			);
 			name = Frameworks;
