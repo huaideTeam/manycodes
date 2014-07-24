@@ -88,11 +88,26 @@
     
     
     
-    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight)];
+    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-44)];
     mainScrollView_.backgroundColor = [UIColor clearColor];
+    mainScrollView_.contentSize = CGSizeMake(320, kCurrentWindowHeight-44);
     [self.view addSubview:mainScrollView_];
     
     [self addAccountView];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     
 }
 
@@ -226,4 +241,35 @@
 {
     [self.view endEditing:YES];
 }
+
+#pragma mark - keyboard btn
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        viewFrame.size.height -= kbSize.height;
+        mainScrollView_.frame = viewFrame;
+    }];
+    
+    return;
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        mainScrollView_.frame = viewFrame;
+    }];
+    
+    return;
+}
+
+
 @end

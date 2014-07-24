@@ -48,7 +48,6 @@
  */
 - (void)requestWebWithParaWithURL:(NSString*)webApi Parameter:(NSDictionary *)para Finish:(HttpResponseSucBlock)completeBlock Error:(HttpResponseErrBlock)errorBlock
 {
-    
     [self.httpClient POST:webApi parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"URL:%@,Responese:%@",operation.request.URL,responseObject);
@@ -63,7 +62,7 @@
         }
         @finally {
             //业务产生的状态码
-            NSNumber *logicCode = resultDic[@"ResultStatus"];
+            NSNumber *logicCode = resultDic[@"statusCode"];
             
             //成功获得数据
             if (logicCode.intValue==200) {

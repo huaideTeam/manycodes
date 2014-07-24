@@ -23,6 +23,9 @@
 
 
 #define DefaultFont    [UIFont systemFontOfSize:14]
+
+#define SCREENWIDTH                 CGRectGetWidth([UIScreen mainScreen].applicationFrame)
+#define SCREENHEIGHT                CGRectGetHeight([UIScreen mainScreen].applicationFrame)
 /*
  
  字体，颜色

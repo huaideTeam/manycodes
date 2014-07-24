@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 
 
-static NSString *const EPHttpApiBaseURL = @"http://www.manycode.com.cn/switch.php/Switchuser/";
+static NSString *const EPHttpApiBaseURL = @"http://www.manycode.com.cn/switch.php/User/";
 
 
 /**

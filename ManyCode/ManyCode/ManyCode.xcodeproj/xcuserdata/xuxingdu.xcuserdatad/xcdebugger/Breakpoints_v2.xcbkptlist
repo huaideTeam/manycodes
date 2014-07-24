@@ -25,76 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UICtrFile/PersonalCtr/LoginViewController.m"
-            timestampString = "427820793.366132"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "-loginClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UICtrFile/PersonalCtr/LoginViewController.m"
-            timestampString = "427820793.366132"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-loginClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "UICtrFile/NetworkManager/NetworkCenter.m"
-            timestampString = "427821178.211459"
+            timestampString = "427867949.857533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-requestWebWithParaWithURL:Parameter:Finish:Error:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[NetworkCenter requestWebWithParaWithURL:Parameter:Finish:Error:]"
-                  moduleName = "ManyCode"
-                  urlString = "file:///Users/xuxingdu/Desktop/manyCode333/UICtrFile/NetworkManager/NetworkCenter.m"
-                  timestampString = "427861582.118744"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "122">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__66-[NetworkCenter requestWebWithParaWithURL:Parameter:Finish:Error:]_block_invoke"
-                  moduleName = "ManyCode"
-                  urlString = "file:///Users/xuxingdu/Desktop/manyCode333/UICtrFile/NetworkManager/NetworkCenter.m"
-                  timestampString = "427861582.118911"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
