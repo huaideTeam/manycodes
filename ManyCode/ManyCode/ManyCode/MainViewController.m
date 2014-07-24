@@ -10,16 +10,14 @@
 #import "UINavigationItem+Items.h"
 #import "PersonalCenterViewController.h"
 #import "ParkDetailViewController.h"
-#import "HomeMapView.h"
 #import "HomeListView.h"
-#import "StartNavDelegate.h"
-#import "StartNavitationViewController.h"
 
-@interface MainViewController ()<UITextFieldDelegate,StartNavDelegate>
+@interface MainViewController ()<UITextFieldDelegate>
 {
     UITextField *searchText_;
     HomeMapView *mapView_;
     HomeListView *listView_;
+    NSMutableArray *dataArray_;
 }
 
 @end
@@ -60,6 +58,8 @@
     }
     self.title = @"抢车位";
     self.view.backgroundColor = [UIColor blueColor];
+    
+    dataArray_ = [[NSMutableArray alloc] initWithCapacity:12];
     
     //返回按钮
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -106,6 +106,7 @@
     [self.view addSubview:listView_];
     
     [self.view addSubview:headView];
+    
 }
 
 
@@ -156,14 +157,26 @@
     }
 }
 
-#pragma mark - nav delegate
+#pragma mark - load data
 
-- (void)pushToStartNavWith:(CLLocationCoordinate2D)startPoint end:(CLLocationCoordinate2D)endPoint
+//定位成功后刷新数据，或者定时刷新数据
+- (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint
 {
-    StartNavitationViewController *viewCtr = [[StartNavitationViewController alloc] init];
-    viewCtr.startPoint = startPoint;
-    viewCtr.endPoint = endPoint;
-    [self.navigationController pushViewController:viewCtr animated:YES];
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
+    [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];
+    [tempDic setObject:[NSNumber numberWithInt:1] forKey:@"page"];
+    
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getNearCarparkList" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        NSLog(@"1233");
+        NSArray *array = [resultDic objectForKey:@"carparklist"];
+        [dataArray_ addObjectsFromArray:array];
+        [mapView_ updateAnimationView:dataArray_];
+        
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
 }
 
 @end

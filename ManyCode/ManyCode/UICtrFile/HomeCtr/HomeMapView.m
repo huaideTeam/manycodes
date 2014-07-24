@@ -20,6 +20,8 @@
     BMKMapView *mymapkit_;
     BMKUserLocation * location_;
     MapFootView *footView_;
+    NSMutableArray *anonationArray_;
+    NSMutableArray *dataArray_;
 }
 
 @end
@@ -78,9 +80,8 @@
  */
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
-    location_ = userLocation;
     [mymapkit_ updateLocationData:userLocation];
-    NSLog(@"heading is %@",userLocation.heading);
+
 }
 
 /**
@@ -89,23 +90,37 @@
  */
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
-    
     if (userLocation.location) {
-        location_ = userLocation;
-        BMKCoordinateSpan theSpan;
         
-        theSpan.latitudeDelta=0.01;
-        
-        theSpan.longitudeDelta=0.01;
-        BMKCoordinateRegion theRegion;
-        
-        theRegion.center= location_.location.coordinate;
-        theRegion.span = theSpan;
-        
-        [mymapkit_ setRegion:theRegion];
-        //        [mymapkit_ updateLocationData:userLocation];
-        [locationManager_ stopUserLocationService];
+        if (!location_) {
+            location_ = userLocation;
+            BMKCoordinateSpan theSpan;
+            
+            theSpan.latitudeDelta=0.01;
+            
+            theSpan.longitudeDelta=0.01;
+            BMKCoordinateRegion theRegion;
+            
+            theRegion.center= location_.location.coordinate;
+            theRegion.span = theSpan;
+            
+            [self.delegate LoadCurrentInfo:location_.location.coordinate];
+            
+            [mymapkit_ setRegion:theRegion];
+        }else
+        {
+            CLLocation *current=[[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.latitude];
+            //第二个坐标
+            CLLocation *before=[[CLLocation alloc] initWithLatitude:location_.location.coordinate.latitude longitude:location_.location.coordinate.latitude];
+            // 计算距离
+            CLLocationDistance meters=[current distanceFromLocation:before];
+            if (meters>500) {
+                location_ = userLocation;
+                [self.delegate LoadCurrentInfo:location_.location.coordinate];
+            }
+        }
     }
+      [mymapkit_ updateLocationData:userLocation];
 }
 
 /**
@@ -135,7 +150,6 @@
     footView_.parkingName.text = @"汇智大厦停车场";
     footView_.parkingDistance.text = @"231米";
     footView_.parkingAddress.text = @"宁双路28号";
-    footView_.parkingDistance.text = @"231米";
     footView_.backgroundColor = [UIColor clearColor];
     [footView_.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:footView_];
@@ -149,4 +163,56 @@
     AppDelegate *app = [AppDelegate appDelegate];
     [app startNavi:startPoint end:endPoint];
 }
+
+
+#pragma mark - 刷新停车场上的位置信息
+
+// 刷新界面上停车场的位置信息
+- (void)updateAnimationView:(NSMutableArray *)array
+{
+    [mymapkit_ removeAnnotations:anonationArray_];
+    
+    dataArray_ = [NSMutableArray arrayWithArray:array];
+    anonationArray_ = [[NSMutableArray alloc] initWithCapacity:12];
+    for (int k = 0; k< [array count]; k++) {
+        NSDictionary *dic = [array objectAtIndex:k];
+        CLLocationCoordinate2D coor;
+        coor.longitude = [[dic objectForKey:@"gps_lon"] doubleValue];
+        coor.latitude = [[dic objectForKey:@"gps_lat"] doubleValue];
+        
+        ExproAnnotation *ann = [[ExproAnnotation alloc] init];
+        ann.coordinate = coor;
+        ann.tag = 100+k;
+        [anonationArray_ addObject:ann];
+    }
+    [mymapkit_ addAnnotations:anonationArray_];
+}
+
+-(BMKAnnotationView *)mapView:(BMKMapView *)theMapView viewForAnnotation:(id <BMKAnnotation>)annotation {
+    
+    BMKAnnotationView *newAnnotation=[[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation1"];
+    newAnnotation.image = [UIImage imageNamed:@"HJSJ_iPhone_red.png"];
+    newAnnotation.annotation = annotation;
+    newAnnotation.tag = [(ExproAnnotation *)annotation tag];
+    newAnnotation.canShowCallout = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectChange:)];
+    [newAnnotation addGestureRecognizer:tap];
+    return newAnnotation;
+    
+}
+
+- (void)selectChange:(UITapGestureRecognizer *)sender
+{
+    NSInteger viewTag = sender.view.tag;
+    NSDictionary *dic = [dataArray_ objectAtIndex:viewTag-100];
+    
+    footView_.parkingName.text = [dic objectForKey:@"carparkname"];
+    footView_.parkingDistance.text = [dic objectForKey:@"distance"];
+    footView_.parkingAddress.text = [dic objectForKey:@"address"];
+    footView_.tag = viewTag;
+    
+}
+
+
 @end
