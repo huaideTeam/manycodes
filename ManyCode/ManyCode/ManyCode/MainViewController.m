@@ -22,6 +22,7 @@
     UITableView *mainTable_;
     NSMutableArray *textArray_;
     UIView *grayView_;
+    UIButton *leftBtn_;
 }
 
 @end
@@ -71,13 +72,30 @@
     [btnHome setBackgroundColor:[UIColor clearColor]];
     [btnHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
     [btnHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
-    [btnHome addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
+    [btnHome addTarget:self action:@selector(showRightClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
     }
     else {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
+    
+    
+    //返回按钮
+    leftBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftBtn_.frame = CGRectMake(0, 0.f, 24, 25.f);
+    [leftBtn_ setBackgroundColor:[UIColor clearColor]];
+    [leftBtn_ setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
+    [leftBtn_ setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
+    [leftBtn_ addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
+    if (IOS7) {
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:leftBtn_]];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn_];
+    }
+ 
+    leftBtn_.hidden = YES;
     
     //搜索界面
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
@@ -115,29 +133,52 @@
     
     [self.view addSubview:headView];
     
-    grayView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40)];
+    grayView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40-kStatueHeight)];
     grayView_.backgroundColor = COLOR(224, 224, 224);
-    mainTable_ = [[UITableView alloc] initWithFrame:CGRectMake(5, 40, 310, kCurrentWindowHeight-kTopImageHeight-40)];
+    mainTable_ = [[UITableView alloc] initWithFrame:CGRectMake(5, 0, 310, kCurrentWindowHeight-kTopImageHeight-40-kStatueHeight)];
     mainTable_.delegate = self;
     mainTable_.dataSource = self;
     mainTable_.backgroundColor = [UIColor whiteColor];
     mainTable_.backgroundView = nil;
+    [mainTable_ setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [grayView_ addSubview:mainTable_];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     
 }
 
 
 - (void)showLeftClick:(UIButton *)button
 {
+    leftBtn_.hidden = YES;
+    searchText_.text = @"";
+    [searchText_ resignFirstResponder];
+    [textArray_ removeAllObjects];
+    [grayView_ removeFromSuperview];
+}
+
+- (void)showRightClick:(UIButton *)button
+{
     PersonalCenterViewController *viewCtr = [[PersonalCenterViewController alloc] init];
     //    ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
     [self.navigationController pushViewController:viewCtr animated:YES];
-    
 }
 
 
 - (void)changeClick:(UIButton *)button
 {
+    [searchText_ resignFirstResponder];
     switch (button.tag) {
         case 100:
         {
@@ -181,13 +222,27 @@
 {
     [grayView_ removeFromSuperview];
     [self.view addSubview:grayView_];
+    leftBtn_.hidden = NO;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    [self refreshCityName:textField.text];
     return YES;
 }
 
+- (void)refreshCityName:(NSString *)text
+{
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:text forKey:@"qryname"];
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getRetrieveCarparkName" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        NSArray *array = [resultDic objectForKey:@"carparkname"];
+        textArray_ = [NSMutableArray arrayWithArray:array];
+        [mainTable_ reloadData];
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
 #pragma mark - table delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -207,8 +262,14 @@
     if (cell == nil) {
         cell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:searchId];
     }
-    cell.cityNameLable.text = @"南京长江隧道";
+    NSDictionary *dic = [textArray_ objectAtIndex:indexPath.row];
+    cell.cityNameLable.text = [dic objectForKey:@"carparkname"];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - load data
@@ -233,5 +294,35 @@
     }];
 
 }
+
+#pragma mark - keyboard btn
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(5.f, 0.f, 310, grayView_.frame.size.height);
+        viewFrame.size.height -= kbSize.height;
+        mainTable_.frame = viewFrame;
+    }];
+    
+    return;
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(5.f, 0.f, 310, grayView_.frame.size.height);
+        mainTable_.frame = viewFrame;
+    }];
+    
+    return;
+}
+
 
 @end

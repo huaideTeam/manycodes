@@ -19,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
-        _iconImage.image = [UIImage imageNamed:@""];
+        _iconImage.image = [UIImage imageNamed:@"mapButton.png"];
         [self.contentView addSubview:_iconImage];
         
         _cityNameLable = [[UILabel alloc] initWithFrame:CGRectMake(45, 10, 230, 20)];
