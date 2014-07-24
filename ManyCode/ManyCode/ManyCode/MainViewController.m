@@ -172,6 +172,7 @@
         NSArray *array = [resultDic objectForKey:@"carparklist"];
         [dataArray_ addObjectsFromArray:array];
         [mapView_ updateAnimationView:dataArray_];
+        [listView_ refreshParkingList:dataArray_];
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
