@@ -146,7 +146,7 @@
 
 - (void)creatFootView
 {
-    footView_ = [[MapFootView alloc] initWithFrame:CGRectMake(0, kCurrentWindowHeight - kTopImageHeight - 100, 320, 120)];
+    footView_ = [[MapFootView alloc] initWithFrame:CGRectMake(0, kCurrentWindowHeight - kTopImageHeight - 140, 320, 100)];
     footView_.parkingName.text = @"汇智大厦停车场";
     footView_.parkingDistance.text = @"231米";
     footView_.parkingAddress.text = @"宁双路28号";

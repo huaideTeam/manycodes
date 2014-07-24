@@ -97,11 +97,11 @@
     changeButton.tag = 100;
     [headView addSubview:changeButton];
     
-    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-kTopImageHeight)];
+    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40)];
     mapView_.delegate = self;
     [self.view addSubview:mapView_];
     
-    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-kTopImageHeight)];
+    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40)];
     listView_.hidden = YES;
     [self.view addSubview:listView_];
     
