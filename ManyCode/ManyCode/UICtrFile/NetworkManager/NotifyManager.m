@@ -61,9 +61,7 @@
 - (void)showMsg:(NSString *)msg WithAlertView:(BOOL)showAlertView
 {
     if (showAlertView) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alertView show];
-
+        [[Hud defaultInstance] showMessage:msg withHud:YES];
     }
     else
     {

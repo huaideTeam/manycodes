@@ -13,9 +13,10 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import "NetworkCenter.h"
-    #import "Hud.h"
 #endif
+#import "NetworkCenter.h"
+#import "Hud.h"
+
 
 #define IPHONE5                     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
@@ -42,3 +43,12 @@
 #define kFullWindowHeight [[UIScreen mainScreen] bounds].size.height
 
 #define kCurrentWindowHeight [[UIScreen mainScreen] applicationFrame].size.height
+
+#define kTopImageHeight 44 +kStatueHeight
+
+
+
+#define kAccountMobile  @"AccountMobile"    //账号
+#define kAccountid      @"Accountid"    //useid
+#define kAccountSession  @"AccountSession" //sessionid
+#define kAccountBalance  @"AccountBalance"

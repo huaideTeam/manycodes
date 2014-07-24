@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "BNCoreServices.h"
+#import "BNaviSoundManager.h"
 
 @implementation AppDelegate
 
@@ -20,6 +22,11 @@
         NSLog(@"Baidu Map start failed");
     }
 
+    // 初始化导航SDK引擎
+    [BNCoreServices_Instance initServices:@"eS2DDfOx9pHjosb4bBmGMLK0"];
+    
+    //开启引擎，传入默认的TTS类
+    [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
     [self commonSetting];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     

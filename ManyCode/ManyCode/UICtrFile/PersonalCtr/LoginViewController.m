@@ -190,6 +190,8 @@
 {
     [self.view endEditing:YES];
     [self.view endEditing:NO];
+    
+    [[Hud defaultInstance] loading:self.view withText:@"登陆中...."];
     //判断账户和密码不能为空
     if (accountText_.text.length == 0 || passwordText_.text.length == 0) {
         [[Hud defaultInstance] showMessage:@"手机号码或者密码为空"];
@@ -216,6 +218,10 @@
         [tempDic setObject:passwordText_.text forKey:@"password"];
         
         [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"checkLogin" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+            [self saveLoginInfo:resultDic];
+            [[Hud defaultInstance] showMessage:@"登陆成功" withHud:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"loginNotification" object:nil];
             
         } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
             
@@ -240,6 +246,16 @@
 -(void)doneClicked:(UIBarButtonItem*)barButton
 {
     [self.view endEditing:YES];
+}
+
+#pragma mark - 保存登陆信息
+
+- (void)saveLoginInfo:(NSDictionary *)dic
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"mobile"] forKey:kAccountMobile];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"userid"] forKey:kAccountid];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"sessionid"] forKey:kAccountSession];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"balance"] forKey:kAccountBalance];
 }
 
 #pragma mark - keyboard btn

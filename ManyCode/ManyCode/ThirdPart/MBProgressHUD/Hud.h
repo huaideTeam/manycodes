@@ -19,5 +19,6 @@
 - (void)loading:(UIView *)view;
 - (void)loading:(UIView *)view withText:(NSString *)text;
 - (void)hide:(UIView *)view;
+- (void)showMessage:(NSString *)message withHud:(BOOL)flag;
 
 @end
