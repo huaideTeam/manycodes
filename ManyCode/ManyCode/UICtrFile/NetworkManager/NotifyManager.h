@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SVProgressHUD.h"
 
 @interface NotifyManager : NSObject
 {

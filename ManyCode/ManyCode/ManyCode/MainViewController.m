@@ -122,9 +122,14 @@
         {
             button.tag = 101;
             
+            [UIView beginAnimations:@"animation" context:nil];
+            [UIView setAnimationDuration:1.0f];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
             mapView_.hidden = YES;
             listView_.hidden = NO;
-            
+            [UIView commitAnimations];
+           
             [button setBackgroundImage:[UIImage imageNamed:@"mapButton.png"] forState:UIControlStateNormal];
             [button setBackgroundImage:[UIImage imageNamed:@"mapButtonclick.png"] forState:UIControlStateHighlighted];
             break;
@@ -132,8 +137,13 @@
         case 101:
         {
             button.tag = 100;
+            [UIView beginAnimations:@"animation" context:nil];
+            [UIView setAnimationDuration:1.0f];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
             listView_.hidden = YES;
             mapView_.hidden = NO;
+            [UIView commitAnimations];
             [button setBackgroundImage:[UIImage imageNamed:@"listButton.png"] forState:UIControlStateNormal];
             [button setBackgroundImage:[UIImage imageNamed:@"listButtonclick.png"] forState:UIControlStateHighlighted];
             break;

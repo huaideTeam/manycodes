@@ -39,7 +39,7 @@
     NSString *errorCodePath = [[NSBundle mainBundle] pathForResource:@"ErrCode" ofType:@"plist"];
     errorCodeDict = [NSDictionary dictionaryWithContentsOfFile:errorCodePath];
     if (!errorCodeDict) {
-        [SVProgressHUD stopWithError:@"未能获得状态码表"];
+        [[Hud defaultInstance] showMessage:@"未能获得状态码表"];
     }
 }
 
@@ -63,12 +63,12 @@
     if (showAlertView) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alertView show];
-        [SVProgressHUD stop];
+
     }
     else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD stopWithError:msg];
+            [[Hud defaultInstance] showMessage:msg];
         });
     }
 }
