@@ -30,6 +30,7 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
     self = [super initWithFrame:frame];
     if (self) {
         _parkingListTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
+        _parkingListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _parkingListTableView.backgroundColor = [UIColor grayColor];
         _parkingListTableView.dataSource = self;
         _parkingListTableView.delegate = self;
