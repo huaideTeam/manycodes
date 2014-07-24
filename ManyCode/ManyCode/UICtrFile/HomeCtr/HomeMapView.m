@@ -147,9 +147,9 @@
 - (void)creatFootView
 {
     footView_ = [[MapFootView alloc] initWithFrame:CGRectMake(0, kCurrentWindowHeight - kTopImageHeight - 140, 320, 100)];
-    footView_.parkingName.text = @"汇智大厦停车场";
-    footView_.parkingDistance.text = @"231米";
-    footView_.parkingAddress.text = @"宁双路28号";
+    footView_.parkingName.text = @"";
+    footView_.parkingDistance.text = @"";
+    footView_.parkingAddress.text = @"";
     footView_.backgroundColor = [UIColor clearColor];
     [footView_.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:footView_];
@@ -173,6 +173,13 @@
     [mymapkit_ removeAnnotations:anonationArray_];
     
     dataArray_ = [NSMutableArray arrayWithArray:array];
+    if (dataArray_.count>0) {
+        NSDictionary *dic = [dataArray_ objectAtIndex:0];
+        footView_.parkingName.text = [dic objectForKey:@"carparkname"];
+        footView_.parkingDistance.text = [dic objectForKey:@"distance"];
+        footView_.parkingAddress.text = [dic objectForKey:@"address"];
+        footView_.tag = 100;
+    }
     anonationArray_ = [[NSMutableArray alloc] initWithCapacity:12];
     for (int k = 0; k< [array count]; k++) {
         NSDictionary *dic = [array objectAtIndex:k];
