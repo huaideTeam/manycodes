@@ -12,6 +12,10 @@
 		285B02EE19814FDC00B4D225 /* libBNaviTTSManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 285B02ED19814FDC00B4D225 /* libBNaviTTSManager.a */; };
 		285B02F11981589700B4D225 /* list_navigation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 285B02EF1981589700B4D225 /* list_navigation@2x.png */; };
 		285B02F21981589700B4D225 /* list_parking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 285B02F01981589700B4D225 /* list_parking@2x.png */; };
+		285B02F619815DDF00B4D225 /* RegisterFirstStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02F519815DDF00B4D225 /* RegisterFirstStepViewController.m */; };
+		285B02F819815F5A00B4D225 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285B02F719815F5A00B4D225 /* CoreText.framework */; };
+		285B02FB198165E100B4D225 /* RegisterSecondStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02FA198165E100B4D225 /* RegisterSecondStepViewController.m */; };
+		285B02FE1981669B00B4D225 /* RegisterThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02FD1981669B00B4D225 /* RegisterThirdStepViewController.m */; };
 		28821280198016CA0087B65E /* DataSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2882127F198016CA0087B65E /* DataSourceModel.m */; };
 		28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
@@ -152,6 +156,13 @@
 		285B02ED19814FDC00B4D225 /* libBNaviTTSManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBNaviTTSManager.a; sourceTree = "<group>"; };
 		285B02EF1981589700B4D225 /* list_navigation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_navigation@2x.png"; sourceTree = "<group>"; };
 		285B02F01981589700B4D225 /* list_parking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_parking@2x.png"; sourceTree = "<group>"; };
+		285B02F419815DDF00B4D225 /* RegisterFirstStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterFirstStepViewController.h; sourceTree = "<group>"; };
+		285B02F519815DDF00B4D225 /* RegisterFirstStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterFirstStepViewController.m; sourceTree = "<group>"; };
+		285B02F719815F5A00B4D225 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		285B02F9198165E100B4D225 /* RegisterSecondStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSecondStepViewController.h; sourceTree = "<group>"; };
+		285B02FA198165E100B4D225 /* RegisterSecondStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSecondStepViewController.m; sourceTree = "<group>"; };
+		285B02FC1981669B00B4D225 /* RegisterThirdStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterThirdStepViewController.h; sourceTree = "<group>"; };
+		285B02FD1981669B00B4D225 /* RegisterThirdStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterThirdStepViewController.m; sourceTree = "<group>"; };
 		2882127E198016CA0087B65E /* DataSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceModel.h; sourceTree = "<group>"; };
 		2882127F198016CA0087B65E /* DataSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceModel.m; sourceTree = "<group>"; };
 		28821281198016D70087B65E /* HomeListParkingListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListParkingListTableViewCell.h; sourceTree = "<group>"; };
@@ -420,6 +431,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				285B02F819815F5A00B4D225 /* CoreText.framework in Frameworks */,
 				712FC088197D3B3F00EA9F32 /* SystemConfiguration.framework in Frameworks */,
 				285B02EE19814FDC00B4D225 /* libBNaviTTSManager.a in Frameworks */,
 				717667531980ECBA00A635DA /* libstdc++.6.0.9.dylib in Frameworks */,
@@ -456,6 +468,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		285B02F319815D8100B4D225 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				285B02F419815DDF00B4D225 /* RegisterFirstStepViewController.h */,
+				285B02F519815DDF00B4D225 /* RegisterFirstStepViewController.m */,
+				285B02F9198165E100B4D225 /* RegisterSecondStepViewController.h */,
+				285B02FA198165E100B4D225 /* RegisterSecondStepViewController.m */,
+				285B02FC1981669B00B4D225 /* RegisterThirdStepViewController.h */,
+				285B02FD1981669B00B4D225 /* RegisterThirdStepViewController.m */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		2882127D198016CA0087B65E /* DataSourceModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +515,7 @@
 		712FBFB2197CB2F400EA9F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				285B02F719815F5A00B4D225 /* CoreText.framework */,
 				717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */,
 				717667501980EC9000A635DA /* CoreMotion.framework */,
 				7176674E1980EC8700A635DA /* CoreTelephony.framework */,
@@ -601,6 +627,7 @@
 		712FBFEA197CB6B600EA9F32 /* UICtrFile */ = {
 			isa = PBXGroup;
 			children = (
+				285B02F319815D8100B4D225 /* Register */,
 				2882127D198016CA0087B65E /* DataSourceModel */,
 				7149004D197FCD7700DEFD83 /* HomeCtr */,
 				71B0B754197E94F000B06945 /* ParkingFile */,
@@ -1180,6 +1207,7 @@
 				71B0B705197E3B4D00B06945 /* UIButton+WebCache.m in Sources */,
 				717667FF19814D6F00A635DA /* SearchCell.m in Sources */,
 				717667DC1980F49600A635DA /* NSDictionary_JSONExtensions.m in Sources */,
+				285B02FE1981669B00B4D225 /* RegisterThirdStepViewController.m in Sources */,
 				71B0B73C197E3F3E00B06945 /* AFHTTPSessionManager.m in Sources */,
 				717667EF1981019A00A635DA /* MapFootView.m in Sources */,
 				71B0B703197E3B4D00B06945 /* SDWebImageManager.m in Sources */,
@@ -1189,6 +1217,7 @@
 				712FC07E197D396100EA9F32 /* ExproAnnotation.m in Sources */,
 				71B0B74C197E40E300B06945 /* NotifyManager.m in Sources */,
 				71B0B75A197EAA2000B06945 /* PersonalCell.m in Sources */,
+				285B02F619815DDF00B4D225 /* RegisterFirstStepViewController.m in Sources */,
 				717667DA1980F49600A635DA /* CDataScanner_Extensions.m in Sources */,
 				717667E31980F49600A635DA /* BNaviSoundManager.m in Sources */,
 				71B0B6FE197E3B4D00B06945 /* SDWebImageCompat.m in Sources */,
@@ -1215,6 +1244,7 @@
 				71B0B700197E3B4D00B06945 /* SDWebImageDownloader.m in Sources */,
 				71B0B73B197E3F3E00B06945 /* AFHTTPRequestOperationManager.m in Sources */,
 				717667D51980F49600A635DA /* CDataScanner.m in Sources */,
+				285B02FB198165E100B4D225 /* RegisterSecondStepViewController.m in Sources */,
 				712FBFF1197CBB0E00EA9F32 /* MainViewController.m in Sources */,
 				7149002F197FB2B800DEFD83 /* SBTickView.m in Sources */,
 				717667E11980F49600A635DA /* CJSONSerializer.m in Sources */,
