@@ -66,7 +66,7 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     self.title = @"抢车位";
-    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
     dataArray_ = [[NSMutableArray alloc] initWithCapacity:12];
     
@@ -119,6 +119,8 @@
     searchText_ = [[UITextField alloc]  initWithFrame:CGRectMake(40, 5, 200, 30)];
     searchText_.borderStyle = UITextBorderStyleNone;
     searchText_.delegate = self;
+    searchText_.returnKeyType = UIReturnKeyDone;
+    [searchText_ addTarget:self action:@selector(keyboardHide) forControlEvents:UIControlEventEditingDidEndOnExit];
     [headView addSubview:searchText_];
     
     UIButton *changeButton = [[UIButton alloc] initWithFrame:CGRectMake(275, 5, 37, 30)];
@@ -161,6 +163,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldChange:) name:@"UITextFieldTextDidChangeNotification" object:nil];
     
 }
 
@@ -231,14 +234,26 @@
 {
     [grayView_ removeFromSuperview];
     [textArray_ removeAllObjects];
+    [mainTable_ reloadData];
     [self.view addSubview:grayView_];
     leftBtn_.hidden = NO;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (void)textFieldChange:(NSNotification *)notify
 {
-    [self refreshCityName:textField.text];
-    return YES;
+    if ([searchText_.text length]>0) {
+        [self refreshCityName:searchText_.text];
+    }else
+    {
+        [textArray_ removeAllObjects];
+        [mainTable_ reloadData];
+    }
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
 }
 
 #pragma mark - 下载城市名称
@@ -387,5 +402,8 @@
     return;
 }
 
-
+- (void)keyboardHide
+{
+    [searchText_ resignFirstResponder];
+}
 @end
