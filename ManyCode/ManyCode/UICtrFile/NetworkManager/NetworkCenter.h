@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 static NSString *const EPHttpApiBaseURL = @"http://www.manycode.com.cn/switch.php/User/";
@@ -33,8 +34,9 @@ typedef void (^HttpResponseErrBlock) (AFHTTPRequestOperation *operation,NSError 
 
 @interface NetworkCenter : NSObject
 
-@property ExproHttpClient *httpClient;
-@property NotifyManager *notiCenter;
+@property (nonatomic, assign) ExproHttpClient *httpClient;
+@property (nonatomic, assign) NotifyManager *notiCenter;
+@property (nonatomic, assign) CLLocationCoordinate2D currentPoint;
 
 
 + (instancetype)instanceManager;

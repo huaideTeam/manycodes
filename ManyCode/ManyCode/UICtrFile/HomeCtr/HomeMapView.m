@@ -80,6 +80,9 @@
  */
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
+    if (userLocation.location) {
+         [[NetworkCenter instanceManager] setCurrentPoint:userLocation.location.coordinate];
+    }
     [mymapkit_ updateLocationData:userLocation];
 
 }
@@ -91,9 +94,7 @@
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
     if (userLocation.location) {
-        
         if (!location_) {
-            location_ = userLocation;
             BMKCoordinateSpan theSpan;
             
             theSpan.latitudeDelta=0.01;
@@ -119,8 +120,11 @@
                 [self.delegate LoadCurrentInfo:location_.location.coordinate];
             }
         }
+        
+            location_ = userLocation;
+        [[NetworkCenter instanceManager] setCurrentPoint:location_.location.coordinate];
     }
-      [mymapkit_ updateLocationData:userLocation];
+    [mymapkit_ updateLocationData:userLocation];
 }
 
 /**
@@ -146,13 +150,14 @@
 
 - (void)creatFootView
 {
-    footView_ = [[MapFootView alloc] initWithFrame:CGRectMake(0, kCurrentWindowHeight - kTopImageHeight - 140, 320, 100)];
+    footView_ = [[MapFootView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 105, 320, 105)];
     footView_.parkingName.text = @"";
     footView_.parkingDistance.text = @"";
     footView_.parkingAddress.text = @"";
     footView_.backgroundColor = [UIColor clearColor];
     [footView_.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
     [footView_.parkingMyCar addTarget:self action:@selector(startParking:) forControlEvents:UIControlEventTouchUpInside];
+    [footView_.detailButton addTarget:self action:@selector(pushToDetail:) forControlEvents:UIControlEventTouchDragInside];
     [self addSubview:footView_];
 }
 
@@ -168,6 +173,10 @@
     [self.delegate currentParkView:self clickIndex:button.tag];
 }
 
+- (void)pushToDetail:(UIButton *)button
+{
+    [self.delegate pushToParkDetailView:self clickIndex:button.tag];
+}
 #pragma mark - 刷新停车场上的位置信息
 
 // 刷新界面上停车场的位置信息
@@ -183,6 +192,7 @@
         footView_.parkingAddress.text = [dic objectForKey:@"address"];
         footView_.parkingNavigation.tag = 0;
         footView_.parkingMyCar.tag = 0;
+        footView_.detailButton.tag = 0;
     }
     anonationArray_ = [[NSMutableArray alloc] initWithCapacity:12];
     for (int k = 0; k< [array count]; k++) {
@@ -223,7 +233,7 @@
     footView_.parkingAddress.text = [dic objectForKey:@"address"];
     footView_.parkingNavigation.tag = viewTag-100;
     footView_.parkingMyCar.tag = viewTag-100;
-    
+    footView_.detailButton.tag = viewTag-100;
 }
 
 

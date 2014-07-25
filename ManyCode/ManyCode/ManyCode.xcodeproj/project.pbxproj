@@ -13,7 +13,6 @@
 		285B02F11981589700B4D225 /* list_navigation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 285B02EF1981589700B4D225 /* list_navigation@2x.png */; };
 		285B02F21981589700B4D225 /* list_parking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 285B02F01981589700B4D225 /* list_parking@2x.png */; };
 		285B02F619815DDF00B4D225 /* RegisterFirstStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02F519815DDF00B4D225 /* RegisterFirstStepViewController.m */; };
-		285B02F819815F5A00B4D225 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285B02F719815F5A00B4D225 /* CoreText.framework */; };
 		285B02FB198165E100B4D225 /* RegisterSecondStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02FA198165E100B4D225 /* RegisterSecondStepViewController.m */; };
 		285B02FE1981669B00B4D225 /* RegisterThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02FD1981669B00B4D225 /* RegisterThirdStepViewController.m */; };
 		28821280198016CA0087B65E /* DataSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2882127F198016CA0087B65E /* DataSourceModel.m */; };
@@ -159,7 +158,6 @@
 		285B02F01981589700B4D225 /* list_parking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_parking@2x.png"; sourceTree = "<group>"; };
 		285B02F419815DDF00B4D225 /* RegisterFirstStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterFirstStepViewController.h; sourceTree = "<group>"; };
 		285B02F519815DDF00B4D225 /* RegisterFirstStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterFirstStepViewController.m; sourceTree = "<group>"; };
-		285B02F719815F5A00B4D225 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		285B02F9198165E100B4D225 /* RegisterSecondStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterSecondStepViewController.h; sourceTree = "<group>"; };
 		285B02FA198165E100B4D225 /* RegisterSecondStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterSecondStepViewController.m; sourceTree = "<group>"; };
 		285B02FC1981669B00B4D225 /* RegisterThirdStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterThirdStepViewController.h; sourceTree = "<group>"; };
@@ -434,7 +432,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				285B02F819815F5A00B4D225 /* CoreText.framework in Frameworks */,
 				712FC088197D3B3F00EA9F32 /* SystemConfiguration.framework in Frameworks */,
 				285B02EE19814FDC00B4D225 /* libBNaviTTSManager.a in Frameworks */,
 				717667531980ECBA00A635DA /* libstdc++.6.0.9.dylib in Frameworks */,
@@ -518,7 +515,6 @@
 		712FBFB2197CB2F400EA9F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				285B02F719815F5A00B4D225 /* CoreText.framework */,
 				717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */,
 				717667501980EC9000A635DA /* CoreMotion.framework */,
 				7176674E1980EC8700A635DA /* CoreTelephony.framework */,

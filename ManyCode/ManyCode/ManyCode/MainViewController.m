@@ -379,6 +379,7 @@
 {
     NSDictionary *dic = [dataArray_ objectAtIndex:index];
     ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
+    viewCtr.parkInfoDic = dic;
     [self.navigationController pushViewController:viewCtr animated:YES];
 }
 

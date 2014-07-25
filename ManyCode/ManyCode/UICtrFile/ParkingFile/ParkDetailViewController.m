@@ -9,6 +9,10 @@
 #import "ParkDetailViewController.h"
 #import "UINavigationItem+Items.h"
 #import "StartParkViewController.h"
+#import "MapFootView.h"
+#import "AppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
+#import "UIImageView+WebCache.h"
 
 @interface ParkDetailViewController ()
 {
@@ -51,7 +55,7 @@
         [self setExtendedLayoutIncludesOpaqueBars:NO];
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
-    self.title = @"抢车位";
+    self.title = [_parkInfoDic objectForKey:@"carparkname"];
     
     self.view.backgroundColor = COLOR(235.0, 237.0, 240.0);
     //返回按钮
@@ -92,31 +96,14 @@
 
 - (UIView *)creatTitleView
 {
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 130)];
-    
-    UILabel *nameLable = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 240, 30)];
-    nameLable.backgroundColor = [UIColor clearColor];
-    nameLable.text = @"绘制大厦停车场";
-    nameLable.font = FONT(18);
-    [titleView addSubview:nameLable];
-    
-    UILabel *disLable = [[UILabel alloc] initWithFrame:CGRectMake(270, 0, 50, 30)];
-    disLable.backgroundColor = [UIColor clearColor];
-    disLable.text = @"231米";
-    disLable.font = FONT(13);
-    [titleView addSubview:disLable];
-    
-    UILabel *detailLable = [[UILabel alloc] initWithFrame:CGRectMake(30, 35, 270, 30)];
-    detailLable.backgroundColor = [UIColor clearColor];
-    detailLable.text = @"宁栓路28号";
-    detailLable.font = FONT(13);
-    [titleView addSubview:detailLable];
-    
-    UIButton *parkButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 70, 100, 30)];
-    [parkButton addTarget:self action:@selector(startParkClick:) forControlEvents:UIControlEventTouchUpInside];
-    parkButton.backgroundColor = [UIColor redColor];
-    [titleView addSubview:parkButton];
-    
+   MapFootView *  titleView = [[MapFootView alloc] initWithFrame:CGRectMake(0, 10, 320, 100)];
+    titleView.parkingName.text = [_parkInfoDic objectForKey:@"carparkname"];
+    titleView.parkingDistance.text = [_parkInfoDic objectForKey:@"distance"];
+    titleView.parkingAddress.text = [_parkInfoDic objectForKey:@"address"];
+    titleView.backgroundColor = [UIColor clearColor];
+    [titleView.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
+    [titleView.parkingMyCar addTarget:self action:@selector(startParking:) forControlEvents:UIControlEventTouchUpInside];
+    titleView.detailButton.hidden = YES;
     return titleView;
 }
 
@@ -127,18 +114,19 @@
     middleView.backgroundColor = [UIColor whiteColor];
     
     UIImageView *iconImage = [[UIImageView  alloc] initWithFrame:CGRectMake(10, 10, 85, 75)];
-    iconImage.backgroundColor = [UIColor redColor];
+    iconImage.backgroundColor = [UIColor clearColor];
+    [iconImage setImageWithURL:[_parkInfoDic objectForKey:@"images"] placeholderImage:[UIImage imageNamed:@""]];
     [middleView addSubview:iconImage];
     
     UILabel *nameLable = [[UILabel alloc] initWithFrame:CGRectMake(110, 10, 180, 30)];
     nameLable.backgroundColor = [UIColor clearColor];
-    nameLable.text = @"雨花台区";
+    nameLable.text = [_parkInfoDic objectForKey:@"address"];
     nameLable.font = FONT(15);
     [middleView addSubview:nameLable];
     
     UILabel *detailLable = [[UILabel alloc] initWithFrame:CGRectMake(110, 45, 180, 30)];
     detailLable.backgroundColor = [UIColor clearColor];
-    detailLable.text = @"宁栓路28号";
+    detailLable.text = [_parkInfoDic objectForKey:@"address"];
     detailLable.font = FONT(15);
     [middleView addSubview:detailLable];
     return middleView;
@@ -146,9 +134,19 @@
 
 #pragma mark - 停车
 
-- (void)startParkClick:(UIButton *)button
+//开始导航
+- (void)startNav:(UIButton *)button
 {
-    StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
-    [self.navigationController pushViewController:viewCtr animated:YES];
+    CLLocationCoordinate2D endPoint;
+    endPoint.latitude = [[_parkInfoDic objectForKey:@"gps_lat"] doubleValue];
+    endPoint.longitude = [[_parkInfoDic objectForKey:@"gps_lon"] doubleValue];
+    AppDelegate *app = [AppDelegate appDelegate];
+    [app startNavi:[[NetworkCenter instanceManager] currentPoint] end:endPoint];
+}
+
+
+- (void)startParking:(UIButton *)button
+{
+
 }
 @end

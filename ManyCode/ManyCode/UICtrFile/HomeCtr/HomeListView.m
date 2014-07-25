@@ -79,6 +79,12 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
     return 115.f;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.delegate pushToParkDetailView:self clickIndex:indexPath.row];
+}
 #pragma mark - 界面跳转
 
 //开始导航

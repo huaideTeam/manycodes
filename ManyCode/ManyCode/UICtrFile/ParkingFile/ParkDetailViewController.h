@@ -11,4 +11,6 @@
 // 停车场详情
 @interface ParkDetailViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *parkInfoDic;
+
 @end
