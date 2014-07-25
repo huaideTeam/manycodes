@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeEventDelegate.h"
 
 @interface HomeListView : UIView
+
+@property (nonatomic, assign)id<HomeEventDelegate>delegate;
 
 /**
  *  更新界面

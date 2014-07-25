@@ -422,6 +422,7 @@
 		71B0B7FB197F978100B06945 /* StartParkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartParkViewController.m; sourceTree = "<group>"; };
 		71B0B801197FCDA600B06945 /* HomeMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMapView.h; sourceTree = "<group>"; };
 		71B0B802197FCDA600B06945 /* HomeMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMapView.m; sourceTree = "<group>"; };
+		71B3C93E198200980050045B /* HomeEventDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeEventDelegate.h; sourceTree = "<group>"; };
 		71B60D6F197CE58E00C26E48 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		71B60D78197CEEBD00C26E48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -749,6 +750,7 @@
 				717666F9197FECFD00A635DA /* HomeListView.m */,
 				717667ED1981019A00A635DA /* MapFootView.h */,
 				717667EE1981019A00A635DA /* MapFootView.m */,
+				71B3C93E198200980050045B /* HomeEventDelegate.h */,
 			);
 			path = HomeCtr;
 			sourceTree = "<group>";

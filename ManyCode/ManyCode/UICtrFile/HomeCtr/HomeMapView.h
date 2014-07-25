@@ -8,19 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-
-
-@protocol HomeMapDelegate <NSObject>
-
-@optional
-
-- (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint;
-
-@end
+#import "HomeEventDelegate.h"
 
 @interface HomeMapView : UIView
 
-@property (nonatomic, assign)id<HomeMapDelegate>delegate;
+@property (nonatomic, assign)id<HomeEventDelegate>delegate;
 
 // 刷新界面上停车场的位置信息
 - (void)updateAnimationView:(NSMutableArray *)array;

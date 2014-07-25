@@ -12,8 +12,11 @@
 #import "ParkDetailViewController.h"
 #import "HomeListView.h"
 #import "SearchCell.h"
+#import "HomeMapView.h"
+#import "HomeEventDelegate.h"
+#import "AppDelegate.h"
 
-@interface MainViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,HomeEventDelegate>
 {
     UITextField *searchText_;
     HomeMapView *mapView_;
@@ -125,12 +128,13 @@
     changeButton.tag = 100;
     [headView addSubview:changeButton];
     
-    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40)];
+    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40-kStatueHeight)];
     mapView_.delegate = self;
     [self.view addSubview:mapView_];
     
-    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40)];
+    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40- kStatueHeight)];
     listView_.hidden = YES;
+    listView_.delegate = self;
     [self.view addSubview:listView_];
     
     [self.view addSubview:headView];
@@ -168,6 +172,7 @@
     [searchText_ resignFirstResponder];
     [textArray_ removeAllObjects];
     [grayView_ removeFromSuperview];
+    [self LoadCurrentInfo:currentSelfPoint_];
 }
 
 - (void)showRightClick:(UIButton *)button
@@ -225,6 +230,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [grayView_ removeFromSuperview];
+    [textArray_ removeAllObjects];
     [self.view addSubview:grayView_];
     leftBtn_.hidden = NO;
 }
@@ -265,6 +271,8 @@
         [grayView_ removeFromSuperview];
         [mapView_ updateAnimationView:dataArray_];
         [listView_ refreshParkingList:dataArray_];
+        
+        
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -304,10 +312,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-     [searchText_ resignFirstResponder];
      NSDictionary *dic = [textArray_ objectAtIndex:indexPath.row];
      NSString *name = [dic objectForKey:@"carparkname"];
     [self LoadSearchCityList:name];
+    [searchText_ resignFirstResponder];
 }
 
 #pragma mark - load data
@@ -331,7 +339,23 @@
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
+}
 
+//点击导航数据
+- (void)currentNavView:(UIView *)ctView clickIndex:(NSInteger)index
+{
+    NSDictionary *dic = [dataArray_ objectAtIndex:index];
+    CLLocationCoordinate2D endPoint;
+    endPoint.latitude = [[dic objectForKey:@"gps_lat"] doubleValue];
+    endPoint.longitude = [[dic objectForKey:@"gps_lon"] doubleValue];
+    AppDelegate *app = [AppDelegate appDelegate];
+    [app startNavi:currentSelfPoint_ end:endPoint];
+}
+
+//点击导航数据
+- (void)currentParkView:(UIView *)ctView clickIndex:(NSInteger)index
+{
+    
 }
 
 #pragma mark - keyboard btn

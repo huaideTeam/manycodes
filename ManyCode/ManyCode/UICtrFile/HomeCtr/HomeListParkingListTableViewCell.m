@@ -40,16 +40,18 @@
         _parkingDistance = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(tempView.frame) - 100.f, CGRectGetMinY(_parkingName.frame), 90.f, CGRectGetHeight(_parkingName.frame))];
         [_parkingDistance setBackgroundColor:[UIColor clearColor]];
         _parkingDistance.textAlignment = NSTextAlignmentRight;
-        _parkingName.textColor = COLOR(159, 159, 159);
+        _parkingDistance.textColor = COLOR(159, 159, 159);
+        _parkingDistance.font = FONT(12);
         [tempView addSubview:_parkingDistance];
         
         _parkingAddress = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_parkingName.frame), CGRectGetMaxY(_parkingName.frame) + 5.f, 250.f, 20.f)];
         [_parkingAddress setBackgroundColor:[UIColor clearColor]];
         _parkingAddress.textColor = COLOR(159, 159, 159);
+        _parkingAddress.font = FONT(12);
         [tempView addSubview:_parkingAddress];
         
         UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8.f, CGRectGetMaxY(_parkingAddress.frame) + 5.f, CGRectGetWidth(tempView.frame) - 16.f, 2.f)];
-        [lineImageView setBackgroundColor:[UIColor grayColor]];
+        [lineImageView setBackgroundColor:COLOR(228, 228, 228)];
         lineImageView.image = [UIImage imageNamed:@""];
         [tempView addSubview:lineImageView];
         
@@ -63,7 +65,7 @@
         
         UIImageView *seperateLine = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_parkingNavigation.frame), CGRectGetMinY(_parkingNavigation.frame) + 4.f, 2.f, CGRectGetHeight(_parkingNavigation.frame) - 8.f)];
         seperateLine.image = [UIImage imageNamed:@""];
-        [seperateLine setBackgroundColor:[UIColor grayColor]];
+        [seperateLine setBackgroundColor:COLOR(228, 228, 228)];
         [tempView addSubview:seperateLine];
         
         _parkingMyCar = [CustomButton buttonWithType:UIButtonTypeCustom];

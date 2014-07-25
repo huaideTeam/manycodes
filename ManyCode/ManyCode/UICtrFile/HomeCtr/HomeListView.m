@@ -9,6 +9,8 @@
 #import "HomeListView.h"
 #import "HomeListParkingListTableViewCell.h"
 #import "DataSourceModel.h"
+#import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
 
 static NSString *identifierForHomeListTableView = @"identifierForHomeListTableView";
 
@@ -32,7 +34,7 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
         _parkingListTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
         [_parkingListTableView registerClass:[HomeListParkingListTableViewCell class] forCellReuseIdentifier:identifierForHomeListTableView];
         _parkingListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _parkingListTableView.backgroundColor = [UIColor lightGrayColor];
+        _parkingListTableView.backgroundColor = COLOR(235, 237, 240);
         _parkingListTableView.dataSource = self;
         _parkingListTableView.delegate = self;
         [self addSubview:_parkingListTableView];
@@ -64,15 +66,12 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
     cell.parkingName.text = [NSString stringWithFormat:@"%d.%@", indexPath.row + 1, [itemDic objectForKey:@"carparkname"]];
     cell.parkingDistance.text = [itemDic objectForKey:@"distance"];
     cell.parkingAddress.text = [itemDic objectForKey:@"address"];
-    cell.parkingNavigation.tag = indexPath.row * 2;
-    cell.parkingMyCar.tag = indexPath.row * 2 + 1;
-
-//    ParkingItemModel *item = self.parkingListDataSource[indexPath.row];
-//    cell.parkingName.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, item.carparkname];
-//    cell.parkingDistance.text = item.distance;
-//    cell.parkingAddress.text = item.address;
-//    cell.parkingNavigation.tag = indexPath.row * 2;
-//    cell.parkingMyCar.tag = indexPath.row * 2 + 1;
+    cell.parkingNavigation.tag = indexPath.row ;
+    cell.parkingMyCar.tag = indexPath.row;
+    [cell.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.parkingMyCar addTarget:self action:@selector(startParking:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     return cell;
 }
 
@@ -81,5 +80,17 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
 }
 
 #pragma mark - 界面跳转
+
+//开始导航
+- (void)startNav:(UIButton *)button
+{
+    [self.delegate currentNavView:self clickIndex:button.tag];
+}
+
+
+- (void)startParking:(UIButton *)button
+{
+    [self.delegate currentParkView:self clickIndex:button.tag];
+}
 
 @end

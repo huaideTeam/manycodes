@@ -159,19 +159,13 @@
 //开始导航
 - (void)startNav:(UIButton *)button
 {
-    NSDictionary *dic = [dataArray_ objectAtIndex:button.tag];
-     CLLocationCoordinate2D endPoint;
-    endPoint.latitude = [[dic objectForKey:@"gps_lat"] doubleValue];
-    endPoint.longitude = [[dic objectForKey:@"gps_lon"] doubleValue];
-    AppDelegate *app = [AppDelegate appDelegate];
-    [app startNavi:location_.location.coordinate end:endPoint];
+    [self.delegate currentNavView:self clickIndex:button.tag];
 }
 
 
 - (void)startParking:(UIButton *)button
 {
-     NSDictionary *dic = [dataArray_ objectAtIndex:button.tag];
-    NSLog(@"++++%@++",dic);
+    [self.delegate currentParkView:self clickIndex:button.tag];
 }
 
 #pragma mark - 刷新停车场上的位置信息

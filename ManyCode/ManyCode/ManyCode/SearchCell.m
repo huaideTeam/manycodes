@@ -28,7 +28,7 @@
         _cityNameLable.textColor = [UIColor grayColor];
         [self.contentView addSubview:_cityNameLable];
         
-        _lineImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, self.frame.size.height- 2, 270, 2)];
+        _lineImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, self.frame.size.height- 2, 280, 2)];
         _lineImage.backgroundColor = COLOR(228, 228, 228);
         [self.contentView addSubview:_lineImage];
         
