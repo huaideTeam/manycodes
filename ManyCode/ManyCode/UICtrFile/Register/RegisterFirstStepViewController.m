@@ -26,8 +26,9 @@
     
     NSString *value = @"1 输入手机号  >  2 输入验证码  3 设置密码";
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:value];
-    CTFontRef tempFont = CTFontCreateWithName((CFStringRef)[UIFont systemFontOfSize:18].fontName,
-                                              18,
+    
+    CTFontRef tempFont = CTFontCreateWithName((CFStringRef)[UIFont systemFontOfSize:16].fontName,
+                                              16,
                                               NULL);
     [str addAttribute:(NSString *)kCTFontAttributeName
                 value:(__bridge id)tempFont
@@ -39,25 +40,21 @@
                 value:(id)normarlColor.CGColor
                 range:NSMakeRange(0, str.length)];
     NSRange range = [value rangeOfString:@"1 输入手机号"];
-    
-    CTFontRef nextFont = CTFontCreateWithName((CFStringRef)[UIFont boldSystemFontOfSize:18].fontName,
-                                              18,
-                                              NULL);
     UIColor *currentColor = COLOR(227, 166, 149);
     [str addAttribute:(NSString *)kCTForegroundColorAttributeName
                 value:(id)currentColor.CGColor
                 range:range];
-    CFRelease(nextFont);
     
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.contentsScale = [UIScreen mainScreen].scale;
-    textLayer.frame = CGRectMake(0.f, 0.f, CGRectGetWidth(self.view.frame), 49.f);
-    textLayer.fontSize = 18.f;
+    textLayer.frame = CGRectMake(0.f, 10.f, CGRectGetWidth(self.view.frame), 49.f);
+    textLayer.alignmentMode = kCAAlignmentCenter;
+    textLayer.backgroundColor = [UIColor clearColor].CGColor;
     textLayer.foregroundColor = [UIColor colorWithRed:51/255.f green:51/255.f blue:51/255.f alpha:1.f].CGColor;
     textLayer.string = str;
     [self.view.layer addSublayer:textLayer];
     
-    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMinY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMaxY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
     tempView.layer.cornerRadius = 5.f;
     tempView.backgroundColor = [UIColor whiteColor];
     tempView.layer.borderWidth = 1.f;
@@ -86,7 +83,8 @@
     [checkBoxButton setImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
     checkBoxButton.frame = CGRectMake(CGRectGetMinX(_submitButton.frame) + 5.f, CGRectGetMaxY(_submitButton.frame) + 5.f, 15.f, 15.f);
     [self.view addSubview:checkBoxButton];
-    [checkBoxButton addTarget:self action:@selector(checkBoxButtonClickedMethod) forControlEvents:UIControlEventTouchUpInside];
+    checkBoxButton.selected = YES;
+    [checkBoxButton addTarget:self action:@selector(checkBoxButtonClickedMethod:) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(checkBoxButton.frame) + 3.f, CGRectGetMinY(checkBoxButton.frame), 120.f, CGRectGetHeight(checkBoxButton.frame))];
     tempLabel.text = @"我已阅读并同意";
@@ -103,13 +101,40 @@
 
 #pragma mark - SubmitButtonClickedMethod 
 - (void)submitButtonClickedMethod {
-    RegisterSecondStepViewController *viewC = [[RegisterSecondStepViewController alloc] init];
-    [self.navigationController pushViewController:viewC animated:YES];
+    [self.inputTextField resignFirstResponder];
+    NSString * regex   = @"^[0-9]*$";
+    
+    NSPredicate * pred  = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isAccountMatch    = [pred evaluateWithObject:self.inputTextField.text];
+    if (self.inputTextField.text.length == 11 && isAccountMatch) {
+        [[Hud defaultInstance] loading:self.view withText:@"获取验证码中..."];
+        __weak RegisterFirstStepViewController *weakSelf = self;
+        [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getSMSVerify" Parameter:@{@"mobile":_inputTextField.text} Finish:^(NSDictionary *resultDic) {
+            if ([resultDic[@"statusCode"] isEqualToString:@"200"]) {
+                [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"mobile"] forKey:kAccountMobile];
+                RegisterFirstStepViewController *strongSelf = weakSelf;
+                RegisterSecondStepViewController *viewC = [[RegisterSecondStepViewController alloc] initWithVerifyCode:resultDic[@"verify"]];
+                [strongSelf.navigationController pushViewController:viewC animated:YES];
+            } else {
+                [[Hud defaultInstance] showMessage:@"获取验证码失败"];
+            }
+            
+        } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [[Hud defaultInstance] showMessage:@"获取验证码失败"];
+        }];
+        
+    }
+    else {
+        [[Hud defaultInstance] showMessage:@"请输入合法手机号"];
+    }
+    
 }
 
 #pragma mark - 是否同意用户协议按钮点击事件
-- (void)checkBoxButtonClickedMethod {
+- (void)checkBoxButtonClickedMethod:(UIButton *)checkBoxButton {
     
+    checkBoxButton.selected = !checkBoxButton.selected;
+    self.submitButton.userInteractionEnabled = checkBoxButton.selected;
 }
 
 #pragma mark - 阅读协议点击事件

@@ -13,16 +13,36 @@
 
 @property (nonatomic, strong) UITextField *inputTextField;
 
+@property (nonatomic, strong) NSString *verifyCode;
+
 @end
+
 @implementation RegisterSecondStepViewController
+
+/**
+ *  个人用户注册第二步
+ *
+ *  @param verifyCode 从服务器获取的验证码
+ *
+ *  @return 用户注册第二步实例
+ */
+- (instancetype)initWithVerifyCode:(NSString *)verifyCode {
+    self = [super init];
+    if (self) {
+        _verifyCode = verifyCode;
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
     
     NSString *value = @"1 输入手机号  >  2 输入验证码  3 设置密码";
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:value];
-    CTFontRef tempFont = CTFontCreateWithName((CFStringRef)[UIFont systemFontOfSize:18].fontName,
-                                              18,
+    CTFontRef tempFont = CTFontCreateWithName((CFStringRef)[UIFont systemFontOfSize:16].fontName,
+                                              16,
                                               NULL);
     [str addAttribute:(NSString *)kCTFontAttributeName
                 value:(__bridge id)tempFont
@@ -35,24 +55,20 @@
                 range:NSMakeRange(0, str.length)];
     NSRange range = [value rangeOfString:@"2 输入验证码"];
     
-    CTFontRef nextFont = CTFontCreateWithName((CFStringRef)[UIFont boldSystemFontOfSize:18].fontName,
-                                              18,
-                                              NULL);
     UIColor *currentColor = COLOR(227, 166, 149);
     [str addAttribute:(NSString *)kCTForegroundColorAttributeName
                 value:(id)currentColor.CGColor
                 range:range];
-    CFRelease(nextFont);
     
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.contentsScale = [UIScreen mainScreen].scale;
-    textLayer.frame = CGRectMake(0.f, 0.f, CGRectGetWidth(self.view.frame), 49.f);
-    textLayer.fontSize = 18.f;
+    textLayer.frame = CGRectMake(0.f, 10.f, CGRectGetWidth(self.view.frame), 49.f);
+    textLayer.alignmentMode = kCAAlignmentCenter;
     textLayer.foregroundColor = [UIColor colorWithRed:51/255.f green:51/255.f blue:51/255.f alpha:1.f].CGColor;
     textLayer.string = str;
     [self.view.layer addSublayer:textLayer];
     
-    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMinY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMaxY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
     tempView.layer.cornerRadius = 5.f;
     tempView.backgroundColor = [UIColor whiteColor];
     tempView.layer.borderWidth = 1.f;
@@ -81,8 +97,14 @@
 
 #pragma mark - SubmitButtonClickedMethod
 - (void)submitButtonClickedMethod {
-    RegisterThirdStepViewController *viewController = [[RegisterThirdStepViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self.inputTextField resignFirstResponder];
+    if ([self.inputTextField.text isEqualToString:self.verifyCode]) {
+        RegisterThirdStepViewController *viewController = [[RegisterThirdStepViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        [[Hud defaultInstance] showMessage:@"请输入正确的验证码"];
+    }
+    
 }
 
 @end

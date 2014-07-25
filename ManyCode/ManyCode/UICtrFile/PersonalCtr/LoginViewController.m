@@ -10,6 +10,7 @@
 #import "UINavigationItem+Items.h"
 #import "UnderLineLabel.h"
 #import "KeyboardSegment.h"
+#import "RegisterFirstStepViewController.h"
 
 @interface LoginViewController ()
 {
@@ -183,7 +184,8 @@
 
 - (void)registClick:(UIButton *)button
 {
-    
+    RegisterFirstStepViewController *viewController = [[RegisterFirstStepViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)loginClick:(UIButton *)button

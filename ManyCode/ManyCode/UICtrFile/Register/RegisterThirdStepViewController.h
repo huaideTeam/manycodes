@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 lichengfei. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ModelViewController.h"
 
-@interface RegisterThirdStepViewController : UIViewController
+@interface RegisterThirdStepViewController : ModelViewController
 
 @end

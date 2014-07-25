@@ -23,8 +23,8 @@
     
     NSString *value = @"1 输入手机号  >  2 输入验证码  > 设置密码";
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:value];
-    CTFontRef tempFont = CTFontCreateWithName((CFStringRef)[UIFont systemFontOfSize:18].fontName,
-                                              18,
+    CTFontRef tempFont = CTFontCreateWithName((CFStringRef)[UIFont systemFontOfSize:16].fontName,
+                                              16,
                                               NULL);
     [str addAttribute:(NSString *)kCTFontAttributeName
                 value:(__bridge id)tempFont
@@ -37,24 +37,20 @@
                 range:NSMakeRange(0, str.length)];
     NSRange range = [value rangeOfString:@"设置密码"];
     
-    CTFontRef nextFont = CTFontCreateWithName((CFStringRef)[UIFont boldSystemFontOfSize:18].fontName,
-                                              18,
-                                              NULL);
     UIColor *currentColor = COLOR(227, 166, 149);
     [str addAttribute:(NSString *)kCTForegroundColorAttributeName
                 value:(id)currentColor.CGColor
                 range:range];
-    CFRelease(nextFont);
     
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.contentsScale = [UIScreen mainScreen].scale;
-    textLayer.frame = CGRectMake(0.f, 0.f, CGRectGetWidth(self.view.frame), 49.f);
-    textLayer.fontSize = 18.f;
+    textLayer.frame = CGRectMake(0.f, 10.f, CGRectGetWidth(self.view.frame), 49.f);
+    textLayer.alignmentMode = kCAAlignmentCenter;
     textLayer.foregroundColor = [UIColor colorWithRed:51/255.f green:51/255.f blue:51/255.f alpha:1.f].CGColor;
     textLayer.string = str;
     [self.view.layer addSublayer:textLayer];
     
-    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMinY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMaxY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
     tempView.layer.cornerRadius = 5.f;
     tempView.backgroundColor = [UIColor whiteColor];
     tempView.layer.borderWidth = 1.f;
@@ -67,7 +63,6 @@
     
     UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
     inputTextField.placeholder = @"设置密码";
-    inputTextField.keyboardType = UIKeyboardTypeNumberPad;
     [tempView addSubview:inputTextField];
     inputTextField.secureTextEntry = YES;
     self.firstPasswordTextField = inputTextField;
@@ -85,7 +80,6 @@
     
     UITextField *nextInputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nextIconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
     nextInputTextField.placeholder = @"再次确认密码";
-    nextInputTextField.keyboardType = UIKeyboardTypeNumberPad;
     [nextTempView addSubview:nextInputTextField];
     nextInputTextField.secureTextEntry = YES;
     self.secondPasswordTextField = nextInputTextField;
@@ -102,7 +96,35 @@
 
 #pragma mark - SubmitButtonClickedMethod
 - (void)submitButtonClickedMethod {
-    
+    [self.firstPasswordTextField resignFirstResponder];
+    [self.secondPasswordTextField resignFirstResponder];
+    if (self.firstPasswordTextField.text.length && self.secondPasswordTextField.text.length && [self.firstPasswordTextField.text isEqualToString:self.secondPasswordTextField.text]) {
+        NSString * regex1  = @"^[A-Za-z0-9]+$";
+        
+        NSPredicate * pred2  = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex1];
+        
+        BOOL isPasswordMatch   = [pred2 evaluateWithObject:self.firstPasswordTextField.text];
+        if (isPasswordMatch) {
+            [[Hud defaultInstance] loading:self.view withText:@"注册中,请稍候..."];
+            __weak RegisterThirdStepViewController *weakSelf = self;
+            [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"register" Parameter:@{@"mobile":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile], @"password":self.firstPasswordTextField.text} Finish:^(NSDictionary *resultDic) {
+                if ([resultDic[@"statusCode"] isEqualToString:@"200"]) {
+                    [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"mobile"] forKey:kAccountMobile];
+                    [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"sessionid"] forKey:kAccountSession];
+                    [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"userid"] forKey:kAccountid];
+                    RegisterThirdStepViewController *strongSelf = weakSelf;
+                    [[Hud defaultInstance] hide:self.view];
+                } else {
+                    [[Hud defaultInstance] showMessage:@"用户注册失败"];
+                }
+                
+            } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [[Hud defaultInstance] showMessage:@"用户注册失败"];
+            }];
+        } else {
+            [[Hud defaultInstance] showMessage:@"请输入合法的密码，字母和数字组成，或者两次输入密码不一致"];
+        }
+    }
 }
 
 @end
