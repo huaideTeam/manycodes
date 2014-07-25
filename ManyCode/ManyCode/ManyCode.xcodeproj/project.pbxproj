@@ -17,6 +17,7 @@
 		285B02FE1981669B00B4D225 /* RegisterThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02FD1981669B00B4D225 /* RegisterThirdStepViewController.m */; };
 		28821280198016CA0087B65E /* DataSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2882127F198016CA0087B65E /* DataSourceModel.m */; };
 		28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */; };
+		2891A0401982843900538FC0 /* ModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A03F1982843900538FC0 /* ModelViewController.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
 		712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFBC197CB2F400EA9F32 /* InfoPlist.strings */; };
@@ -176,6 +177,8 @@
 		2882127F198016CA0087B65E /* DataSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceModel.m; sourceTree = "<group>"; };
 		28821281198016D70087B65E /* HomeListParkingListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListParkingListTableViewCell.h; sourceTree = "<group>"; };
 		28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListParkingListTableViewCell.m; sourceTree = "<group>"; };
+		2891A03E1982843900538FC0 /* ModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelViewController.h; sourceTree = "<group>"; };
+		2891A03F1982843900538FC0 /* ModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelViewController.m; sourceTree = "<group>"; };
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -506,6 +509,8 @@
 			children = (
 				2882127E198016CA0087B65E /* DataSourceModel.h */,
 				2882127F198016CA0087B65E /* DataSourceModel.m */,
+				2891A03E1982843900538FC0 /* ModelViewController.h */,
+				2891A03F1982843900538FC0 /* ModelViewController.m */,
 			);
 			path = DataSourceModel;
 			sourceTree = "<group>";
@@ -1229,6 +1234,7 @@
 				717667DF1980F49600A635DA /* CJSONDeserializer.m in Sources */,
 				717666FA197FECFD00A635DA /* HomeListView.m in Sources */,
 				71B0B7FC197F978100B06945 /* StartParkViewController.m in Sources */,
+				2891A0401982843900538FC0 /* ModelViewController.m in Sources */,
 				71B0B750197E482300B06945 /* PersonalCenterViewController.m in Sources */,
 				717667D71980F49600A635DA /* CJSONDeserializer_BlocksExtensions.m in Sources */,
 				71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */,
