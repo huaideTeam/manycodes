@@ -94,25 +94,16 @@
     //起点 传入的是原始的经纬度坐标，若使用的是百度地图坐标，可以使用BNTools类进行坐标转化
     BNRoutePlanNode *startNode = [[BNRoutePlanNode alloc] init];
     startNode.pos = [[BNPosition alloc] init];
-    startNode.pos.x = 116.30142;
-    startNode.pos.y = 40.05087;
+    startNode.pos.x = startPoint.longitude;
+    startNode.pos.y = startPoint.latitude;
     startNode.pos.eType = BNCoordinate_OriginalGPS;
     [nodesArray addObject:startNode];
-    
-    //也可以在此加入1到3个的途经点
-    
-    BNRoutePlanNode *midNode = [[BNRoutePlanNode alloc] init];
-    midNode.pos = [[BNPosition alloc] init];
-    midNode.pos.x = 116.12;
-    midNode.pos.y = 39.05087;
-    midNode.pos.eType = BNCoordinate_OriginalGPS;
-    [nodesArray addObject:midNode];
     
     //终点
     BNRoutePlanNode *endNode = [[BNRoutePlanNode alloc] init];
     endNode.pos = [[BNPosition alloc] init];
-    endNode.pos.x = 116.39750;
-    endNode.pos.y = 39.90882;
+    endNode.pos.x = endPoint.longitude;
+    endNode.pos.y = endPoint.latitude;
     endNode.pos.eType = BNCoordinate_OriginalGPS;
     [nodesArray addObject:endNode];
     

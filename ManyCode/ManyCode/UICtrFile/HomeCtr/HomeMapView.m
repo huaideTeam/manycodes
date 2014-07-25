@@ -152,18 +152,27 @@
     footView_.parkingAddress.text = @"";
     footView_.backgroundColor = [UIColor clearColor];
     [footView_.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
+    [footView_.parkingMyCar addTarget:self action:@selector(startParking:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:footView_];
 }
 
 //开始导航
 - (void)startNav:(UIButton *)button
 {
-    CLLocationCoordinate2D startPoint;
+    NSDictionary *dic = [dataArray_ objectAtIndex:button.tag];
      CLLocationCoordinate2D endPoint;
+    endPoint.latitude = [[dic objectForKey:@"gps_lat"] doubleValue];
+    endPoint.longitude = [[dic objectForKey:@"gps_lon"] doubleValue];
     AppDelegate *app = [AppDelegate appDelegate];
-    [app startNavi:startPoint end:endPoint];
+    [app startNavi:location_.location.coordinate end:endPoint];
 }
 
+
+- (void)startParking:(UIButton *)button
+{
+     NSDictionary *dic = [dataArray_ objectAtIndex:button.tag];
+    NSLog(@"++++%@++",dic);
+}
 
 #pragma mark - 刷新停车场上的位置信息
 
@@ -178,7 +187,8 @@
         footView_.parkingName.text = [dic objectForKey:@"carparkname"];
         footView_.parkingDistance.text = [dic objectForKey:@"distance"];
         footView_.parkingAddress.text = [dic objectForKey:@"address"];
-        footView_.tag = 100;
+        footView_.parkingNavigation.tag = 0;
+        footView_.parkingMyCar.tag = 0;
     }
     anonationArray_ = [[NSMutableArray alloc] initWithCapacity:12];
     for (int k = 0; k< [array count]; k++) {
@@ -217,7 +227,8 @@
     footView_.parkingName.text = [dic objectForKey:@"carparkname"];
     footView_.parkingDistance.text = [dic objectForKey:@"distance"];
     footView_.parkingAddress.text = [dic objectForKey:@"address"];
-    footView_.tag = viewTag;
+    footView_.parkingNavigation.tag = viewTag-100;
+    footView_.parkingMyCar.tag = viewTag-100;
     
 }
 
