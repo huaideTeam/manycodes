@@ -52,17 +52,21 @@
         _parkingAddress.font = FONT(12);
         [tempView addSubview:_parkingAddress];
         
-        _detailButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(tempView.frame) - 80.f, CGRectGetMaxY(_parkingDistance.frame),70.f, 30)];
-        [_detailButton setBackgroundColor:[UIColor clearColor]];
-        _detailButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
-        [_detailButton setTitle:@"详情" forState:UIControlStateNormal];
-        [_detailButton setTitleColor:COLOR(67, 147, 183) forState:UIControlStateNormal];
-        _detailButton.titleLabel.font = FONT(15);
-        [_detailButton setTitleColor:COLOR(67, 147, 183) forState:UIControlStateHighlighted];
+        _nameButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(tempView.frame) - 80.f, CGRectGetMaxY(_parkingDistance.frame),70.f, 30)];
+        [_nameButton setBackgroundColor:[UIColor clearColor]];
+        _nameButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+        [_nameButton setTitle:@"详情" forState:UIControlStateNormal];
+        [_nameButton setTitleColor:COLOR(67, 147, 183) forState:UIControlStateNormal];
+        _nameButton.titleLabel.font = FONT(15);
+        [_nameButton setTitleColor:COLOR(67, 147, 183) forState:UIControlStateHighlighted];
         
         UIImageView *detailIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 6, 10)];
         detailIcon.image = [UIImage imageNamed:@"详情图标.png"];
-        [_detailButton addSubview:detailIcon];
+        [_nameButton addSubview:detailIcon];
+        [tempView addSubview:_nameButton];
+        
+        _detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tempView.frame), CGRectGetMaxY(_parkingAddress.frame) )];
+        _detailButton.backgroundColor = [UIColor clearColor];
         [tempView addSubview:_detailButton];
         
         UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8.f, CGRectGetMaxY(_parkingAddress.frame) + 5.f, CGRectGetWidth(tempView.frame) - 16.f, 2.f)];

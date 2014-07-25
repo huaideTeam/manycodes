@@ -176,7 +176,7 @@
     [searchText_ resignFirstResponder];
     [textArray_ removeAllObjects];
     [grayView_ removeFromSuperview];
-    [self LoadCurrentInfo:currentSelfPoint_];
+    [self LoadCurrentInfo:[[NetworkCenter instanceManager] currentPoint]];
 }
 
 - (void)showRightClick:(UIButton *)button
@@ -278,8 +278,8 @@
     [dataArray_ removeAllObjects];
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:cityName forKey:@"qryname"];
-    [tempDic setObject:[NSNumber numberWithDouble:currentSelfPoint_.latitude] forKey:@"user_lat"];
-    [tempDic setObject:[NSNumber numberWithDouble:currentSelfPoint_.longitude] forKey:@"user_lon"];
+    [tempDic setObject:[NSNumber numberWithDouble:[[NetworkCenter instanceManager] currentPoint].latitude] forKey:@"user_lat"];
+    [tempDic setObject:[NSNumber numberWithDouble:[[NetworkCenter instanceManager] currentPoint].longitude] forKey:@"user_lon"];
     [tempDic setObject:[NSNumber numberWithInt:1] forKey:@"page"];
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getRetrieveCarparkList" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         NSArray *array = [resultDic objectForKey:@"carparklist"];
@@ -339,7 +339,7 @@
 //定位成功后刷新数据，或者定时刷新数据
 - (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint
 {
-    currentSelfPoint_ = currentPoint;
+//    currentSelfPoint_ = currentPoint;
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];
@@ -360,23 +360,31 @@
 //点击导航数据
 - (void)currentNavView:(UIView *)ctView clickIndex:(NSInteger)index
 {
+    if (dataArray_.count == 0) {
+        return;
+    }
     NSDictionary *dic = [dataArray_ objectAtIndex:index];
     CLLocationCoordinate2D endPoint;
     endPoint.latitude = [[dic objectForKey:@"gps_lat"] doubleValue];
     endPoint.longitude = [[dic objectForKey:@"gps_lon"] doubleValue];
     AppDelegate *app = [AppDelegate appDelegate];
-    [app startNavi:currentSelfPoint_ end:endPoint];
+    [app startNavi:[[NetworkCenter instanceManager] currentPoint] end:endPoint];
 }
 
 //点击停车数据
 - (void)currentParkView:(UIView *)ctView clickIndex:(NSInteger)index
 {
-    
+    if (dataArray_.count == 0) {
+        return;
+    }
 }
 
 //进入停车场详情界面
 - (void)pushToParkDetailView:(UIView *)ctView clickIndex:(NSInteger)index
 {
+    if (dataArray_.count == 0) {
+        return;
+    }
     NSDictionary *dic = [dataArray_ objectAtIndex:index];
     ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
     viewCtr.parkInfoDic = dic;

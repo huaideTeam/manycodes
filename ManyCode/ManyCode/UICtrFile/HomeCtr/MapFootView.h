@@ -22,5 +22,8 @@
 
 @property (nonatomic, strong) UIButton *detailButton;           //详情
 
+@property (nonatomic, strong) UIButton *nameButton;// 详情标题
+
+
 
 @end

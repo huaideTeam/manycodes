@@ -157,7 +157,7 @@
     footView_.backgroundColor = [UIColor clearColor];
     [footView_.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
     [footView_.parkingMyCar addTarget:self action:@selector(startParking:) forControlEvents:UIControlEventTouchUpInside];
-    [footView_.detailButton addTarget:self action:@selector(pushToDetail:) forControlEvents:UIControlEventTouchDragInside];
+    [footView_.detailButton addTarget:self action:@selector(pushToDetail:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:footView_];
 }
 

@@ -103,14 +103,14 @@
     titleView.backgroundColor = [UIColor clearColor];
     [titleView.parkingNavigation addTarget:self action:@selector(startNav:) forControlEvents:UIControlEventTouchUpInside];
     [titleView.parkingMyCar addTarget:self action:@selector(startParking:) forControlEvents:UIControlEventTouchUpInside];
-    titleView.detailButton.hidden = YES;
+    titleView.nameButton.hidden = YES;
     return titleView;
 }
 
 
 - (UIView *)creatMiddleView
 {
-    UIView *middleView = [[UIView alloc] initWithFrame:CGRectMake(10, 150, 300, 100)];
+    UIView *middleView = [[UIView alloc] initWithFrame:CGRectMake(10, 130, 300, 100)];
     middleView.backgroundColor = [UIColor whiteColor];
     
     UIImageView *iconImage = [[UIImageView  alloc] initWithFrame:CGRectMake(10, 10, 85, 75)];
