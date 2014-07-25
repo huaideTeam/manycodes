@@ -20,5 +20,7 @@
 
 @property (nonatomic, strong) UIButton *parkingMyCar;           //停车
 
+@property (nonatomic, strong) UIButton *detailButton;           //详情
+
 
 @end

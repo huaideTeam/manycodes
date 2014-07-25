@@ -15,6 +15,7 @@
 #import "HomeMapView.h"
 #import "HomeEventDelegate.h"
 #import "AppDelegate.h"
+#import "ParkDetailViewController.h"
 
 @interface MainViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,HomeEventDelegate>
 {
@@ -367,10 +368,18 @@
     [app startNavi:currentSelfPoint_ end:endPoint];
 }
 
-//点击导航数据
+//点击停车数据
 - (void)currentParkView:(UIView *)ctView clickIndex:(NSInteger)index
 {
     
+}
+
+//进入停车场详情界面
+- (void)pushToParkDetailView:(UIView *)ctView clickIndex:(NSInteger)index
+{
+    NSDictionary *dic = [dataArray_ objectAtIndex:index];
+    ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
 }
 
 #pragma mark - keyboard btn

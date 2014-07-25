@@ -20,7 +20,7 @@
         
         _parkingName = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 2.f, 200.f, 20.f)];
         [_parkingName setBackgroundColor:[UIColor clearColor]];
-        _parkingDistance.font = FONT(16);
+        _parkingName.font = FONT(16);
         _parkingName.textColor = COLOR(110, 110, 110);
         [tempView addSubview:_parkingName];
         
@@ -36,6 +36,19 @@
         _parkingAddress.textColor = COLOR(159, 159, 159);
         _parkingAddress.font = FONT(12);
         [tempView addSubview:_parkingAddress];
+        
+        _detailButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(tempView.frame) - 80.f, 20,70.f, 20)];
+        [_detailButton setBackgroundColor:[UIColor clearColor]];
+        _detailButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+        [_detailButton setTitle:@"详情" forState:UIControlStateNormal];
+        [_detailButton setTitleColor:COLOR(67, 147, 183) forState:UIControlStateNormal];
+        _detailButton.titleLabel.font = FONT(15);
+        [_detailButton setTitleColor:COLOR(67, 147, 183) forState:UIControlStateHighlighted];
+        
+        UIImageView *detailIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 5, 6, 10)];
+        detailIcon.image = [UIImage imageNamed:@"详情图标.png"];
+        [_detailButton addSubview:detailIcon];
+        [tempView addSubview:_detailButton];
 
         
         UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(8.f, CGRectGetMaxY(_parkingAddress.frame), CGRectGetWidth(tempView.frame) - 16.f, 2.f)];

@@ -136,6 +136,7 @@
 		71B0B7F8197F970600B06945 /* JDFlipNumberView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71B0B7F5197F970600B06945 /* JDFlipNumberView.bundle */; };
 		71B0B7FC197F978100B06945 /* StartParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B7FB197F978100B06945 /* StartParkViewController.m */; };
 		71B0B803197FCDA600B06945 /* HomeMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B802197FCDA600B06945 /* HomeMapView.m */; };
+		71B3C940198228BA0050045B /* 详情图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B3C93F198228BA0050045B /* 详情图标.png */; };
 		71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B60D6F197CE58E00C26E48 /* tabbar@2x.png */; };
 		71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B60D78197CEEBD00C26E48 /* Security.framework */; };
 /* End PBXBuildFile section */
@@ -423,6 +424,7 @@
 		71B0B801197FCDA600B06945 /* HomeMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMapView.h; sourceTree = "<group>"; };
 		71B0B802197FCDA600B06945 /* HomeMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMapView.m; sourceTree = "<group>"; };
 		71B3C93E198200980050045B /* HomeEventDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeEventDelegate.h; sourceTree = "<group>"; };
+		71B3C93F198228BA0050045B /* 详情图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "详情图标.png"; sourceTree = "<group>"; };
 		71B60D6F197CE58E00C26E48 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		71B60D78197CEEBD00C26E48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -588,6 +590,7 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				71B3C93F198228BA0050045B /* 详情图标.png */,
 				285B02EF1981589700B4D225 /* list_navigation@2x.png */,
 				285B02F01981589700B4D225 /* list_parking@2x.png */,
 				717667FB1981309A00A635DA /* HJSJ_iPhone_red.png */,
@@ -1138,6 +1141,7 @@
 				717667F61981238F00A635DA /* 搜索输入框.png in Resources */,
 				71490046197FC9F300DEFD83 /* personButton.png in Resources */,
 				285B02F21981589700B4D225 /* list_parking@2x.png in Resources */,
+				71B3C940198228BA0050045B /* 详情图标.png in Resources */,
 				7149004C197FCC6000DEFD83 /* shadow.png in Resources */,
 				7149004A197FCC6000DEFD83 /* center.png in Resources */,
 				717667FA1981238F00A635DA /* mapButtonclick.png in Resources */,
