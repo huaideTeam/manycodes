@@ -143,7 +143,6 @@
 		71B0B750197E482300B06945 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B74F197E482300B06945 /* PersonalCenterViewController.m */; };
 		71B0B757197E950700B06945 /* ParkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B756197E950700B06945 /* ParkDetailViewController.m */; };
 		71B0B75A197EAA2000B06945 /* PersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B759197EAA2000B06945 /* PersonalCell.m */; };
-		71B0B7F8197F970600B06945 /* JDFlipNumberView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71B0B7F5197F970600B06945 /* JDFlipNumberView.bundle */; };
 		71B0B7FC197F978100B06945 /* StartParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B7FB197F978100B06945 /* StartParkViewController.m */; };
 		71B0B803197FCDA600B06945 /* HomeMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B802197FCDA600B06945 /* HomeMapView.m */; };
 		71B3C940198228BA0050045B /* 详情图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B3C93F198228BA0050045B /* 详情图标.png */; };
@@ -438,7 +437,6 @@
 		71B0B756197E950700B06945 /* ParkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkDetailViewController.m; sourceTree = "<group>"; };
 		71B0B758197EAA2000B06945 /* PersonalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCell.h; sourceTree = "<group>"; };
 		71B0B759197EAA2000B06945 /* PersonalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCell.m; sourceTree = "<group>"; };
-		71B0B7F5197F970600B06945 /* JDFlipNumberView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JDFlipNumberView.bundle; sourceTree = "<group>"; };
 		71B0B7FA197F978100B06945 /* StartParkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartParkViewController.h; sourceTree = "<group>"; };
 		71B0B7FB197F978100B06945 /* StartParkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartParkViewController.m; sourceTree = "<group>"; };
 		71B0B801197FCDA600B06945 /* HomeMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMapView.h; sourceTree = "<group>"; };
@@ -1080,7 +1078,6 @@
 				71490026197FB00500DEFD83 /* SBTickerView.m */,
 				71490027197FB00500DEFD83 /* UIView+SBExtras.h */,
 				71490028197FB00500DEFD83 /* UIView+SBExtras.m */,
-				71B0B7F5197F970600B06945 /* JDFlipNumberView.bundle */,
 			);
 			path = FlijayFille;
 			sourceTree = "<group>";
@@ -1167,7 +1164,6 @@
 				714C6D4519828E4A007684CA /* 0.png in Resources */,
 				717667FC1981309A00A635DA /* HJSJ_iPhone_red.png in Resources */,
 				717667E41980F49600A635DA /* BNTTSSDK.bundle in Resources */,
-				71B0B7F8197F970600B06945 /* JDFlipNumberView.bundle in Resources */,
 				714C6D4619828E4A007684CA /* 1.png in Resources */,
 				717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */,
 				712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */,
