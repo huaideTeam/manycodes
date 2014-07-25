@@ -11,6 +11,7 @@
 #import "UnderLineLabel.h"
 #import "KeyboardSegment.h"
 #import "RegisterFirstStepViewController.h"
+#import "ChangePasswordViewController.h"
 
 @interface LoginViewController ()
 {
@@ -242,7 +243,8 @@
 
 - (void)changePasswdClick:(id)sender
 {
-    
+    ChangePasswordViewController *viewController = [[ChangePasswordViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(void)doneClicked:(UIBarButtonItem*)barButton

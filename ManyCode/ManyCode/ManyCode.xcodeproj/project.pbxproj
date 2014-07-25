@@ -18,6 +18,7 @@
 		28821280198016CA0087B65E /* DataSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2882127F198016CA0087B65E /* DataSourceModel.m */; };
 		28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */; };
 		2891A0401982843900538FC0 /* ModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A03F1982843900538FC0 /* ModelViewController.m */; };
+		2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
 		712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFBC197CB2F400EA9F32 /* InfoPlist.strings */; };
@@ -179,6 +180,8 @@
 		28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListParkingListTableViewCell.m; sourceTree = "<group>"; };
 		2891A03E1982843900538FC0 /* ModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelViewController.h; sourceTree = "<group>"; };
 		2891A03F1982843900538FC0 /* ModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelViewController.m; sourceTree = "<group>"; };
+		2891A04219829CEB00538FC0 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -515,6 +518,15 @@
 			path = DataSourceModel;
 			sourceTree = "<group>";
 		};
+		2891A04119829CC000538FC0 /* changePassword */ = {
+			isa = PBXGroup;
+			children = (
+				2891A04219829CEB00538FC0 /* ChangePasswordViewController.h */,
+				2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */,
+			);
+			path = changePassword;
+			sourceTree = "<group>";
+		};
 		712FBFA7197CB2F400EA9F32 = {
 			isa = PBXGroup;
 			children = (
@@ -663,6 +675,7 @@
 		712FBFEA197CB6B600EA9F32 /* UICtrFile */ = {
 			isa = PBXGroup;
 			children = (
+				2891A04119829CC000538FC0 /* changePassword */,
 				285B02F319815D8100B4D225 /* Register */,
 				2882127D198016CA0087B65E /* DataSourceModel */,
 				7149004D197FCD7700DEFD83 /* HomeCtr */,
@@ -1224,6 +1237,7 @@
 				28821280198016CA0087B65E /* DataSourceModel.m in Sources */,
 				71B0B6FD197E3B4D00B06945 /* SDImageCache.m in Sources */,
 				71B0B742197E3F3E00B06945 /* AFURLSessionManager.m in Sources */,
+				2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */,
 				717667DD1980F49600A635DA /* NSScanner_Extensions.m in Sources */,
 				71490029197FB00500DEFD83 /* SBDoubleSidedLayer.m in Sources */,
 				71490042197FC0AB00DEFD83 /* RotatedView.m in Sources */,

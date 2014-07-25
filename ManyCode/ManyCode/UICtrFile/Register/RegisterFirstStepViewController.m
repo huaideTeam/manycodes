@@ -93,6 +93,7 @@
     
     UnderLineLabel *lineLabel = [[UnderLineLabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(tempLabel.frame), CGRectGetMinY(tempLabel.frame), 128.f, CGRectGetHeight(tempLabel.frame))];
     lineLabel.textColor = [UIColor orangeColor];
+    lineLabel.shouldUnderline = YES;
     [lineLabel setText:@"抢车位用户协议" andCenter:lineLabel.center];
     [lineLabel addTarget:self action:@selector(readTheCopyRightButtonClickedMethod)];
     [self.view addSubview:lineLabel];
