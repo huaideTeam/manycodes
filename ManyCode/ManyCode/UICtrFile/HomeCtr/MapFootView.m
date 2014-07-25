@@ -20,6 +20,7 @@
         
         _parkingName = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 2.f, 200.f, 20.f)];
         [_parkingName setBackgroundColor:[UIColor clearColor]];
+        _parkingDistance.font = FONT(16);
         _parkingName.textColor = COLOR(110, 110, 110);
         [tempView addSubview:_parkingName];
         
@@ -42,10 +43,17 @@
         [tempView addSubview:lineImageView];
         
         _parkingNavigation = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_parkingNavigation setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        _parkingNavigation.backgroundColor = [UIColor redColor];
-        [_parkingNavigation setTitle:@"" forState:UIControlStateNormal];
+        _parkingNavigation.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+        _parkingNavigation.backgroundColor = [UIColor clearColor];
+        [_parkingNavigation setTitle:@"导航" forState:UIControlStateNormal];
+        [_parkingNavigation setTitleColor:COLOR(160, 160, 160) forState:UIControlStateNormal];
+         [_parkingNavigation setTitleColor:COLOR(160, 160, 160) forState:UIControlStateHighlighted];
         _parkingNavigation.frame = CGRectMake(0.f, CGRectGetMaxY(lineImageView.frame), CGRectGetWidth(tempView.frame)/2 -4, 35.f);
+        
+        UIImageView *navIcon = [[UIImageView alloc] initWithFrame:CGRectMake(43, 10, 14, 13)];
+        navIcon.image = [UIImage imageNamed:@"list_navigation@2x.png"];
+        [_parkingNavigation addSubview:navIcon];
+        
         [tempView addSubview:_parkingNavigation];
         
         UIImageView *seperateLine = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_parkingNavigation.frame), CGRectGetMinY(_parkingNavigation.frame) + 4.f, 2.f, CGRectGetHeight(_parkingNavigation.frame) - 4.f)];
@@ -54,9 +62,16 @@
         
         _parkingMyCar = [UIButton buttonWithType:UIButtonTypeCustom];
         [_parkingMyCar setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        [_parkingMyCar setTitle:@"" forState:UIControlStateNormal];
-        _parkingMyCar.backgroundColor = [UIColor blueColor];
+        _parkingMyCar.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+        [_parkingMyCar setTitle:@"停车" forState:UIControlStateNormal];
+        [_parkingMyCar setTitleColor:COLOR(160, 160, 160) forState:UIControlStateNormal];
+        [_parkingMyCar setTitleColor:COLOR(160, 160, 160) forState:UIControlStateHighlighted];
+        _parkingMyCar.backgroundColor = [UIColor clearColor];
         _parkingMyCar.frame = CGRectMake(CGRectGetMaxX(seperateLine.frame), CGRectGetMinY(_parkingNavigation.frame), CGRectGetWidth(_parkingNavigation.frame), CGRectGetHeight(_parkingNavigation.frame));
+        
+        UIImageView *carIcon = [[UIImageView alloc] initWithFrame:CGRectMake(43, 10, 14, 13)];
+        carIcon.image = [UIImage imageNamed:@"list_parking@2x.png"];
+        [_parkingMyCar addSubview:carIcon];
         [tempView addSubview:_parkingMyCar];
     }
     return self;

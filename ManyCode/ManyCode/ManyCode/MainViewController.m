@@ -23,6 +23,7 @@
     NSMutableArray *textArray_;
     UIView *grayView_;
     UIButton *leftBtn_;
+    CLLocationCoordinate2D currentSelfPoint_;
 }
 
 @end
@@ -110,6 +111,7 @@
     
     UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 7, 25, 25)];
     searchButton.backgroundColor = [UIColor clearColor];
+    [searchButton addTarget:self action:@selector(seachClick) forControlEvents:UIControlEventTouchUpInside];
     [headView addSubview:searchButton];
     searchText_ = [[UITextField alloc]  initWithFrame:CGRectMake(40, 5, 200, 30)];
     searchText_.borderStyle = UITextBorderStyleNone;
@@ -233,6 +235,8 @@
     return YES;
 }
 
+#pragma mark - 下载城市名称
+
 - (void)refreshCityName:(NSString *)text
 {
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
@@ -244,6 +248,34 @@
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
+}
+
+//下载带有检索的城市名称
+- (void)LoadSearchCityList:(NSString *)cityName
+{
+    [dataArray_ removeAllObjects];
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:cityName forKey:@"qryname"];
+    [tempDic setObject:[NSNumber numberWithDouble:currentSelfPoint_.latitude] forKey:@"user_lat"];
+    [tempDic setObject:[NSNumber numberWithDouble:currentSelfPoint_.longitude] forKey:@"user_lon"];
+    [tempDic setObject:[NSNumber numberWithInt:1] forKey:@"page"];
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getRetrieveCarparkList" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        NSArray *array = [resultDic objectForKey:@"carparklist"];
+        [dataArray_ addObjectsFromArray:array];
+        [grayView_ removeFromSuperview];
+        [mapView_ updateAnimationView:dataArray_];
+        [listView_ refreshParkingList:dataArray_];
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+
+- (void)seachClick
+{
+     [searchText_ resignFirstResponder];
+    if ([searchText_.text length]>0) {
+        [self LoadSearchCityList:searchText_.text];
+    }
 }
 #pragma mark - table delegate
 
@@ -272,9 +304,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+     [searchText_ resignFirstResponder];
      NSDictionary *dic = [textArray_ objectAtIndex:indexPath.row];
      NSString *name = [dic objectForKey:@"carparkname"];
+    [self LoadSearchCityList:name];
 }
 
 #pragma mark - load data
@@ -282,6 +315,7 @@
 //定位成功后刷新数据，或者定时刷新数据
 - (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint
 {
+    currentSelfPoint_ = currentPoint;
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];
