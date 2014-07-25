@@ -79,7 +79,7 @@
     _currentClock = @"0000";
     _clockTickers = [[NSMutableArray alloc] initWithCapacity:12];
     for (int k = 0; k< 4; k++) {
-        SBTickerView *view = [[SBTickerView alloc] initWithFrame:CGRectMake(40+60*k, 30, 42, 62)];
+        SBTickerView *view = [[SBTickerView alloc] initWithFrame:CGRectMake(40+60*k, 30, 60, 90)];
         [view setFrontView:[SBTickView tickViewWithTitle:@"0" fontSize:45.]];
         [self.view addSubview:view];
         [_clockTickers addObject:view];

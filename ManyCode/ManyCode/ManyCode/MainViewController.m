@@ -16,6 +16,7 @@
 #import "HomeEventDelegate.h"
 #import "AppDelegate.h"
 #import "ParkDetailViewController.h"
+#import "StartParkViewController.h"
 
 @interface MainViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,HomeEventDelegate>
 {
@@ -377,6 +378,8 @@
     if (dataArray_.count == 0) {
         return;
     }
+    StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
 }
 
 //进入停车场详情界面

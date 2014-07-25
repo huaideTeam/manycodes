@@ -43,7 +43,7 @@
     
     NSMutableArray* filenames = [NSMutableArray arrayWithCapacity: 10];
 	for (int i = 0; i < 10; i++) {
-		[filenames addObject: [NSString stringWithFormat: @"JDFlipNumberView.bundle/%d.png", i]];
+		[filenames addObject: [NSString stringWithFormat: @"%d.png", i]];
 	}
     
     NSString *imageName = [filenames objectAtIndex:[self.title integerValue]];

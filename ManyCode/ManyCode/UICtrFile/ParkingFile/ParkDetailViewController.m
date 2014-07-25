@@ -249,6 +249,8 @@
 
 - (void)startParking:(UIButton *)button
 {
+    StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
 
 }
 @end
