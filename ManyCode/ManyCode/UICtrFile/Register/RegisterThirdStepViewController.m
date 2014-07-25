@@ -7,6 +7,7 @@
 //
 
 #import "RegisterThirdStepViewController.h"
+#import "LoginViewController.h"
 
 @interface RegisterThirdStepViewController ()
 
@@ -112,8 +113,15 @@
                     [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"mobile"] forKey:kAccountMobile];
                     [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"sessionid"] forKey:kAccountSession];
                     [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"userid"] forKey:kAccountid];
-                    RegisterThirdStepViewController *strongSelf = weakSelf;
                     [[Hud defaultInstance] hide:self.view];
+                    RegisterThirdStepViewController *strongSelf = weakSelf;
+                    NSArray *viewControllers = strongSelf.navigationController.viewControllers;
+                    for (UIViewController *temp in viewControllers) {
+                        if ([temp isKindOfClass:[LoginViewController class]]) {
+                            [strongSelf.navigationController popToViewController:temp animated:YES];
+                            break;
+                        }
+                    }
                 } else {
                     [[Hud defaultInstance] showMessage:@"用户注册失败"];
                 }
