@@ -17,6 +17,12 @@
 @interface ParkDetailViewController ()
 {
     UIScrollView *mainScrollView_;
+    NSMutableDictionary *mainDic_;
+    UILabel *smallDayPrice_;   //小行车白天
+    UILabel *smallPrice_;     //小型车黑天
+    UILabel *bigDayPrice_;  //大车白天
+    UILabel *bigPrice_; //大车黑天
+
 }
 
 @end
@@ -83,6 +89,11 @@
     UIView *middleView = [self creatMiddleView];
      [mainScrollView_ addSubview:middleView];
     
+    UIView *footView = [self creatFootView];
+    [mainScrollView_ addSubview:footView];
+    
+    mainScrollView_.contentSize = CGSizeMake(320,CGRectGetMaxY(footView.frame));
+    [self loadDataWithId];
     
 }
 
@@ -90,6 +101,26 @@
 - (void)backClick:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - 加载数据
+
+- (void)loadDataWithId
+{
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[_parkInfoDic objectForKey:@"carparkid"] forKey:@"carparkid"];
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCarparkInfo" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        NSLog(@"1233");
+        mainDic_ = [NSMutableDictionary dictionaryWithDictionary:resultDic];
+        smallDayPrice_.text = [mainDic_ objectForKey:@"morstandard_car"];
+        smallPrice_.text = [mainDic_ objectForKey:@"nightstandard_car"];
+        bigDayPrice_.text = [mainDic_ objectForKey:@"morstandard_bus"];
+        bigPrice_.text = [mainDic_ objectForKey:@"nightstandard_bus"];
+        
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
 }
 
 #pragma mark - 自定义的view
@@ -130,6 +161,77 @@
     detailLable.font = FONT(15);
     [middleView addSubview:detailLable];
     return middleView;
+}
+
+- (UIView *)creatFootView
+{
+    UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 280, 320, 300)];
+    footView.backgroundColor = [UIColor clearColor];
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    titleLable.backgroundColor = [UIColor clearColor];
+    titleLable.textColor =COLOR(97, 97, 97);
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    titleLable.text = @"停车收费标准";
+    titleLable.font = FONT(30);
+    [footView addSubview:titleLable];
+    
+    UIImageView *mainImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 45, 280, 200)];
+    mainImage.image = [UIImage imageNamed:@"tingchechangkuang.png"];
+    [footView addSubview:mainImage];
+    
+    UILabel *dayLable = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 93, 30)];
+    dayLable.text = @"白天时段";
+    dayLable.textAlignment = NSTextAlignmentCenter;
+    dayLable.font = FONT(20);
+    dayLable.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:dayLable];
+    
+    UILabel *dayLable1 = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, 93, 30)];
+    dayLable1.text = @"(元/15分钟)";
+    dayLable1.textAlignment = NSTextAlignmentCenter;
+    dayLable1.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:dayLable1];
+    
+    
+    UILabel *darkLable = [[UILabel alloc] initWithFrame:CGRectMake(192, 20, 93, 30)];
+    darkLable.text = @"夜间时段";
+    darkLable.textAlignment = NSTextAlignmentCenter;
+    darkLable.font = FONT(20);
+    darkLable.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:darkLable];
+
+    
+    UILabel *darkLable1 = [[UILabel alloc] initWithFrame:CGRectMake(192, 50, 93, 30)];
+    darkLable1.text = @"(元/小时)";
+    darkLable1.textAlignment = NSTextAlignmentCenter;
+    darkLable1.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:darkLable1];
+    
+    smallDayPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 93, 30)];
+    smallDayPrice_.textAlignment = NSTextAlignmentCenter;
+    smallDayPrice_.font = FONT(20);
+    smallDayPrice_.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:smallDayPrice_];
+    
+    
+    smallPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(192, 20, 93, 30)];
+    smallPrice_.textAlignment = NSTextAlignmentCenter;
+    smallPrice_.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:smallPrice_];
+    
+    bigDayPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 93, 30)];
+    bigDayPrice_.textAlignment = NSTextAlignmentCenter;
+    bigDayPrice_.font = FONT(20);
+    bigDayPrice_.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:bigDayPrice_];
+    
+    
+    bigPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(192, 20, 93, 30)];
+    bigPrice_.textAlignment = NSTextAlignmentCenter;
+    bigPrice_.textColor =COLOR(75, 75, 75);
+    [mainImage addSubview:bigPrice_];
+    
+    return footView;
 }
 
 #pragma mark - 停车

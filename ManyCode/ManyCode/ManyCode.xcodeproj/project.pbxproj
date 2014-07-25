@@ -57,6 +57,7 @@
 		7149005A198007F900DEFD83 /* Hud.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490057198007F900DEFD83 /* Hud.m */; };
 		7149005B198007F900DEFD83 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490059198007F900DEFD83 /* MBProgressHUD.m */; };
 		714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714900C61980EAFE00DEFD83 /* UIKit.framework */; };
+		716300001982593C0013A776 /* tingchechangkuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7163FFFF1982593C0013A776 /* tingchechangkuang.png */; };
 		717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F3197FDB8E00A635DA /* LoginViewController.m */; };
 		717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F6197FE3FF00A635DA /* UnderLineLabel.m */; };
 		717666FA197FECFD00A635DA /* HomeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F9197FECFD00A635DA /* HomeListView.m */; };
@@ -270,6 +271,7 @@
 		71490058198007F900DEFD83 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		71490059198007F900DEFD83 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		714900C61980EAFE00DEFD83 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7163FFFF1982593C0013A776 /* tingchechangkuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tingchechangkuang.png; sourceTree = "<group>"; };
 		717666F2197FDB8E00A635DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		717666F3197FDB8E00A635DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		717666F5197FE3FF00A635DA /* UnderLineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderLineLabel.h; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 			children = (
 				71B3C93F198228BA0050045B /* 详情图标.png */,
 				285B02EF1981589700B4D225 /* list_navigation@2x.png */,
+				7163FFFF1982593C0013A776 /* tingchechangkuang.png */,
 				285B02F01981589700B4D225 /* list_parking@2x.png */,
 				717667FB1981309A00A635DA /* HJSJ_iPhone_red.png */,
 				717667F11981238F00A635DA /* 搜索输入框.png */,
@@ -1146,6 +1149,7 @@
 				717667EA1980F60500A635DA /* Default.png in Resources */,
 				712FC07B197D38D100EA9F32 /* mapapi.bundle in Resources */,
 				712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */,
+				716300001982593C0013A776 /* tingchechangkuang.png in Resources */,
 				717667F71981238F00A635DA /* listButton.png in Resources */,
 				71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */,
 				285B02F11981589700B4D225 /* list_navigation@2x.png in Resources */,
