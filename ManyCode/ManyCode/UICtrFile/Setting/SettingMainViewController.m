@@ -86,7 +86,7 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
             SettingSecondSectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierForSecondSectionCellSetting forIndexPath:indexPath];
             NSArray *titles = @[@"清理缓存", @"流量统计", @"精品推荐"];
             cell.menuTitleLabel.text = titles[indexPath.row];
-            if (indexPath.row != 0) {
+            if (indexPath.row != 1) {
                 cell.menuDefaultLabel.hidden = YES;
             } else {
                 cell.menuDefaultLabel.hidden = NO;
