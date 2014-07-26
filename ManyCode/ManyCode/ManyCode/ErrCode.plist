@@ -2,7 +2,71 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>201</key>
+	<string>帐号不存在或已禁用</string>
+	<key>202</key>
+	<string>用户密码错误</string>
+	<key>203</key>
+	<string>用户名已存在</string>
+	<key>204</key>
+	<string>用户注册失败</string>
+	<key>205</key>
+	<string>用户开启道闸机记录保存失败</string>
+	<key>206</key>
+	<string>用户开启道闸机指令发送失败</string>
+	<key>207</key>
+	<string>用户3秒钟内重复发送开启指令(当前状态服务器还未收到设备指令)</string>
+	<key>208</key>
+	<string>用户3秒钟内重复发送开启指令(当前状态设备开启成功)</string>
+	<key>209</key>
+	<string>用户3秒钟内重复发送开启指令(当前状态设备开启失败)</string>
+	<key>210</key>
+	<string>用户3秒钟内重复发送开启指令(当前状态设备开启失败)</string>
+	<key>211</key>
+	<string>WIFI信号不存在，无法判断当前位置(用户离开，检测道闸机信息)</string>
+	<key>212</key>
+	<string>获取设备状态失败，未找到该指令发送记录</string>
+	<key>213</key>
+	<string>当前状态服务器还未收到设备指令(设备状态查询)</string>
+	<key>214</key>
+	<string>设备开启失败，不符合开启条件(设备状态查询)</string>
+	<key>215</key>
+	<string>数据错误，指令记录与当前不符</string>
+	<key>216</key>
+	<string>已停车，未交费</string>
 	<key>217</key>
 	<string>用户未充值</string>
+	<key>218</key>
+	<string>账户被冻结</string>
+	<key>219</key>
+	<string>账户无变动明细</string>
+	<key>220</key>
+	<string>用户无停车记录</string>
+	<key>221</key>
+	<string>数据错误，无改停车场信息</string>
+	<key>222</key>
+	<string>该用户不存在</string>
+	<key>223</key>
+	<string>提供的原始密码不正确</string>
+	<key>224</key>
+	<string>密码修改失败</string>
+	<key>225</key>
+	<string>验证码获取失败</string>
+	<key>226</key>
+	<string>查询停车预计费用失败(未获取到改停车信息)</string>
+	<key>227</key>
+	<string>充值失败,银联支付接口调用失败</string>
+	<key>228</key>
+	<string>充值失败,订单发送失败</string>
+	<key>229</key>
+	<string> 当前状态设备开启失败(账户未充值) </string>
+	<key>230</key>
+	<string>设备开启失败(设备错误)</string>
+	<key>997</key>
+	<string>无数据</string>
+	<key>998</key>
+	<string>权限验证失败</string>
+	<key>999</key>
+	<string>其他错误</string>
 </dict>
 </plist>

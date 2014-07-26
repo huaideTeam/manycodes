@@ -159,7 +159,26 @@
     [openDoorBtn_ setTitle:@"点击开闸" forState:UIControlStateNormal];
     [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
     [mainScrollView_ addSubview:openDoorBtn_];
+    [self loadParkInfo];
     
+}
+
+#pragma mark - 下载数据 
+
+- (void)loadParkInfo
+{
+    [[Hud defaultInstance] loading:self.view];
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCalculateCharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [[Hud defaultInstance] hide:self.view];
+        
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
 }
 
 #pragma mark - 点击开闸
