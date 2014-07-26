@@ -72,6 +72,12 @@
 		714C6D4C19828E4A007684CA /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6D4219828E4A007684CA /* 7.png */; };
 		714C6D4D19828E4A007684CA /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6D4319828E4A007684CA /* 8.png */; };
 		714C6D4E19828E4A007684CA /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6D4419828E4A007684CA /* 9.png */; };
+		714C6D9C1983459B007684CA /* PCHalfPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 714C6D971983459B007684CA /* PCHalfPieChart.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		714C6D9D1983459B007684CA /* PCLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714C6D991983459B007684CA /* PCLineChartView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		714C6D9E1983459B007684CA /* PCPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 714C6D9B1983459B007684CA /* PCPieChart.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		714C6DA019834C07007684CA /* 点击开闸未进入常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6D9F19834C07007684CA /* 点击开闸未进入常态.png */; };
+		714C6DA319834C10007684CA /* 点击开闸点击效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6DA119834C10007684CA /* 点击开闸点击效果.png */; };
+		714C6DA419834C10007684CA /* 点击开闸进入后.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6DA219834C10007684CA /* 点击开闸进入后.png */; };
 		716300001982593C0013A776 /* tingchechangkuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7163FFFF1982593C0013A776 /* tingchechangkuang.png */; };
 		717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F3197FDB8E00A635DA /* LoginViewController.m */; };
 		717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F6197FE3FF00A635DA /* UnderLineLabel.m */; };
@@ -305,6 +311,15 @@
 		714C6D4219828E4A007684CA /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		714C6D4319828E4A007684CA /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		714C6D4419828E4A007684CA /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		714C6D961983459B007684CA /* PCHalfPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCHalfPieChart.h; sourceTree = "<group>"; };
+		714C6D971983459B007684CA /* PCHalfPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCHalfPieChart.m; sourceTree = "<group>"; };
+		714C6D981983459B007684CA /* PCLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCLineChartView.h; sourceTree = "<group>"; };
+		714C6D991983459B007684CA /* PCLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCLineChartView.m; sourceTree = "<group>"; };
+		714C6D9A1983459B007684CA /* PCPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCPieChart.h; sourceTree = "<group>"; };
+		714C6D9B1983459B007684CA /* PCPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPieChart.m; sourceTree = "<group>"; };
+		714C6D9F19834C07007684CA /* 点击开闸未进入常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击开闸未进入常态.png"; sourceTree = "<group>"; };
+		714C6DA119834C10007684CA /* 点击开闸点击效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击开闸点击效果.png"; sourceTree = "<group>"; };
+		714C6DA219834C10007684CA /* 点击开闸进入后.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击开闸进入后.png"; sourceTree = "<group>"; };
 		7163FFFF1982593C0013A776 /* tingchechangkuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tingchechangkuang.png; sourceTree = "<group>"; };
 		717666F2197FDB8E00A635DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		717666F3197FDB8E00A635DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -645,6 +660,9 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				714C6DA119834C10007684CA /* 点击开闸点击效果.png */,
+				714C6DA219834C10007684CA /* 点击开闸进入后.png */,
+				714C6D9F19834C07007684CA /* 点击开闸未进入常态.png */,
 				71B3C93F198228BA0050045B /* 详情图标.png */,
 				714C6D3B19828E4A007684CA /* 0.png */,
 				714C6D3C19828E4A007684CA /* 1.png */,
@@ -677,6 +695,7 @@
 		712FBFE9197CB6B600EA9F32 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				714C6D951983459B007684CA /* iosPot */,
 				7176679D1980F29100A635DA /* baidunav */,
 				71490055198007F900DEFD83 /* MBProgressHUD */,
 				71490051198004AA00DEFD83 /* Keyboard */,
@@ -844,6 +863,19 @@
 				71490059198007F900DEFD83 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		714C6D951983459B007684CA /* iosPot */ = {
+			isa = PBXGroup;
+			children = (
+				714C6D961983459B007684CA /* PCHalfPieChart.h */,
+				714C6D971983459B007684CA /* PCHalfPieChart.m */,
+				714C6D981983459B007684CA /* PCLineChartView.h */,
+				714C6D991983459B007684CA /* PCLineChartView.m */,
+				714C6D9A1983459B007684CA /* PCPieChart.h */,
+				714C6D9B1983459B007684CA /* PCPieChart.m */,
+			);
+			path = iosPot;
 			sourceTree = "<group>";
 		};
 		7176679D1980F29100A635DA /* baidunav */ = {
@@ -1199,8 +1231,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				714C6DA419834C10007684CA /* 点击开闸进入后.png in Resources */,
 				714C6D4E19828E4A007684CA /* 9.png in Resources */,
 				714C6D4A19828E4A007684CA /* 5.png in Resources */,
+				714C6DA319834C10007684CA /* 点击开闸点击效果.png in Resources */,
+				714C6DA019834C07007684CA /* 点击开闸未进入常态.png in Resources */,
 				714C6D4719828E4A007684CA /* 2.png in Resources */,
 				714C6D4519828E4A007684CA /* 0.png in Resources */,
 				717667FC1981309A00A635DA /* HJSJ_iPhone_red.png in Resources */,
@@ -1252,6 +1287,8 @@
 				71B0B748197E3F3E00B06945 /* UIProgressView+AFNetworking.m in Sources */,
 				71B0B706197E3B4D00B06945 /* UIImage+GIF.m in Sources */,
 				71B0B701197E3B4D00B06945 /* SDWebImageDownloaderOperation.m in Sources */,
+				714C6D9C1983459B007684CA /* PCHalfPieChart.m in Sources */,
+				714C6D9D1983459B007684CA /* PCLineChartView.m in Sources */,
 				71B0B702197E3B4D00B06945 /* SDWebImageManager+MJ.m in Sources */,
 				71B0B745197E3F3E00B06945 /* UIAlertView+AFNetworking.m in Sources */,
 				71B0B747197E3F3E00B06945 /* UIImageView+AFNetworking.m in Sources */,
@@ -1277,6 +1314,7 @@
 				71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */,
 				717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */,
 				71B0B746197E3F3E00B06945 /* UIButton+AFNetworking.m in Sources */,
+				714C6D9E1983459B007684CA /* PCPieChart.m in Sources */,
 				71B0B73E197E3F3E00B06945 /* AFSecurityPolicy.m in Sources */,
 				71490041197FC0AB00DEFD83 /* RenderView.m in Sources */,
 				28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */,
