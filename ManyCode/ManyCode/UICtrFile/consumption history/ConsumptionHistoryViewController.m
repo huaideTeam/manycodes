@@ -9,6 +9,7 @@
 #import "ConsumptionHistoryViewController.h"
 #import "CosumptionHistoryTableViewCell.h"
 #import "DataSourceModel.h"
+#import "CalendarView.h"
 
 static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHistory";
 
@@ -17,6 +18,8 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 @property (nonatomic, strong) UITableView *consumptionHistoryTableView;
 
 @property (nonatomic, strong) NSArray *consumptionHistoryDataSource;
+
+@property (nonatomic, strong) NSDate *currentFilterDate;
 
 @end
 
@@ -40,6 +43,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 {
     [super viewDidLoad];
     
+    _currentFilterDate = [NSDate date];
     _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight)];
     [_consumptionHistoryTableView registerClass:[CosumptionHistoryTableViewCell class] forCellReuseIdentifier:identifierForCosumptionHistory];
     _consumptionHistoryTableView.delegate = self;
@@ -50,6 +54,12 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     [_consumptionHistoryTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     _consumptionHistoryTableView.separatorColor = COLOR(212, 212, 211);
     [self.view addSubview:_consumptionHistoryTableView];
+    
+    UIButton *calendar = [UIButton buttonWithType:UIButtonTypeCustom];
+    calendar.backgroundColor = [UIColor redColor];
+    [calendar addTarget:self action:@selector(showCalendarView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:calendar];
+    calendar.frame = CGRectMake(5.f, 175.f, 50.f, 50.f);
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,5 +165,35 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
         }
         [[Hud defaultInstance] showMessage:@"加载数据失败"];
     }];
+}
+
+#pragma  mark - 显示日历界面
+- (void)showCalendarView {
+    UIControl *tempControl = [[UIControl alloc] initWithFrame:self.view.bounds];
+    tempControl.backgroundColor = [UIColor blackColor];
+    tempControl.alpha = 0.5f;
+    [tempControl addTarget:self action:@selector(hideCalendarView) forControlEvents:UIControlEventValueChanged];
+    tempControl.tag = 1UL << 7;
+    [self.view addSubview:tempControl];
+    CalendarView *view = [[CalendarView alloc] initWithFrame:CGRectMake(40.f, 100.f, CGRectGetWidth(self.view.frame) - 80.f, 250.f)];
+    view.tag = 1UL << 8;
+    view.currentChoosedDate = self.currentFilterDate;
+    [view setBackgroundColor:[UIColor clearColor]];
+    __weak ConsumptionHistoryViewController *weakSelf = self;
+    CalendarSelectedSomeDate block = ^(CalendarView *calendarView) {
+        ConsumptionHistoryViewController *strongSelf = weakSelf;
+        strongSelf.currentFilterDate = calendarView.selectedDate;
+        [strongSelf hideCalendarView];
+    };
+    [view setChoosedSomeDate:block];
+    [self.view addSubview:view];
+}
+
+- (void)hideCalendarView {
+    UIControl *tempControl = (UIControl *)[self.view viewWithTag:1UL << 7];
+    [tempControl removeFromSuperview];
+    
+    CalendarView *tempView = (CalendarView *)[self.view viewWithTag:1UL << 8];
+    [tempView removeFromSuperview];
 }
 @end
