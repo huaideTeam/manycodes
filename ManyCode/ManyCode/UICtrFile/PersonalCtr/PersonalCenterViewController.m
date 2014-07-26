@@ -9,6 +9,7 @@
 #import "PersonalCenterViewController.h"
 #import "PersonalCell.h"
 #import "LoginViewController.h"
+#import "SettingMainViewController.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -146,7 +147,40 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新"
+    switch (indexPath.row) {
+        case 0:     //
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+            
+        }
+            break;
+        case 3:
+        {
+            SettingMainViewController *viewController = [[SettingMainViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+            break;
+        case 4:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 #pragma mark - notify
 
 - (void)loginSuccess:(NSNotification *)notify

@@ -17,6 +17,9 @@
 		285B02FE1981669B00B4D225 /* RegisterThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285B02FD1981669B00B4D225 /* RegisterThirdStepViewController.m */; };
 		28821280198016CA0087B65E /* DataSourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2882127F198016CA0087B65E /* DataSourceModel.m */; };
 		28821283198016D70087B65E /* HomeListParkingListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */; };
+		2885FAD819833F7E009E69C5 /* SettingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885FAD719833F7E009E69C5 /* SettingMainViewController.m */; };
+		2885FADB19834104009E69C5 /* SettingFirstSectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885FADA19834104009E69C5 /* SettingFirstSectionTableViewCell.m */; };
+		2885FADE19834110009E69C5 /* SettingSecondSectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885FADD19834110009E69C5 /* SettingSecondSectionTableViewCell.m */; };
 		2891A0401982843900538FC0 /* ModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A03F1982843900538FC0 /* ModelViewController.m */; };
 		2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
@@ -178,6 +181,12 @@
 		2882127F198016CA0087B65E /* DataSourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceModel.m; sourceTree = "<group>"; };
 		28821281198016D70087B65E /* HomeListParkingListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListParkingListTableViewCell.h; sourceTree = "<group>"; };
 		28821282198016D70087B65E /* HomeListParkingListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListParkingListTableViewCell.m; sourceTree = "<group>"; };
+		2885FAD619833F7E009E69C5 /* SettingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingMainViewController.h; sourceTree = "<group>"; };
+		2885FAD719833F7E009E69C5 /* SettingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingMainViewController.m; sourceTree = "<group>"; };
+		2885FAD919834104009E69C5 /* SettingFirstSectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingFirstSectionTableViewCell.h; sourceTree = "<group>"; };
+		2885FADA19834104009E69C5 /* SettingFirstSectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingFirstSectionTableViewCell.m; sourceTree = "<group>"; };
+		2885FADC19834110009E69C5 /* SettingSecondSectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSecondSectionTableViewCell.h; sourceTree = "<group>"; };
+		2885FADD19834110009E69C5 /* SettingSecondSectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSecondSectionTableViewCell.m; sourceTree = "<group>"; };
 		2891A03E1982843900538FC0 /* ModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelViewController.h; sourceTree = "<group>"; };
 		2891A03F1982843900538FC0 /* ModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelViewController.m; sourceTree = "<group>"; };
 		2891A04219829CEB00538FC0 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
@@ -518,6 +527,19 @@
 			path = DataSourceModel;
 			sourceTree = "<group>";
 		};
+		2885FAD519833F6B009E69C5 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				2885FAD619833F7E009E69C5 /* SettingMainViewController.h */,
+				2885FAD719833F7E009E69C5 /* SettingMainViewController.m */,
+				2885FAD919834104009E69C5 /* SettingFirstSectionTableViewCell.h */,
+				2885FADA19834104009E69C5 /* SettingFirstSectionTableViewCell.m */,
+				2885FADC19834110009E69C5 /* SettingSecondSectionTableViewCell.h */,
+				2885FADD19834110009E69C5 /* SettingSecondSectionTableViewCell.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		2891A04119829CC000538FC0 /* changePassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +697,7 @@
 		712FBFEA197CB6B600EA9F32 /* UICtrFile */ = {
 			isa = PBXGroup;
 			children = (
+				2885FAD519833F6B009E69C5 /* Setting */,
 				2891A04119829CC000538FC0 /* changePassword */,
 				285B02F319815D8100B4D225 /* Register */,
 				2882127D198016CA0087B65E /* DataSourceModel */,
@@ -1278,8 +1301,10 @@
 				7149002A197FB00500DEFD83 /* SBGradientOverlayLayer.m in Sources */,
 				712FC07E197D396100EA9F32 /* ExproAnnotation.m in Sources */,
 				71B0B74C197E40E300B06945 /* NotifyManager.m in Sources */,
+				2885FADE19834110009E69C5 /* SettingSecondSectionTableViewCell.m in Sources */,
 				71B0B75A197EAA2000B06945 /* PersonalCell.m in Sources */,
 				285B02F619815DDF00B4D225 /* RegisterFirstStepViewController.m in Sources */,
+				2885FAD819833F7E009E69C5 /* SettingMainViewController.m in Sources */,
 				717667DA1980F49600A635DA /* CDataScanner_Extensions.m in Sources */,
 				717667E31980F49600A635DA /* BNaviSoundManager.m in Sources */,
 				71B0B6FE197E3B4D00B06945 /* SDWebImageCompat.m in Sources */,
@@ -1288,6 +1313,7 @@
 				71B0B6FF197E3B4D00B06945 /* SDWebImageDecoder.m in Sources */,
 				71B0B704197E3B4D00B06945 /* SDWebImagePrefetcher.m in Sources */,
 				7149005A198007F900DEFD83 /* Hud.m in Sources */,
+				2885FADB19834104009E69C5 /* SettingFirstSectionTableViewCell.m in Sources */,
 				717667DE1980F49600A635DA /* CJSONDataSerializer.m in Sources */,
 				71B0B73A197E3F3E00B06945 /* AFHTTPRequestOperation.m in Sources */,
 				717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */,
