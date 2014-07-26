@@ -10,6 +10,7 @@
 #import "PersonalCell.h"
 #import "LoginViewController.h"
 #import "SettingMainViewController.h"
+#import "ConsumptionHistoryViewController.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -157,7 +158,8 @@
             break;
         case 1:
         {
-            
+            ConsumptionHistoryViewController *viewController = [[ConsumptionHistoryViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:YES];
         }
             break;
         case 2:

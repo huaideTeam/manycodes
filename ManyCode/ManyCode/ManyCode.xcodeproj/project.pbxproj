@@ -22,6 +22,8 @@
 		2885FADE19834110009E69C5 /* SettingSecondSectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885FADD19834110009E69C5 /* SettingSecondSectionTableViewCell.m */; };
 		2891A0401982843900538FC0 /* ModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A03F1982843900538FC0 /* ModelViewController.m */; };
 		2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */; };
+		28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */; };
+		28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
 		712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFBC197CB2F400EA9F32 /* InfoPlist.strings */; };
@@ -197,6 +199,10 @@
 		2891A03F1982843900538FC0 /* ModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelViewController.m; sourceTree = "<group>"; };
 		2891A04219829CEB00538FC0 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		28F00FDF198351CB00406294 /* ConsumptionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumptionHistoryViewController.h; sourceTree = "<group>"; };
+		28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumptionHistoryViewController.m; sourceTree = "<group>"; };
+		28F00FE21983547400406294 /* CosumptionHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CosumptionHistoryTableViewCell.h; sourceTree = "<group>"; };
+		28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CosumptionHistoryTableViewCell.m; sourceTree = "<group>"; };
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -564,6 +570,17 @@
 			path = changePassword;
 			sourceTree = "<group>";
 		};
+		28F00FDE1983518600406294 /* consumption history */ = {
+			isa = PBXGroup;
+			children = (
+				28F00FDF198351CB00406294 /* ConsumptionHistoryViewController.h */,
+				28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */,
+				28F00FE21983547400406294 /* CosumptionHistoryTableViewCell.h */,
+				28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */,
+			);
+			path = "consumption history";
+			sourceTree = "<group>";
+		};
 		712FBFA7197CB2F400EA9F32 = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +733,7 @@
 		712FBFEA197CB6B600EA9F32 /* UICtrFile */ = {
 			isa = PBXGroup;
 			children = (
+				28F00FDE1983518600406294 /* consumption history */,
 				2885FAD519833F6B009E69C5 /* Setting */,
 				2891A04119829CC000538FC0 /* changePassword */,
 				285B02F319815D8100B4D225 /* Register */,
@@ -1300,6 +1318,7 @@
 				2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */,
 				717667DD1980F49600A635DA /* NSScanner_Extensions.m in Sources */,
 				71490029197FB00500DEFD83 /* SBDoubleSidedLayer.m in Sources */,
+				28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */,
 				71490042197FC0AB00DEFD83 /* RotatedView.m in Sources */,
 				71B0B740197E3F3E00B06945 /* AFURLRequestSerialization.m in Sources */,
 				717667D61980F49600A635DA /* CFilteringJSONSerializer.m in Sources */,
@@ -1333,6 +1352,7 @@
 				285B02FE1981669B00B4D225 /* RegisterThirdStepViewController.m in Sources */,
 				71B0B73C197E3F3E00B06945 /* AFHTTPSessionManager.m in Sources */,
 				717667EF1981019A00A635DA /* MapFootView.m in Sources */,
+				28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */,
 				71B0B703197E3B4D00B06945 /* SDWebImageManager.m in Sources */,
 				712FBFF8197CBED700EA9F32 /* UINavigationItem+Items.m in Sources */,
 				71B0B70A197E3B4D00B06945 /* UIImageView+WebCache.m in Sources */,
