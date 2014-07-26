@@ -80,6 +80,7 @@
 		714C6DA019834C07007684CA /* 点击开闸未进入常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6D9F19834C07007684CA /* 点击开闸未进入常态.png */; };
 		714C6DA319834C10007684CA /* 点击开闸点击效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6DA119834C10007684CA /* 点击开闸点击效果.png */; };
 		714C6DA419834C10007684CA /* 点击开闸进入后.png in Resources */ = {isa = PBXBuildFile; fileRef = 714C6DA219834C10007684CA /* 点击开闸进入后.png */; };
+		714C6DA719834EEF007684CA /* PayMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714C6DA619834EEF007684CA /* PayMoneyViewController.m */; };
 		716300001982593C0013A776 /* tingchechangkuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7163FFFF1982593C0013A776 /* tingchechangkuang.png */; };
 		717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F3197FDB8E00A635DA /* LoginViewController.m */; };
 		717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F6197FE3FF00A635DA /* UnderLineLabel.m */; };
@@ -326,6 +327,8 @@
 		714C6D9F19834C07007684CA /* 点击开闸未进入常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击开闸未进入常态.png"; sourceTree = "<group>"; };
 		714C6DA119834C10007684CA /* 点击开闸点击效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击开闸点击效果.png"; sourceTree = "<group>"; };
 		714C6DA219834C10007684CA /* 点击开闸进入后.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击开闸进入后.png"; sourceTree = "<group>"; };
+		714C6DA519834EEF007684CA /* PayMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayMoneyViewController.h; sourceTree = "<group>"; };
+		714C6DA619834EEF007684CA /* PayMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayMoneyViewController.m; sourceTree = "<group>"; };
 		7163FFFF1982593C0013A776 /* tingchechangkuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tingchechangkuang.png; sourceTree = "<group>"; };
 		717666F2197FDB8E00A635DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		717666F3197FDB8E00A635DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -1133,6 +1136,8 @@
 		71B0B74D197E480A00B06945 /* PersonalCtr */ = {
 			isa = PBXGroup;
 			children = (
+				714C6DA519834EEF007684CA /* PayMoneyViewController.h */,
+				714C6DA619834EEF007684CA /* PayMoneyViewController.m */,
 				71B0B74E197E482300B06945 /* PersonalCenterViewController.h */,
 				71B0B74F197E482300B06945 /* PersonalCenterViewController.m */,
 				71B0B758197EAA2000B06945 /* PersonalCell.h */,
@@ -1307,6 +1312,7 @@
 				71B0B701197E3B4D00B06945 /* SDWebImageDownloaderOperation.m in Sources */,
 				714C6D9C1983459B007684CA /* PCHalfPieChart.m in Sources */,
 				714C6D9D1983459B007684CA /* PCLineChartView.m in Sources */,
+				714C6DA719834EEF007684CA /* PayMoneyViewController.m in Sources */,
 				71B0B702197E3B4D00B06945 /* SDWebImageManager+MJ.m in Sources */,
 				71B0B745197E3F3E00B06945 /* UIAlertView+AFNetworking.m in Sources */,
 				71B0B747197E3F3E00B06945 /* UIImageView+AFNetworking.m in Sources */,

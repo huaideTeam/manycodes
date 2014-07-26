@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "SettingMainViewController.h"
 #import "ConsumptionHistoryViewController.h"
+#import "PayMoneyViewController.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -89,10 +90,11 @@
         nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
         [headView addSubview:nameLabel];
         
-        UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 140, 150, 20)];
-        priceLabel.backgroundColor = [UIColor clearColor];
-        priceLabel.text = @"当前余额：34元";
-        [headView addSubview:priceLabel];
+        UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(130, 140, 150, 20)];
+        priceBtn.backgroundColor = [UIColor blueColor];
+        [priceBtn setTitle:@"当前余额：34元" forState:UIControlStateNormal];
+        [priceBtn addTarget:self action:@selector(chargeMoneyClick:) forControlEvents:UIControlEventTouchUpInside];
+        [headView addSubview:priceBtn];
         
         return headView;
     }else
@@ -190,5 +192,11 @@
     if ([[notify name] isEqualToString:@"loginNotification"]) {
         [mainTableView_ setTableHeaderView:[self creatHeadView:YES]];
     }
+}
+
+- (void)chargeMoneyClick:(UIButton *)button
+{
+    PayMoneyViewController *viewCtr = [[PayMoneyViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
 }
 @end

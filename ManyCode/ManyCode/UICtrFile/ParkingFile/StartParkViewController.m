@@ -127,7 +127,7 @@
     [mainScrollView_ addSubview:titleLable];
     
     
-    PCPieChart *pieChart = [[PCPieChart alloc] initWithFrame:CGRectMake(0, 250, 320, 150)];
+    PCPieChart *pieChart = [[PCPieChart alloc] initWithFrame:CGRectMake(0, 200, 320, 150)];
     [pieChart setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin];
     [pieChart setDiameter:150];
     [pieChart setSameColorLabel:NO];
@@ -154,7 +154,7 @@
     }
     [pieChart setComponents:components];
     
-    openDoorBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(15, 440, 290, 38)];
+    openDoorBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(15, 400, 290, 38)];
     [openDoorBtn_ addTarget:self action:@selector(openClick:) forControlEvents:UIControlEventTouchUpInside];
     [openDoorBtn_ setTitle:@"点击开闸" forState:UIControlStateNormal];
     [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
