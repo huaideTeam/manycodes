@@ -148,4 +148,11 @@
  *  @return int
  */
 + (int) isHasNetWork;
+
+/**
+ *  流量统计
+ *
+ *  @return string
+ */
++ (NSString *)getTotalBytes;
 @end

@@ -382,4 +382,60 @@
     NSLog(@"%d",[r currentReachabilityStatus]);
     return [r currentReachabilityStatus];
 }
+
+
+//流量统计
++ (NSString *)getTotalBytes
+{
+    struct ifaddrs *ifa_list = 0, *ifa;
+    if (getifaddrs(&ifa_list) == -1)
+    {
+        return 0;
+    }
+    
+    uint32_t iBytes = 0;
+    uint32_t oBytes = 0;
+    
+    for (ifa = ifa_list; ifa; ifa = ifa->ifa_next)
+    {
+        if (AF_LINK != ifa->ifa_addr->sa_family)
+            continue;
+        
+        if (!(ifa->ifa_flags & IFF_UP) && !(ifa->ifa_flags & IFF_RUNNING))
+            continue;
+        
+        if (ifa->ifa_data == 0)
+            continue;
+        
+        if (!strcmp(ifa->ifa_name, "pdp_ip0"))
+        {
+            struct if_data *if_data = (struct if_data *)ifa->ifa_data;
+            
+            iBytes += if_data->ifi_ibytes;
+            oBytes += if_data->ifi_obytes;
+            NSLog(@"%s :iBytes is %d, oBytes is %d",
+                  ifa->ifa_name, iBytes, oBytes);
+        }
+    }
+    freeifaddrs(ifa_list);
+    
+    int totalBytes = iBytes+oBytes;
+    
+    if(totalBytes < 1024)     // B
+    {
+        return [NSString stringWithFormat:@"%dB", totalBytes];
+    }
+    else if(totalBytes >= 1024 && totalBytes < 1024 * 1024) // KB
+    {
+        return [NSString stringWithFormat:@"%.1fKB", (double)totalBytes / 1024];
+    }
+    else if(totalBytes >= 1024 * 1024 && totalBytes < 1024 * 1024 * 1024)   // MB
+    {
+        return [NSString stringWithFormat:@"%.2fMB", (double)totalBytes / (1024 * 1024)];
+    }
+    else    // GB
+    {
+        return [NSString stringWithFormat:@"%.3fGB", (double)totalBytes / (1024 * 1024 * 1024)];
+    }
+}
 @end

@@ -9,6 +9,7 @@
 #import "SettingMainViewController.h"
 #import "SettingFirstSectionTableViewCell.h"
 #import "SettingSecondSectionTableViewCell.h"
+#import "Common.h"
 
 static NSString *identifierForFirstSectionCellSetting = @"identifierForFirstSectionCellSetting";
 static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSectionCellSetting";
@@ -90,7 +91,7 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
                 cell.menuDefaultLabel.hidden = YES;
             } else {
                 cell.menuDefaultLabel.hidden = NO;
-                cell.menuDefaultLabel.text = [NSString stringWithFormat:@"本月使用流量:%dB", 100];
+                cell.menuDefaultLabel.text = [NSString stringWithFormat:@"使用流量:%@", [Common getTotalBytes]];
             }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
