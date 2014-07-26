@@ -42,3 +42,19 @@
 @property (nonatomic, strong) NSString *images;
 
 @end
+
+//缴费记录
+@interface ConsumptionHistoryModel : DataSourceModel
+
+@property (nonatomic, strong) NSArray *banchglist;
+
+@end
+
+@interface ConsumptionHistoryItemModel : DataSourceModel
+
+@property (nonatomic, strong) NSString *chgtype;
+@property (nonatomic, strong) NSString *chgtime;
+@property (nonatomic, strong) NSString *money;
+@property (nonatomic, strong) NSString *remark;
+
+@end

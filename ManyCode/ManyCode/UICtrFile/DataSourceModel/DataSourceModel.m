@@ -44,3 +44,23 @@
 @implementation ParkingItemModel
 
 @end
+
+@implementation ConsumptionHistoryModel
+
+- (void)initializeTheDataSourceWithDictionary:(NSDictionary *)dictionary {
+    [super initializeTheDataSourceWithDictionary:dictionary];
+    NSArray *carparklist = [dictionary objectForKey:@"banchglist"];
+    NSMutableArray *banchglist = [NSMutableArray array];
+    for (NSDictionary *tempDic in carparklist) {
+        ConsumptionHistoryItemModel *item = [[ConsumptionHistoryItemModel alloc] init];
+        [item setValuesForKeysWithDictionary:tempDic];
+        [banchglist addObject:item];
+    }
+    self.banchglist = [NSArray arrayWithArray:banchglist];
+}
+
+@end
+
+@implementation ConsumptionHistoryItemModel
+
+@end
