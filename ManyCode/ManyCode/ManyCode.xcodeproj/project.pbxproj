@@ -24,6 +24,7 @@
 		2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */; };
 		28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */; };
 		28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */; };
+		28F00FE819837DCF00406294 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE719837DCF00406294 /* CalendarView.m */; };
 		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
 		712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFBC197CB2F400EA9F32 /* InfoPlist.strings */; };
@@ -208,6 +209,8 @@
 		28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumptionHistoryViewController.m; sourceTree = "<group>"; };
 		28F00FE21983547400406294 /* CosumptionHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CosumptionHistoryTableViewCell.h; sourceTree = "<group>"; };
 		28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CosumptionHistoryTableViewCell.m; sourceTree = "<group>"; };
+		28F00FE619837DCF00406294 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		28F00FE719837DCF00406294 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -596,6 +599,15 @@
 			path = "consumption history";
 			sourceTree = "<group>";
 		};
+		28F00FE519837DB800406294 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				28F00FE619837DCF00406294 /* CalendarView.h */,
+				28F00FE719837DCF00406294 /* CalendarView.m */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		712FBFA7197CB2F400EA9F32 = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +740,7 @@
 		712FBFE9197CB6B600EA9F32 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				28F00FE519837DB800406294 /* Calendar */,
 				714C6D951983459B007684CA /* iosPot */,
 				7176679D1980F29100A635DA /* baidunav */,
 				71490055198007F900DEFD83 /* MBProgressHUD */,
@@ -1369,6 +1382,7 @@
 				71B0B750197E482300B06945 /* PersonalCenterViewController.m in Sources */,
 				717667D71980F49600A635DA /* CJSONDeserializer_BlocksExtensions.m in Sources */,
 				71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */,
+				28F00FE819837DCF00406294 /* CalendarView.m in Sources */,
 				717666F4197FDB8E00A635DA /* LoginViewController.m in Sources */,
 				71B0B746197E3F3E00B06945 /* UIButton+AFNetworking.m in Sources */,
 				714C6D9E1983459B007684CA /* PCPieChart.m in Sources */,
