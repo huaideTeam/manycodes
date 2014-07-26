@@ -342,6 +342,7 @@
 - (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint
 {
 //    currentSelfPoint_ = currentPoint;
+    [[Hud defaultInstance] loading:self.view];
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];
@@ -349,6 +350,7 @@
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getNearCarparkList" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         NSLog(@"1233");
+        [[Hud defaultInstance] hide:self.view];
         NSArray *array = [resultDic objectForKey:@"carparklist"];
         [dataArray_ addObjectsFromArray:array];
         [mapView_ updateAnimationView:dataArray_];

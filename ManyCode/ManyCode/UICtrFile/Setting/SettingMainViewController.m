@@ -13,7 +13,7 @@
 static NSString *identifierForFirstSectionCellSetting = @"identifierForFirstSectionCellSetting";
 static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSectionCellSetting";
 
-@interface SettingMainViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface SettingMainViewController ()<UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate>
 
 @end
 
@@ -113,11 +113,14 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (1 == indexPath.section) {
         switch (indexPath.row) {
             case 0:
             {
-                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否清除缓存" delegate:self  cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+                alert.tag = 1000;
+                [alert show];
             }
                 break;
             case 1:
@@ -142,5 +145,17 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
     if (tempSwitch.tag == 1) {
         [[UIApplication sharedApplication] setIdleTimerDisabled:[[NSUserDefaults standardUserDefaults] boolForKey:kAllowIdleTimerInvalid]];
     }
+}
+
+#pragma mark - alert delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1000) {
+        if (!buttonIndex) {
+            [[Hud defaultInstance] showMessage:@"清除缓存成功"];
+        }
+    }
+    
 }
 @end

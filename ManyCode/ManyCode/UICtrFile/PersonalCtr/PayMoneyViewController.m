@@ -89,7 +89,14 @@
     mainTextField_.borderStyle = UITextBorderStyleRoundedRect;
     mainTextField_.placeholder = @"输入充值金额";
     mainTextField_.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    mainTextField_.returnKeyType = UIReturnKeyDone;
+    [mainTextField_ addTarget:self action:@selector(hideKed) forControlEvents:UIControlEventEditingDidEndOnExit];
     [mainView addSubview:mainTextField_];
+}
+
+- (void)hideKed
+{
+    [mainTextField_ resignFirstResponder];
 }
 
 #pragma mark - 支付

@@ -189,7 +189,11 @@
         }
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        if (error.code == 217) {
+            UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"你的账户余额不足" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"充值", nil];
+            alert.tag = 1000;
+            [alert show];
+        }
     }];
 
 }
