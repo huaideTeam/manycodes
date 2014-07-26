@@ -69,7 +69,6 @@
                 completeBlock(resultDic);
             }
             else{
-                [[Hud defaultInstance] hide:[UIApplication sharedApplication].keyWindow];
                 //业务逻辑错误
                 [[NotifyManager instanceManager] showAlertWithStatusCode:logicCode withAlertView:YES];
                 NSError *error = [NSError errorWithDomain:@"服务器业务逻辑错误" code:logicCode.intValue userInfo:nil];
