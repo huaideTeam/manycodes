@@ -38,6 +38,7 @@ typedef void (^HttpResponseErrBlock) (AFHTTPRequestOperation *operation,NSError 
 @property (nonatomic, assign) NotifyManager *notiCenter;
 @property (nonatomic, assign) CLLocationCoordinate2D currentPoint;
 @property (nonatomic, assign) BOOL isLogin;
+@property (nonatomic, strong) NSArray *devroadArray;
 
 
 + (instancetype)instanceManager;

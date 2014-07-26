@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIImageView+WebCache.h"
+#import "LoginViewController.h"
 
 @interface ParkDetailViewController ()
 {
@@ -249,8 +250,29 @@
 
 - (void)startParking:(UIButton *)button
 {
-    StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
-    [self.navigationController pushViewController:viewCtr animated:YES];
-
+    if ([NetworkCenter instanceManager].isLogin) {
+        NSArray *array = [NetworkCenter instanceManager].devroadArray;
+        if (array.count>0) {
+            NSDictionary *dic = [array objectAtIndex:0];
+            NSString *msg = [NSString stringWithFormat:@"当前所在停车场：%@",dic[@"carparkname"]];
+            if ([dic[@"devroadstatus"] isEqualToString:_parkInfoDic[@"devroadstatus"]]) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }else
+            {
+                StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+                [self.navigationController pushViewController:viewCtr animated:YES];
+            }
+        }else
+        {
+            StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+            viewCtr.isComeIn = YES;
+            [self.navigationController pushViewController:viewCtr animated:YES];
+        }
+    }else
+    {
+        LoginViewController *viewCtr = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:viewCtr animated:YES];
+    }
 }
 @end

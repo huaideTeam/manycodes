@@ -52,12 +52,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UICtrFile/ParkingFile/StartParkViewController.m"
-            timestampString = "428048220.000209"
+            timestampString = "428052161.198593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-loadParkInfo"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "-loadCalculateChargeInfo"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UICtrFile/PersonalCtr/LoginViewController.m"
+            timestampString = "428052234.022592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-loginClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

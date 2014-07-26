@@ -10,4 +10,6 @@
 
 @interface StartParkViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isComeIn;
+
 @end

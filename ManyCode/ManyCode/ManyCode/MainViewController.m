@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "ParkDetailViewController.h"
 #import "StartParkViewController.h"
+#import "LoginViewController.h"
 
 @interface MainViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,HomeEventDelegate>
 {
@@ -378,8 +379,32 @@
     if (dataArray_.count == 0) {
         return;
     }
-    StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
-    [self.navigationController pushViewController:viewCtr animated:YES];
+     NSDictionary *currentDic = [dataArray_ objectAtIndex:index];
+    
+    if ([NetworkCenter instanceManager].isLogin) {
+        NSArray *array = [NetworkCenter instanceManager].devroadArray;
+        if (array.count >0) {
+            NSDictionary *dic = [array objectAtIndex:0];
+            NSString *msg = [NSString stringWithFormat:@"当前所在停车场：%@",dic[@"carparkname"]];
+            if ([dic[@"devroadstatus"] isEqualToString:currentDic[@"devroadstatus"]]) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }else
+            {
+                StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+                [self.navigationController pushViewController:viewCtr animated:YES];
+            }
+        }else
+        {
+            StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+            viewCtr.isComeIn = YES;
+            [self.navigationController pushViewController:viewCtr animated:YES];
+        }
+    }else
+    {
+        LoginViewController *viewCtr = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:viewCtr animated:YES];
+    }
 }
 
 //进入停车场详情界面

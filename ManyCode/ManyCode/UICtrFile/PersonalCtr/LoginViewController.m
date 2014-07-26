@@ -224,6 +224,7 @@
             [self saveLoginInfo:resultDic];
             [[Hud defaultInstance] showMessage:@"登陆成功" withHud:YES];
             [[NetworkCenter instanceManager] setIsLogin:YES];
+            [[NetworkCenter instanceManager] setDevroadArray:resultDic[@"devroadstatus"]];
             
             [self.navigationController popViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"loginNotification" object:nil];

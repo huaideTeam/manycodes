@@ -10,10 +10,11 @@
 #import "SBTickerView.h"
 #import "SBTickView.h"
 #import "PCPieChart.h"
+#import "PayMoneyViewController.h"
 
 #define PIE_HEIGHT 200
 
-@interface StartParkViewController ()
+@interface StartParkViewController ()<UIAlertViewDelegate>
 {
     NSInteger hourNumber1_;
     NSInteger hourNumber2_;
@@ -159,13 +160,41 @@
     [openDoorBtn_ setTitle:@"点击开闸" forState:UIControlStateNormal];
     [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
     [mainScrollView_ addSubview:openDoorBtn_];
-    [self loadParkInfo];
+    if (self.isComeIn) {
+        [self getUserBalanceInfo];
+    }else
+    {
+        [self loadCalculateChargeInfo];
+    }
     
 }
 
 #pragma mark - 下载数据 
+- (void)getUserBalanceInfo
+{
+    [[Hud defaultInstance] loading:self.view];
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserBalance" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [[Hud defaultInstance] hide:self.view];
+        if ([[resultDic objectForKey:@"balance"] floatValue]>0) {
+            
+        }else
+        {
+            UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"你的账户余额不足" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"充值", nil];
+            alert.tag = 1000;
+            [alert show];
+        }
+        
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 
-- (void)loadParkInfo
+}
+
+- (void)loadCalculateChargeInfo
 {
     [[Hud defaultInstance] loading:self.view];
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
@@ -174,6 +203,7 @@
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCalculateCharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         [[Hud defaultInstance] hide:self.view];
+        
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -200,27 +230,49 @@
     NSInteger hourNum = (minuteNum - minuteNum%60)/60;
     if ((hourNum%10)!=hourNumber2_) { //小时个位数
         hourNumber2_ = (hourNum%10);
-        [_clockTickerViewHour2 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%d",hourNumber2_]  fontSize:45.]];
+        [_clockTickerViewHour2 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%ld",(long)hourNumber2_]  fontSize:45.]];
         [_clockTickerViewHour2 tick:SBTickerViewTickDirectionDown animated:YES completion:nil];
     }
     
     if (((minuteNum - minuteNum%10)/10)!=hourNumber3_) {
         hourNumber3_ = ((minuteNum - minuteNum%10)/10);
-        [_clockTickerViewMinute1 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%d",hourNumber3_]  fontSize:45.]];
+        [_clockTickerViewMinute1 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%ld",(long)hourNumber3_]  fontSize:45.]];
         [_clockTickerViewMinute1 tick:SBTickerViewTickDirectionDown animated:YES completion:nil];
     }
     
     if ((minuteNum%10)!=hourNumber4_) { //小时个位数
         hourNumber4_ = (minuteNum%10);
-        [_clockTickerViewMinute2 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%d",hourNumber4_]  fontSize:45.]];
+        [_clockTickerViewMinute2 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%ld",(long)hourNumber4_]  fontSize:45.]];
         [_clockTickerViewMinute2 tick:SBTickerViewTickDirectionDown animated:YES completion:nil];
     }
     
     if (((hourNum - hourNum%10)/10)!=hourNumber1_) {
         hourNumber1_ = ((hourNum - hourNum%10)/10);
-        [_clockTickerViewHour1 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%d",hourNumber1_]  fontSize:45.]];
+        [_clockTickerViewHour1 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%ld",(long)hourNumber1_]  fontSize:45.]];
         [_clockTickerViewHour1 tick:SBTickerViewTickDirectionDown animated:YES completion:nil];
     }
 
+}
+
+#pragma mark - alert Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            
+            break;
+        }
+        case 1:
+        {
+            PayMoneyViewController *viewCtr= [[PayMoneyViewController alloc] init];
+            [self.navigationController pushViewController:viewCtr animated:YES];
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 @end
