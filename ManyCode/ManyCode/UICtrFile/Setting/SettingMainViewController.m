@@ -139,5 +139,8 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
 - (void)switchClickedMethod:(UISwitch *)tempSwitch {
     NSArray *keys = @[kAllowUsingLocation, kAllowIdleTimerInvalid, kAllowOpenAutomatic];
     [[NSUserDefaults standardUserDefaults] setBool:tempSwitch.on forKey:keys[tempSwitch.tag]];
+    if (tempSwitch.tag == 1) {
+        [[UIApplication sharedApplication] setIdleTimerDisabled:[[NSUserDefaults standardUserDefaults] boolForKey:kAllowIdleTimerInvalid]];
+    }
 }
 @end
