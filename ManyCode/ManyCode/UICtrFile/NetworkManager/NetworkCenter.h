@@ -37,6 +37,7 @@ typedef void (^HttpResponseErrBlock) (AFHTTPRequestOperation *operation,NSError 
 @property (nonatomic, assign) ExproHttpClient *httpClient;
 @property (nonatomic, assign) NotifyManager *notiCenter;
 @property (nonatomic, assign) CLLocationCoordinate2D currentPoint;
+@property (nonatomic, assign) BOOL isLogin;
 
 
 + (instancetype)instanceManager;

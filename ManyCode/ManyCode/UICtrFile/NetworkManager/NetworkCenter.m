@@ -69,6 +69,7 @@
                 completeBlock(resultDic);
             }
             else{
+                [[Hud defaultInstance] hide:[UIApplication sharedApplication].keyWindow];
                 //业务逻辑错误
                 [[NotifyManager instanceManager] showAlertWithStatusCode:logicCode withAlertView:YES];
                 NSError *error = [NSError errorWithDomain:@"服务器业务逻辑错误" code:logicCode.intValue userInfo:nil];
@@ -76,6 +77,7 @@
             }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [[Hud defaultInstance] hide:[UIApplication sharedApplication].keyWindow];
         if (![self isExistenceNetwork]) {
             NSError *error = [NSError errorWithDomain:@"网络不可用" code:404 userInfo:nil];
             errorBlock(operation,error);

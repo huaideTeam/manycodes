@@ -223,6 +223,8 @@
         [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"checkLogin" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
             [self saveLoginInfo:resultDic];
             [[Hud defaultInstance] showMessage:@"登陆成功" withHud:YES];
+            [[NetworkCenter instanceManager] setIsLogin:YES];
+            
             [self.navigationController popViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"loginNotification" object:nil];
             

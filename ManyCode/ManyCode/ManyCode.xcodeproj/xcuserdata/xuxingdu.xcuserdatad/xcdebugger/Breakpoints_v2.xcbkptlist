@@ -32,16 +32,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UICtrFile/HomeCtr/HomeMapView.m"
-            timestampString = "427970417.628787"
+            filePath = "UICtrFile/PersonalCtr/MyPurseViewController.m"
+            timestampString = "428046993.15857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "-didUpdateUserLocation:"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-loadUserInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

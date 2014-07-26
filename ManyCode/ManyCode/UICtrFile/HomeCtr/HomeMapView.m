@@ -80,9 +80,9 @@
  */
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
-    if (userLocation.location) {
-         [[NetworkCenter instanceManager] setCurrentPoint:userLocation.location.coordinate];
-    }
+//    if (userLocation.location) {
+//         [[NetworkCenter instanceManager] setCurrentPoint:userLocation.location.coordinate];
+//    }
     [mymapkit_ updateLocationData:userLocation];
 
 }
@@ -102,11 +102,10 @@
             theSpan.longitudeDelta=0.01;
             BMKCoordinateRegion theRegion;
             
-            theRegion.center= location_.location.coordinate;
+            theRegion.center= userLocation.location.coordinate;
             theRegion.span = theSpan;
             
             [self.delegate LoadCurrentInfo:location_.location.coordinate];
-            
             [mymapkit_ setRegion:theRegion];
         }else
         {
@@ -116,7 +115,6 @@
             // 计算距离
             CLLocationDistance meters=[current distanceFromLocation:before];
             if (meters>500) {
-                location_ = userLocation;
                 [self.delegate LoadCurrentInfo:location_.location.coordinate];
             }
         }
@@ -124,7 +122,7 @@
             location_ = userLocation;
         [[NetworkCenter instanceManager] setCurrentPoint:location_.location.coordinate];
     }
-    [mymapkit_ updateLocationData:userLocation];
+//    [mymapkit_ updateLocationData:userLocation];
 }
 
 /**

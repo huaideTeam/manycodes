@@ -12,6 +12,8 @@
 #import "SettingMainViewController.h"
 #import "ConsumptionHistoryViewController.h"
 #import "PayMoneyViewController.h"
+#import "Common.h"
+#import "MyPurseViewController.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -59,7 +61,7 @@
     }
     self.view.backgroundColor = [UIColor whiteColor];
     nameArray_ = @[@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新"];
-    mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight- kTopImageHeight)];
+    mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight- kTopImageHeight- kStatueHeight)];
     mainTableView_.delegate = self;
     mainTableView_.dataSource = self;
     mainTableView_.backgroundColor = [UIColor clearColor];
@@ -151,11 +153,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新"
     switch (indexPath.row) {
         case 0:     //
         {
-            
+            if ([NetworkCenter instanceManager].isLogin) {
+                MyPurseViewController *viewCtr = [[MyPurseViewController alloc] init];
+                [self.navigationController pushViewController:viewCtr animated:YES];
+            }else
+            {
+                [[Hud defaultInstance] showMessage:@"请登录"];
+            }
         }
             break;
         case 1:
@@ -177,7 +186,7 @@
             break;
         case 4:
         {
-            
+            [Common checkUpdateVersion:YES];
         }
             break;
             
