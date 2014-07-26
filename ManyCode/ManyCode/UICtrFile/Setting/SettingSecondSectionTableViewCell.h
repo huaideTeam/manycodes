@@ -10,4 +10,8 @@
 
 @interface SettingSecondSectionTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *menuTitleLabel;
+
+@property (nonatomic, strong) UILabel *menuDefaultLabel;
+
 @end

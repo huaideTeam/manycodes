@@ -32,7 +32,8 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
 {
     [super viewDidLoad];
     self.title = @"设置";
-    UITableView *settingListTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    UITableView *settingListTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    settingListTableView.contentInset = UIEdgeInsetsMake(-35.f, 0, 0, 0);
     settingListTableView.dataSource = self;
     settingListTableView.delegate = self;
     [settingListTableView registerClass:[SettingFirstSectionTableViewCell class] forCellReuseIdentifier:identifierForFirstSectionCellSetting];
@@ -69,12 +70,29 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
         case 0:
         {
             SettingFirstSectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierForFirstSectionCellSetting forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            NSArray *titles = @[@"开启地图自动定位", @"保持屏幕常亮", @"到达感应范围内自动弹出"];
+            NSArray *keys = @[kAllowUsingLocation, kAllowIdleTimerInvalid, kAllowOpenAutomatic];
+            cell.menuTitleLabel.text = titles[indexPath.row];
+            cell.menuSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:keys[indexPath.row]];
+            cell.menuSwitch.tag = indexPath.row;
+            [cell.menuSwitch addTarget:self action:@selector(switchClickedMethod:) forControlEvents:UIControlEventValueChanged];
+            cell.accessoryType = UITableViewCellAccessoryNone;
             return cell;
         }
             break;
         case 1 :
         {
             SettingSecondSectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierForSecondSectionCellSetting forIndexPath:indexPath];
+            NSArray *titles = @[@"清理缓存", @"流量统计", @"精品推荐"];
+            cell.menuTitleLabel.text = titles[indexPath.row];
+            if (indexPath.row != 0) {
+                cell.menuDefaultLabel.hidden = YES;
+            } else {
+                cell.menuDefaultLabel.hidden = NO;
+                cell.menuDefaultLabel.text = [NSString stringWithFormat:@"本月使用流量:%dB", 100];
+            }
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         }
             break;
@@ -84,5 +102,42 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
         }
             break;
     }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 46.f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (1 == indexPath.section) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                
+            }
+                break;
+            case 1:
+            {
+                
+            }
+                break;
+            case 2:
+            {
+                
+            }
+                break;
+            default:
+                break;
+        }
+    }
+}
+#pragma mark - UISwitchClickedMethod
+- (void)switchClickedMethod:(UISwitch *)tempSwitch {
+    NSArray *keys = @[kAllowUsingLocation, kAllowIdleTimerInvalid, kAllowOpenAutomatic];
+    [[NSUserDefaults standardUserDefaults] setBool:tempSwitch.on forKey:keys[tempSwitch.tag]];
 }
 @end

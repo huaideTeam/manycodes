@@ -14,7 +14,14 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        _menuTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 0.f, 120.f, 44.f)];
+        [_menuTitleLabel setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:_menuTitleLabel];
+        
+        _menuDefaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(130.f, 0.f, 150.f, 44.f)];
+        _menuDefaultLabel.textColor = [UIColor lightGrayColor];
+        [_menuDefaultLabel setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:_menuDefaultLabel];
     }
     return self;
 }

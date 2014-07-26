@@ -14,7 +14,13 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        _menuTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 0.f, 200.f, 44.f)];
+        [_menuTitleLabel setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:_menuTitleLabel];
+        
+        _menuSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(250.f, 7.f, 50.f, 10.f)];
+        [_menuSwitch setOnTintColor:[UIColor orangeColor]];
+        [self.contentView addSubview:_menuSwitch];
     }
     return self;
 }

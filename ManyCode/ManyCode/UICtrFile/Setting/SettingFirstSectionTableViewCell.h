@@ -10,4 +10,8 @@
 
 @interface SettingFirstSectionTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *menuTitleLabel;          //标题名称
+
+@property (nonatomic, strong) UISwitch *menuSwitch;    //标识位
+
 @end
