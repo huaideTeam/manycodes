@@ -16,6 +16,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+    BOOL idleTimerInvalid = [[[NSUserDefaults standardUserDefaults] objectForKey:kAllowIdleTimerInvalid] boolValue];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:idleTimerInvalid];
     _mapManager = [[BMKMapManager alloc] init];
     BOOL ret = [_mapManager start:@"eS2DDfOx9pHjosb4bBmGMLK0" generalDelegate:nil];
     if (!ret) {
