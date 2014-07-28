@@ -90,7 +90,7 @@
     
     //返回按钮
     leftBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn_.frame = CGRectMake(0, 0.f, 50, 30.f);
+    leftBtn_.frame = CGRectMake(0, 0.f, 50, 28.f);
     [leftBtn_ setBackgroundColor:[UIColor clearColor]];
     [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];

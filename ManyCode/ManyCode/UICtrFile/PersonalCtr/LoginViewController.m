@@ -62,7 +62,7 @@
     
     //返回按钮
     UIButton *backHome = [UIButton buttonWithType:UIButtonTypeCustom];
-     backHome.frame = CGRectMake(0, 0.f, 50, 30.f);
+     backHome.frame = CGRectMake(0, 0.f, 50, 28.f);
     [backHome setBackgroundColor:[UIColor clearColor]];
     [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
@@ -76,10 +76,12 @@
     
     //注册按钮
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(0, 0.f, 24, 25.f);
+    leftButton.frame = CGRectMake(0, 0.f, 41, 28.f);
     [leftButton setBackgroundColor:[UIColor clearColor]];
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮常态.png"] forState:UIControlStateNormal];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮效果.png"] forState:UIControlStateHighlighted];
+    [leftButton setTitle:@"注册" forState:UIControlStateNormal];
+    leftButton.titleLabel.font = FONT(12);
 	[leftButton addTarget:self action:@selector(registClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:leftButton]];
@@ -160,7 +162,7 @@
     [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮效果.png"] forState:UIControlStateNormal];
     [accountView addSubview:loginButton];
     
-   UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(30, 220, 80, 30)];
+   UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(30, 190, 80, 30)];
    passwordLable.shouldUnderline = YES;
     passwordLable.backgroundColor = [UIColor clearColor];
     passwordLable.textColor = [UIColor darkGrayColor];
@@ -168,7 +170,7 @@
    [passwordLable addTarget:self action:@selector(forgotPasswdClick:)];
     [accountView addSubview:passwordLable];
     
-    UnderLineLabel *changePasswordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(200, 220, 80, 30)];
+    UnderLineLabel *changePasswordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
     changePasswordLable.shouldUnderline = YES;
     changePasswordLable.text = @"修改密码";
     changePasswordLable.textColor = [UIColor darkGrayColor];

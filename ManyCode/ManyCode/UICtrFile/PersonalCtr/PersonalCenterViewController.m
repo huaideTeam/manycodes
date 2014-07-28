@@ -66,7 +66,7 @@
     
     //返回按钮
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 50, 30.f);
+    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
     [btnHome setBackgroundColor:[UIColor clearColor]];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
