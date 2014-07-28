@@ -22,6 +22,9 @@
 		2885FADE19834110009E69C5 /* SettingSecondSectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885FADD19834110009E69C5 /* SettingSecondSectionTableViewCell.m */; };
 		2891A0401982843900538FC0 /* ModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A03F1982843900538FC0 /* ModelViewController.m */; };
 		2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */; };
+		28BAF1CE198681B700FF8368 /* libUPOMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BAF1CB198681B700FF8368 /* libUPOMP.a */; };
+		28BAF1CF198681B700FF8368 /* libUPOMP_S.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BAF1CC198681B700FF8368 /* libUPOMP_S.a */; };
+		28BAF1D0198681B700FF8368 /* UPOMPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1CD198681B700FF8368 /* UPOMPImage.bundle */; };
 		28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */; };
 		28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */; };
 		28F00FE819837DCF00406294 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE719837DCF00406294 /* CalendarView.m */; };
@@ -208,6 +211,9 @@
 		2891A03F1982843900538FC0 /* ModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelViewController.m; sourceTree = "<group>"; };
 		2891A04219829CEB00538FC0 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		28BAF1CB198681B700FF8368 /* libUPOMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP.a; sourceTree = "<group>"; };
+		28BAF1CC198681B700FF8368 /* libUPOMP_S.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP_S.a; sourceTree = "<group>"; };
+		28BAF1CD198681B700FF8368 /* UPOMPImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UPOMPImage.bundle; sourceTree = "<group>"; };
 		28F00FDF198351CB00406294 /* ConsumptionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumptionHistoryViewController.h; sourceTree = "<group>"; };
 		28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumptionHistoryViewController.m; sourceTree = "<group>"; };
 		28F00FE21983547400406294 /* CosumptionHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CosumptionHistoryTableViewCell.h; sourceTree = "<group>"; };
@@ -545,6 +551,8 @@
 				712FC082197D3A8A00EA9F32 /* CoreLocation.framework in Frameworks */,
 				285B02EC19814FC800B4D225 /* libBaiduMobStatForSDK.a in Frameworks */,
 				717667511980EC9000A635DA /* CoreMotion.framework in Frameworks */,
+				28BAF1CF198681B700FF8368 /* libUPOMP_S.a in Frameworks */,
+				28BAF1CE198681B700FF8368 /* libUPOMP.a in Frameworks */,
 				7176674F1980EC8700A635DA /* CoreTelephony.framework in Frameworks */,
 				7176674D1980EC7F00A635DA /* MediaPlayer.framework in Frameworks */,
 				714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */,
@@ -613,9 +621,12 @@
 			path = changePassword;
 			sourceTree = "<group>";
 		};
-		28CE064419867AA3007F1F74 /* lib */ = {
+		28BAF1CA198681B700FF8368 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				28BAF1CB198681B700FF8368 /* libUPOMP.a */,
+				28BAF1CC198681B700FF8368 /* libUPOMP_S.a */,
+				28BAF1CD198681B700FF8368 /* UPOMPImage.bundle */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -643,9 +654,8 @@
 		71282AE11986433E00A3FE09 /* upomp_bypay */ = {
 			isa = PBXGroup;
 			children = (
-				28CE064419867AA3007F1F74 /* lib */,
+				28BAF1CA198681B700FF8368 /* lib */,
 				71282AE21986433E00A3FE09 /* heads */,
-				71282AF91986433E00A3FE09 /* lib */,
 			);
 			path = upomp_bypay;
 			sourceTree = "<group>";
@@ -677,13 +687,6 @@
 				71282AF81986433E00A3FE09 /* UPOMPView.h */,
 			);
 			path = heads;
-			sourceTree = "<group>";
-		};
-		71282AF91986433E00A3FE09 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = lib;
 			sourceTree = "<group>";
 		};
 		712FBFA7197CB2F400EA9F32 = {
@@ -1404,6 +1407,7 @@
 				714C6D4B19828E4A007684CA /* 6.png in Resources */,
 				716300001982593C0013A776 /* tingchechangkuang.png in Resources */,
 				717667F71981238F00A635DA /* listButton.png in Resources */,
+				28BAF1D0198681B700FF8368 /* UPOMPImage.bundle in Resources */,
 				71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */,
 				285B02F11981589700B4D225 /* list_navigation@2x.png in Resources */,
 				7149004B197FCC6000DEFD83 /* select.png in Resources */,
@@ -1663,6 +1667,7 @@
 					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
 					"$(PROJECT_DIR)/ThirdPart/upomp_bypay/lib",
+					/Users/ailk/Downloads,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1688,6 +1693,7 @@
 					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
 					"$(PROJECT_DIR)/ThirdPart/upomp_bypay/lib",
+					/Users/ailk/Downloads,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
