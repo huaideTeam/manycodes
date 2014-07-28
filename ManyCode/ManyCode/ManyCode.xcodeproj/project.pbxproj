@@ -27,9 +27,6 @@
 		28F00FE819837DCF00406294 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE719837DCF00406294 /* CalendarView.m */; };
 		71282ADF19862A1800A3FE09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		71282AE019862A1E00A3FE09 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667481980EBFF00A635DA /* CFNetwork.framework */; };
-		71282AFD1986433E00A3FE09 /* libUPOMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71282AFA1986433E00A3FE09 /* libUPOMP.a */; };
-		71282AFE1986433E00A3FE09 /* libUPOMP_S.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71282AFB1986433E00A3FE09 /* libUPOMP_S.a */; };
-		71282AFF1986433E00A3FE09 /* UPOMPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */; };
 		71282B0319864CF300A3FE09 /* 单条列表背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 71282B0019864CF300A3FE09 /* 单条列表背景.png */; };
 		71282B0419864CF300A3FE09 /* 返回按钮常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 71282B0119864CF300A3FE09 /* 返回按钮常态.png */; };
 		71282B0519864CF300A3FE09 /* 返回按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 71282B0219864CF300A3FE09 /* 返回按钮效果.png */; };
@@ -239,9 +236,6 @@
 		71282AF61986433E00A3FE09 /* UPOMPUserInfoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPUserInfoData.h; sourceTree = "<group>"; };
 		71282AF71986433E00A3FE09 /* UPOMPValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPValue.h; sourceTree = "<group>"; };
 		71282AF81986433E00A3FE09 /* UPOMPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPView.h; sourceTree = "<group>"; };
-		71282AFA1986433E00A3FE09 /* libUPOMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP.a; sourceTree = "<group>"; };
-		71282AFB1986433E00A3FE09 /* libUPOMP_S.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP_S.a; sourceTree = "<group>"; };
-		71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UPOMPImage.bundle; sourceTree = "<group>"; };
 		71282B0019864CF300A3FE09 /* 单条列表背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单条列表背景.png"; sourceTree = "<group>"; };
 		71282B0119864CF300A3FE09 /* 返回按钮常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回按钮常态.png"; sourceTree = "<group>"; };
 		71282B0219864CF300A3FE09 /* 返回按钮效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回按钮效果.png"; sourceTree = "<group>"; };
@@ -553,8 +547,6 @@
 				717667511980EC9000A635DA /* CoreMotion.framework in Frameworks */,
 				7176674F1980EC8700A635DA /* CoreTelephony.framework in Frameworks */,
 				7176674D1980EC7F00A635DA /* MediaPlayer.framework in Frameworks */,
-				71282AFE1986433E00A3FE09 /* libUPOMP_S.a in Frameworks */,
-				71282AFD1986433E00A3FE09 /* libUPOMP.a in Frameworks */,
 				714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */,
 				717667451980C8C000A635DA /* MobileCoreServices.framework in Frameworks */,
 				712FC08A197D3B5300EA9F32 /* MessageUI.framework in Frameworks */,
@@ -621,6 +613,13 @@
 			path = changePassword;
 			sourceTree = "<group>";
 		};
+		28CE064419867AA3007F1F74 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		28F00FDE1983518600406294 /* consumption history */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +643,7 @@
 		71282AE11986433E00A3FE09 /* upomp_bypay */ = {
 			isa = PBXGroup;
 			children = (
+				28CE064419867AA3007F1F74 /* lib */,
 				71282AE21986433E00A3FE09 /* heads */,
 				71282AF91986433E00A3FE09 /* lib */,
 			);
@@ -682,9 +682,6 @@
 		71282AF91986433E00A3FE09 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				71282AFA1986433E00A3FE09 /* libUPOMP.a */,
-				71282AFB1986433E00A3FE09 /* libUPOMP_S.a */,
-				71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -1372,7 +1369,6 @@
 			files = (
 				714C6DA419834C10007684CA /* 点击开闸进入后.png in Resources */,
 				714C6D4E19828E4A007684CA /* 9.png in Resources */,
-				71282AFF1986433E00A3FE09 /* UPOMPImage.bundle in Resources */,
 				714C6D4A19828E4A007684CA /* 5.png in Resources */,
 				714C6DA319834C10007684CA /* 点击开闸点击效果.png in Resources */,
 				714C6DA019834C07007684CA /* 点击开闸未进入常态.png in Resources */,
@@ -1667,7 +1663,6 @@
 					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
 					"$(PROJECT_DIR)/ThirdPart/upomp_bypay/lib",
-					/Users/xuxingdu/Desktop/manyCodes111/ThirdPart/upomp_bypay/lib,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1693,7 +1688,6 @@
 					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
 					"$(PROJECT_DIR)/ThirdPart/upomp_bypay/lib",
-					/Users/xuxingdu/Desktop/manyCodes111/ThirdPart/upomp_bypay/lib,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
