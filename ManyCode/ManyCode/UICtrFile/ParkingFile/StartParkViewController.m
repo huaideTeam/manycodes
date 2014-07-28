@@ -11,6 +11,8 @@
 #import "SBTickView.h"
 #import "PCPieChart.h"
 #import "PayMoneyViewController.h"
+#import "Common.h"
+
 
 #define PIE_HEIGHT 200
 
@@ -293,6 +295,9 @@
 // 获取停车场的wifi列表
 - (void)wifiInfo
 {
+    NSDictionary *wifiDic = [Common fetchSSIDInfo];
+    NSLog(@"+++%@++",wifiDic);
+    
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
@@ -396,4 +401,7 @@
             break;
     }
 }
+
+
+
 @end

@@ -14,6 +14,7 @@
 #include <net/if.h>
 #include <net/if_dl.h>
 #import "Reachability.h"
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 @implementation Common
 
@@ -437,5 +438,22 @@
     {
         return [NSString stringWithFormat:@"%.3fGB", (double)totalBytes / (1024 * 1024 * 1024)];
     }
+}
+
+/**
+ *  获取本地的wifi列表
+ *
+ *  @return nsdic
+ */
++ (NSDictionary *)fetchSSIDInfo {
+    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+    NSLog(@"Supported interfaces: %@", ifs);
+    id info = nil;
+    for (NSString *ifnam in ifs) {
+        info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
+        NSLog(@"%@ => %@", ifnam, info);
+        if (info && [info count]) { break; }
+    }
+    return info;
 }
 @end

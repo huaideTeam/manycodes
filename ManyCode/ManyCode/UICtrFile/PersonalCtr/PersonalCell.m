@@ -32,7 +32,7 @@
         
          //我是傻逼测试
         
-        _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(230, 20, 100, 20)];
+        _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(230, 15, 100, 20)];
         _contentLabel.backgroundColor = [UIColor clearColor];
         _contentLabel.font = FONT(12);
         [self.contentView addSubview:_contentLabel];

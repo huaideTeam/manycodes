@@ -155,4 +155,12 @@
  *  @return string
  */
 + (NSString *)getTotalBytes;
+
+/**
+ *  获取本地的wifi列表
+ *
+ *  @return nsdic
+ */
++ (NSDictionary *)fetchSSIDInfo;
+
 @end

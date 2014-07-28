@@ -61,6 +61,7 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     self.view.backgroundColor = [UIColor whiteColor];
+
     
     //返回按钮
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -69,6 +70,8 @@
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
+    btnHome.titleLabel.font = FONT(12);
     if (IOS7) {
         [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
     }
