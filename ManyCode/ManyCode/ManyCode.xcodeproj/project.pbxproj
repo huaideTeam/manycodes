@@ -25,7 +25,11 @@
 		28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */; };
 		28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */; };
 		28F00FE819837DCF00406294 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE719837DCF00406294 /* CalendarView.m */; };
-		712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
+		71282ADF19862A1800A3FE09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
+		71282AE019862A1E00A3FE09 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667481980EBFF00A635DA /* CFNetwork.framework */; };
+		71282AFD1986433E00A3FE09 /* libUPOMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71282AFA1986433E00A3FE09 /* libUPOMP.a */; };
+		71282AFE1986433E00A3FE09 /* libUPOMP_S.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71282AFB1986433E00A3FE09 /* libUPOMP_S.a */; };
+		71282AFF1986433E00A3FE09 /* UPOMPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
 		712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFBC197CB2F400EA9F32 /* InfoPlist.strings */; };
 		712FBFC0197CB2F400EA9F32 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFBF197CB2F400EA9F32 /* main.mm */; };
@@ -90,7 +94,6 @@
 		717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F6197FE3FF00A635DA /* UnderLineLabel.m */; };
 		717666FA197FECFD00A635DA /* HomeListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 717666F9197FECFD00A635DA /* HomeListView.m */; };
 		717667451980C8C000A635DA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667441980C8C000A635DA /* MobileCoreServices.framework */; };
-		717667491980EBFF00A635DA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717667481980EBFF00A635DA /* CFNetwork.framework */; };
 		7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176674A1980EC7500A635DA /* AudioToolbox.framework */; };
 		7176674D1980EC7F00A635DA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176674C1980EC7F00A635DA /* MediaPlayer.framework */; };
 		7176674F1980EC8700A635DA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176674E1980EC8700A635DA /* CoreTelephony.framework */; };
@@ -210,6 +213,31 @@
 		28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CosumptionHistoryTableViewCell.m; sourceTree = "<group>"; };
 		28F00FE619837DCF00406294 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
 		28F00FE719837DCF00406294 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		71282AE31986433E00A3FE09 /* UPOMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP.h; sourceTree = "<group>"; };
+		71282AE41986433E00A3FE09 /* UPOMP_AgreementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_AgreementView.h; sourceTree = "<group>"; };
+		71282AE51986433E00A3FE09 /* UPOMP_CPCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_CPCardInfo.h; sourceTree = "<group>"; };
+		71282AE61986433E00A3FE09 /* UPOMP_CPCardListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_CPCardListCell.h; sourceTree = "<group>"; };
+		71282AE71986433E00A3FE09 /* UPOMP_CPPayRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_CPPayRegister.h; sourceTree = "<group>"; };
+		71282AE81986433E00A3FE09 /* UPOMP_KaBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_KaBGView.h; sourceTree = "<group>"; };
+		71282AE91986433E00A3FE09 /* UPOMP_KaTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_KaTabBar.h; sourceTree = "<group>"; };
+		71282AEA1986433E00A3FE09 /* UPOMP_KaTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_KaTabItem.h; sourceTree = "<group>"; };
+		71282AEB1986433E00A3FE09 /* UPOMP_KaTextFieldToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_KaTextFieldToolBar.h; sourceTree = "<group>"; };
+		71282AEC1986433E00A3FE09 /* UPOMP_UDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMP_UDID.h; sourceTree = "<group>"; };
+		71282AED1986433E00A3FE09 /* UPOMPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPCell.h; sourceTree = "<group>"; };
+		71282AEE1986433E00A3FE09 /* UPOMPEncryptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPEncryptionUtils.h; sourceTree = "<group>"; };
+		71282AEF1986433E00A3FE09 /* UPOMPGlobalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPGlobalInfo.h; sourceTree = "<group>"; };
+		71282AF01986433E00A3FE09 /* UPOMPGTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPGTMBase64.h; sourceTree = "<group>"; };
+		71282AF11986433E00A3FE09 /* UPOMPGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPGTMDefines.h; sourceTree = "<group>"; };
+		71282AF21986433E00A3FE09 /* UPOMPKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPKeyBoard.h; sourceTree = "<group>"; };
+		71282AF31986433E00A3FE09 /* UPOMPNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPNet.h; sourceTree = "<group>"; };
+		71282AF41986433E00A3FE09 /* UPOMPTBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPTBXML.h; sourceTree = "<group>"; };
+		71282AF51986433E00A3FE09 /* UPOMPUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPUI.h; sourceTree = "<group>"; };
+		71282AF61986433E00A3FE09 /* UPOMPUserInfoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPUserInfoData.h; sourceTree = "<group>"; };
+		71282AF71986433E00A3FE09 /* UPOMPValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPValue.h; sourceTree = "<group>"; };
+		71282AF81986433E00A3FE09 /* UPOMPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPOMPView.h; sourceTree = "<group>"; };
+		71282AFA1986433E00A3FE09 /* libUPOMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP.a; sourceTree = "<group>"; };
+		71282AFB1986433E00A3FE09 /* libUPOMP_S.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP_S.a; sourceTree = "<group>"; };
+		71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UPOMPImage.bundle; sourceTree = "<group>"; };
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -502,6 +530,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71282AE019862A1E00A3FE09 /* CFNetwork.framework in Frameworks */,
+				71282ADF19862A1800A3FE09 /* Foundation.framework in Frameworks */,
 				712FC088197D3B3F00EA9F32 /* SystemConfiguration.framework in Frameworks */,
 				285B02EE19814FDC00B4D225 /* libBNaviTTSManager.a in Frameworks */,
 				717667531980ECBA00A635DA /* libstdc++.6.0.9.dylib in Frameworks */,
@@ -513,7 +543,8 @@
 				7176674F1980EC8700A635DA /* CoreTelephony.framework in Frameworks */,
 				7176674D1980EC7F00A635DA /* MediaPlayer.framework in Frameworks */,
 				7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */,
-				717667491980EBFF00A635DA /* CFNetwork.framework in Frameworks */,
+				71282AFE1986433E00A3FE09 /* libUPOMP_S.a in Frameworks */,
+				71282AFD1986433E00A3FE09 /* libUPOMP.a in Frameworks */,
 				714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */,
 				717667451980C8C000A635DA /* MobileCoreServices.framework in Frameworks */,
 				712FC08A197D3B5300EA9F32 /* MessageUI.framework in Frameworks */,
@@ -521,7 +552,6 @@
 				71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */,
 				712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */,
 				712FC080197D3A1600EA9F32 /* libbaidumapapi.a in Frameworks */,
-				712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +631,54 @@
 				28F00FE719837DCF00406294 /* CalendarView.m */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		71282AE11986433E00A3FE09 /* upomp_bypay */ = {
+			isa = PBXGroup;
+			children = (
+				71282AE21986433E00A3FE09 /* heads */,
+				71282AF91986433E00A3FE09 /* lib */,
+			);
+			path = upomp_bypay;
+			sourceTree = "<group>";
+		};
+		71282AE21986433E00A3FE09 /* heads */ = {
+			isa = PBXGroup;
+			children = (
+				71282AE31986433E00A3FE09 /* UPOMP.h */,
+				71282AE41986433E00A3FE09 /* UPOMP_AgreementView.h */,
+				71282AE51986433E00A3FE09 /* UPOMP_CPCardInfo.h */,
+				71282AE61986433E00A3FE09 /* UPOMP_CPCardListCell.h */,
+				71282AE71986433E00A3FE09 /* UPOMP_CPPayRegister.h */,
+				71282AE81986433E00A3FE09 /* UPOMP_KaBGView.h */,
+				71282AE91986433E00A3FE09 /* UPOMP_KaTabBar.h */,
+				71282AEA1986433E00A3FE09 /* UPOMP_KaTabItem.h */,
+				71282AEB1986433E00A3FE09 /* UPOMP_KaTextFieldToolBar.h */,
+				71282AEC1986433E00A3FE09 /* UPOMP_UDID.h */,
+				71282AED1986433E00A3FE09 /* UPOMPCell.h */,
+				71282AEE1986433E00A3FE09 /* UPOMPEncryptionUtils.h */,
+				71282AEF1986433E00A3FE09 /* UPOMPGlobalInfo.h */,
+				71282AF01986433E00A3FE09 /* UPOMPGTMBase64.h */,
+				71282AF11986433E00A3FE09 /* UPOMPGTMDefines.h */,
+				71282AF21986433E00A3FE09 /* UPOMPKeyBoard.h */,
+				71282AF31986433E00A3FE09 /* UPOMPNet.h */,
+				71282AF41986433E00A3FE09 /* UPOMPTBXML.h */,
+				71282AF51986433E00A3FE09 /* UPOMPUI.h */,
+				71282AF61986433E00A3FE09 /* UPOMPUserInfoData.h */,
+				71282AF71986433E00A3FE09 /* UPOMPValue.h */,
+				71282AF81986433E00A3FE09 /* UPOMPView.h */,
+			);
+			path = heads;
+			sourceTree = "<group>";
+		};
+		71282AF91986433E00A3FE09 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				71282AFA1986433E00A3FE09 /* libUPOMP.a */,
+				71282AFB1986433E00A3FE09 /* libUPOMP_S.a */,
+				71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		712FBFA7197CB2F400EA9F32 = {
@@ -735,6 +813,7 @@
 		712FBFE9197CB6B600EA9F32 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				71282AE11986433E00A3FE09 /* upomp_bypay */,
 				28F00FE519837DB800406294 /* Calendar */,
 				714C6D951983459B007684CA /* iosPot */,
 				7176679D1980F29100A635DA /* baidunav */,
@@ -1281,6 +1360,7 @@
 			files = (
 				714C6DA419834C10007684CA /* 点击开闸进入后.png in Resources */,
 				714C6D4E19828E4A007684CA /* 9.png in Resources */,
+				71282AFF1986433E00A3FE09 /* UPOMPImage.bundle in Resources */,
 				714C6D4A19828E4A007684CA /* 5.png in Resources */,
 				714C6DA319834C10007684CA /* 点击开闸点击效果.png in Resources */,
 				714C6DA019834C07007684CA /* 点击开闸未进入常态.png in Resources */,
@@ -1570,6 +1650,8 @@
 					"$(PROJECT_DIR)/ThirdPart/baidunav/Statistic",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
+					"$(PROJECT_DIR)/ThirdPart/upomp_bypay/lib",
+					/Users/xuxingdu/Desktop/manyCodes111/ThirdPart/upomp_bypay/lib,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1594,6 +1676,8 @@
 					"$(PROJECT_DIR)/ThirdPart/baidunav/Statistic",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/TTS",
 					"$(PROJECT_DIR)/ThirdPart/baidunav/inc",
+					"$(PROJECT_DIR)/ThirdPart/upomp_bypay/lib",
+					/Users/xuxingdu/Desktop/manyCodes111/ThirdPart/upomp_bypay/lib,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
