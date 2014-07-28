@@ -117,43 +117,47 @@
 {
     UIView *accountView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 250)];
     //账号
-    UIImageView *accoutImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 300, 60)];
-    accoutImage.image = [UIImage imageNamed:@""];
+    UIImageView *accoutImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 300, 50)];
+    accoutImage.image = [UIImage imageNamed:@"单条列表背景.png"];
+    accoutImage.userInteractionEnabled = YES;
     [accountView addSubview:accoutImage];
     
-    UIImageView *accoutIcon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 30, 30)];
-    accoutIcon.image = [UIImage imageNamed:@""];
-    [accountView addSubview:accoutIcon];
+    UIImageView *accoutIcon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 17, 18, 15)];
+    accoutIcon.image = [UIImage imageNamed:@"手机号码图标.png"];
+    [accoutImage addSubview:accoutIcon];
     
-    accountText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 0, 250, 30)];
+    accountText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 10, 250, 30)];
     accountText_.placeholder = @"请输入手机号码";
     accountText_.text = @"18951682389";
     [accountText_ addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     accountText_.borderStyle = UITextBorderStyleNone;
     accountText_.keyboardType = UIKeyboardTypeNumberPad;
-    [accountView addSubview:accountText_];
+    [accoutImage addSubview:accountText_];
     
     //账号
-    UIImageView *passwordImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 65, 300, 60)];
-    passwordImage.image = [UIImage imageNamed:@""];
+    UIImageView *passwordImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 52, 300, 50)];
+    passwordImage.image = [UIImage imageNamed:@"单条列表背景.png"];
+    passwordImage.userInteractionEnabled = YES;
     [accountView addSubview:passwordImage];
     
-    UIImageView *passwordIcon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 65, 30, 30)];
-    passwordIcon.image = [UIImage imageNamed:@""];
-    [accountView addSubview:passwordIcon];
+    UIImageView *passwordIcon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 17, 18, 15)];
+    passwordIcon.image = [UIImage imageNamed:@"密码图标.png"];
+    [passwordImage addSubview:passwordIcon];
     
-    passwordText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 65, 250, 30)];
+    passwordText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 10, 250, 30)];
     passwordText_.placeholder = @"请输入密码";
     passwordText_.text = @"123";
     [passwordText_ addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     passwordText_.borderStyle = UITextBorderStyleNone;
     passwordText_.keyboardType = UIKeyboardTypeNumberPad;
-    [accountView addSubview:passwordText_];
+    [passwordImage addSubview:passwordText_];
     
-    UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 150, 300, 55)];
+    UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 130, 300, 55)];
     [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
-    loginButton.backgroundColor = [UIColor redColor];
+    loginButton.backgroundColor = [UIColor clearColor];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮常态.png"] forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮效果.png"] forState:UIControlStateNormal];
     [accountView addSubview:loginButton];
     
    UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(30, 220, 80, 30)];

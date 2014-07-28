@@ -129,6 +129,14 @@
 		717667FA1981238F00A635DA /* mapButtonclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 717667F51981238F00A635DA /* mapButtonclick.png */; };
 		717667FC1981309A00A635DA /* HJSJ_iPhone_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 717667FB1981309A00A635DA /* HJSJ_iPhone_red.png */; };
 		717667FF19814D6F00A635DA /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 717667FE19814D6F00A635DA /* SearchCell.m */; };
+		717D020919867B6000667746 /* 示意头像 描边.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D020719867B6000667746 /* 示意头像 描边.png */; };
+		717D020A19867B6000667746 /* 示意头像 图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D020819867B6000667746 /* 示意头像 图片.png */; };
+		717D020D19867D8500667746 /* 立即登录按钮常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D020B19867D8500667746 /* 立即登录按钮常态.png */; };
+		717D020E19867D8500667746 /* 立即登录按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D020C19867D8500667746 /* 立即登录按钮效果.png */; };
+		717D0212198680D500667746 /* 密码图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0210198680D500667746 /* 密码图标.png */; };
+		717D0213198680D500667746 /* 手机号码图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0211198680D500667746 /* 手机号码图标.png */; };
+		717D02161986833F00667746 /* 注册 登录按钮常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D02141986833F00667746 /* 注册 登录按钮常态.png */; };
+		717D02171986833F00667746 /* 注册 登录按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D02151986833F00667746 /* 注册 登录按钮效果.png */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -442,6 +450,14 @@
 		717667FB1981309A00A635DA /* HJSJ_iPhone_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HJSJ_iPhone_red.png; sourceTree = "<group>"; };
 		717667FD19814D6F00A635DA /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		717667FE19814D6F00A635DA /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		717D020719867B6000667746 /* 示意头像 描边.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "示意头像 描边.png"; sourceTree = "<group>"; };
+		717D020819867B6000667746 /* 示意头像 图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "示意头像 图片.png"; sourceTree = "<group>"; };
+		717D020B19867D8500667746 /* 立即登录按钮常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立即登录按钮常态.png"; sourceTree = "<group>"; };
+		717D020C19867D8500667746 /* 立即登录按钮效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立即登录按钮效果.png"; sourceTree = "<group>"; };
+		717D0210198680D500667746 /* 密码图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码图标.png"; sourceTree = "<group>"; };
+		717D0211198680D500667746 /* 手机号码图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手机号码图标.png"; sourceTree = "<group>"; };
+		717D02141986833F00667746 /* 注册 登录按钮常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册 登录按钮常态.png"; sourceTree = "<group>"; };
+		717D02151986833F00667746 /* 注册 登录按钮效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册 登录按钮效果.png"; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -786,6 +802,14 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				717D0210198680D500667746 /* 密码图标.png */,
+				717D02141986833F00667746 /* 注册 登录按钮常态.png */,
+				717D02151986833F00667746 /* 注册 登录按钮效果.png */,
+				717D0211198680D500667746 /* 手机号码图标.png */,
+				717D020B19867D8500667746 /* 立即登录按钮常态.png */,
+				717D020C19867D8500667746 /* 立即登录按钮效果.png */,
+				717D020719867B6000667746 /* 示意头像 描边.png */,
+				717D020819867B6000667746 /* 示意头像 图片.png */,
 				71282B06198650F900A3FE09 /* 头像背景.png */,
 				71282B0019864CF300A3FE09 /* 单条列表背景.png */,
 				71282B0119864CF300A3FE09 /* 返回按钮常态.png */,
@@ -1374,6 +1398,7 @@
 				714C6D4E19828E4A007684CA /* 9.png in Resources */,
 				714C6D4A19828E4A007684CA /* 5.png in Resources */,
 				714C6DA319834C10007684CA /* 点击开闸点击效果.png in Resources */,
+				717D02161986833F00667746 /* 注册 登录按钮常态.png in Resources */,
 				714C6DA019834C07007684CA /* 点击开闸未进入常态.png in Resources */,
 				714C6D4719828E4A007684CA /* 2.png in Resources */,
 				714C6D4519828E4A007684CA /* 0.png in Resources */,
@@ -1381,18 +1406,25 @@
 				717667E41980F49600A635DA /* BNTTSSDK.bundle in Resources */,
 				71282B0519864CF300A3FE09 /* 返回按钮效果.png in Resources */,
 				714C6D4619828E4A007684CA /* 1.png in Resources */,
+				717D020E19867D8500667746 /* 立即登录按钮效果.png in Resources */,
 				71282B0319864CF300A3FE09 /* 单条列表背景.png in Resources */,
+				717D020D19867D8500667746 /* 立即登录按钮常态.png in Resources */,
 				717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */,
+				717D020919867B6000667746 /* 示意头像 描边.png in Resources */,
 				712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */,
 				714C6D4919828E4A007684CA /* 4.png in Resources */,
 				717667F81981238F00A635DA /* listButtonclick.png in Resources */,
 				717667F61981238F00A635DA /* 搜索输入框.png in Resources */,
 				71490046197FC9F300DEFD83 /* personButton.png in Resources */,
 				285B02F21981589700B4D225 /* list_parking@2x.png in Resources */,
+				717D0212198680D500667746 /* 密码图标.png in Resources */,
 				714C6D4819828E4A007684CA /* 3.png in Resources */,
+				717D02171986833F00667746 /* 注册 登录按钮效果.png in Resources */,
 				71B3C940198228BA0050045B /* 详情图标.png in Resources */,
 				714C6D4D19828E4A007684CA /* 8.png in Resources */,
 				7149004C197FCC6000DEFD83 /* shadow.png in Resources */,
+				717D0213198680D500667746 /* 手机号码图标.png in Resources */,
+				717D020A19867B6000667746 /* 示意头像 图片.png in Resources */,
 				7149004A197FCC6000DEFD83 /* center.png in Resources */,
 				717667FA1981238F00A635DA /* mapButtonclick.png in Resources */,
 				717667F91981238F00A635DA /* mapButton.png in Resources */,

@@ -62,7 +62,7 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     self.view.backgroundColor = COLOR(220, 220, 220);
-
+    self.title = @"个人中心";
     
     //返回按钮
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
