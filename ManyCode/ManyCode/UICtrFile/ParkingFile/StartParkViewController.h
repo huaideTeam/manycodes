@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) BOOL isComeIn;
 
+@property (nonatomic, strong) NSDictionary *parkDic;
+
 @end

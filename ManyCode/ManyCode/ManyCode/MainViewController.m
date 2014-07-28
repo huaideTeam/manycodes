@@ -394,12 +394,14 @@
             }else
             {
                 StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+                viewCtr.parkDic = currentDic;
                 [self.navigationController pushViewController:viewCtr animated:YES];
             }
         }else
         {
             StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
             viewCtr.isComeIn = YES;
+            viewCtr.parkDic = currentDic;
             [self.navigationController pushViewController:viewCtr animated:YES];
         }
     }else

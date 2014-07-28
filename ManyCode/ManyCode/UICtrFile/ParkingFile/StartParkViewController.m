@@ -23,6 +23,10 @@
     NSDate *currentDate_;
     UIScrollView *mainScrollView_;
     UIButton *openDoorBtn_;
+    NSMutableArray *currentWifiArray_;
+    NSTimer * wifiTime_;
+    NSTimer *hourTime_;
+    NSDictionary *deviceDic_;
     
 }
 
@@ -59,6 +63,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    hourTime_ =  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTimeView) userInfo:nil repeats:YES];
+    
+    wifiTime_ = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(wifiInfo) userInfo:nil repeats:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [hourTime_ invalidate];
+    [wifiTime_ invalidate];
 }
 
 
@@ -117,9 +133,6 @@
     
     [mainScrollView_ addSubview:mintinueView];
     
-    [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(refreshTimeView) userInfo:nil repeats:YES];
-    
-    
     UILabel * titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 20)];
     titleLable.backgroundColor = [UIColor clearColor];
     titleLable.text = @"账户余额";
@@ -162,14 +175,18 @@
     [mainScrollView_ addSubview:openDoorBtn_];
     if (self.isComeIn) {
         [self getUserBalanceInfo];
+        openDoorBtn_.tag = 100;
     }else
     {
         [self loadCalculateChargeInfo];
+        openDoorBtn_.tag = 101;
     }
     
 }
 
 #pragma mark - 下载数据 
+
+//获取账余额
 - (void)getUserBalanceInfo
 {
     [[Hud defaultInstance] loading:self.view];
@@ -218,10 +235,110 @@
 #pragma mark - 点击开闸
 - (void)openClick:(UIButton *)button
 {
+    if (button.tag ==  100) {
+        [self comeInPark:@"0"];
+    }else
+    {
+         [self comeInPark:@"1"];
+    }
+
+}
+
+
+//进入停车场
+- (void)comeInPark:(NSString *)passkind
+{
+    [[Hud defaultInstance] loading:self.view];
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    if ([[deviceDic_ objectForKey:@"devid"] length]>0 && [[deviceDic_ objectForKey:@"deviceid"] length]>0) {
+        [tempDic setObject:[deviceDic_ objectForKey:@"devid"] forKey:@"devid"];
+        [tempDic setObject:[deviceDic_ objectForKey:@"deviceid"] forKey:@"deviceid"];
+    }else
+    {
+        [[Hud defaultInstance] showMessage:@"当前设备不存在"];
+    }
+    [tempDic setObject:passkind forKey:@"passkind"];
+    
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"openDevRoadNum" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [self getDeviceStatue:resultDic[@"sourceid"] devId:[deviceDic_ objectForKey:@"devid"]];
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+
+
+//获取设备的开启状态
+- (void)getDeviceStatue:(NSString *)sourceid  devId:(NSString *)deviceId
+{
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    [tempDic setObject:sourceid forKey:@"sourceid"];
+    [tempDic setObject:deviceId forKey:@"devid"];
+    
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserDevRoadStatus" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [[Hud defaultInstance] hide:self.view];
+        
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+}
+
+#pragma mark - 获取设备信息
+// 获取停车场的wifi列表
+- (void)wifiInfo
+{
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCarparkWiFi" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        if (!currentWifiArray_) {
+            if ([resultDic[@"wifiinfo"] count]>0) {
+                currentWifiArray_ = [[NSMutableArray alloc] initWithArray:resultDic[@"wifiinfo"]];
+            }
+        }else
+        {
+            NSArray * array = resultDic[@"wifiinfo"];
+            for (int k = 0; k<currentWifiArray_.count; k++) {
+                NSDictionary *dic = [currentWifiArray_ objectAtIndex:k];
+                for (int j = 0; j < array.count; j++) {
+                    NSDictionary *tempDic = [array objectAtIndex:k];
+                    if([dic[@"wifibssid"] isEqualToString:tempDic[@"wifibssid"]])
+                    {
+                        [self getDeviceInfo:array];
+                        return ;
+                    }
+                }
+            }
+        }
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
     
 }
 
+//获取当前设备信息
+- (void)getDeviceInfo:(NSArray *)wifiArray
+{
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    [tempDic setObject:wifiArray forKey:@"wifiinfo"];
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getDevRoadNum" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        deviceDic_ = resultDic;
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
 #pragma mark - 获取分钟和小时数
+
 
 - (void)refreshTimeView
 {

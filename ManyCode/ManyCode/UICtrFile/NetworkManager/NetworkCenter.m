@@ -65,7 +65,7 @@
             NSNumber *logicCode = resultDic[@"statusCode"];
             
             //成功获得数据
-            if (logicCode.intValue==200) {
+            if (logicCode.intValue==200 || logicCode.intValue==216) {
                 completeBlock(resultDic);
             }
             else{

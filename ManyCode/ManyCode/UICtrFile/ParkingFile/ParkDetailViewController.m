@@ -54,6 +54,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (![NetworkCenter instanceManager].isLogin) {
+        LoginViewController *viewCtr = [[LoginViewController alloc] init];
+        [self.navigationController pushViewController:viewCtr animated:YES];
+    }
+}
+
 #pragma mark - use define
 
 - (void)loadFunctionView
@@ -96,9 +104,37 @@
     mainScrollView_.contentSize = CGSizeMake(320,CGRectGetMaxY(footView.frame));
     [self loadDataWithId];
     
+    if ([NetworkCenter instanceManager].isLogin) {
+        [self getUserInfo];
+    }
 }
 
 
+- (void)getUserInfo
+{
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserDevRoadStatus" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        NSNumber *logicCode = resultDic[@"statusCode"];
+        if (logicCode.intValue==216) {
+            if ([resultDic[@"carparkid"] isEqualToString:_parkInfoDic[@"carparkid"]]) {
+                //判断是不是和当前的停车场
+                
+            }else
+            {
+                 NSString *msg = [NSString stringWithFormat:@"当前所在停车场：%@",resultDic[@"carparkname"]];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+        }
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+}
+
+//返回按钮
 - (void)backClick:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -261,12 +297,14 @@
             }else
             {
                 StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+                viewCtr.parkDic = _parkInfoDic;
                 [self.navigationController pushViewController:viewCtr animated:YES];
             }
         }else
         {
             StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
             viewCtr.isComeIn = YES;
+             viewCtr.parkDic = _parkInfoDic;
             [self.navigationController pushViewController:viewCtr animated:YES];
         }
     }else
