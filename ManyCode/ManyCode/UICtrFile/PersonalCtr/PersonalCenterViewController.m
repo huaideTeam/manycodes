@@ -20,6 +20,7 @@
 {
     UITableView *mainTableView_;
     NSArray *nameArray_;
+    UIButton *photoBtn_;
 }
 
 @end
@@ -60,7 +61,7 @@
         [self setExtendedLayoutIncludesOpaqueBars:NO];
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = COLOR(220, 220, 220);
 
     
     //返回按钮
@@ -106,21 +107,29 @@
     if (isLogin) {
         UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
         
-        UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
-        backImage.image = [UIImage  imageNamed:@""];
+        UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 175)];
+        backImage.image = [UIImage  imageNamed:@"头像背景.png"];
         [headView addSubview:backImage];
         
-        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,90,90, 90)];
-        titleImage.image = [UIImage  imageNamed:@""];
+        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,75,90, 90)];
+        titleImage.image = [UIImage  imageNamed:@"示意头像 描边.png"];
+        titleImage.userInteractionEnabled = YES;
         [headView addSubview:titleImage];
         
-        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 115, 150, 20)];
+        photoBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
+        photoBtn_.backgroundColor = [UIColor clearColor];
+        [photoBtn_ setBackgroundImage:[UIImage imageNamed:@"示意头像 图片.png"] forState:UIControlStateNormal];
+        [photoBtn_ addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
+        [titleImage addSubview:photoBtn_];
+        
+        
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 110, 150, 20)];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
         [headView addSubview:nameLabel];
         
-        UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(130, 140, 150, 20)];
-        priceBtn.backgroundColor = [UIColor blueColor];
+        UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(130, 125, 150, 20)];
+        priceBtn.backgroundColor = [UIColor clearColor];
         [priceBtn setTitle:@"当前余额：34元" forState:UIControlStateNormal];
         [priceBtn addTarget:self action:@selector(chargeMoneyClick:) forControlEvents:UIControlEventTouchUpInside];
         [headView addSubview:priceBtn];
@@ -130,17 +139,26 @@
     {
         UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
         
-        UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
-        backImage.image = [UIImage  imageNamed:@""];
+        UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 175)];
+        backImage.image = [UIImage  imageNamed:@"头像背景.png"];
         [headView addSubview:backImage];
         
-        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,90,90, 90)];
-        titleImage.image = [UIImage  imageNamed:@""];
+        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,75,90, 90)];
+        titleImage.image = [UIImage  imageNamed:@"示意头像 描边.png"];
+        titleImage.userInteractionEnabled = YES;
         [headView addSubview:titleImage];
         
-        UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(130, 150, 100, 30)];
+        photoBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
+        photoBtn_.backgroundColor = [UIColor clearColor];
+        [photoBtn_ setBackgroundImage:[UIImage imageNamed:@"示意头像 图片.png"] forState:UIControlStateNormal];
+        [photoBtn_ addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
+        [titleImage addSubview:photoBtn_];
+        
+        UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(130, 135, 100, 30)];
         [loginButton setTitle:@"立即登录" forState:UIControlStateNormal];
-        loginButton.backgroundColor = [UIColor redColor];
+        loginButton.backgroundColor = [UIColor clearColor];
+        [loginButton setBackgroundImage:[UIImage imageNamed:@"立即登录按钮常态.png"] forState:UIControlStateNormal];
+         [loginButton setBackgroundImage:[UIImage imageNamed:@"立即登录按钮效果.png"] forState:UIControlStateNormal];
         [loginButton  addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
         [headView addSubview:loginButton];
         
@@ -155,6 +173,12 @@
     
 }
 
+#pragma mark - 拍照
+
+- (void)takePhoto:(UIButton *)button
+{
+    
+}
 #pragma mark - table delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -176,6 +200,7 @@
     }
     cell.titleLabel.text = nameArray_[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
