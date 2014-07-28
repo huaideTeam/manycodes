@@ -226,8 +226,13 @@
             break;
         case 1:
         {
-            ConsumptionHistoryViewController *viewController = [[ConsumptionHistoryViewController alloc] init];
-            [self.navigationController pushViewController:viewController animated:YES];
+            if ([NetworkCenter instanceManager].isLogin) {
+                ConsumptionHistoryViewController *viewController = [[ConsumptionHistoryViewController alloc] init];
+                [self.navigationController pushViewController:viewController animated:YES];
+            } else {
+                [[Hud defaultInstance] showMessage:@"请登录"];
+            }
+            
         }
             break;
         case 2:

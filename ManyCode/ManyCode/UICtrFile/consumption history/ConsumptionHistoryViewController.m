@@ -43,6 +43,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 {
     [super viewDidLoad];
     
+    self.title = @"缴费记录";
     _currentFilterDate = [NSDate date];
     _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight)];
     [_consumptionHistoryTableView registerClass:[CosumptionHistoryTableViewCell class] forCellReuseIdentifier:identifierForCosumptionHistory];
