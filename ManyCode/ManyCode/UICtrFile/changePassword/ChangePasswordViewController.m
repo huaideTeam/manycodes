@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *iconImageName = @[@"", @"", @""];
+    NSArray *iconImageName = @[@"phoneNumber_logo", @"密码图标", @"密码图标"];
     NSArray *placeHolders = @[@"请输入当前密码", @"请输入新密码", @"再次确认新密码"];
     NSArray *vaues = @[@"forwardPasswordTextField", @"firstPasswordTextField", @"secondPasswordTextField"];
     
@@ -49,7 +49,7 @@
         [self.view addSubview:tempView];
         
         UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, CGRectGetHeight(tempView.frame) / 2.f - 7.f, 15.f, 15.f)];
-        [iconImageView setBackgroundColor:[UIColor redColor]];
+        [iconImageView setBackgroundColor:[UIColor clearColor]];
         iconImageView.image = [UIImage imageNamed:iconImageName[index]];
         [tempView addSubview:iconImageView];
         
@@ -61,7 +61,8 @@
     }
     
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [submitButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [submitButton setBackgroundImage:[UIImage imageNamed:@"register_normal"] forState:UIControlStateNormal];
+    [submitButton setBackgroundImage:[UIImage imageNamed:@"register_selected"] forState:UIControlStateHighlighted];
     submitButton.frame = CGRectMake(startX, (height + space) * iconImageName.count + 2 * startY, CGRectGetWidth(self.view.frame) - 2 * startX, 52.f);
     [submitButton setTitle:@"验证并登录" forState:UIControlStateNormal];
     [self.view addSubview:submitButton];
