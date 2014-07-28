@@ -65,7 +65,7 @@
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, CGRectGetHeight(tempView.frame) / 2.f - 7.f, 15.f, 15.f)];
     [iconImageView setBackgroundColor:[UIColor clearColor]];
     iconImageView.image = [UIImage imageNamed:@"phoneNumber_logo"];
-    [tempView addSubview:iconImageView];
+//    [tempView addSubview:iconImageView];
     
     UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
     inputTextField.placeholder = @"设置密码";
@@ -81,7 +81,8 @@
     [self.view addSubview:nextTempView];
     
     UIImageView *nextIconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, CGRectGetHeight(nextTempView.frame) / 2.f - 7.f, 15.f, 15.f)];
-    [nextIconImageView setBackgroundColor:[UIColor redColor]];
+    nextIconImageView.image = [UIImage imageNamed:@"密码图标"];
+    [nextIconImageView setBackgroundColor:[UIColor clearColor]];
     [nextTempView addSubview:nextIconImageView];
     
     UITextField *nextInputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nextIconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
