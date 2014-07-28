@@ -28,6 +28,7 @@
 		28BAF1D31986853E00FF8368 /* register_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1D11986853E00FF8368 /* register_normal@2x.png */; };
 		28BAF1D41986853E00FF8368 /* register_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1D21986853E00FF8368 /* register_selected@2x.png */; };
 		28BAF1D61986857400FF8368 /* phoneNumber_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1D51986857400FF8368 /* phoneNumber_logo@2x.png */; };
+		28BAF1DA198692C400FF8368 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BAF1D9198692C400FF8368 /* ForgetPasswordViewController.m */; };
 		28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */; };
 		28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */; };
 		28F00FE819837DCF00406294 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE719837DCF00406294 /* CalendarView.m */; };
@@ -231,6 +232,8 @@
 		28BAF1D11986853E00FF8368 /* register_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register_normal@2x.png"; sourceTree = "<group>"; };
 		28BAF1D21986853E00FF8368 /* register_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register_selected@2x.png"; sourceTree = "<group>"; };
 		28BAF1D51986857400FF8368 /* phoneNumber_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phoneNumber_logo@2x.png"; sourceTree = "<group>"; };
+		28BAF1D8198692C400FF8368 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		28BAF1D9198692C400FF8368 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		28F00FDF198351CB00406294 /* ConsumptionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumptionHistoryViewController.h; sourceTree = "<group>"; };
 		28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumptionHistoryViewController.m; sourceTree = "<group>"; };
 		28F00FE21983547400406294 /* CosumptionHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CosumptionHistoryTableViewCell.h; sourceTree = "<group>"; };
@@ -659,6 +662,15 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		28BAF1D7198692AE00FF8368 /* forgetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				28BAF1D8198692C400FF8368 /* ForgetPasswordViewController.h */,
+				28BAF1D9198692C400FF8368 /* ForgetPasswordViewController.m */,
+			);
+			path = forgetPassword;
+			sourceTree = "<group>";
+		};
 		28F00FDE1983518600406294 /* consumption history */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,6 +901,7 @@
 		712FBFEA197CB6B600EA9F32 /* UICtrFile */ = {
 			isa = PBXGroup;
 			children = (
+				28BAF1D7198692AE00FF8368 /* forgetPassword */,
 				28F00FDE1983518600406294 /* consumption history */,
 				2885FAD519833F6B009E69C5 /* Setting */,
 				2891A04119829CC000538FC0 /* changePassword */,
@@ -1507,6 +1520,7 @@
 				71490042197FC0AB00DEFD83 /* RotatedView.m in Sources */,
 				71B0B740197E3F3E00B06945 /* AFURLRequestSerialization.m in Sources */,
 				717667D61980F49600A635DA /* CFilteringJSONSerializer.m in Sources */,
+				28BAF1DA198692C400FF8368 /* ForgetPasswordViewController.m in Sources */,
 				714C6DB119836BB6007684CA /* BUIView.m in Sources */,
 				7149005B198007F900DEFD83 /* MBProgressHUD.m in Sources */,
 				71B0B708197E3B4D00B06945 /* UIImage+WebP.m in Sources */,

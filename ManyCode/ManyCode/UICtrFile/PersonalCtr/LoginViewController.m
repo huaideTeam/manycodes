@@ -12,6 +12,7 @@
 #import "KeyboardSegment.h"
 #import "RegisterFirstStepViewController.h"
 #import "ChangePasswordViewController.h"
+#import "ForgetPasswordViewController.h"
 
 @interface LoginViewController ()
 {
@@ -247,7 +248,8 @@
 
 - (void)forgotPasswdClick:(id)sender
 {
-    
+    ForgetPasswordViewController *forgetPass = [[ForgetPasswordViewController alloc] init];
+    [self.navigationController pushViewController:forgetPass animated:YES];
 }
 
 - (void)changePasswdClick:(id)sender
