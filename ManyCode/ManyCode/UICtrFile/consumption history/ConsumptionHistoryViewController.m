@@ -105,23 +105,17 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)];
     
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
-    backImage.image = [UIImage  imageNamed:@""];
+    backImage.image = [UIImage  imageNamed:@"头像背景.png"];
     [headView addSubview:backImage];
     
-    UIImageView *circleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(19.f, CGRectGetMaxY(backImage.frame) - 120.f, 102.f, 102.f)];
-    circleImageView.layer.cornerRadius = 51.f;
-    circleImageView.layer.borderWidth = 1.f;
-    circleImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    circleImageView.clipsToBounds = YES;
+    UIImageView *circleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(25.f, CGRectGetMaxY(backImage.frame) - 120.f, 90.f, 90.f)];
+    circleImageView.image = [UIImage imageNamed:@"示意头像 描边.png"];
     [circleImageView setBackgroundColor:[UIColor clearColor]];
     [headView addSubview:circleImageView];
     
     UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,90,90, 90)];
     titleImage.center = circleImageView.center;
-    titleImage.layer.cornerRadius = 45.f;
-    titleImage.clipsToBounds = YES;
-    [titleImage setBackgroundColor:[UIColor greenColor]];
-    titleImage.image = [UIImage  imageNamed:@""];
+    titleImage.image = [UIImage  imageNamed:@"示意头像 图片.png"];
     [headView addSubview:titleImage];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(circleImageView.frame) + 10.f, CGRectGetMidY(circleImageView.frame) - 20.f, 150, 20)];
