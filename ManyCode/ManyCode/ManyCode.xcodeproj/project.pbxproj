@@ -30,6 +30,10 @@
 		71282AFD1986433E00A3FE09 /* libUPOMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71282AFA1986433E00A3FE09 /* libUPOMP.a */; };
 		71282AFE1986433E00A3FE09 /* libUPOMP_S.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71282AFB1986433E00A3FE09 /* libUPOMP_S.a */; };
 		71282AFF1986433E00A3FE09 /* UPOMPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */; };
+		71282B0319864CF300A3FE09 /* 单条列表背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 71282B0019864CF300A3FE09 /* 单条列表背景.png */; };
+		71282B0419864CF300A3FE09 /* 返回按钮常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 71282B0119864CF300A3FE09 /* 返回按钮常态.png */; };
+		71282B0519864CF300A3FE09 /* 返回按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 71282B0219864CF300A3FE09 /* 返回按钮效果.png */; };
+		71282B07198650F900A3FE09 /* 头像背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 71282B06198650F900A3FE09 /* 头像背景.png */; };
 		712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */; };
 		712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFBC197CB2F400EA9F32 /* InfoPlist.strings */; };
 		712FBFC0197CB2F400EA9F32 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFBF197CB2F400EA9F32 /* main.mm */; };
@@ -238,6 +242,10 @@
 		71282AFA1986433E00A3FE09 /* libUPOMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP.a; sourceTree = "<group>"; };
 		71282AFB1986433E00A3FE09 /* libUPOMP_S.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP_S.a; sourceTree = "<group>"; };
 		71282AFC1986433E00A3FE09 /* UPOMPImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UPOMPImage.bundle; sourceTree = "<group>"; };
+		71282B0019864CF300A3FE09 /* 单条列表背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单条列表背景.png"; sourceTree = "<group>"; };
+		71282B0119864CF300A3FE09 /* 返回按钮常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回按钮常态.png"; sourceTree = "<group>"; };
+		71282B0219864CF300A3FE09 /* 返回按钮效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回按钮效果.png"; sourceTree = "<group>"; };
+		71282B06198650F900A3FE09 /* 头像背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像背景.png"; sourceTree = "<group>"; };
 		712FBFB0197CB2F400EA9F32 /* ManyCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712FBFB3197CB2F400EA9F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712FBFB5197CB2F400EA9F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -530,6 +538,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */,
+				712FC084197D3A9A00EA9F32 /* QuartzCore.framework in Frameworks */,
+				71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */,
 				71282AE019862A1E00A3FE09 /* CFNetwork.framework in Frameworks */,
 				71282ADF19862A1800A3FE09 /* Foundation.framework in Frameworks */,
 				712FC088197D3B3F00EA9F32 /* SystemConfiguration.framework in Frameworks */,
@@ -542,14 +553,11 @@
 				717667511980EC9000A635DA /* CoreMotion.framework in Frameworks */,
 				7176674F1980EC8700A635DA /* CoreTelephony.framework in Frameworks */,
 				7176674D1980EC7F00A635DA /* MediaPlayer.framework in Frameworks */,
-				7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */,
 				71282AFE1986433E00A3FE09 /* libUPOMP_S.a in Frameworks */,
 				71282AFD1986433E00A3FE09 /* libUPOMP.a in Frameworks */,
 				714900C71980EAFE00DEFD83 /* UIKit.framework in Frameworks */,
 				717667451980C8C000A635DA /* MobileCoreServices.framework in Frameworks */,
 				712FC08A197D3B5300EA9F32 /* MessageUI.framework in Frameworks */,
-				712FC084197D3A9A00EA9F32 /* QuartzCore.framework in Frameworks */,
-				71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */,
 				712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */,
 				712FC080197D3A1600EA9F32 /* libbaidumapapi.a in Frameworks */,
 			);
@@ -778,6 +786,10 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				71282B06198650F900A3FE09 /* 头像背景.png */,
+				71282B0019864CF300A3FE09 /* 单条列表背景.png */,
+				71282B0119864CF300A3FE09 /* 返回按钮常态.png */,
+				71282B0219864CF300A3FE09 /* 返回按钮效果.png */,
 				714C6DA119834C10007684CA /* 点击开闸点击效果.png */,
 				714C6DA219834C10007684CA /* 点击开闸进入后.png */,
 				714C6D9F19834C07007684CA /* 点击开闸未进入常态.png */,
@@ -1368,7 +1380,9 @@
 				714C6D4519828E4A007684CA /* 0.png in Resources */,
 				717667FC1981309A00A635DA /* HJSJ_iPhone_red.png in Resources */,
 				717667E41980F49600A635DA /* BNTTSSDK.bundle in Resources */,
+				71282B0519864CF300A3FE09 /* 返回按钮效果.png in Resources */,
 				714C6D4619828E4A007684CA /* 1.png in Resources */,
+				71282B0319864CF300A3FE09 /* 单条列表背景.png in Resources */,
 				717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */,
 				712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */,
 				714C6D4919828E4A007684CA /* 4.png in Resources */,
@@ -1384,10 +1398,12 @@
 				717667FA1981238F00A635DA /* mapButtonclick.png in Resources */,
 				717667F91981238F00A635DA /* mapButton.png in Resources */,
 				712FC08D197D3CE100EA9F32 /* Main.storyboard in Resources */,
+				71282B0419864CF300A3FE09 /* 返回按钮常态.png in Resources */,
 				717667EA1980F60500A635DA /* Default.png in Resources */,
 				714C6D4C19828E4A007684CA /* 7.png in Resources */,
 				714C6DB719837B69007684CA /* ErrCode.plist in Resources */,
 				712FC07B197D38D100EA9F32 /* mapapi.bundle in Resources */,
+				71282B07198650F900A3FE09 /* 头像背景.png in Resources */,
 				712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */,
 				714C6D4B19828E4A007684CA /* 6.png in Resources */,
 				716300001982593C0013A776 /* tingchechangkuang.png in Resources */,

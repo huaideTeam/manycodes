@@ -18,9 +18,15 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self ) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 200, 20)];
+        
+        UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 0, 302, 50)];
+        backImage.image = [UIImage imageNamed:@"单条列表背景.png"];
+        [self.contentView addSubview:backImage];
+        
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 200, 20)];
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.font = FONT(17);
+        _titleLabel.textColor = COLOR(150, 150, 150);
         [self.contentView addSubview:_titleLabel];
         
         

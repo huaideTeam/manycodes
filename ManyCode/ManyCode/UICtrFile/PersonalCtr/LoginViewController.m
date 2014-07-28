@@ -62,10 +62,10 @@
     
     //返回按钮
     UIButton *backHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    backHome.frame = CGRectMake(0, 0.f, 24, 25.f);
+     backHome.frame = CGRectMake(0, 0.f, 50, 30.f);
     [backHome setBackgroundColor:[UIColor clearColor]];
-    [backHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
-    [backHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
+    [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
+    [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
 	[backHome addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:backHome]];
@@ -78,8 +78,8 @@
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame = CGRectMake(0, 0.f, 24, 25.f);
     [leftButton setBackgroundColor:[UIColor clearColor]];
-    [leftButton setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
-    [leftButton setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
 	[leftButton addTarget:self action:@selector(registClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:leftButton]];

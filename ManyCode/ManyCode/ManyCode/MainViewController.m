@@ -90,10 +90,12 @@
     
     //返回按钮
     leftBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn_.frame = CGRectMake(0, 0.f, 24, 25.f);
+    leftBtn_.frame = CGRectMake(0, 0.f, 50, 30.f);
     [leftBtn_ setBackgroundColor:[UIColor clearColor]];
-    [leftBtn_ setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
-    [leftBtn_ setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
+    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
+    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
+    [leftBtn_ setTitle:@"返回" forState:UIControlStateNormal];
+    leftBtn_.titleLabel.font = FONT(12);
     [leftBtn_ addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:leftBtn_]];

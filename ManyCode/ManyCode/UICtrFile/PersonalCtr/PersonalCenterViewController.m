@@ -14,6 +14,7 @@
 #import "PayMoneyViewController.h"
 #import "Common.h"
 #import "MyPurseViewController.h"
+#import "UINavigationItem+Items.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -60,6 +61,21 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    //返回按钮
+    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnHome.frame = CGRectMake(0, 0.f, 50, 30.f);
+    [btnHome setBackgroundColor:[UIColor clearColor]];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
+    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    if (IOS7) {
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
+    }
+    
     nameArray_ = @[@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新"];
     mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight- kTopImageHeight- kStatueHeight)];
     mainTableView_.delegate = self;
@@ -74,6 +90,14 @@
 
 }
 
+#pragma mark - 返回按钮
+- (void)backClick:(UIButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma makr - 自定义view
 - (UIView *)creatHeadView:(BOOL )isLogin
 {
     if (isLogin) {
@@ -150,6 +174,11 @@
     cell.titleLabel.text = nameArray_[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 51.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
