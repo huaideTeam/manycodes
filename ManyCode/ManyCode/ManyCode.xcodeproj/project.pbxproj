@@ -140,6 +140,9 @@
 		717D0213198680D500667746 /* 手机号码图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0211198680D500667746 /* 手机号码图标.png */; };
 		717D02161986833F00667746 /* 注册 登录按钮常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D02141986833F00667746 /* 注册 登录按钮常态.png */; };
 		717D02171986833F00667746 /* 注册 登录按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D02151986833F00667746 /* 注册 登录按钮效果.png */; };
+		717D02191986851100667746 /* 注册登录按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D02181986851100667746 /* 注册登录按钮效果.png */; };
+		717D021B1986855700667746 /* 注册登录按钮常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D021A1986855700667746 /* 注册登录按钮常态.png */; };
+		717D021D19868B2A00667746 /* payMoneyTitleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D021C19868B2A00667746 /* payMoneyTitleImage.png */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -464,6 +467,9 @@
 		717D0211198680D500667746 /* 手机号码图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手机号码图标.png"; sourceTree = "<group>"; };
 		717D02141986833F00667746 /* 注册 登录按钮常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册 登录按钮常态.png"; sourceTree = "<group>"; };
 		717D02151986833F00667746 /* 注册 登录按钮效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册 登录按钮效果.png"; sourceTree = "<group>"; };
+		717D02181986851100667746 /* 注册登录按钮效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册登录按钮效果.png"; sourceTree = "<group>"; };
+		717D021A1986855700667746 /* 注册登录按钮常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册登录按钮常态.png"; sourceTree = "<group>"; };
+		717D021C19868B2A00667746 /* payMoneyTitleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = payMoneyTitleImage.png; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -812,7 +818,10 @@
 				28BAF1D11986853E00FF8368 /* register_normal@2x.png */,
 				28BAF1D21986853E00FF8368 /* register_selected@2x.png */,
 				717D0210198680D500667746 /* 密码图标.png */,
+				717D021C19868B2A00667746 /* payMoneyTitleImage.png */,
 				717D02141986833F00667746 /* 注册 登录按钮常态.png */,
+				717D02181986851100667746 /* 注册登录按钮效果.png */,
+				717D021A1986855700667746 /* 注册登录按钮常态.png */,
 				717D02151986833F00667746 /* 注册 登录按钮效果.png */,
 				717D0211198680D500667746 /* 手机号码图标.png */,
 				717D020B19867D8500667746 /* 立即登录按钮常态.png */,
@@ -1429,6 +1438,7 @@
 				71490046197FC9F300DEFD83 /* personButton.png in Resources */,
 				285B02F21981589700B4D225 /* list_parking@2x.png in Resources */,
 				717D0212198680D500667746 /* 密码图标.png in Resources */,
+				717D021D19868B2A00667746 /* payMoneyTitleImage.png in Resources */,
 				714C6D4819828E4A007684CA /* 3.png in Resources */,
 				717D02171986833F00667746 /* 注册 登录按钮效果.png in Resources */,
 				71B3C940198228BA0050045B /* 详情图标.png in Resources */,
@@ -1452,7 +1462,9 @@
 				28BAF1D31986853E00FF8368 /* register_normal@2x.png in Resources */,
 				717667F71981238F00A635DA /* listButton.png in Resources */,
 				28BAF1D0198681B700FF8368 /* UPOMPImage.bundle in Resources */,
+				717D02191986851100667746 /* 注册登录按钮效果.png in Resources */,
 				71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */,
+				717D021B1986855700667746 /* 注册登录按钮常态.png in Resources */,
 				285B02F11981589700B4D225 /* list_navigation@2x.png in Resources */,
 				7149004B197FCC6000DEFD83 /* select.png in Resources */,
 			);

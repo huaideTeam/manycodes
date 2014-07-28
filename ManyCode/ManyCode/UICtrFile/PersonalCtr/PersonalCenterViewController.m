@@ -123,15 +123,19 @@
         [titleImage addSubview:photoBtn_];
         
         
-        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 110, 150, 20)];
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 100, 150, 20)];
         nameLabel.backgroundColor = [UIColor clearColor];
+        nameLabel.font = FONT(18);
+        nameLabel.textColor = [UIColor whiteColor];
         nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
         [headView addSubview:nameLabel];
         
         UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(130, 125, 150, 20)];
         priceBtn.backgroundColor = [UIColor clearColor];
         [priceBtn setTitle:@"当前余额：34元" forState:UIControlStateNormal];
+        priceBtn.titleLabel.font = FONT(18);
         [priceBtn addTarget:self action:@selector(chargeMoneyClick:) forControlEvents:UIControlEventTouchUpInside];
+        priceBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [headView addSubview:priceBtn];
         
         return headView;

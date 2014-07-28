@@ -8,10 +8,13 @@
 
 #import "MyPurseViewController.h"
 #import "PCPieChart.h"
+#import "PayMoneyViewController.h"
+#import "UINavigationItem+Items.h"
 
 @interface MyPurseViewController ()
 {
     UIScrollView *mainScrollView_;
+    UIButton *photoBtn_;
 }
 
 @end
@@ -47,6 +50,28 @@
 - (void)loadFunctionView
 {
     self.view.backgroundColor  = COLOR(229, 228, 225);
+    
+    if (IOS7) {
+        [self setExtendedLayoutIncludesOpaqueBars:NO];
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+    //返回按钮
+    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
+    [btnHome setBackgroundColor:[UIColor clearColor]];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
+    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
+    btnHome.titleLabel.font = FONT(12);
+    if (IOS7) {
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
+    }
+
+    
     UIView *headView = [self headerViewForCosumptionList];
     mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight - kTopImageHeight)];
     [self.view addSubview:mainScrollView_];
@@ -93,6 +118,15 @@
 }
 
 
+#pragma mark - 返回按钮
+
+- (void)backClick:(UIButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - 获取数据
+
 - (void)loadUserInfo
 {
     [[Hud defaultInstance] loading:self.view];
@@ -113,37 +147,43 @@
 - (UIView *)headerViewForCosumptionList {
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 90)];
     
-    UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
-    backImage.image = [UIImage  imageNamed:@""];
+    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
+    backImage.image = [UIImage  imageNamed:@"payMoneyTitleImage.png"];
     [headView addSubview:backImage];
     
-    UIImageView *circleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(19.f, 12, 74.f, 74.f)];
-    circleImageView.layer.cornerRadius = 37.f;
-    circleImageView.layer.borderWidth = 1.f;
-    circleImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    circleImageView.clipsToBounds = YES;
-    [circleImageView setBackgroundColor:[UIColor clearColor]];
-    [headView addSubview:circleImageView];
-    
-    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,20,60, 60)];
-    titleImage.center = circleImageView.center;
-    titleImage.layer.cornerRadius = 30.f;
-    titleImage.clipsToBounds = YES;
-    [titleImage setBackgroundColor:[UIColor greenColor]];
-    titleImage.image = [UIImage  imageNamed:@""];
+    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,10,75, 75)];
+    titleImage.image = [UIImage  imageNamed:@"示意头像 描边.png"];
+    titleImage.userInteractionEnabled = YES;
     [headView addSubview:titleImage];
     
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(circleImageView.frame) + 10.f, CGRectGetMidY(circleImageView.frame) - 20.f, 150, 20)];
+   UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
+    photoImage.backgroundColor = [UIColor clearColor];
+    photoImage.image = [UIImage imageNamed:@"示意头像 图片.png"];
+    [titleImage addSubview:photoImage];
+    
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 25, 150, 20)];
     nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.font = FONT(18);
+    nameLabel.textColor = [UIColor whiteColor];
     nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
     [headView addSubview:nameLabel];
     
-    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame), CGRectGetMaxY(nameLabel.frame), CGRectGetWidth(nameLabel.frame), CGRectGetHeight(nameLabel.frame))];
-    priceLabel.backgroundColor = [UIColor clearColor];
-    priceLabel.text = @"当前余额：34元";
-    [headView addSubview:priceLabel];
+    UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(120, 50, 150, 20)];
+    priceBtn.backgroundColor = [UIColor clearColor];
+    [priceBtn setTitle:@"当前余额：34元" forState:UIControlStateNormal];
+    priceBtn.titleLabel.font = FONT(18);
+    [priceBtn addTarget:self action:@selector(chargeMoneyClick:) forControlEvents:UIControlEventTouchUpInside];
+    priceBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [headView addSubview:priceBtn];
+    
     return headView;
 }
 
+
+- (void)chargeMoneyClick:(UIButton *)button
+{
+    PayMoneyViewController *viewCtr = [[PayMoneyViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
+}
 
 @end
