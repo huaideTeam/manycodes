@@ -10,11 +10,13 @@
 #include <sys/sysctl.h>
 #include <net/if.h>
 #include <net/if_dl.h>
-#import "UPPayPlugin.h"
+#import "UPOMP.h"
+#import "JSONKit.h"
 
-@interface PayMoneyViewController ()<UPPayPluginDelegate>
+@interface PayMoneyViewController ()<UPOMPDelegate>
 {
     UITextField *mainTextField_;
+    UPOMP *cpView_;
 }
 
 @end
@@ -114,7 +116,17 @@
         [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"userRecharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
             [[Hud defaultInstance] hide:self.view];
             
-        [UPPayPlugin startPay:[resultDic objectForKey:@"merchantOrderId"] mode:@"00" viewController:self delegate:self];
+            NSMutableDictionary *paramDic = [NSMutableDictionary dictionaryWithDictionary:resultDic];
+            [paramDic setObject:@"LanchPay.Req" forKey:@"application"];
+            [paramDic setObject:@"1.0.0" forKey:@"version"];
+            
+            NSString *xmlString = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>%@</merchantId><merchantOrderId>%@</merchantOrderId><merchantOrderTime>%@</merchantOrderTime><sign>%@</sign></upomp>",resultDic[@"merchantId"],resultDic[@"merchantOrderId"],resultDic[@"merchantOrderTime"],resultDic[@"sign"]];
+            NSData *data = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
+            
+            cpView_=[UPOMP new];
+            cpView_.viewDelegate=self;
+            [self.navigationController presentViewController:cpView_ animated:YES completion:nil];
+            [cpView_ setXmlData:data]; //初始接口传入支付报文（报文数据格式为NSData）
 
             
         } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -127,9 +139,8 @@
 }
 
 #pragma mark - 支付delegate
-- (void)UPPayPluginResult:(NSString *)result
-{
-    NSString* msg = [NSString stringWithFormat:@"支付结果：%@", result];
-    [[Hud defaultInstance] showMessage:msg];
+-(void)viewClose:(NSData*)data{//获得返回数据并释放内存
+    NSString * tempString  = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"+++%@+++",tempString);
 }
 @end
