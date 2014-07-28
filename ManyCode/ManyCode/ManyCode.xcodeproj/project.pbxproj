@@ -25,6 +25,9 @@
 		28BAF1CE198681B700FF8368 /* libUPOMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BAF1CB198681B700FF8368 /* libUPOMP.a */; };
 		28BAF1CF198681B700FF8368 /* libUPOMP_S.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BAF1CC198681B700FF8368 /* libUPOMP_S.a */; };
 		28BAF1D0198681B700FF8368 /* UPOMPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1CD198681B700FF8368 /* UPOMPImage.bundle */; };
+		28BAF1D31986853E00FF8368 /* register_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1D11986853E00FF8368 /* register_normal@2x.png */; };
+		28BAF1D41986853E00FF8368 /* register_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1D21986853E00FF8368 /* register_selected@2x.png */; };
+		28BAF1D61986857400FF8368 /* phoneNumber_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1D51986857400FF8368 /* phoneNumber_logo@2x.png */; };
 		28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */; };
 		28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */; };
 		28F00FE819837DCF00406294 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE719837DCF00406294 /* CalendarView.m */; };
@@ -222,6 +225,9 @@
 		28BAF1CB198681B700FF8368 /* libUPOMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP.a; sourceTree = "<group>"; };
 		28BAF1CC198681B700FF8368 /* libUPOMP_S.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP_S.a; sourceTree = "<group>"; };
 		28BAF1CD198681B700FF8368 /* UPOMPImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UPOMPImage.bundle; sourceTree = "<group>"; };
+		28BAF1D11986853E00FF8368 /* register_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register_normal@2x.png"; sourceTree = "<group>"; };
+		28BAF1D21986853E00FF8368 /* register_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register_selected@2x.png"; sourceTree = "<group>"; };
+		28BAF1D51986857400FF8368 /* phoneNumber_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phoneNumber_logo@2x.png"; sourceTree = "<group>"; };
 		28F00FDF198351CB00406294 /* ConsumptionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsumptionHistoryViewController.h; sourceTree = "<group>"; };
 		28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsumptionHistoryViewController.m; sourceTree = "<group>"; };
 		28F00FE21983547400406294 /* CosumptionHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CosumptionHistoryTableViewCell.h; sourceTree = "<group>"; };
@@ -802,6 +808,9 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				28BAF1D51986857400FF8368 /* phoneNumber_logo@2x.png */,
+				28BAF1D11986853E00FF8368 /* register_normal@2x.png */,
+				28BAF1D21986853E00FF8368 /* register_selected@2x.png */,
 				717D0210198680D500667746 /* 密码图标.png */,
 				717D02141986833F00667746 /* 注册 登录按钮常态.png */,
 				717D02151986833F00667746 /* 注册 登录按钮效果.png */,
@@ -1395,11 +1404,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				714C6DA419834C10007684CA /* 点击开闸进入后.png in Resources */,
+				28BAF1D41986853E00FF8368 /* register_selected@2x.png in Resources */,
 				714C6D4E19828E4A007684CA /* 9.png in Resources */,
 				714C6D4A19828E4A007684CA /* 5.png in Resources */,
 				714C6DA319834C10007684CA /* 点击开闸点击效果.png in Resources */,
 				717D02161986833F00667746 /* 注册 登录按钮常态.png in Resources */,
 				714C6DA019834C07007684CA /* 点击开闸未进入常态.png in Resources */,
+				28BAF1D61986857400FF8368 /* phoneNumber_logo@2x.png in Resources */,
 				714C6D4719828E4A007684CA /* 2.png in Resources */,
 				714C6D4519828E4A007684CA /* 0.png in Resources */,
 				717667FC1981309A00A635DA /* HJSJ_iPhone_red.png in Resources */,
@@ -1438,6 +1449,7 @@
 				712FBFBE197CB2F400EA9F32 /* InfoPlist.strings in Resources */,
 				714C6D4B19828E4A007684CA /* 6.png in Resources */,
 				716300001982593C0013A776 /* tingchechangkuang.png in Resources */,
+				28BAF1D31986853E00FF8368 /* register_normal@2x.png in Resources */,
 				717667F71981238F00A635DA /* listButton.png in Resources */,
 				28BAF1D0198681B700FF8368 /* UPOMPImage.bundle in Resources */,
 				71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */,

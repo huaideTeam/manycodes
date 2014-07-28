@@ -62,11 +62,15 @@
     
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.contentsScale = [UIScreen mainScreen].scale;
-    textLayer.frame = CGRectMake(0.f, 10.f, CGRectGetWidth(self.view.frame), 49.f);
+    textLayer.frame = CGRectMake(0.f, 30.f, CGRectGetWidth(self.view.frame), 29.f);
     textLayer.alignmentMode = kCAAlignmentCenter;
     textLayer.foregroundColor = [UIColor colorWithRed:51/255.f green:51/255.f blue:51/255.f alpha:1.f].CGColor;
     textLayer.string = str;
     [self.view.layer addSublayer:textLayer];
+    
+    UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(textLayer.frame) - 3.f, CGRectGetWidth(self.view.bounds), 1.f)];
+    [lineImageView setBackgroundColor:[UIColor grayColor]];
+    [self.view addSubview:lineImageView];
     
     UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMaxY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
     tempView.layer.cornerRadius = 5.f;
@@ -76,7 +80,8 @@
     [self.view addSubview:tempView];
     
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, CGRectGetHeight(tempView.frame) / 2.f - 7.f, 15.f, 15.f)];
-    [iconImageView setBackgroundColor:[UIColor redColor]];
+    [iconImageView setBackgroundColor:[UIColor clearColor]];
+    iconImageView.image = [UIImage imageNamed:@"phoneNumber_logo"];
     [tempView addSubview:iconImageView];
     
     UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
@@ -86,7 +91,8 @@
     self.inputTextField = inputTextField;
     
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [submitButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [submitButton setBackgroundImage:[UIImage imageNamed:@"register_normal"] forState:UIControlStateNormal];
+    [submitButton setBackgroundImage:[UIImage imageNamed:@"register_selected"] forState:UIControlStateHighlighted];
     submitButton.frame = CGRectMake(CGRectGetMinX(tempView.frame), CGRectGetMaxY(tempView.frame) + 38.f, CGRectGetWidth(tempView.frame), 52.f);
     [submitButton setTitle:@"通过验证" forState:UIControlStateNormal];
     [self.view addSubview:submitButton];
