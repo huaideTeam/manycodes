@@ -32,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"密码修改";
+    
     NSArray *iconImageName = @[@"phoneNumber_logo", @"密码图标", @"密码图标"];
     NSArray *placeHolders = @[@"请输入当前密码", @"请输入新密码", @"再次确认新密码"];
     NSArray *vaues = @[@"forwardPasswordTextField", @"firstPasswordTextField", @"secondPasswordTextField"];
