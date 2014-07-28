@@ -48,7 +48,6 @@
 		712FC08A197D3B5300EA9F32 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FC089197D3B5300EA9F32 /* MessageUI.framework */; };
 		712FC08D197D3CE100EA9F32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712FC08B197D3CE100EA9F32 /* Main.storyboard */; };
 		712FC0D1197D421100EA9F32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FC0D0197D421100EA9F32 /* ViewController.m */; };
-		712FC0D7197D4C3D00EA9F32 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FC0D3197D4C3D00EA9F32 /* libUPPayPlugin.a */; };
 		71490029197FB00500DEFD83 /* SBDoubleSidedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490022197FB00500DEFD83 /* SBDoubleSidedLayer.m */; };
 		7149002A197FB00500DEFD83 /* SBGradientOverlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490024197FB00500DEFD83 /* SBGradientOverlayLayer.m */; };
 		7149002B197FB00500DEFD83 /* SBTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71490026197FB00500DEFD83 /* SBTickerView.m */; };
@@ -285,9 +284,6 @@
 		712FC08C197D3CE100EA9F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		712FC0CF197D421100EA9F32 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		712FC0D0197D421100EA9F32 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		712FC0D3197D4C3D00EA9F32 /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
-		712FC0D5197D4C3D00EA9F32 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
-		712FC0D6197D4C3D00EA9F32 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
 		71490021197FB00500DEFD83 /* SBDoubleSidedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDoubleSidedLayer.h; sourceTree = "<group>"; };
 		71490022197FB00500DEFD83 /* SBDoubleSidedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDoubleSidedLayer.m; sourceTree = "<group>"; };
 		71490023197FB00500DEFD83 /* SBGradientOverlayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGradientOverlayLayer.h; sourceTree = "<group>"; };
@@ -523,7 +519,6 @@
 				712FC08A197D3B5300EA9F32 /* MessageUI.framework in Frameworks */,
 				712FC084197D3A9A00EA9F32 /* QuartzCore.framework in Frameworks */,
 				71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */,
-				712FC0D7197D4C3D00EA9F32 /* libUPPayPlugin.a in Frameworks */,
 				712FBFB6197CB2F400EA9F32 /* CoreGraphics.framework in Frameworks */,
 				712FC080197D3A1600EA9F32 /* libbaidumapapi.a in Frameworks */,
 				712FBFB4197CB2F400EA9F32 /* Foundation.framework in Frameworks */,
@@ -751,7 +746,6 @@
 				71B0B6CD197E3B4D00B06945 /* JSONKit */,
 				71B0B6D0197E3B4D00B06945 /* Reachbility */,
 				71B0B6D3197E3B4D00B06945 /* SDWebImage */,
-				712FC0D2197D4C3D00EA9F32 /* UPPayPlugin */,
 				712FC04F197D38D100EA9F32 /* BaiduMapSDK */,
 				712FBFF5197CBED700EA9F32 /* ItemFile */,
 				712FBFEB197CB72A00EA9F32 /* MENU */,
@@ -854,16 +848,6 @@
 				712FC079197D38D100EA9F32 /* BMKVersion.h */,
 			);
 			path = inc;
-			sourceTree = "<group>";
-		};
-		712FC0D2197D4C3D00EA9F32 /* UPPayPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				712FC0D3197D4C3D00EA9F32 /* libUPPayPlugin.a */,
-				712FC0D5197D4C3D00EA9F32 /* UPPayPlugin.h */,
-				712FC0D6197D4C3D00EA9F32 /* UPPayPluginDelegate.h */,
-			);
-			path = UPPayPlugin;
 			sourceTree = "<group>";
 		};
 		71490030197FB4B300DEFD83 /* ChartView */ = {
