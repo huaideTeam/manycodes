@@ -12,6 +12,7 @@
 #include <net/if_dl.h>
 #import "UPOMP.h"
 #import "JSONKit.h"
+#import "UINavigationItem+Items.h"
 
 @interface PayMoneyViewController ()<UPOMPDelegate>
 {
@@ -56,50 +57,87 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"充值缴费";
+    
+    //返回按钮
+    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
+    [btnHome setBackgroundColor:[UIColor clearColor]];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
+    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
+    btnHome.titleLabel.font = FONT(12);
+    if (IOS7) {
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
+    }
+
+    self.view.backgroundColor = COLOR(229, 228, 225);
     UIScrollView *mainView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
     mainView.contentSize = CGSizeMake(320, 560);
     mainView.userInteractionEnabled = YES;
-    mainView.backgroundColor = [UIColor grayColor];
+    mainView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:mainView];
     
-    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 345)];
-    backImage.image = [UIImage imageNamed:@""];
-//    [mainView addSubview:backImage];
+    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(12, 50, 295, 280)];
+    backImage.image = [UIImage imageNamed:@"背景.png"];
+    [mainView addSubview:backImage];
     
-    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(40,90,90, 90)];
-    titleImage.image = [UIImage  imageNamed:@""];
-    [mainView addSubview:titleImage];
+    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,45,65, 65)];
+    titleImage.image = [UIImage  imageNamed:@"示意头像 描边.png"];
+    titleImage.userInteractionEnabled = YES;
+    [backImage addSubview:titleImage];
     
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(145, 60, 150, 20)];
+    UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
+    photoImage.backgroundColor = [UIColor clearColor];
+    photoImage.image = [UIImage imageNamed:@"示意头像 图片.png"];
+    [titleImage addSubview:photoImage];
+    
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, 150, 20)];
     nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.font = FONT(15);
+    nameLabel.textColor = COLOR(86, 58, 11);
     nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
-    [mainView addSubview:nameLabel];
+    [backImage addSubview:nameLabel];
     
-    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(145, 90, 150, 20)];
-    priceLabel.backgroundColor = [UIColor clearColor];
-    priceLabel.text = @"当前余额：34元";
-    [mainView addSubview:priceLabel];
-    
-    
-    UIButton * payButton = [[UIButton alloc] initWithFrame:CGRectMake(110, 130, 90, 30)];
+    UILabel  *priceLable = [[UILabel alloc] initWithFrame:CGRectMake(100, 80, 150, 20)];
+    priceLable.backgroundColor = [UIColor clearColor];
+    priceLable.text = @"当前余额：34元";
+    priceLable.font = FONT(15);
+    priceLable.textColor = COLOR(86, 58, 11);
+    [backImage addSubview:priceLable];
+
+
+    UIButton * payButton = [[UIButton alloc] initWithFrame:CGRectMake(95, 130, 95, 33)];
     [payButton addTarget:self action:@selector(payBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    payButton.backgroundColor = [UIColor blueColor];
-    [mainView addSubview:payButton];
+    payButton.backgroundColor = [UIColor clearColor];
+    [payButton setBackgroundImage:[UIImage imageNamed:@"立即支付按钮常态.png"] forState:UIControlStateNormal];
+    [payButton setBackgroundImage:[UIImage imageNamed:@"立即支付按钮效果.png"] forState:UIControlStateHighlighted];
+    [backImage addSubview:payButton];
     
-    mainTextField_ = [[UITextField alloc] initWithFrame:CGRectMake(52, 190, 215, 32)];
+    mainTextField_ = [[UITextField alloc] initWithFrame:CGRectMake(40, 190, 215, 32)];
     mainTextField_.borderStyle = UITextBorderStyleRoundedRect;
     mainTextField_.placeholder = @"输入充值金额";
     mainTextField_.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     mainTextField_.returnKeyType = UIReturnKeyDone;
     [mainTextField_ addTarget:self action:@selector(hideKed) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [mainView addSubview:mainTextField_];
+    [backImage addSubview:mainTextField_];
 }
 
 - (void)hideKed
 {
     [mainTextField_ resignFirstResponder];
 }
+
+#pragma mark - 返回按钮
+- (void)backClick:(UIButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark - 支付
 

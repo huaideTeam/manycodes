@@ -50,6 +50,7 @@
 - (void)loadFunctionView
 {
     self.view.backgroundColor  = COLOR(229, 228, 225);
+    self.title = @"我的钱包";
     
     if (IOS7) {
         [self setExtendedLayoutIncludesOpaqueBars:NO];
