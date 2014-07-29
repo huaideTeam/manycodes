@@ -106,7 +106,7 @@
     
     UILabel  *priceLable = [[UILabel alloc] initWithFrame:CGRectMake(100, 80, 150, 20)];
     priceLable.backgroundColor = [UIColor clearColor];
-    priceLable.text = @"当前余额：34元";
+    priceLable.text = BALANCE;
     priceLable.font = FONT(15);
     priceLable.textColor = COLOR(86, 58, 11);
     [backImage addSubview:priceLable];

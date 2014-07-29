@@ -126,7 +126,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     
     UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame), CGRectGetMaxY(nameLabel.frame), CGRectGetWidth(nameLabel.frame), CGRectGetHeight(nameLabel.frame))];
     priceLabel.backgroundColor = [UIColor clearColor];
-    priceLabel.text = @"当前余额：34元";
+    priceLabel.text = BALANCE;
     [headView addSubview:priceLabel];
     return headView;
 }

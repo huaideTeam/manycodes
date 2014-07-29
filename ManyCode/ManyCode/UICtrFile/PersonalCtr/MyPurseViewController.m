@@ -171,7 +171,7 @@
     
     UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(120, 50, 150, 20)];
     priceBtn.backgroundColor = [UIColor clearColor];
-    [priceBtn setTitle:@"当前余额：34元" forState:UIControlStateNormal];
+    [priceBtn setTitle:BALANCE forState:UIControlStateNormal];
     priceBtn.titleLabel.font = FONT(18);
     [priceBtn addTarget:self action:@selector(chargeMoneyClick:) forControlEvents:UIControlEventTouchUpInside];
     priceBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
