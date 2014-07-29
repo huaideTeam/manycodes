@@ -17,12 +17,14 @@
 #import "UINavigationItem+Items.h"
 #import "BlockUI.h"
 #import "JSONKit.h"
+#import "CustomButon.h"
+#import "UIImageView+WebCache.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 {
     UITableView *mainTableView_;
     NSArray *nameArray_;
-    UIButton *photoBtn_;
+    CustomButon *photoBtn_;
 }
 
 @end
@@ -118,9 +120,10 @@
         titleImage.userInteractionEnabled = YES;
         [headView addSubview:titleImage];
         
-        photoBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
+        photoBtn_ = [[CustomButon alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
         photoBtn_.backgroundColor = [UIColor clearColor];
-        [photoBtn_ setBackgroundImage:[UIImage imageNamed:@"示意头像 图片.png"] forState:UIControlStateNormal];
+//        [photoBtn_ setBackgroundImage:[UIImage imageNamed:@"示意头像 图片.png"] forState:UIControlStateNormal];
+         [photoBtn_.titleImageView setImageWithURL:HEADIMG placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
         [photoBtn_ addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
         [titleImage addSubview:photoBtn_];
         
@@ -154,9 +157,9 @@
         titleImage.userInteractionEnabled = YES;
         [headView addSubview:titleImage];
         
-        photoBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
+        photoBtn_ = [[CustomButon alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
         photoBtn_.backgroundColor = [UIColor clearColor];
-        [photoBtn_ setBackgroundImage:[UIImage imageNamed:@"示意头像 图片.png"] forState:UIControlStateNormal];
+        [photoBtn_.titleImageView setImageWithURL:HEADIMG placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
         [photoBtn_ addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
         [titleImage addSubview:photoBtn_];
         

@@ -47,13 +47,17 @@
 
 #define kTopImageHeight 44 +kStatueHeight
 
-#define BALANCE  [NSString stringWithFormat:@"当前余额：%@元",[[NSUserDefaults standardUserDefaults] objectForKey:kAccountBalance]]
-#define ACCOUNTNAME  [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile]
 
 #define kAccountMobile  @"AccountMobile"    //账号
 #define kAccountid      @"Accountid"    //useid
 #define kAccountSession  @"AccountSession" //sessionid
 #define kAccountBalance  @"AccountBalance"
+#define kHead_img       @"head_img"
+
+#define BALANCE  [NSString stringWithFormat:@"当前余额：%@元",[[NSUserDefaults standardUserDefaults] objectForKey:kAccountBalance]]
+#define ACCOUNTNAME  [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile]
+#define HEADIMG   [[NSUserDefaults standardUserDefaults] objectForKey:kHead_img]
+
 
 #define kAllowUsingLocation @"kAllowUsingLocation"  //是否允许使用定位
 #define kAllowIdleTimerInvalid  @"kAllowIdleTimerInvalid"   //是否屏幕常亮

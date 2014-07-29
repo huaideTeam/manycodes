@@ -148,6 +148,7 @@
 		717D0223198690B300667746 /* 立即支付按钮常态.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0220198690B300667746 /* 立即支付按钮常态.png */; };
 		717D0224198690B300667746 /* 立即支付按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0221198690B300667746 /* 立即支付按钮效果.png */; };
 		717D0225198690B300667746 /* 立即支付图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0222198690B300667746 /* 立即支付图标.png */; };
+		717D02281987358300667746 /* CustomButon.m in Sources */ = {isa = PBXBuildFile; fileRef = 717D02271987358300667746 /* CustomButon.m */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -481,6 +482,8 @@
 		717D0220198690B300667746 /* 立即支付按钮常态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立即支付按钮常态.png"; sourceTree = "<group>"; };
 		717D0221198690B300667746 /* 立即支付按钮效果.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立即支付按钮效果.png"; sourceTree = "<group>"; };
 		717D0222198690B300667746 /* 立即支付图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立即支付图标.png"; sourceTree = "<group>"; };
+		717D02261987358300667746 /* CustomButon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButon.h; sourceTree = "<group>"; };
+		717D02271987358300667746 /* CustomButon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButon.m; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -1329,6 +1332,8 @@
 				717666F6197FE3FF00A635DA /* UnderLineLabel.m */,
 				714C6DB319836E2B007684CA /* MyPurseViewController.h */,
 				714C6DB419836E2B007684CA /* MyPurseViewController.m */,
+				717D02261987358300667746 /* CustomButon.h */,
+				717D02271987358300667746 /* CustomButon.m */,
 			);
 			path = PersonalCtr;
 			sourceTree = "<group>";
@@ -1579,6 +1584,7 @@
 				71B0B74C197E40E300B06945 /* NotifyManager.m in Sources */,
 				2885FADE19834110009E69C5 /* SettingSecondSectionTableViewCell.m in Sources */,
 				71B0B75A197EAA2000B06945 /* PersonalCell.m in Sources */,
+				717D02281987358300667746 /* CustomButon.m in Sources */,
 				285B02F619815DDF00B4D225 /* RegisterFirstStepViewController.m in Sources */,
 				2885FAD819833F7E009E69C5 /* SettingMainViewController.m in Sources */,
 				717667DA1980F49600A635DA /* CDataScanner_Extensions.m in Sources */,

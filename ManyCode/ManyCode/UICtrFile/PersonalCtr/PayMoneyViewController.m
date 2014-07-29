@@ -13,6 +13,7 @@
 #import "UPOMP.h"
 #import "JSONKit.h"
 #import "UINavigationItem+Items.h"
+#import "UIImageView+WebCache.h"
 
 @interface PayMoneyViewController ()<UPOMPDelegate>
 {
@@ -94,7 +95,7 @@
     
     UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
     photoImage.backgroundColor = [UIColor clearColor];
-    photoImage.image = [UIImage imageNamed:@"示意头像 图片.png"];
+    [photoImage setImageWithURL:HEADIMG placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
     [titleImage addSubview:photoImage];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, 150, 20)];

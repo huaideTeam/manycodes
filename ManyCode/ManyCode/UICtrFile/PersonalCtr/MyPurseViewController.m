@@ -10,6 +10,7 @@
 #import "PCPieChart.h"
 #import "PayMoneyViewController.h"
 #import "UINavigationItem+Items.h"
+#import "UIImageView+WebCache.h"
 
 @interface MyPurseViewController ()
 {
@@ -159,7 +160,7 @@
     
    UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
     photoImage.backgroundColor = [UIColor clearColor];
-    photoImage.image = [UIImage imageNamed:@"示意头像 图片.png"];
+    [photoImage setImageWithURL:HEADIMG placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
     [titleImage addSubview:photoImage];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 25, 150, 20)];

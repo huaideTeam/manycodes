@@ -271,6 +271,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"userid"] forKey:kAccountid];
     [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"sessionid"] forKey:kAccountSession];
     [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"balance"] forKey:kAccountBalance];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"head_img"] forKey:kHead_img];
 }
 
 #pragma mark - keyboard btn

@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UICtrFile/PersonalCtr/PayMoneyViewController.m"
-            timestampString = "428290231.63122"
+            timestampString = "428292444.781044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-payBtnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UICtrFile/PersonalCtr/PayMoneyViewController.m"
-            timestampString = "428290231.63122"
+            timestampString = "428292444.781044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-viewClose:"
             landmarkType = "5">
          </BreakpointContent>
