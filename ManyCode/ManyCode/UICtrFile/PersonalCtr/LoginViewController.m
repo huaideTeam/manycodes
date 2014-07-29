@@ -163,7 +163,7 @@
     [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮效果.png"] forState:UIControlStateNormal];
     [accountView addSubview:loginButton];
     
-   UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(30, 190, 80, 30)];
+   UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
    passwordLable.shouldUnderline = YES;
     passwordLable.backgroundColor = [UIColor clearColor];
     passwordLable.textColor = [UIColor darkGrayColor];
@@ -171,13 +171,13 @@
    [passwordLable addTarget:self action:@selector(forgotPasswdClick:)];
     [accountView addSubview:passwordLable];
     
-    UnderLineLabel *changePasswordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
-    changePasswordLable.shouldUnderline = YES;
-    changePasswordLable.text = @"修改密码";
-    changePasswordLable.textColor = [UIColor darkGrayColor];
-    changePasswordLable.backgroundColor = [UIColor clearColor];
-    [changePasswordLable addTarget:self action:@selector(changePasswdClick:)];
-    [accountView addSubview:changePasswordLable];
+//    UnderLineLabel *changePasswordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
+//    changePasswordLable.shouldUnderline = YES;
+//    changePasswordLable.text = @"修改密码";
+//    changePasswordLable.textColor = [UIColor darkGrayColor];
+//    changePasswordLable.backgroundColor = [UIColor clearColor];
+//    [changePasswordLable addTarget:self action:@selector(changePasswdClick:)];
+//    [accountView addSubview:changePasswordLable];
     
     [mainScrollView_ addSubview:accountView];
 }

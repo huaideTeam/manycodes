@@ -84,6 +84,7 @@
     
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(12, 50, 295, 280)];
     backImage.image = [UIImage imageNamed:@"背景.png"];
+    backImage.userInteractionEnabled = YES;
     [mainView addSubview:backImage];
     
     UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,45,65, 65)];

@@ -72,7 +72,6 @@
     }
     self.title = [_parkInfoDic objectForKey:@"carparkname"];
     
-    self.view.backgroundColor = COLOR(235.0, 237.0, 240.0);
     //返回按钮
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
     btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
@@ -80,13 +79,18 @@
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
+    btnHome.titleLabel.font = FONT(12);
     if (IOS7) {
-        [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
     }
     else {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
 
+    
+    self.view.backgroundColor = COLOR(235.0, 237.0, 240.0);
+   
     
     mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight)];
     mainScrollView_.backgroundColor =[UIColor clearColor];

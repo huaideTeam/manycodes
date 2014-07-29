@@ -12,6 +12,7 @@
 #import "PCPieChart.h"
 #import "PayMoneyViewController.h"
 #import "Common.h"
+#import "UINavigationItem+Items.h"
 
 
 #define PIE_HEIGHT 200
@@ -94,6 +95,21 @@
         [self setExtendedLayoutIncludesOpaqueBars:NO];
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
+    
+    //返回按钮
+    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
+    [btnHome setBackgroundColor:[UIColor clearColor]];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
+    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
+    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    if (IOS7) {
+        [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
+    }
+    else {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
+    }
+
     
     hourNumber1_ = 0;
     hourNumber2_ = 0;
