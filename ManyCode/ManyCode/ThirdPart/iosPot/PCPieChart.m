@@ -129,10 +129,10 @@
         CGContextRef ctx = UIGraphicsGetCurrentContext();
 		UIGraphicsPushContext(ctx);
 		CGContextSetRGBFillColor(ctx, 1.0f, 1.0f, 1.0f, 1.0f);  // white color
-		CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), margin);
+//		CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), margin);
 		CGContextFillEllipseInRect(ctx, CGRectMake(x, y, diameter, diameter));  // a white filled circle with a diameter of 100 pixels, centered in (60, 60)
 		UIGraphicsPopContext();
-		CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 0);
+//		CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 0);
 		
 		float nextStartDeg = 0;
 		float endDeg = 0;
@@ -203,7 +203,7 @@
 				}
 				//CGContextSetRGBStrokeColor(ctx, 1.0f, 1.0f, 1.0f, 1.0f);
 				//CGContextSetRGBFillColor(ctx, 1.0f, 1.0f, 1.0f, 1.0f);
-				CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 3);
+//				CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 3);
 				
 				//float text_x = x + 10;
 				NSString *percentageText = [NSString stringWithFormat:@"%.1f%%", component.value/total*100];
@@ -337,7 +337,7 @@
 				}
 				//CGContextSetRGBStrokeColor(ctx, 1.0f, 1.0f, 1.0f, 1.0f);
 				//CGContextSetRGBFillColor(ctx, 1.0f, 1.0f, 1.0f, 1.0f);
-				CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 2);
+//				CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 2);
 				
 				float text_x = x + diameter + 10;
 				NSString *percentageText = [NSString stringWithFormat:@"%.1f%%", component.value/total*100];

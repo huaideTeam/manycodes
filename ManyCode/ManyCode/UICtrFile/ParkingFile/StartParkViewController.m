@@ -87,7 +87,7 @@
 {
     
     currentDate_ = [NSDate date];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = COLOR(229, 228, 225);
     
      self.title = @"对账单";
     
@@ -104,10 +104,10 @@
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
-        [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
     }
     else {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
 
     
@@ -163,6 +163,7 @@
     [pieChart setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin];
     [pieChart setDiameter:150];
     [pieChart setSameColorLabel:NO];
+    [pieChart setShowArrow:NO];
     [mainScrollView_ addSubview:pieChart];
     
     NSMutableArray *components = [NSMutableArray array];
@@ -200,6 +201,13 @@
         openDoorBtn_.tag = 101;
     }
     
+}
+
+#pragma mark - 返回按钮
+
+- (void)backClick:(UIButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 下载数据 
