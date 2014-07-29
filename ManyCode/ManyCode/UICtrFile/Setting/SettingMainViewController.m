@@ -42,6 +42,15 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
     [settingListTableView registerClass:[SettingSecondSectionTableViewCell class] forCellReuseIdentifier:identifierForSecondSectionCellSetting];
     [self.view addSubview:settingListTableView];
     
+    UIButton *_submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_submitButton setBackgroundImage:[UIImage imageNamed:@"register_normal"] forState:UIControlStateNormal];
+    [_submitButton setBackgroundImage:[UIImage imageNamed:@"register_selected"] forState:UIControlStateHighlighted];
+    _submitButton.frame = CGRectMake(0, 0, 303.f, 52.f);
+    [_submitButton setTitle:@"注销" forState:UIControlStateNormal];
+    [self.view addSubview:_submitButton];
+    [_submitButton addTarget:self action:@selector(logoutButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    settingListTableView.tableFooterView = _submitButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -159,6 +168,11 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
             [[Hud defaultInstance] showMessage:@"清除缓存成功"];
         }
     }
+    
+}
+
+#pragma mark - 注销登录
+- (void)logoutButtonClicked {
     
 }
 @end
