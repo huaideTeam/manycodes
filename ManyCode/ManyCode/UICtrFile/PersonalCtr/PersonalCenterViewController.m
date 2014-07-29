@@ -90,7 +90,7 @@
     mainTableView_.dataSource = self;
     mainTableView_.backgroundColor = [UIColor clearColor];
     mainTableView_.backgroundView = nil;
-    [mainTableView_ setTableHeaderView:[self creatHeadView:NO]];
+    [mainTableView_ setTableHeaderView:[self creatHeadView:[NetworkCenter instanceManager].isLogin]];
     [mainTableView_ setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:mainTableView_];
     

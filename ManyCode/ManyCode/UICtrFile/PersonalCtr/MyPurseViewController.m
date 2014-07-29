@@ -84,6 +84,7 @@
     [pieChart setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin];
     [pieChart setDiameter:150];
     [pieChart setSameColorLabel:NO];
+    [pieChart setShowArrow:NO];
     [mainScrollView_ addSubview:pieChart];
     
     NSMutableArray *components = [NSMutableArray array];

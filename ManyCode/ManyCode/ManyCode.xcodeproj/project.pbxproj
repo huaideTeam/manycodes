@@ -149,6 +149,7 @@
 		717D0224198690B300667746 /* 立即支付按钮效果.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0221198690B300667746 /* 立即支付按钮效果.png */; };
 		717D0225198690B300667746 /* 立即支付图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0222198690B300667746 /* 立即支付图标.png */; };
 		717D02281987358300667746 /* CustomButon.m in Sources */ = {isa = PBXBuildFile; fileRef = 717D02271987358300667746 /* CustomButon.m */; };
+		717D022A19876B6300667746 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717D022919876B6300667746 /* CoreBluetooth.framework */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B6FB197E3B4D00B06945 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D5197E3B4D00B06945 /* MKAnnotationView+WebCache.m */; };
@@ -484,6 +485,7 @@
 		717D0222198690B300667746 /* 立即支付图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立即支付图标.png"; sourceTree = "<group>"; };
 		717D02261987358300667746 /* CustomButon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButon.h; sourceTree = "<group>"; };
 		717D02271987358300667746 /* CustomButon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButon.m; sourceTree = "<group>"; };
+		717D022919876B6300667746 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717D022A19876B6300667746 /* CoreBluetooth.framework in Frameworks */,
 				7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */,
 				712FC084197D3A9A00EA9F32 /* QuartzCore.framework in Frameworks */,
 				71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */,
@@ -765,6 +768,7 @@
 		712FBFB2197CB2F400EA9F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				717D022919876B6300667746 /* CoreBluetooth.framework */,
 				717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */,
 				717667501980EC9000A635DA /* CoreMotion.framework */,
 				7176674E1980EC8700A635DA /* CoreTelephony.framework */,

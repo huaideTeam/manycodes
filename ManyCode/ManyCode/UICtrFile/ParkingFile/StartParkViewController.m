@@ -13,11 +13,12 @@
 #import "PayMoneyViewController.h"
 #import "Common.h"
 #import "UINavigationItem+Items.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
 
 #define PIE_HEIGHT 200
 
-@interface StartParkViewController ()<UIAlertViewDelegate>
+@interface StartParkViewController ()<UIAlertViewDelegate,CBCentralManagerDelegate,CBPeripheralDelegate>
 {
     NSInteger hourNumber1_;
     NSInteger hourNumber2_;
@@ -30,7 +31,9 @@
     NSTimer * wifiTime_;
     NSTimer *hourTime_;
     NSDictionary *deviceDic_;
-    
+    UIView *centerView_;
+    NSDictionary *accountInfoDic_; //账户信息
+    NSDictionary *currentInfoDic_;
 }
 
 @property (nonatomic, strong)  SBTickerView *clockTickerViewHour1;
@@ -39,6 +42,7 @@
 @property (nonatomic, strong)  SBTickerView *clockTickerViewMinute2;
 @property (nonatomic,strong) NSMutableArray *valueArray;
 @property (nonatomic,strong) NSMutableArray *colorArray;
+@property (nonatomic, strong) CBCentralManager *cbCentralMgr;
 
 @end
 
@@ -70,9 +74,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    hourTime_ =  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTimeView) userInfo:nil repeats:YES];
-    
-    wifiTime_ = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(wifiInfo) userInfo:nil repeats:YES];
+    if (self.isComeIn) {
+        
+    }else
+    {
+         hourTime_ =  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTimeView) userInfo:nil repeats:YES];
+    }
+   
+//    wifiTime_ = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(wifiInfo) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -85,7 +94,6 @@
 
 - (void)loadFunctionView
 {
-    
     currentDate_ = [NSDate date];
     self.view.backgroundColor = COLOR(229, 228, 225);
     
@@ -109,7 +117,12 @@
     else {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
-
+    
+    self.cbCentralMgr = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    self.cbCentralMgr.delegate = self;
+    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:false],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
+    
+    [self.cbCentralMgr scanForPeripheralsWithServices:nil options:dic];
     
     hourNumber1_ = 0;
     hourNumber2_ = 0;
@@ -158,7 +171,25 @@
     titleLable.textAlignment = NSTextAlignmentCenter;
     [mainScrollView_ addSubview:titleLable];
     
+    openDoorBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(15, 400, 290, 38)];
+    [openDoorBtn_ addTarget:self action:@selector(openClick:) forControlEvents:UIControlEventTouchUpInside];
+    [openDoorBtn_ setTitle:@"点击开闸" forState:UIControlStateNormal];
+    [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
+    [mainScrollView_ addSubview:openDoorBtn_];
+    if (self.isComeIn) {
+        openDoorBtn_.tag = 100;
+    }else
+    {
+        openDoorBtn_.tag = 101;
+    }
+     [self getUserBalanceInfo];
     
+}
+
+#pragma mark - 添加饼图
+
+- (void)addPieView:(CGFloat)surplusMoney  Consumption:(CGFloat)consumMoney
+{
     PCPieChart *pieChart = [[PCPieChart alloc] initWithFrame:CGRectMake(0, 200, 320, 150)];
     [pieChart setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin];
     [pieChart setDiameter:150];
@@ -166,41 +197,41 @@
     [pieChart setShowArrow:NO];
     [mainScrollView_ addSubview:pieChart];
     
-    NSMutableArray *components = [NSMutableArray array];
-    for (int i=0; i< 3; i++)
-    {
-        PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:25.0];
+    if (self.isComeIn) {//进闸
+        NSMutableArray *components = [NSMutableArray array];
+        PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:surplusMoney];
         [components addObject:component];
+        [component setColour:COLOR(64, 163, 104)];
+        [pieChart setComponents:components];
         
-        if (i==0)
-        {
-            [component setColour:[UIColor whiteColor]];
-        }
-        else if (i==1)
-        {
-            [component setColour:COLOR(64, 163, 104)];
-        }
-        else if (i==2)
-        {
-            [component setColour:COLOR(226, 90, 60)];
-        }
-    }
-    [pieChart setComponents:components];
-    
-    openDoorBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(15, 400, 290, 38)];
-    [openDoorBtn_ addTarget:self action:@selector(openClick:) forControlEvents:UIControlEventTouchUpInside];
-    [openDoorBtn_ setTitle:@"点击开闸" forState:UIControlStateNormal];
-    [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
-    [mainScrollView_ addSubview:openDoorBtn_];
-    if (self.isComeIn) {
-        [self getUserBalanceInfo];
-        openDoorBtn_.tag = 100;
     }else
     {
-        [self loadCalculateChargeInfo];
-        openDoorBtn_.tag = 101;
+        NSMutableArray *components = [NSMutableArray array];
+        
+        PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:surplusMoney];
+        [component setColour:COLOR(64, 163, 104)];
+        [components addObject:component];
+        
+        
+        PCPieComponent *component1 = [PCPieComponent pieComponentWithTitle:@"预计消费" value:consumMoney];
+        [component1  setColour:COLOR(226, 90, 60)];
+        [components addObject:component1];
+        
+        [pieChart setComponents:components];
     }
     
+    centerView_ = [[UIView alloc] initWithFrame:CGRectMake(120, 35, 80, 80)];
+    centerView_.layer.masksToBounds = YES;
+    centerView_.layer.cornerRadius = 40.0;
+    centerView_.backgroundColor = [UIColor whiteColor];
+    UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 80, 20)];
+    lable.text = [NSString stringWithFormat:@"%@元",[[NSUserDefaults standardUserDefaults] objectForKey:kAccountBalance]];
+    lable.textColor = COLOR(219, 44, 0);
+    lable.textAlignment = NSTextAlignmentCenter;
+    [centerView_ addSubview:lable];
+    
+    [pieChart addSubview:centerView_];
+
 }
 
 #pragma mark - 返回按钮
@@ -221,7 +252,7 @@
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserBalance" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
-        [[Hud defaultInstance] hide:self.view];
+        accountInfoDic_ = resultDic;
         if ([[resultDic objectForKey:@"balance"] floatValue]>0) {
             
         }else
@@ -230,7 +261,14 @@
             alert.tag = 1000;
             [alert show];
         }
-        
+        if (!self.isComeIn) {
+            [self loadCalculateChargeInfo];
+        }else
+        {
+            [self addPieView:[accountInfoDic_[@"balance"] floatValue] Consumption:0.0];
+            [[Hud defaultInstance] hide:self.view];
+        }
+ 
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (error.code == 217) {
             UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"你的账户余额不足" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"充值", nil];
@@ -243,14 +281,14 @@
 
 - (void)loadCalculateChargeInfo
 {
-    [[Hud defaultInstance] loading:self.view];
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCalculateCharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        currentInfoDic_ = resultDic;
         [[Hud defaultInstance] hide:self.view];
-        
+        [self addPieView:[accountInfoDic_[@"balance"] floatValue] Consumption:[resultDic[@"money"] floatValue] ];
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -319,8 +357,6 @@
 // 获取停车场的wifi列表
 - (void)wifiInfo
 {
-
-    
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
@@ -425,6 +461,32 @@
     }
 }
 
+#pragma mark - blue delegate
 
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
+{
+    NSLog(@"123");
+}
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    NSLog(@"4443");
+    switch (central.state) {
+            
+        case CBCentralManagerStatePoweredOn:
+        {
+            NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:false],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
+            [self.cbCentralMgr scanForPeripheralsWithServices:nil options:dic];
+            break;
+        }
+            
+        default:
+            
+            NSLog(@"Central Manager did change state");
+            
+            break;
+            
+    }
+}
 
 @end

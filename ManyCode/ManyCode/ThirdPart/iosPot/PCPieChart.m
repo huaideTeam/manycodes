@@ -150,9 +150,9 @@
 			CGContextClosePath(ctx);
 			CGContextFillPath(ctx);
 			
-			CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 1);
-			CGContextSetLineWidth(ctx, gap);
-			CGContextMoveToPoint(ctx, origin_x, origin_y);
+//			CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 1);
+//			CGContextSetLineWidth(ctx, gap);
+//			CGContextMoveToPoint(ctx, origin_x, origin_y);
 			CGContextAddArc(ctx, origin_x, origin_y, inner_radius, (nextStartDeg-90)*M_PI/180.0, (endDeg-90)*M_PI/180.0, 0);
 			CGContextClosePath(ctx);
 			CGContextStrokePath(ctx);

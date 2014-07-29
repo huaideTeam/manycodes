@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UICtrFile/PersonalCtr/PayMoneyViewController.m"
-            timestampString = "428292444.781044"
+            filePath = "UICtrFile/ParkingFile/StartParkViewController.m"
+            timestampString = "428332132.736476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "-viewClose:"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "-centralManager:didDiscoverPeripheral:advertisementData:RSSI:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
