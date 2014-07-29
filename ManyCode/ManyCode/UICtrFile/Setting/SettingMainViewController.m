@@ -10,6 +10,7 @@
 #import "SettingFirstSectionTableViewCell.h"
 #import "SettingSecondSectionTableViewCell.h"
 #import "Common.h"
+#import "ChangePasswordViewController.h"
 
 static NSString *identifierForFirstSectionCellSetting = @"identifierForFirstSectionCellSetting";
 static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSectionCellSetting";
@@ -85,7 +86,7 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
         case 1 :
         {
             SettingSecondSectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierForSecondSectionCellSetting forIndexPath:indexPath];
-            NSArray *titles = @[@"清理缓存", @"流量统计", @"精品推荐"];
+            NSArray *titles = @[@"清理缓存", @"流量统计", @"修改密码"];
             cell.menuTitleLabel.text = titles[indexPath.row];
             if (indexPath.row != 1) {
                 cell.menuDefaultLabel.hidden = YES;
@@ -131,7 +132,8 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
                 break;
             case 2:
             {
-                
+                ChangePasswordViewController *viewController = [[ChangePasswordViewController alloc] init];
+                [self.navigationController pushViewController:viewController animated:YES];
             }
                 break;
             default:
