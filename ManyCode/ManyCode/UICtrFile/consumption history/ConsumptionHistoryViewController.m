@@ -121,7 +121,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(circleImageView.frame) + 10.f, CGRectGetMidY(circleImageView.frame) - 20.f, 150, 20)];
     nameLabel.backgroundColor = [UIColor clearColor];
-    nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
+    nameLabel.text = ACCOUNTNAME;
     [headView addSubview:nameLabel];
     
     UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame), CGRectGetMaxY(nameLabel.frame), CGRectGetWidth(nameLabel.frame), CGRectGetHeight(nameLabel.frame))];

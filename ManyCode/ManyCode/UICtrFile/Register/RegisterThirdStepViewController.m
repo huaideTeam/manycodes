@@ -115,7 +115,7 @@
         if (isPasswordMatch) {
             [[Hud defaultInstance] loading:self.view withText:@"注册中,请稍候..."];
             __weak RegisterThirdStepViewController *weakSelf = self;
-            [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"register" Parameter:@{@"mobile":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile], @"password":self.firstPasswordTextField.text} Finish:^(NSDictionary *resultDic) {
+            [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"register" Parameter:@{@"mobile":ACCOUNTNAME, @"password":self.firstPasswordTextField.text} Finish:^(NSDictionary *resultDic) {
                 if ([resultDic[@"statusCode"] isEqualToString:@"200"]) {
                     [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"mobile"] forKey:kAccountMobile];
                     [[NSUserDefaults standardUserDefaults] setObject:resultDic[@"sessionid"] forKey:kAccountSession];

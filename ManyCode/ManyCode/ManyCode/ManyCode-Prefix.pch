@@ -48,6 +48,7 @@
 #define kTopImageHeight 44 +kStatueHeight
 
 #define BALANCE  [NSString stringWithFormat:@"当前余额：%@元",[[NSUserDefaults standardUserDefaults] objectForKey:kAccountBalance]]
+#define ACCOUNTNAME  [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile]
 
 #define kAccountMobile  @"AccountMobile"    //账号
 #define kAccountid      @"Accountid"    //useid

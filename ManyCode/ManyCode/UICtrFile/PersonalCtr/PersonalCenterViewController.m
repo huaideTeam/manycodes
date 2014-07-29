@@ -129,7 +129,7 @@
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.font = FONT(18);
         nameLabel.textColor = [UIColor whiteColor];
-        nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
+        nameLabel.text = ACCOUNTNAME;
         [headView addSubview:nameLabel];
         
         UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(130, 125, 150, 20)];

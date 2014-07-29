@@ -101,7 +101,7 @@
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.font = FONT(15);
     nameLabel.textColor = COLOR(86, 58, 11);
-    nameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile];
+    nameLabel.text = ACCOUNTNAME;
     [backImage addSubview:nameLabel];
     
     UILabel  *priceLable = [[UILabel alloc] initWithFrame:CGRectMake(100, 80, 150, 20)];
