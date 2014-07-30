@@ -197,6 +197,7 @@
 		71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6A1988FA8800EAD183 /* 同意勾选.png */; };
 		71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6B1988FA8800EAD183 /* 未勾选.png */; };
 		71CD7F6F1989105B00EAD183 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CD7F6E1989105B00EAD183 /* libxml2.dylib */; };
+		71CD7F7119891E4500EAD183 /* 日历图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F7019891E4500EAD183 /* 日历图标.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -581,6 +582,7 @@
 		71CD7F6A1988FA8800EAD183 /* 同意勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同意勾选.png"; sourceTree = "<group>"; };
 		71CD7F6B1988FA8800EAD183 /* 未勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未勾选.png"; sourceTree = "<group>"; };
 		71CD7F6E1989105B00EAD183 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		71CD7F7019891E4500EAD183 /* 日历图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历图标.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -849,6 +851,7 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				71CD7F7019891E4500EAD183 /* 日历图标.png */,
 				28BAF1D51986857400FF8368 /* phoneNumber_logo@2x.png */,
 				717D0220198690B300667746 /* 立即支付按钮常态.png */,
 				717D0221198690B300667746 /* 立即支付按钮效果.png */,
@@ -1517,6 +1520,7 @@
 				285B02F11981589700B4D225 /* list_navigation@2x.png in Resources */,
 				7149004B197FCC6000DEFD83 /* select.png in Resources */,
 				717D0223198690B300667746 /* 立即支付按钮常态.png in Resources */,
+				71CD7F7119891E4500EAD183 /* 日历图标.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

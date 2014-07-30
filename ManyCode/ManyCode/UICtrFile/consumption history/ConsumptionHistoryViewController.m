@@ -10,6 +10,7 @@
 #import "CosumptionHistoryTableViewCell.h"
 #import "DataSourceModel.h"
 #import "CalendarView.h"
+#import "Common.h"
 
 static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHistory";
 
@@ -57,10 +58,11 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     [self.view addSubview:_consumptionHistoryTableView];
     
     UIButton *calendar = [UIButton buttonWithType:UIButtonTypeCustom];
-    calendar.backgroundColor = [UIColor redColor];
+    calendar.backgroundColor = [UIColor clearColor];
+    [calendar setBackgroundImage:[UIImage imageNamed:@"日历图标.png"] forState:UIControlStateNormal];
     [calendar addTarget:self action:@selector(showCalendarView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:calendar];
-    calendar.frame = CGRectMake(5.f, 175.f, 50.f, 50.f);
+    calendar.frame = CGRectMake(5.f, 175.f, 25.f, 30.f);
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,6 +144,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
      requestWebWithParaWithURL:@"getUserBalanceChange"
      Parameter:@{@"sessionid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession],
                  @"userid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid],
+                 @"querytime":[Common getDateString:self.currentFilterDate],
                  @"page":@"-1"}
      Finish:^(NSDictionary *resultDic) {
          ConsumptionHistoryViewController *strongSelf = weakSelf;
@@ -178,6 +181,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     CalendarSelectedSomeDate block = ^(CalendarView *calendarView) {
         ConsumptionHistoryViewController *strongSelf = weakSelf;
         strongSelf.currentFilterDate = calendarView.selectedDate;
+        [self requestDataSourceFromServerShouldShowHud:YES];
         [strongSelf hideCalendarView];
     };
     [view setChoosedSomeDate:block];
