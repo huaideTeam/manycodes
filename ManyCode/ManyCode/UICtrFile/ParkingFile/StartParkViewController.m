@@ -422,7 +422,7 @@
     
     NSInteger minuteNum = (NSInteger)(secondsNum%60); //去掉小时
     
-    NSInteger hourNum = (minuteNum - minuteNum%60)/60;
+    NSInteger hourNum = (secondsNum - secondsNum%60)/60;
     if ((hourNum%10)!=hourNumber2_) { //小时个位数
         hourNumber2_ = (hourNum%10);
         [_clockTickerViewHour2 setBackView:[SBTickView tickViewWithTitle:[NSString stringWithFormat:@"%ld",(long)hourNumber2_]  fontSize:45.]];
