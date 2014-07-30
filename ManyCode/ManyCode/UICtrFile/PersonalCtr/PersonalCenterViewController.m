@@ -95,6 +95,7 @@
     [self.view addSubview:mainTableView_];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOut:) name:@"loginOutNotify" object:nil];
 
 }
 
@@ -382,6 +383,13 @@
 {
     if ([[notify name] isEqualToString:@"loginNotification"]) {
         [mainTableView_ setTableHeaderView:[self creatHeadView:YES]];
+    }
+}
+
+- (void)loginOut:(NSNotification *)notify
+{
+    if ([[notify name] isEqualToString:@"loginOutNotify"]) {
+        [mainTableView_ setTableHeaderView:[self creatHeadView:NO]];
     }
 }
 

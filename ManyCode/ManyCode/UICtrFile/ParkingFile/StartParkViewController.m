@@ -288,7 +288,7 @@
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCalculateCharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         currentInfoDic_ = resultDic;
         [[Hud defaultInstance] hide:self.view];
-        [self addPieView:[accountInfoDic_[@"balance"] floatValue] Consumption:[resultDic[@"money"] floatValue] ];
+        [self addPieView:[accountInfoDic_[@"balance"] floatValue] Consumption:[resultDic[@"money"] floatValue]];
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         

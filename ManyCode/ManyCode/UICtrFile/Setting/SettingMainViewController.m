@@ -42,15 +42,19 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
     [settingListTableView registerClass:[SettingSecondSectionTableViewCell class] forCellReuseIdentifier:identifierForSecondSectionCellSetting];
     [self.view addSubview:settingListTableView];
     
-    UIButton *_submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_submitButton setBackgroundImage:[UIImage imageNamed:@"register_normal"] forState:UIControlStateNormal];
-    [_submitButton setBackgroundImage:[UIImage imageNamed:@"register_selected"] forState:UIControlStateHighlighted];
-    _submitButton.frame = CGRectMake(0, 0, 303.f, 52.f);
-    [_submitButton setTitle:@"注销" forState:UIControlStateNormal];
-    [self.view addSubview:_submitButton];
-    [_submitButton addTarget:self action:@selector(logoutButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
-    settingListTableView.tableFooterView = _submitButton;
+    UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+    if ([NetworkCenter instanceManager].isLogin) {
+        
+        UIButton *_submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_submitButton setBackgroundImage:[UIImage imageNamed:@"register_normal"] forState:UIControlStateNormal];
+        [_submitButton setBackgroundImage:[UIImage imageNamed:@"register_selected"] forState:UIControlStateHighlighted];
+        _submitButton.frame = CGRectMake(9, 0, 302.f, 46.f);
+        [_submitButton setTitle:@"注销" forState:UIControlStateNormal];
+        [footView addSubview:_submitButton];
+        [_submitButton addTarget:self action:@selector(logoutButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+     settingListTableView.tableFooterView = footView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -172,7 +176,22 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
 }
 
 #pragma mark - 注销登录
-- (void)logoutButtonClicked {
+- (void)logoutButtonClicked:(UIButton *)button
+{
+    [[Hud defaultInstance] loading:self.view withText:@"推出登陆中"];
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
     
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCalculateCharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [[Hud defaultInstance] showMessage:@"退出登录成功" withHud:YES];
+        button.hidden = YES;
+        [[NetworkCenter instanceManager] setIsLogin:NO];
+        [[NetworkCenter instanceManager] setDevroadArray:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginOutNotify" object:nil];
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
 }
 @end
