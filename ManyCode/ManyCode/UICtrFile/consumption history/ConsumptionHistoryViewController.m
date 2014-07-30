@@ -11,6 +11,7 @@
 #import "DataSourceModel.h"
 #import "CalendarView.h"
 #import "Common.h"
+#import "UIImageView+WebCache.h"
 
 static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHistory";
 
@@ -62,7 +63,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     [calendar setBackgroundImage:[UIImage imageNamed:@"日历图标.png"] forState:UIControlStateNormal];
     [calendar addTarget:self action:@selector(showCalendarView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:calendar];
-    calendar.frame = CGRectMake(5.f, 175.f, 25.f, 30.f);
+    calendar.frame = CGRectMake(5.f, 75.f, 25.f, 30.f);
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,31 +106,38 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 }
 #pragma mark - 列表头
 - (UIView *)headerViewForCosumptionList {
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 90)];
     
-    UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
-    backImage.image = [UIImage  imageNamed:@"头像背景.png"];
+    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 90)];
+    backImage.image = [UIImage  imageNamed:@"payMoneyTitleImage.png"];
     [headView addSubview:backImage];
     
-    UIImageView *circleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(25.f, CGRectGetMaxY(backImage.frame) - 120.f, 90.f, 90.f)];
-    circleImageView.image = [UIImage imageNamed:@"示意头像 描边.png"];
-    [circleImageView setBackgroundColor:[UIColor clearColor]];
-    [headView addSubview:circleImageView];
-    
-    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,90,90, 90)];
-    titleImage.center = circleImageView.center;
-    titleImage.image = [UIImage  imageNamed:@"示意头像 图片.png"];
+    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,18,65.f, 65.)];
+    titleImage.image = [UIImage  imageNamed:@"示意头像 描边.png"];
+    titleImage.userInteractionEnabled = YES;
     [headView addSubview:titleImage];
     
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(circleImageView.frame) + 10.f, CGRectGetMidY(circleImageView.frame) - 20.f, 150, 20)];
+    UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 55, 55)];
+    photoImage.backgroundColor = [UIColor clearColor];
+    photoImage.layer.masksToBounds = YES;
+    photoImage.center = titleImage.center;
+    photoImage.layer.cornerRadius = photoImage.frame.size.height/2;
+    [photoImage setImageWithURL:HEADIMG placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
+    [headView addSubview:photoImage];
+    
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 25, 150, 20)];
     nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.font = FONT(18);
+    nameLabel.textColor = [UIColor whiteColor];
     nameLabel.text = ACCOUNTNAME;
     [headView addSubview:nameLabel];
     
-    UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame), CGRectGetMaxY(nameLabel.frame), CGRectGetWidth(nameLabel.frame), CGRectGetHeight(nameLabel.frame))];
-    priceLabel.backgroundColor = [UIColor clearColor];
-    priceLabel.text = BALANCE;
-    [headView addSubview:priceLabel];
+    UILabel *priceBtn_ = [[UILabel alloc] initWithFrame:CGRectMake(120, 50, 150, 20)];
+    priceBtn_.backgroundColor = [UIColor clearColor];
+    priceBtn_.font = FONT(18);
+    priceBtn_.textColor = [UIColor whiteColor];
+    priceBtn_.text = BALANCE;
+    [headView addSubview:priceBtn_];
     return headView;
 }
 
