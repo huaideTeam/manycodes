@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UICtrFile/PersonalCtr/PayMoneyViewController.m"
-            timestampString = "428292444.781044"
+            timestampString = "428408165.583573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-payBtnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,6 +106,22 @@
             startingLineNumber = "230"
             endingLineNumber = "230"
             landmarkName = "+getUTCFormateLocalDate:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UICtrFile/consumption history/ConsumptionHistoryViewController.m"
+            timestampString = "428407722.562788"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-requestDataSourceFromServerShouldShowHud:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

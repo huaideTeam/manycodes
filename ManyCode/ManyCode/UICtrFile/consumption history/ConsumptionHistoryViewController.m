@@ -154,11 +154,11 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
          [strongSelf.consumptionHistoryTableView reloadData];
          
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (show) {
-            ConsumptionHistoryViewController *strongSelf = weakSelf;
-            [[Hud defaultInstance] hide:strongSelf.view];
-        }
-        [[Hud defaultInstance] showMessage:@"加载数据失败"];
+//        if (show) {
+//            ConsumptionHistoryViewController *strongSelf = weakSelf;
+//            [[Hud defaultInstance] hide:strongSelf.view];
+//        }
+//        [[Hud defaultInstance] showMessage:@"加载数据失败"];
     }];
 }
 
