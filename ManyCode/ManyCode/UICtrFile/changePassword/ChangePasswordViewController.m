@@ -106,12 +106,6 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - 键盘点击事件
--(void)doneClicked:(UIBarButtonItem*)barButton
-{
-    [self.view endEditing:YES];
-}
-
 #pragma mark - SubmitButtonClickedMethod
 - (void)submitButtonClickedMethod {
     [self.firstPasswordTextField resignFirstResponder];
@@ -145,6 +139,12 @@
             [[Hud defaultInstance] showMessage:@"请输入合法的密码，字母和数字组成，或者两次输入密码不一致"];
         }
     }
+}
+
+#pragma mark - 键盘点击事件
+-(void)doneClicked:(UIBarButtonItem*)barButton
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - keyboard btn

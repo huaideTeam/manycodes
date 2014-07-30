@@ -9,6 +9,7 @@
 #import "RegisterFirstStepViewController.h"
 #import "UnderLineLabel.h"
 #import "RegisterSecondStepViewController.h"
+#import "KeyboardSegment.h"
 
 @interface RegisterFirstStepViewController ()
 
@@ -16,13 +17,40 @@
 
 @property (nonatomic, strong) UITextField *inputTextField;
 
+@property (nonatomic, strong) UIScrollView *mainScrollView;
+
 @end
 
 @implementation RegisterFirstStepViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-44)];
+    _mainScrollView.backgroundColor = [UIColor clearColor];
+    _mainScrollView.contentSize = CGSizeMake(320, kCurrentWindowHeight-44);
+    [self.view addSubview:_mainScrollView];
     
     NSString *value = @"1 输入手机号  >  2 输入验证码  3 设置密码";
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:value];
@@ -52,27 +80,26 @@
     textLayer.backgroundColor = [UIColor clearColor].CGColor;
     textLayer.foregroundColor = [UIColor colorWithRed:51/255.f green:51/255.f blue:51/255.f alpha:1.f].CGColor;
     textLayer.string = str;
-    [self.view.layer addSublayer:textLayer];
+    [_mainScrollView.layer addSublayer:textLayer];
     
     UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(textLayer.frame) - 3.f, CGRectGetWidth(self.view.bounds), 1.f)];
     [lineImageView setBackgroundColor:[UIColor grayColor]];
-    [self.view addSubview:lineImageView];
+    [_mainScrollView addSubview:lineImageView];
     
-    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMaxY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 61.f)];
-    tempView.layer.cornerRadius = 5.f;
-    tempView.backgroundColor = [UIColor whiteColor];
-    tempView.layer.borderWidth = 1.f;
-    tempView.layer.borderColor = [UIColor grayColor].CGColor;
-    [self.view addSubview:tempView];
+    UIImageView *tempView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, CGRectGetMaxY(textLayer.frame) + 15.f, CGRectGetWidth(self.view.frame) - 20.f, 50.f)];
+    tempView.image = [UIImage imageNamed:@"单条列表背景.png"];
+    tempView.userInteractionEnabled = YES;
+    [_mainScrollView addSubview:tempView];
     
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, CGRectGetHeight(tempView.frame) / 2.f - 7.f, 15.f, 15.f)];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, 17.f, 18.f, 15.f)];
     [iconImageView setBackgroundColor:[UIColor clearColor]];
     iconImageView.image = [UIImage imageNamed:@"phoneNumber_logo"];
     [tempView addSubview:iconImageView];
     
-    UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
+    UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 20.f, 10.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 30.f, 30.f)];
     inputTextField.placeholder = @"请输入您的手机号码";
     inputTextField.keyboardType = UIKeyboardTypeNumberPad;
+    [inputTextField addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     [tempView addSubview:inputTextField];
     self.inputTextField = inputTextField;
     
@@ -81,28 +108,28 @@
     [_submitButton setBackgroundImage:[UIImage imageNamed:@"register_selected"] forState:UIControlStateHighlighted];
     _submitButton.frame = CGRectMake(CGRectGetMinX(tempView.frame), CGRectGetMaxY(tempView.frame) + 38.f, CGRectGetWidth(tempView.frame), 52.f);
     [_submitButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [self.view addSubview:_submitButton];
+    [_mainScrollView addSubview:_submitButton];
     [_submitButton addTarget:self action:@selector(submitButtonClickedMethod) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *checkBoxButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [checkBoxButton setImage:[UIImage imageNamed:@"未勾选.png"] forState:UIControlStateNormal];
     [checkBoxButton setImage:[UIImage imageNamed:@"同意勾选.png"] forState:UIControlStateSelected];
     checkBoxButton.frame = CGRectMake(CGRectGetMinX(_submitButton.frame) + 5.f, CGRectGetMaxY(_submitButton.frame) + 5.f, 15.f, 15.f);
-    [self.view addSubview:checkBoxButton];
+    [_mainScrollView addSubview:checkBoxButton];
     checkBoxButton.selected = YES;
     [checkBoxButton addTarget:self action:@selector(checkBoxButtonClickedMethod:) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(checkBoxButton.frame) + 3.f, CGRectGetMinY(checkBoxButton.frame), 120.f, CGRectGetHeight(checkBoxButton.frame))];
     tempLabel.text = @"我已阅读并同意";
     [tempLabel setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:tempLabel];
+    [_mainScrollView addSubview:tempLabel];
     
     UnderLineLabel *lineLabel = [[UnderLineLabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(tempLabel.frame), CGRectGetMinY(tempLabel.frame), 128.f, CGRectGetHeight(tempLabel.frame))];
     lineLabel.textColor = [UIColor orangeColor];
     lineLabel.shouldUnderline = YES;
     [lineLabel setText:@"抢车位用户协议" andCenter:lineLabel.center];
     [lineLabel addTarget:self action:@selector(readTheCopyRightButtonClickedMethod)];
-    [self.view addSubview:lineLabel];
+    [_mainScrollView addSubview:lineLabel];
 }
 
 
@@ -122,6 +149,7 @@
                 RegisterFirstStepViewController *strongSelf = weakSelf;
                 RegisterSecondStepViewController *viewC = [[RegisterSecondStepViewController alloc] initWithVerifyCode:resultDic[@"verify"]];
                 [strongSelf.navigationController pushViewController:viewC animated:YES];
+                [[Hud defaultInstance] hide:strongSelf.view];
             } else {
                 [[Hud defaultInstance] showMessage:@"获取验证码失败"];
             }
@@ -148,4 +176,39 @@
 - (void)readTheCopyRightButtonClickedMethod {
     
 }
+#pragma mark - 键盘点击事件
+-(void)doneClicked:(UIBarButtonItem*)barButton
+{
+    [self.view endEditing:YES];
+}
+
+#pragma mark - keyboard btn
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        viewFrame.size.height -= kbSize.height;
+        _mainScrollView.frame = viewFrame;
+    }];
+    
+    return;
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        _mainScrollView.frame = viewFrame;
+    }];
+    
+    return;
+}
+
 @end
