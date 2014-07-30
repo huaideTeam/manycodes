@@ -295,20 +295,21 @@
         if (array.count>0) {
             NSDictionary *dic = [array objectAtIndex:0];
             NSString *msg = [NSString stringWithFormat:@"当前所在停车场：%@",dic[@"carparkname"]];
-            if ([dic[@"devroadstatus"] isEqualToString:_parkInfoDic[@"devroadstatus"]]) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alertView show];
-            }else
-            {
+            if ([dic[@"carparkid"] isEqualToString:_parkInfoDic[@"carparkid"]]) {
                 StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
                 viewCtr.parkDic = _parkInfoDic;
                 [self.navigationController pushViewController:viewCtr animated:YES];
+            }else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+               
             }
         }else
         {
             StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
-            viewCtr.isComeIn = YES;
              viewCtr.parkDic = _parkInfoDic;
+            viewCtr.isComeIn = YES;
             [self.navigationController pushViewController:viewCtr animated:YES];
         }
     }else

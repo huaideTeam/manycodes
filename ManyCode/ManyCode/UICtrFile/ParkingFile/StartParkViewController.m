@@ -34,6 +34,7 @@
     UIView *centerView_;
     NSDictionary *accountInfoDic_; //账户信息
     NSDictionary *currentInfoDic_;
+    long long oldTimeNum_;
 }
 
 @property (nonatomic, strong)  SBTickerView *clockTickerViewHour1;
@@ -98,6 +99,7 @@
     self.view.backgroundColor = COLOR(229, 228, 225);
     
      self.title = @"对账单";
+    oldTimeNum_ = 0;
     
     if (IOS7) {
         [self setExtendedLayoutIncludesOpaqueBars:NO];
@@ -261,7 +263,7 @@
             alert.tag = 1000;
             [alert show];
         }
-        if (!self.isComeIn) {
+        if (!self.isComeIn) {//如果是已经停车的
             [self loadCalculateChargeInfo];
         }else
         {
@@ -287,14 +289,20 @@
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCalculateCharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         currentInfoDic_ = resultDic;
+        [self getOldTimeInfo:resultDic];
         [[Hud defaultInstance] hide:self.view];
         [self addPieView:[accountInfoDic_[@"balance"] floatValue] Consumption:[resultDic[@"money"] floatValue]];
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
-
 }
+
+- (void)getOldTimeInfo:(NSDictionary *)dic
+{
+    oldTimeNum_ =  [[dic objectForKey:@"querytime"] longLongValue] - [[dic objectForKey:@"intime"] longLongValue];
+}
+
 
 #pragma mark - 点击开闸
 - (void)openClick:(UIButton *)button
@@ -408,9 +416,11 @@
 {
     NSDate *date = [NSDate date];
     
-    long long timeNum =  [date timeIntervalSinceDate:currentDate_];
+    long long timeNum =  [date timeIntervalSinceDate:currentDate_]+oldTimeNum_;
     
-    NSInteger minuteNum =(NSInteger)(timeNum - timeNum%60)/60;
+    NSInteger secondsNum =(NSInteger)(timeNum - timeNum%60)/60; //多少分钟
+    
+    NSInteger minuteNum = (NSInteger)(secondsNum%60); //去掉小时
     
     NSInteger hourNum = (minuteNum - minuteNum%60)/60;
     if ((hourNum%10)!=hourNumber2_) { //小时个位数

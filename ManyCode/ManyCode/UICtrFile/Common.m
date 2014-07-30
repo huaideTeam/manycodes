@@ -210,6 +210,30 @@
 }
 
 /**
+ *  将nsdate转化为字符串
+ *
+ *  @param date date日期
+ *
+ *  @return 字符串
+ */
++ (NSDate *)getUTCFormateLocalDate:(NSString *)localDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //输入格式
+    [dateFormatter setDateFormat:@"yy-MM-dd HH:mm:ss"];
+    
+    NSDate *dateFormatted = [dateFormatter dateFromString:localDate];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    //输出格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:dateFormatted];
+    
+    NSDate *tempDate = [dateFormatter dateFromString:dateString];
+    return tempDate;
+}
+
+/**
  *  获取手机的mac 地址
  *
  *  @return 唯一的地址字符串

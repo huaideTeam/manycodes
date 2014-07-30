@@ -102,6 +102,16 @@
  */
 + (NSString *)getDateString:(NSDate *)date;
 
+
+/**
+ *  将nsdate转化为字符串
+ *
+ *  @param date date日期
+ *
+ *  @return 字符串
+ */
++ (NSDate *)getUTCFormateLocalDate:(NSString *)localDate;
+
 /**
  *  获取手机的mac 地址
  *
