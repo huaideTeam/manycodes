@@ -344,7 +344,7 @@
 - (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint
 {
 //    currentSelfPoint_ = currentPoint;
-    [[Hud defaultInstance] loading:self.view];
+    [[Hud defaultInstance] loading:self.view withText:@"获取停车场列表请稍候。。。"];
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];

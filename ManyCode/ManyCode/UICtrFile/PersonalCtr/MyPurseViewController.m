@@ -15,7 +15,8 @@
 @interface MyPurseViewController ()
 {
     UIScrollView *mainScrollView_;
-    UIButton *photoBtn_;
+    UIButton *priceBtn_;
+    UILabel *titleLable_;
 }
 
 @end
@@ -80,6 +81,50 @@
     
     [mainScrollView_ addSubview:headView];
     
+    
+    titleLable_ = [[UILabel alloc] initWithFrame:CGRectMake(0, 280, 320, 20)];
+    titleLable_.backgroundColor = [UIColor clearColor];
+    titleLable_.text = BALANCE;
+    titleLable_.font = FONT(17);
+    titleLable_.textColor = COLOR(120, 105, 90);
+    titleLable_.textAlignment = NSTextAlignmentCenter;
+    [mainScrollView_ addSubview:titleLable_];
+    
+    [self getUserBalanceInfo];
+    
+}
+
+#pragma mark - 获取数据
+//获取账余额
+- (void)getUserBalanceInfo
+{
+    [[Hud defaultInstance] loading:self.view];
+    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+    
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserBalance" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [self addPieView:[resultDic[@"balance"] floatValue]];
+        [priceBtn_ setTitle:[NSString stringWithFormat:@"当前余额：%@元",resultDic[@"balance"]] forState:UIControlStateNormal];
+        titleLable_.text = [NSString stringWithFormat:@"账户余额： %@元",resultDic[@"balance"]];
+        [[Hud defaultInstance] hide:self.view];
+        
+    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (error.code == 217) {
+            UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"你的账户余额不足" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"充值", nil];
+            alert.tag = 1000;
+            [alert show];
+        }
+        [[Hud defaultInstance] hide:self.view];
+    }];
+    
+}
+
+
+#pragma mark - 添加饼图
+
+- (void)addPieView:(CGFloat)surplusMoney
+{
     PCPieChart *pieChart = [[PCPieChart alloc] initWithFrame:CGRectMake(0, 110, 320, 150)];
     [pieChart setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin];
     [pieChart setDiameter:150];
@@ -88,37 +133,25 @@
     [mainScrollView_ addSubview:pieChart];
     
     NSMutableArray *components = [NSMutableArray array];
-    for (int i=0; i< 3; i++)
-    {
-        PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:25.0];
-        [components addObject:component];
-        
-        if (i==0)
-        {
-            [component setColour:[UIColor whiteColor]];
-        }
-        else if (i==1)
-        {
-            [component setColour:COLOR(64, 163, 104)];
-        }
-        else if (i==2)
-        {
-            [component setColour:COLOR(226, 90, 60)];
-        }
-    }
+    PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:surplusMoney];
+    [components addObject:component];
+    [component setColour:COLOR(64, 163, 104)];
     [pieChart setComponents:components];
     
-    UILabel * titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 280, 320, 20)];
-    titleLable.backgroundColor = [UIColor clearColor];
-    titleLable.text = @"账户余额    34元";
-    titleLable.font = FONT(17);
-    titleLable.textColor = COLOR(120, 105, 90);
-    titleLable.textAlignment = NSTextAlignmentCenter;
-    [mainScrollView_ addSubview:titleLable];
+   UIView *  centerView = [[UIView alloc] initWithFrame:CGRectMake(120, 35, 80, 80)];
+    centerView.layer.masksToBounds = YES;
+    centerView.layer.cornerRadius = 40.0;
+    centerView.backgroundColor = [UIColor whiteColor];
+    UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 80, 20)];
+    lable.text = [NSString stringWithFormat:@"%.f元",surplusMoney];
+    lable.textColor = COLOR(219, 44, 0);
+    lable.textAlignment = NSTextAlignmentCenter;
+    [centerView addSubview:lable];
     
-    [self loadUserInfo];
+    [pieChart addSubview:centerView];
     
 }
+
 
 
 #pragma mark - 返回按钮
@@ -126,24 +159,6 @@
 - (void)backClick:(UIButton *)button
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - 获取数据
-
-- (void)loadUserInfo
-{
-    [[Hud defaultInstance] loading:self.view];
-    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
-    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
-    [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
-    
-    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserBalance" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
-        [[Hud defaultInstance] hide:self.view];
-        
-    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-
 }
 
 #pragma mark - 列表头
@@ -171,13 +186,13 @@
     nameLabel.text = ACCOUNTNAME;
     [headView addSubview:nameLabel];
     
-    UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(120, 50, 150, 20)];
-    priceBtn.backgroundColor = [UIColor clearColor];
-    [priceBtn setTitle:BALANCE forState:UIControlStateNormal];
-    priceBtn.titleLabel.font = FONT(18);
-    [priceBtn addTarget:self action:@selector(chargeMoneyClick:) forControlEvents:UIControlEventTouchUpInside];
-    priceBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [headView addSubview:priceBtn];
+    priceBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(120, 50, 150, 20)];
+    priceBtn_.backgroundColor = [UIColor clearColor];
+    [priceBtn_ setTitle:BALANCE forState:UIControlStateNormal];
+    priceBtn_.titleLabel.font = FONT(18);
+    [priceBtn_ addTarget:self action:@selector(chargeMoneyClick:) forControlEvents:UIControlEventTouchUpInside];
+    priceBtn_.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [headView addSubview:priceBtn_];
     
     return headView;
 }

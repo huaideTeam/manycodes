@@ -62,6 +62,8 @@
 	<string> 当前状态设备开启失败(账户未充值) </string>
 	<key>230</key>
 	<string>设备开启失败(设备错误)</string>
+	<key>231</key>
+	<string>服务器未收到图片信息</string>
 	<key>997</key>
 	<string>无数据</string>
 	<key>998</key>

@@ -107,7 +107,7 @@
     }
     float x = (rect.size.width - diameter)/2;
     float y = (rect.size.height - diameter)/2;
-    float gap = 1;
+    float gap = 0;
     float inner_radius = diameter/2;
     float origin_x = x + diameter/2;
     float origin_y = y + diameter/2;
@@ -150,9 +150,9 @@
 			CGContextClosePath(ctx);
 			CGContextFillPath(ctx);
 			
-//			CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 1);
-//			CGContextSetLineWidth(ctx, gap);
-//			CGContextMoveToPoint(ctx, origin_x, origin_y);
+			CGContextSetRGBStrokeColor(ctx, 1, 1, 1, 1);
+			CGContextSetLineWidth(ctx, gap);
+			CGContextMoveToPoint(ctx, origin_x, origin_y);
 			CGContextAddArc(ctx, origin_x, origin_y, inner_radius, (nextStartDeg-90)*M_PI/180.0, (endDeg-90)*M_PI/180.0, 0);
 			CGContextClosePath(ctx);
 			CGContextStrokePath(ctx);

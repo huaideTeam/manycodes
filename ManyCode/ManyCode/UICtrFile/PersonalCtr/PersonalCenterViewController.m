@@ -164,7 +164,6 @@
         [titleImage addSubview:photoBtn_];
         
         UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(130, 135, 100, 30)];
-        [loginButton setTitle:@"立即登录" forState:UIControlStateNormal];
         loginButton.backgroundColor = [UIColor clearColor];
         [loginButton setBackgroundImage:[UIImage imageNamed:@"立即登录按钮常态.png"] forState:UIControlStateNormal];
          [loginButton setBackgroundImage:[UIImage imageNamed:@"立即登录按钮效果.png"] forState:UIControlStateNormal];
@@ -236,8 +235,68 @@
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
     NSMutableArray *picArray = [[NSMutableArray alloc] initWithCapacity:12];
     [picArray addObject:imageData];
-    [self postPersonInfo:tempDic pic:picArray];
+    
+//    [tempDic setObject:imageData forKey:@"headimage"];
+//    [self postPersonInfo:tempDic pic:picArray];
+    
+     [self saveImage:originImage WithName:@"salesImageMid.jpg"];
 
+    [self postPic:tempDic];
+}
+
+- (void)postPic:(NSDictionary *)parameters
+{
+    [[Hud defaultInstance] loading:self.view withText:@"上传图片中。。。"];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString *path = [self documentFolderPath];
+    NSURL *filePath = [NSURL fileURLWithPath:path];
+    
+    [manager POST:[NSString stringWithFormat:@"%@userHeadImage",EPHttpApiBaseURL] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileURL:filePath name:@"headimage" error:nil];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+        [[Hud defaultInstance] showMessage:@"图片更新成功" withHud:YES];
+        NSDictionary *dic = (NSDictionary *)responseObject;
+        NSInteger status = [[dic objectForKey:@"statusCode"] integerValue];
+        if (status == 200) {
+              [photoBtn_.titleImageView setImageWithURL:[dic objectForKey:@"head_img"] placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+#pragma mark - 保存图片到document
+
+-(void)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
+{
+    
+    NSData* imageData = UIImagePNGRepresentation(tempImage);
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    
+    
+    NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:imageName];
+    
+    // and then we write it out
+    
+    [imageData writeToFile:fullPathToFile atomically:NO];
+    
+}
+
+- (NSString *)documentFolderPath
+{
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    
+    
+    NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:@"salesImageMid.jpg"];
+    return fullPathToFile;
+    
 }
 
 #pragma mark - table delegate
@@ -330,120 +389,6 @@
 {
     PayMoneyViewController *viewCtr = [[PayMoneyViewController alloc] init];
     [self.navigationController pushViewController:viewCtr animated:YES];
-}
-
-
-#pragma makr - 上传图片
-
-- (void)postPersonInfo:(NSDictionary *)tempDic pic:(NSArray *)picArray
-{
-    [[Hud defaultInstance] loading:self.view withText:@"图片上传中..."];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *TWITTERFON_FORM_BOUNDARY = @"AaB03x";
-        //根据url初始化request
-        NSURL *picurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/userHeadImage",EPHttpApiBaseURL]];
-        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:picurl
-                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                                           timeoutInterval:10];
-        //分界线 --AaB03x
-        NSString *MPboundary=[[NSString alloc]initWithFormat:@"--%@",TWITTERFON_FORM_BOUNDARY];
-        //结束符 AaB03x--
-        NSString *endMPboundary=[[NSString alloc]initWithFormat:@"%@--",MPboundary];
-        
-        NSMutableString *body=[[NSMutableString alloc]init];
-        
-        
-        NSArray *keys= [tempDic allKeys];
-        for(int i=0;i<[keys count];i++)
-        {
-            //得到当前key
-            NSString *key=keys[i];
-            //如果key不是pic，说明value是字符类型，比如name：Boris
-            if(![key isEqualToString:@"pic"])
-            {
-                //添加分界线，换行
-                [body appendFormat:@"%@\r\n",MPboundary];
-                //添加字段名称，换2行
-                [body appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key];
-                //添加字段的值
-                [body appendFormat:@"%@\r\n",tempDic[key]];
-            }
-        }
-        
-        
-        //声明结束符：--AaB03x--
-        NSString *end=[[NSString alloc]initWithFormat:@"\r\n%@",endMPboundary];
-        //声明myRequestData，用来放入http body
-        NSMutableData *myRequestData=[NSMutableData data];
-        //将body字符串转化为UTF8格式的二进制
-        [myRequestData appendData:[body dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        for (int k = 0; k < [picArray count]; k++) {
-            //[body appendData:[arrImages objectAtIndex:i] withFileName:@"image.jpg" andContentType:@"image/jpeg" forKey:[NSString stringWithFormat:@"image%d", i + 1]];
-            [myRequestData appendData:[[NSString stringWithFormat:@"\r\n%@\r\n",MPboundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [myRequestData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"headimage\"; filename=\"image%d.jpg\"\r\n",k + 1] dataUsingEncoding:NSUTF8StringEncoding]];
-            NSString *tempString = @"Content-Type: image/png\r\n\r\n";
-            [myRequestData appendData:[tempString dataUsingEncoding:NSUTF8StringEncoding]];
-            [myRequestData appendData:picArray[k]];
-            
-        }
-        [myRequestData appendData:[end dataUsingEncoding:NSUTF8StringEncoding]];
-        //将image的data加入
-        //加入结束符--AaB03x--
-        
-        
-        //设置HTTPHeader中Content-Type的值
-        NSString *content=[[NSString alloc]initWithFormat:@"multipart/form-data; boundary=%@",TWITTERFON_FORM_BOUNDARY];
-        //设置HTTPHeader
-        [request setValue:content forHTTPHeaderField:@"Content-Type"];
-        //设置Content-Length
-        [request setValue:[NSString stringWithFormat:@"%d", [myRequestData length]] forHTTPHeaderField:@"Content-Length"];
-        //设置http body
-        [request setHTTPBody:myRequestData];
-        //http method
-        [request setHTTPMethod:@"POST"];
-        NSError *error= nil;
-        NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-        NSDictionary* dic = (NSDictionary*)[received mutableObjectFromJSONData];
-        if (dic) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSInteger type = [[dic objectForKey:@"ResultStatus"] integerValue];
-                switch (type) {
-                    case 200:
-                    {
-                        [[Hud defaultInstance] showMessage:@"图片上传成功"];
-                
-                        break;
-                    }
-                    case 231:
-                    {
-                        [[Hud defaultInstance] showMessage:@"服务器未收到图片信息"];
-                        
-                        break;
-                    }
-                    case 232:
-                    {
-                        [[Hud defaultInstance] showMessage:@"图片上传失败"];
-                        
-                        break;
-                    }
-                    case 233:
-                    {
-                        [[Hud defaultInstance] showMessage:@"图片信息修改失败"];
-                        
-                        break;
-                    }
-                    default:
-                    {
-                        [[Hud defaultInstance] hide:self.view];
-                        break;
-                    }
-                }
-                
-            });
-            
-        }
-    });
 }
 
 @end
