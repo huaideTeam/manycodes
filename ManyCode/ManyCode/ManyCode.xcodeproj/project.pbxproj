@@ -196,6 +196,7 @@
 		71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B60D78197CEEBD00C26E48 /* Security.framework */; };
 		71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6A1988FA8800EAD183 /* 同意勾选.png */; };
 		71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6B1988FA8800EAD183 /* 未勾选.png */; };
+		71CD7F6F1989105B00EAD183 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CD7F6E1989105B00EAD183 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -579,6 +580,7 @@
 		71B60D78197CEEBD00C26E48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		71CD7F6A1988FA8800EAD183 /* 同意勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同意勾选.png"; sourceTree = "<group>"; };
 		71CD7F6B1988FA8800EAD183 /* 未勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未勾选.png"; sourceTree = "<group>"; };
+		71CD7F6E1989105B00EAD183 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -586,6 +588,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CD7F6F1989105B00EAD183 /* libxml2.dylib in Frameworks */,
 				717D022A19876B6300667746 /* CoreBluetooth.framework in Frameworks */,
 				7176674B1980EC7500A635DA /* AudioToolbox.framework in Frameworks */,
 				712FC084197D3A9A00EA9F32 /* QuartzCore.framework in Frameworks */,
@@ -772,6 +775,7 @@
 		712FBFB2197CB2F400EA9F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71CD7F6E1989105B00EAD183 /* libxml2.dylib */,
 				717D022919876B6300667746 /* CoreBluetooth.framework */,
 				717667521980ECBA00A635DA /* libstdc++.6.0.9.dylib */,
 				717667501980EC9000A635DA /* CoreMotion.framework */,
