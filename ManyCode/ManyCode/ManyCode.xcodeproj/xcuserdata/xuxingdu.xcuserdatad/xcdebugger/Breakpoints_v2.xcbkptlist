@@ -67,22 +67,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UICtrFile/NetworkManager/NotifyManager.m"
-            timestampString = "428378910.546999"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-showMsg:WithAlertView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "UICtrFile/ParkingFile/StartParkViewController.m"
             timestampString = "428404692.987298"
             startingColumnNumber = "9223372036854775807"
@@ -122,22 +106,6 @@
             startingLineNumber = "230"
             endingLineNumber = "230"
             landmarkName = "+getUTCFormateLocalDate:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManyCode/MainViewController.m"
-            timestampString = "428406410.98343"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
-            landmarkName = "-currentParkView:clickIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

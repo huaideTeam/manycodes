@@ -85,8 +85,8 @@
     [_submitButton addTarget:self action:@selector(submitButtonClickedMethod) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *checkBoxButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [checkBoxButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [checkBoxButton setImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
+    [checkBoxButton setImage:[UIImage imageNamed:@"未勾选.png"] forState:UIControlStateNormal];
+    [checkBoxButton setImage:[UIImage imageNamed:@"同意勾选.png"] forState:UIControlStateSelected];
     checkBoxButton.frame = CGRectMake(CGRectGetMinX(_submitButton.frame) + 5.f, CGRectGetMaxY(_submitButton.frame) + 5.f, 15.f, 15.f);
     [self.view addSubview:checkBoxButton];
     checkBoxButton.selected = YES;

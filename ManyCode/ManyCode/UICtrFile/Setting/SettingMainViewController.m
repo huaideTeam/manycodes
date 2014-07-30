@@ -16,6 +16,9 @@ static NSString *identifierForFirstSectionCellSetting = @"identifierForFirstSect
 static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSectionCellSetting";
 
 @interface SettingMainViewController ()<UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate>
+{
+    UITableView*settingListTableView_;
+}
 
 @end
 
@@ -34,13 +37,13 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
 {
     [super viewDidLoad];
     self.title = @"设置";
-    UITableView *settingListTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    settingListTableView.contentInset = UIEdgeInsetsMake(-35.f, 0, 0, 0);
-    settingListTableView.dataSource = self;
-    settingListTableView.delegate = self;
-    [settingListTableView registerClass:[SettingFirstSectionTableViewCell class] forCellReuseIdentifier:identifierForFirstSectionCellSetting];
-    [settingListTableView registerClass:[SettingSecondSectionTableViewCell class] forCellReuseIdentifier:identifierForSecondSectionCellSetting];
-    [self.view addSubview:settingListTableView];
+    settingListTableView_ = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    settingListTableView_.contentInset = UIEdgeInsetsMake(-35.f, 0, 0, 0);
+    settingListTableView_.dataSource = self;
+    settingListTableView_.delegate = self;
+    [settingListTableView_ registerClass:[SettingFirstSectionTableViewCell class] forCellReuseIdentifier:identifierForFirstSectionCellSetting];
+    [settingListTableView_ registerClass:[SettingSecondSectionTableViewCell class] forCellReuseIdentifier:identifierForSecondSectionCellSetting];
+    [self.view addSubview:settingListTableView_];
     
     
     UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
@@ -54,7 +57,7 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
         [footView addSubview:_submitButton];
         [_submitButton addTarget:self action:@selector(logoutButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
-     settingListTableView.tableFooterView = footView;
+     settingListTableView_.tableFooterView = footView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +72,12 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
         case 0:
         case 1:
         {
-            return 3;
+            if ([NetworkCenter instanceManager].isLogin) {
+                return 3;
+            }else
+            {
+                return 2;
+            }
         }
             break;
         default:
@@ -99,7 +107,14 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
         case 1 :
         {
             SettingSecondSectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierForSecondSectionCellSetting forIndexPath:indexPath];
-            NSArray *titles = @[@"清理缓存", @"流量统计", @"修改密码"];
+            NSArray *titles = nil;
+            if ([NetworkCenter instanceManager].isLogin) {
+                titles = @[@"清理缓存", @"流量统计", @"修改密码"];
+            }else
+            {
+                titles = @[@"清理缓存", @"流量统计"];
+            }
+            
             cell.menuTitleLabel.text = titles[indexPath.row];
             if (indexPath.row != 1) {
                 cell.menuDefaultLabel.hidden = YES;
@@ -189,6 +204,7 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
         [[NetworkCenter instanceManager] setIsLogin:NO];
         [[NetworkCenter instanceManager] setDevroadArray:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loginOutNotify" object:nil];
+        [settingListTableView_ reloadData];
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];

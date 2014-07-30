@@ -194,6 +194,8 @@
 		71B3C940198228BA0050045B /* 详情图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B3C93F198228BA0050045B /* 详情图标.png */; };
 		71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B60D6F197CE58E00C26E48 /* tabbar@2x.png */; };
 		71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B60D78197CEEBD00C26E48 /* Security.framework */; };
+		71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6A1988FA8800EAD183 /* 同意勾选.png */; };
+		71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6B1988FA8800EAD183 /* 未勾选.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -575,6 +577,8 @@
 		71B3C93F198228BA0050045B /* 详情图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "详情图标.png"; sourceTree = "<group>"; };
 		71B60D6F197CE58E00C26E48 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		71B60D78197CEEBD00C26E48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		71CD7F6A1988FA8800EAD183 /* 同意勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同意勾选.png"; sourceTree = "<group>"; };
+		71CD7F6B1988FA8800EAD183 /* 未勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未勾选.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -851,6 +855,8 @@
 				717D0210198680D500667746 /* 密码图标.png */,
 				717D021C19868B2A00667746 /* payMoneyTitleImage.png */,
 				717D02141986833F00667746 /* 注册 登录按钮常态.png */,
+				71CD7F6A1988FA8800EAD183 /* 同意勾选.png */,
+				71CD7F6B1988FA8800EAD183 /* 未勾选.png */,
 				717D02181986851100667746 /* 注册登录按钮效果.png */,
 				717D021A1986855700667746 /* 注册登录按钮常态.png */,
 				717D02151986833F00667746 /* 注册 登录按钮效果.png */,
@@ -1486,7 +1492,9 @@
 				717667FA1981238F00A635DA /* mapButtonclick.png in Resources */,
 				717667F91981238F00A635DA /* mapButton.png in Resources */,
 				712FC08D197D3CE100EA9F32 /* Main.storyboard in Resources */,
+				71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */,
 				71282B0419864CF300A3FE09 /* 返回按钮常态.png in Resources */,
+				71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */,
 				717667EA1980F60500A635DA /* Default.png in Resources */,
 				714C6D4C19828E4A007684CA /* 7.png in Resources */,
 				714C6DB719837B69007684CA /* ErrCode.plist in Resources */,
