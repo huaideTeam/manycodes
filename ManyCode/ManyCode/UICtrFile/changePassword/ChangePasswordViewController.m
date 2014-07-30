@@ -7,6 +7,7 @@
 //
 
 #import "ChangePasswordViewController.h"
+#import "KeyboardSegment.h"
 
 @interface ChangePasswordViewController ()
 
@@ -15,6 +16,8 @@
 @property (nonatomic, strong) UITextField *firstPasswordTextField;
 
 @property (nonatomic, strong) UITextField *secondPasswordTextField;
+
+@property (nonatomic, strong) UIScrollView *mainScrollView;
 
 @end
 
@@ -27,6 +30,27 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -42,23 +66,28 @@
     CGFloat startX = 10.f;
     CGFloat startY = 15.f;
     CGFloat space = 5.f;
-    CGFloat height = 61.f;
+    CGFloat height = 50.f;
+    
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-44)];
+    _mainScrollView.backgroundColor = [UIColor clearColor];
+    _mainScrollView.contentSize = CGSizeMake(320, kCurrentWindowHeight-44);
+    [self.view addSubview:_mainScrollView];
+    
     for (NSInteger index = 0; index < [iconImageName count]; index ++) {
-        UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(startX, startY + index * (height + space), CGRectGetWidth(self.view.frame) - 2 * startX, height)];
-        tempView.layer.cornerRadius = 5.f;
-        tempView.backgroundColor = [UIColor whiteColor];
-        tempView.layer.borderWidth = 1.f;
-        tempView.layer.borderColor = [UIColor grayColor].CGColor;
-        [self.view addSubview:tempView];
+        UIImageView *tempView = [[UIImageView alloc] initWithFrame:CGRectMake(startX, startY + index * (height + space), CGRectGetWidth(self.view.frame) - 2 * startX, height)];
+        tempView.image = [UIImage imageNamed:@"单条列表背景.png"];
+        tempView.userInteractionEnabled = YES;
+        [_mainScrollView addSubview:tempView];
         
-        UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, CGRectGetHeight(tempView.frame) / 2.f - 7.f, 15.f, 15.f)];
+        UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, 17.f, 18.f, 15.f)];
         [iconImageView setBackgroundColor:[UIColor clearColor]];
         iconImageView.image = [UIImage imageNamed:iconImageName[index]];
         [tempView addSubview:iconImageView];
         
-        UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
+        UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 20.f, 10.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 30.f, 30.f)];
         inputTextField.placeholder = placeHolders[index];
         [tempView addSubview:inputTextField];
+        [inputTextField addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
         inputTextField.secureTextEntry = YES;
         [self setValue:inputTextField forKey:vaues[index]];
     }
@@ -68,7 +97,7 @@
     [submitButton setBackgroundImage:[UIImage imageNamed:@"register_selected"] forState:UIControlStateHighlighted];
     submitButton.frame = CGRectMake(startX, (height + space) * iconImageName.count + 2 * startY, CGRectGetWidth(self.view.frame) - 2 * startX, 52.f);
     [submitButton setTitle:@"验证并登录" forState:UIControlStateNormal];
-    [self.view addSubview:submitButton];
+    [_mainScrollView addSubview:submitButton];
     [submitButton addTarget:self action:@selector(submitButtonClickedMethod) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -77,6 +106,11 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - 键盘点击事件
+-(void)doneClicked:(UIBarButtonItem*)barButton
+{
+    [self.view endEditing:YES];
+}
 
 #pragma mark - SubmitButtonClickedMethod
 - (void)submitButtonClickedMethod {
@@ -111,6 +145,35 @@
             [[Hud defaultInstance] showMessage:@"请输入合法的密码，字母和数字组成，或者两次输入密码不一致"];
         }
     }
+}
+
+#pragma mark - keyboard btn
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        viewFrame.size.height -= kbSize.height;
+        _mainScrollView.frame = viewFrame;
+    }];
+    
+    return;
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        _mainScrollView.frame = viewFrame;
+    }];
+    
+    return;
 }
 
 @end
