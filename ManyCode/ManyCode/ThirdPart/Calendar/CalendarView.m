@@ -74,6 +74,25 @@
     titleImageView.backgroundColor = COLOR(97, 89, 77);
     [self addSubview:titleImageView];
 
+    NSDateComponents *currentCommpent = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
+    NSInteger day = currentCommpent.day;
+    NSInteger month = currentCommpent.month;
+    
+    UILabel *dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 10.f, 100.f, 20.f)];
+    [dayLabel setBackgroundColor:[UIColor clearColor]];
+    dayLabel.font = [UIFont boldSystemFontOfSize:18.f];
+    dayLabel.textColor = [UIColor whiteColor];
+    dayLabel.text = [NSString stringWithFormat:@"%d", day];
+    [titleImageView addSubview:dayLabel];
+    
+    NSArray *months = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"Septemper", @"October", @"November", @"December"];
+    UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(dayLabel.frame), CGRectGetMaxY(dayLabel.frame), CGRectGetWidth(dayLabel.frame), CGRectGetHeight(dayLabel.frame))];
+    [monthLabel setBackgroundColor:[UIColor clearColor]];
+    monthLabel.font = [UIFont boldSystemFontOfSize:18.f];
+    monthLabel.textColor = [UIColor whiteColor];
+    monthLabel.text = [NSString stringWithFormat:@"%@", months[month]];
+    [titleImageView addSubview:monthLabel];
+    
     NSInteger columns = 7;
     CGFloat width = CGRectGetWidth(self.bounds) / columns;
     CGFloat height = 26.f;
