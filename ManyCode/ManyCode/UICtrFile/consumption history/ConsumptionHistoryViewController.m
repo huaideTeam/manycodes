@@ -39,6 +39,14 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self requestDataSourceFromServerShouldShowHud:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *tempString = @"http://api.map.baidu.com/telematics/v3/weather?location=南京&output=json&ak=l3s4SdRtSuCqgtWT6zjuGXbU";
+        tempString = [tempString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:tempString]];
+        NSData *resultData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"---%@", tempDic);
+    });
 }
 
 - (void)viewDidLoad

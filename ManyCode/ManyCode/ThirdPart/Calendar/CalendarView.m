@@ -126,6 +126,7 @@
     //上一个月的
     NSDateComponents *previousMonthComponents = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.currentChoosedDate];
     previousMonthComponents.month -= 1;
+    previousMonthComponents.day = 20;
     NSDate *previousMonthDate = [_gregorian dateFromComponents:previousMonthComponents];
     NSRange previousMonthDays = [currentMonth rangeOfUnit:NSDayCalendarUnit
                                                    inUnit:NSMonthCalendarUnit
@@ -193,9 +194,9 @@
     sender.selected = YES;
     self.forwardSelectedIndex = sender.tag;
     self.selectedDate = sender.date;
-    if (self.choosedSomeDate) {
-        self.choosedSomeDate(self);
-    }
+//    if (self.choosedSomeDate) {
+//        self.choosedSomeDate(self);
+//    }
 }
 
 - (NSDate *)dateForMonth:(NSInteger)month day:(NSInteger)day {
