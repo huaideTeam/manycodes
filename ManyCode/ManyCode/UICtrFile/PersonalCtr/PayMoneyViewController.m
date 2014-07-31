@@ -157,8 +157,8 @@
         
         [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"userRecharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
             [[Hud defaultInstance] hide:self.view];
-            NSString *xmlString = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>%@</merchantId><merchantOrderId>%@</merchantOrderId><merchantOrderTime>%@</merchantOrderTime><sign>%@</sign></upomp>",resultDic[@"merchantId"],resultDic[@"merchantOrderId"],resultDic[@"merchantOrderTime"],resultDic[@"sign"]];
-//            NSString *xmlString = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>303310048990001</merchantId><merchantOrderId>20140730194656257144</merchantOrderId><merchantOrderTime>20140730194656</merchantOrderTime><sign>hlEaSWfCHEVPkj74+148xvj23EPTHncTcRFfOy/sLdbtJJZeaSyWq/ainrjoKYQTtqZcSiDrK15c8q5gD4S/nXx0CqAZ5oRCk3tqCQM2jdKQgOnzG3tL+2AhawhYgmfnwP2Q8fKwgFV2zfp8mfHpd8PimuVRZCvRRFsdrp0kwJE=</sign></upomp>" ;
+//            NSString *xmlString = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>%@</merchantId><merchantOrderId>%@</merchantOrderId><merchantOrderTime>%@</merchantOrderTime><sign>%@</sign></upomp>",resultDic[@"merchantId"],resultDic[@"merchantOrderId"],resultDic[@"merchantOrderTime"],resultDic[@"sign"]];
+            NSString *xmlString = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>802310048990796</merchantId><merchantOrderId>20140731162401287463</merchantOrderId><merchantOrderTime>20140731162401</merchantOrderTime><sign>TkvIin5dkh1kO5g9HQ1PnrXwN7ajYOW95Pe2gk5aMKn3y4gg+OvRUWDcMl4Eh+x1YKAzDvNxg+CU+H74z8cbth+u0ozAfvXnzeUNpI2LIr1zvqVWUDsQnezkd8I1oHLL2eP8R7iSrWCHpJ4Ig28teY29bxneGI4LGfZO4hKYgFA=</sign></upomp>" ;
             NSData *data = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
             cpView_=[UPOMP new];
             cpView_.viewDelegate=self;

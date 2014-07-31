@@ -198,6 +198,10 @@
 		71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6B1988FA8800EAD183 /* 未勾选.png */; };
 		71CD7F6F1989105B00EAD183 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CD7F6E1989105B00EAD183 /* libxml2.dylib */; };
 		71CD7F7119891E4500EAD183 /* 日历图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F7019891E4500EAD183 /* 日历图标.png */; };
+		71F6866C198A495500FB4836 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866A198A495500FB4836 /* icon.png */; };
+		71F6866D198A495500FB4836 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866B198A495500FB4836 /* Default.png */; };
+		71F6866F198A4C4500FB4836 /* iphoneDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866E198A4C4500FB4836 /* iphoneDefault.png */; };
+		71F68671198A4C9300FB4836 /* iphoneDefault1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F68670198A4C9300FB4836 /* iphoneDefault1136.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -583,6 +587,10 @@
 		71CD7F6B1988FA8800EAD183 /* 未勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未勾选.png"; sourceTree = "<group>"; };
 		71CD7F6E1989105B00EAD183 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		71CD7F7019891E4500EAD183 /* 日历图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历图标.png"; sourceTree = "<group>"; };
+		71F6866A198A495500FB4836 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		71F6866B198A495500FB4836 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		71F6866E198A4C4500FB4836 /* iphoneDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneDefault.png; sourceTree = "<group>"; };
+		71F68670198A4C9300FB4836 /* iphoneDefault1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneDefault1136.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -851,6 +859,10 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				71F68670198A4C9300FB4836 /* iphoneDefault1136.png */,
+				71F6866E198A4C4500FB4836 /* iphoneDefault.png */,
+				71F6866A198A495500FB4836 /* icon.png */,
+				71F6866B198A495500FB4836 /* Default.png */,
 				71CD7F7019891E4500EAD183 /* 日历图标.png */,
 				28BAF1D51986857400FF8368 /* phoneNumber_logo@2x.png */,
 				717D0220198690B300667746 /* 立即支付按钮常态.png */,
@@ -1471,8 +1483,10 @@
 				714C6D4519828E4A007684CA /* 0.png in Resources */,
 				717667FC1981309A00A635DA /* HJSJ_iPhone_red.png in Resources */,
 				717667E41980F49600A635DA /* BNTTSSDK.bundle in Resources */,
+				71F6866D198A495500FB4836 /* Default.png in Resources */,
 				717D021F19868EC600667746 /* 背景.png in Resources */,
 				71282B0519864CF300A3FE09 /* 返回按钮效果.png in Resources */,
+				71F6866F198A4C4500FB4836 /* iphoneDefault.png in Resources */,
 				714C6D4619828E4A007684CA /* 1.png in Resources */,
 				717D020E19867D8500667746 /* 立即登录按钮效果.png in Resources */,
 				71282B0319864CF300A3FE09 /* 单条列表背景.png in Resources */,
@@ -1488,6 +1502,7 @@
 				717D0212198680D500667746 /* 密码图标.png in Resources */,
 				717D0225198690B300667746 /* 立即支付图标.png in Resources */,
 				717D021D19868B2A00667746 /* payMoneyTitleImage.png in Resources */,
+				71F6866C198A495500FB4836 /* icon.png in Resources */,
 				714C6D4819828E4A007684CA /* 3.png in Resources */,
 				717D02171986833F00667746 /* 注册 登录按钮效果.png in Resources */,
 				71B3C940198228BA0050045B /* 详情图标.png in Resources */,
@@ -1499,6 +1514,7 @@
 				717667FA1981238F00A635DA /* mapButtonclick.png in Resources */,
 				717667F91981238F00A635DA /* mapButton.png in Resources */,
 				712FC08D197D3CE100EA9F32 /* Main.storyboard in Resources */,
+				71F68671198A4C9300FB4836 /* iphoneDefault1136.png in Resources */,
 				71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */,
 				71282B0419864CF300A3FE09 /* 返回按钮常态.png in Resources */,
 				71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */,
@@ -1765,7 +1781,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManyCode/ManyCode-Prefix.pch";
 				INFOPLIST_FILE = "ManyCode/ManyCode-Info.plist";
@@ -1791,7 +1806,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManyCode/ManyCode-Prefix.pch";
 				INFOPLIST_FILE = "ManyCode/ManyCode-Info.plist";
