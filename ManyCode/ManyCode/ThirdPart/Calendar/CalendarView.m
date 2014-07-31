@@ -53,6 +53,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [self initializeTheParameters];
+    NSLog(@"---%@", self.selectedDate);
     NSDateComponents *components = [self.gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.currentChoosedDate];
     components.day = 1;
     NSDate *firstDayOfMonth = [self.gregorian dateFromComponents:components];
@@ -85,7 +86,7 @@
     dayLabel.text = [NSString stringWithFormat:@"%d", day];
     [titleImageView addSubview:dayLabel];
     
-    NSArray *months = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"Septemper", @"October", @"November", @"December"];
+    NSArray *months = @[@"", @"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"Septemper", @"October", @"November", @"December"];
     UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(dayLabel.frame), CGRectGetMaxY(dayLabel.frame), CGRectGetWidth(dayLabel.frame), CGRectGetHeight(dayLabel.frame))];
     [monthLabel setBackgroundColor:[UIColor clearColor]];
     monthLabel.font = [UIFont boldSystemFontOfSize:18.f];
@@ -129,6 +130,7 @@
     NSRange previousMonthDays = [currentMonth rangeOfUnit:NSDayCalendarUnit
                                                    inUnit:NSMonthCalendarUnit
                                                   forDate:previousMonthDate];
+    NSLog(@"上一个月的长度:%@----%@------%@", NSStringFromRange(previousMonthDays), previousMonthDate, self.currentChoosedDate);
     NSInteger maxDate = previousMonthDays.length - weekday;
     CGFloat maxX = 0.f;
     CGFloat minY = 0.f;
@@ -137,6 +139,10 @@
         [button setTitle:[NSString stringWithFormat:@"%d",maxDate + i + 1] forState:UIControlStateNormal];
         button.date = [self dateForMonth:-1 day:maxDate + i + 1];
         button.tag = 1000 + i;
+        if ([self compareDate:button.date toDate:self.selectedDate]) {
+            button.selected = YES;
+            self.forwardSelectedIndex = button.tag;
+        }
         [button setFrame:CGRectMake(maxX, originY, width, height)];
         [daysImageView addSubview:button];
         maxX = CGRectGetMaxX(button.frame);
@@ -148,13 +154,13 @@
         CalendarButton *button = [self calendarButton];
         button.tag = i + 2000;
         [button setTitle:[NSString stringWithFormat:@"%d",i + 1] forState:UIControlStateNormal];
-        button.date = [self dateForMonth:0 day:i + 1];
+        button.date = [self dateForMonth:0 day:i];
         maxX = ((i + weekday) % 7) * width;
         minY = ((i + weekday) / 7) * height;
         [button setFrame:CGRectMake(maxX, minY, width, height)];
-        if (button.tag == _currentDay + 2000 && components.month == _currentMonth && components.year == _currentYear){
+        if ([self compareDate:button.date toDate:self.selectedDate]) {
             button.selected = YES;
-            _forwardSelectedIndex = button.tag;
+            self.forwardSelectedIndex = button.tag;
         }
         [daysImageView addSubview:button];
         daysImageViewHeight = CGRectGetMaxY(button.frame);
@@ -164,6 +170,10 @@
         CalendarButton *button = [self calendarButton];
         button.date = [self dateForMonth:1 day:index + 1];
         button.tag = 3000 + index;
+        if ([self compareDate:button.date toDate:self.selectedDate]) {
+            button.selected = YES;
+            self.forwardSelectedIndex = button.tag;
+        }
         [button setTitle:[NSString stringWithFormat:@"%d",index + 1] forState:UIControlStateNormal];
         [button setFrame:CGRectMake(maxX, minY, width, height)];
         [daysImageView addSubview:button];
@@ -176,7 +186,7 @@
 
 #pragma mark - choose a date 
 - (void)chooseDateClickedMethod:(CalendarButton *)sender {
-    NSLog(@"---%@", sender.date);
+    NSLog(@"---%@－－－－%d", sender.date, self.forwardSelectedIndex);
     UIImageView *tempImageView = (UIImageView *)[self viewWithTag:1UL << 6];
     CalendarButton *tempButton = (CalendarButton *)[tempImageView viewWithTag:self.forwardSelectedIndex];
     tempButton.selected = NO;
@@ -190,7 +200,14 @@
 
 - (NSDate *)dateForMonth:(NSInteger)month day:(NSInteger)day {
     NSDateComponents *components = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.currentChoosedDate];
-    components.day = day + 1;
+    if (0 == month) {
+        components.day = day + 2;
+    } else if (-1 == month) {
+        components.day = day + 1;
+    } else if (1 == month) {
+        components.day = day + 1;
+    }
+    
     components.month += month;
     return [_gregorian dateFromComponents:components];
 }
@@ -227,6 +244,7 @@
 #pragma mark - 初始化参数 
 - (void)initializeTheParameters {
     if (nil == _gregorian) {
+        self.selectedDate = self.currentChoosedDate;
         _gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSDateComponents *components = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.currentChoosedDate];
         _currentDay  = components.day;
@@ -242,5 +260,14 @@
     [button addTarget:self action:@selector(chooseDateClickedMethod:) forControlEvents:UIControlEventTouchUpInside];
     [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0f]];
     return button;
+}
+
+#pragma mark - 比较两个日期是否相等
+- (BOOL)compareDate:(NSDate *)firstDate toDate:(NSDate *)secondDate {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *firstDateCom = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:firstDate];
+    NSDateComponents *secondDateCom = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:secondDate];
+    BOOL result = firstDateCom.day == secondDateCom.day && firstDateCom.month == secondDateCom.month && firstDateCom.year == secondDateCom.year;
+    return result;
 }
 @end
