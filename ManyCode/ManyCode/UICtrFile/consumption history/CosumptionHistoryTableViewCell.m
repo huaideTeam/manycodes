@@ -14,7 +14,12 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _consumptionTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 32.f, 60.f, 30.f)];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ConsumptionHistory"]];
+        imageView.frame = CGRectMake(0, 0, 320.f, 70.f);
+        [self.contentView addSubview:imageView];
+        
+        _consumptionTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(6.f, 32.f, 60.f, 30.f)];
         _consumptionTimeLabel.textColor = COLOR(128, 127, 127);
         _consumptionTimeLabel.lineBreakMode = NSLineBreakByWordWrapping;
         _consumptionTimeLabel.textAlignment = NSTextAlignmentCenter;
@@ -23,12 +28,8 @@
         _consumptionTimeLabel.font = [UIFont systemFontOfSize:10.f];
         [self.contentView addSubview:_consumptionTimeLabel];
         
-        UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_consumptionTimeLabel.frame) + 2.f, 0.f, 1.f, 70.f)];
-        [lineImageView setBackgroundColor:COLOR(165, 160, 151)];
-        [self.contentView addSubview:lineImageView];
-        
         _consumptionTypeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10.f, 20.f, 20.f)];
-        _consumptionTypeImageView.center = CGPointMake(lineImageView.center.x, _consumptionTypeImageView.center.y);
+        _consumptionTypeImageView.center = CGPointMake(CGRectGetMaxX(_consumptionTimeLabel.frame), _consumptionTypeImageView.center.y);
         _consumptionTypeImageView.layer.cornerRadius = 10.f;
         _consumptionTypeImageView.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_consumptionTypeImageView];

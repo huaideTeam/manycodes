@@ -23,6 +23,8 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 
 @property (nonatomic, strong) NSDate *currentFilterDate;
 
+@property (nonatomic, assign) NSInteger pageIndex;
+
 @end
 
 @implementation ConsumptionHistoryViewController
@@ -39,14 +41,6 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self requestDataSourceFromServerShouldShowHud:YES];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *tempString = @"http://api.map.baidu.com/telematics/v3/weather?location=南京&output=json&ak=l3s4SdRtSuCqgtWT6zjuGXbU";
-        tempString = [tempString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:tempString]];
-        NSData *resultData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"---%@", tempDic);
-    });
 }
 
 - (void)viewDidLoad
@@ -54,7 +48,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     [super viewDidLoad];
     
     self.title = @"缴费记录";
-    _currentFilterDate = [NSDate date];
+    _pageIndex = 0;
     _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight)];
     [_consumptionHistoryTableView registerClass:[CosumptionHistoryTableViewCell class] forCellReuseIdentifier:identifierForCosumptionHistory];
     _consumptionHistoryTableView.delegate = self;
@@ -62,7 +56,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     _consumptionHistoryTableView.backgroundColor = [UIColor clearColor];
     _consumptionHistoryTableView.backgroundView = nil;
     [_consumptionHistoryTableView setTableHeaderView:[self headerViewForCosumptionList]];
-    [_consumptionHistoryTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [_consumptionHistoryTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     _consumptionHistoryTableView.separatorColor = COLOR(212, 212, 211);
     [self.view addSubview:_consumptionHistoryTableView];
     
@@ -90,7 +84,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     CosumptionHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierForCosumptionHistory forIndexPath:indexPath];
     ConsumptionHistoryItemModel *item = self.consumptionHistoryDataSource[indexPath.row];
     cell.consumptionTimeLabel.text = item.chgtime;
-//    cell.consumptionPlaceLabel.text = item.c
+    cell.consumptionPlaceLabel.text = item.chginfo;
     cell.consumptionDetailLabel.text = item.remark;
     cell.consumptionReduceMoney.text = item.money;
     switch ([item.chgtype intValue]) {
@@ -156,12 +150,25 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
         [[Hud defaultInstance] loading:self.view withText:@"加载数据中,请稍候。。。"];
     }
     __weak ConsumptionHistoryViewController *weakSelf = self;
+    NSDictionary *parameters = nil;
+    if (self.currentFilterDate) {
+        parameters = @{
+                       @"sessionid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession],
+                       @"userid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid],
+                       @"querytime":[Common getDateString:self.currentFilterDate],
+                       @"page": [NSString stringWithFormat:@"%d", _pageIndex]
+                       };
+    }
+    else {
+        parameters = @{
+                       @"sessionid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession],
+                       @"userid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid],
+                       @"page": [NSString stringWithFormat:@"%d", _pageIndex]
+                       };
+    }
     [[NetworkCenter instanceManager]
      requestWebWithParaWithURL:@"getUserBalanceChange"
-     Parameter:@{@"sessionid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession],
-                 @"userid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid],
-//                 @"querytime":[Common getDateString:self.currentFilterDate],
-                 @"page":@"-1"}
+     Parameter:parameters
      Finish:^(NSDictionary *resultDic) {
          ConsumptionHistoryViewController *strongSelf = weakSelf;
          ConsumptionHistoryModel *model = [[ConsumptionHistoryModel alloc] init];
@@ -170,6 +177,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
          if (show) {
              [[Hud defaultInstance] hide:strongSelf.view];
          }
+         _pageIndex ++;
          [strongSelf.consumptionHistoryTableView reloadData];
          
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -191,10 +199,11 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     [self.view addSubview:tempControl];
     CalendarView *view = [[CalendarView alloc] initWithFrame:CGRectMake(40.f, 100.f, CGRectGetWidth(self.view.frame) - 80.f, 250.f)];
     view.tag = 1UL << 8;
-    view.currentChoosedDate = self.currentFilterDate;
+    view.currentChoosedDate = self.currentFilterDate ? self.currentFilterDate : [NSDate date];
     [view setBackgroundColor:[UIColor clearColor]];
     __weak ConsumptionHistoryViewController *weakSelf = self;
     CalendarSelectedSomeDate block = ^(CalendarView *calendarView) {
+        _pageIndex = 0;
         ConsumptionHistoryViewController *strongSelf = weakSelf;
         strongSelf.currentFilterDate = calendarView.selectedDate;
         [self requestDataSourceFromServerShouldShowHud:YES];
