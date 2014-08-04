@@ -54,6 +54,7 @@
 
 @property (nonatomic, strong) NSString *chgtype;
 @property (nonatomic, strong) NSString *chgtime;
+@property (nonatomic, strong) NSString *chginfo;
 @property (nonatomic, strong) NSString *money;
 @property (nonatomic, strong) NSString *remark;
 
