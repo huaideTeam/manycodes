@@ -200,7 +200,7 @@
  */
 + (NSString *)getDateString:(NSDate *)date
 {
-    NSString *format = @"yyyy-MMdd";
+    NSString *format = @"yyyy-MM-dd";
     NSTimeZone *localZone = [NSTimeZone systemTimeZone];
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];

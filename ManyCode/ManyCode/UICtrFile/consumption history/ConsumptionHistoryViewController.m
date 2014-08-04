@@ -160,7 +160,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
      requestWebWithParaWithURL:@"getUserBalanceChange"
      Parameter:@{@"sessionid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession],
                  @"userid":[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid],
-                 @"querytime":[Common getDateString:self.currentFilterDate],
+//                 @"querytime":[Common getDateString:self.currentFilterDate],
                  @"page":@"-1"}
      Finish:^(NSDictionary *resultDic) {
          ConsumptionHistoryViewController *strongSelf = weakSelf;

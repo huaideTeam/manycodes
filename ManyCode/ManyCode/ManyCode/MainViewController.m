@@ -180,6 +180,7 @@
     [searchText_ resignFirstResponder];
     [textArray_ removeAllObjects];
     [grayView_ removeFromSuperview];
+    [dataArray_ removeAllObjects];
     [self LoadCurrentInfo:[[NetworkCenter instanceManager] currentPoint]];
 }
 
@@ -348,7 +349,7 @@
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
     [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];
-    [tempDic setObject:[NSNumber numberWithInt:1] forKey:@"page"];
+    [tempDic setObject:[NSNumber numberWithInt:-1] forKey:@"page"];
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getNearCarparkList" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         NSLog(@"1233");
