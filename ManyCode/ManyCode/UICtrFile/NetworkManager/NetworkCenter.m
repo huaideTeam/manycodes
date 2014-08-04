@@ -48,6 +48,7 @@
  */
 - (void)requestWebWithParaWithURL:(NSString*)webApi Parameter:(NSDictionary *)para Finish:(HttpResponseSucBlock)completeBlock Error:(HttpResponseErrBlock)errorBlock
 {
+    NSLog(@"请求报文:%@", para);
     [self.httpClient POST:webApi parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"URL:%@,Responese:%@",operation.request.URL,responseObject);

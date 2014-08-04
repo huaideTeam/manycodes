@@ -194,9 +194,9 @@
     sender.selected = YES;
     self.forwardSelectedIndex = sender.tag;
     self.selectedDate = sender.date;
-//    if (self.choosedSomeDate) {
-//        self.choosedSomeDate(self);
-//    }
+    if (self.choosedSomeDate) {
+        self.choosedSomeDate(self);
+    }
 }
 
 - (NSDate *)dateForMonth:(NSInteger)month day:(NSInteger)day {

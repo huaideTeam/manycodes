@@ -22,6 +22,7 @@
 		2885FADE19834110009E69C5 /* SettingSecondSectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885FADD19834110009E69C5 /* SettingSecondSectionTableViewCell.m */; };
 		2891A0401982843900538FC0 /* ModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A03F1982843900538FC0 /* ModelViewController.m */; };
 		2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */; };
+		289203EC198FB91800D78ED4 /* ConsumptionHistory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289203EB198FB91800D78ED4 /* ConsumptionHistory@2x.png */; };
 		28BAF1CE198681B700FF8368 /* libUPOMP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BAF1CB198681B700FF8368 /* libUPOMP.a */; };
 		28BAF1CF198681B700FF8368 /* libUPOMP_S.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BAF1CC198681B700FF8368 /* libUPOMP_S.a */; };
 		28BAF1D0198681B700FF8368 /* UPOMPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28BAF1CD198681B700FF8368 /* UPOMPImage.bundle */; };
@@ -240,6 +241,7 @@
 		2891A03F1982843900538FC0 /* ModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelViewController.m; sourceTree = "<group>"; };
 		2891A04219829CEB00538FC0 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		2891A04319829CEB00538FC0 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		289203EB198FB91800D78ED4 /* ConsumptionHistory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ConsumptionHistory@2x.png"; sourceTree = "<group>"; };
 		28BAF1CB198681B700FF8368 /* libUPOMP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP.a; sourceTree = "<group>"; };
 		28BAF1CC198681B700FF8368 /* libUPOMP_S.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPOMP_S.a; sourceTree = "<group>"; };
 		28BAF1CD198681B700FF8368 /* UPOMPImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UPOMPImage.bundle; sourceTree = "<group>"; };
@@ -859,6 +861,7 @@
 		712FBFE8197CB6B600EA9F32 /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				289203EB198FB91800D78ED4 /* ConsumptionHistory@2x.png */,
 				71F68670198A4C9300FB4836 /* iphoneDefault1136.png */,
 				71F6866E198A4C4500FB4836 /* iphoneDefault.png */,
 				71F6866A198A495500FB4836 /* icon.png */,
@@ -1519,6 +1522,7 @@
 				71282B0419864CF300A3FE09 /* 返回按钮常态.png in Resources */,
 				71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */,
 				717667EA1980F60500A635DA /* Default.png in Resources */,
+				289203EC198FB91800D78ED4 /* ConsumptionHistory@2x.png in Resources */,
 				714C6D4C19828E4A007684CA /* 7.png in Resources */,
 				714C6DB719837B69007684CA /* ErrCode.plist in Resources */,
 				717D0224198690B300667746 /* 立即支付按钮效果.png in Resources */,
