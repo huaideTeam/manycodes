@@ -23,6 +23,6 @@
 - (void)pushToParkDetailView:(UIView *)ctView clickIndex:(NSInteger)index;
 
 //地理位置更新 ，刷新数据
-- (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint;
+- (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint isFirst:(BOOL)isRef;
 
 @end

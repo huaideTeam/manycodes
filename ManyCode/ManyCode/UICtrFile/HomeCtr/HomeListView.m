@@ -11,10 +11,15 @@
 #import "DataSourceModel.h"
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
+#import "MJRefresh.h"
 
 static NSString *identifierForHomeListTableView = @"identifierForHomeListTableView";
 
-@interface HomeListView ()<UITableViewDataSource, UITableViewDelegate>
+@interface HomeListView ()<UITableViewDataSource, UITableViewDelegate,MJRefreshBaseViewDelegate>
+{
+    MJRefreshFooterView *_footer;
+
+}
 
 @property (nonatomic, strong) UITableView *parkingListTableView;          //停车场列表
 
@@ -37,9 +42,27 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
         _parkingListTableView.backgroundColor = COLOR(235, 237, 240);
         _parkingListTableView.dataSource = self;
         _parkingListTableView.delegate = self;
+        
+        _footer = [[MJRefreshFooterView alloc] init];
+        _footer.delegate = self;
+        _footer.scrollView = _parkingListTableView;
+        
         [self addSubview:_parkingListTableView];
     }
     return self;
+}
+
+
+#pragma mark- refresh view
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
+{
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(loadOrderData) userInfo:nil repeats:NO];
+}
+
+- (void)loadOrderData
+{
+    [self.delegate LoadCurrentInfo:[[NetworkCenter instanceManager] currentPoint] isFirst:NO];
+
 }
 
 /**
@@ -48,13 +71,21 @@ static NSString *identifierForHomeListTableView = @"identifierForHomeListTableVi
  *  @param parkingList 停车场列表
  */
 - (void)refreshParkingList:(NSArray *)parkingList {
+    [_footer endRefreshing];
     self.parkingListDataSource = parkingList;
     [self.parkingListTableView reloadData];
+}
+
+- (void)endFreshLoading
+{
+    [_footer endRefreshing];
+
 }
 
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    [_footer endRefreshing];
     return self.parkingListDataSource.count;
 }
 

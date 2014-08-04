@@ -22,6 +22,7 @@
     MapFootView *footView_;
     NSMutableArray *anonationArray_;
     NSMutableArray *dataArray_;
+    NSInteger currentIndex_;
 }
 
 @end
@@ -105,7 +106,7 @@
             theRegion.center= userLocation.location.coordinate;
             theRegion.span = theSpan;
             
-            [self.delegate LoadCurrentInfo:location_.location.coordinate];
+//            [self.delegate LoadCurrentInfo:location_.location.coordinate isFirst:YES];
             [mymapkit_ setRegion:theRegion];
         }else
         {
@@ -115,7 +116,7 @@
             // 计算距离
             CLLocationDistance meters=[current distanceFromLocation:before];
             if (meters>500) {
-                [self.delegate LoadCurrentInfo:location_.location.coordinate];
+                [self.delegate LoadCurrentInfo:location_.location.coordinate isFirst:YES];
             }
         }
         
@@ -123,6 +124,19 @@
         [[NetworkCenter instanceManager] setCurrentPoint:location_.location.coordinate];
     }
 //    [mymapkit_ updateLocationData:userLocation];
+}
+
+- (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    NSInteger zoom = [mapView zoomLevel];
+    if (zoom>currentIndex_ && currentIndex_ !=0) {
+        
+    }else
+    {
+        [self.delegate LoadCurrentInfo:location_.location.coordinate isFirst:NO];
+
+    }
+    NSLog(@"++++%d+++",zoom);
 }
 
 /**

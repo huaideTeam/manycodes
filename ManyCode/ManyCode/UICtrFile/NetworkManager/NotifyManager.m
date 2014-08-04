@@ -66,7 +66,7 @@
     else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[Hud defaultInstance] showMessage:msg];
+            [[Hud defaultInstance] showMessage:msg withHud:YES];
         });
     }
 }

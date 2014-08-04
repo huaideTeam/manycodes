@@ -30,6 +30,8 @@
     UIView *grayView_;
     UIButton *leftBtn_;
     CLLocationCoordinate2D currentSelfPoint_;
+    NSInteger currentIndex_;
+    BOOL isContinue_;
 }
 
 @end
@@ -70,6 +72,8 @@
     }
     self.title = @"抢车位";
     self.view.backgroundColor = [UIColor clearColor];
+    
+    currentIndex_ = 1;
     
     dataArray_ = [[NSMutableArray alloc] initWithCapacity:12];
     
@@ -181,7 +185,7 @@
     [textArray_ removeAllObjects];
     [grayView_ removeFromSuperview];
     [dataArray_ removeAllObjects];
-    [self LoadCurrentInfo:[[NetworkCenter instanceManager] currentPoint]];
+    [self LoadCurrentInfo:[[NetworkCenter instanceManager] currentPoint] isFirst:YES];
 }
 
 - (void)showRightClick:(UIButton *)button
@@ -342,26 +346,39 @@
 #pragma mark - load data
 
 //定位成功后刷新数据，或者定时刷新数据
-- (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint
+- (void)LoadCurrentInfo:(CLLocationCoordinate2D)currentPoint isFirst:(BOOL)isRef
 {
-//    currentSelfPoint_ = currentPoint;
-    [[Hud defaultInstance] loading:self.view withText:@"获取停车场列表请稍候。。。"];
-    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
-    [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
-    [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];
-    [tempDic setObject:[NSNumber numberWithInt:-1] forKey:@"page"];
-    
-    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getNearCarparkList" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
-        NSLog(@"1233");
-        [[Hud defaultInstance] hide:self.view];
-        NSArray *array = [resultDic objectForKey:@"carparklist"];
-        [dataArray_ addObjectsFromArray:array];
-        [mapView_ updateAnimationView:dataArray_];
-        [listView_ refreshParkingList:dataArray_];
+    if (isRef) {
+        currentIndex_ = 1;
+        isContinue_ = NO;
+    }
+    if (!isContinue_) { //没有新数据时下来部刷新界面
+        [[Hud defaultInstance] loading:self.view withText:@"获取停车场列表请稍候。。。"];
+        NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+        [tempDic setObject:[NSNumber numberWithDouble:currentPoint.latitude] forKey:@"user_lat"];
+        [tempDic setObject:[NSNumber numberWithDouble:currentPoint.longitude] forKey:@"user_lon"];
+        [tempDic setObject:[NSNumber numberWithInteger:currentIndex_] forKey:@"page"];
         
-    } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
+        [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getNearCarparkList" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+            NSLog(@"1233");
+            currentIndex_++;
+            [[Hud defaultInstance] hide:self.view];
+            NSArray *array = [resultDic objectForKey:@"carparklist"];
+            [dataArray_ addObjectsFromArray:array];
+            [mapView_ updateAnimationView:dataArray_];
+            [listView_ refreshParkingList:dataArray_];
+            
+        } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (error.code == 997) {
+                isContinue_ = YES;
+            }
+            [listView_ endFreshLoading];
+        }];
+    }else
+    {
+        [listView_ endFreshLoading];
+        [[Hud defaultInstance] showMessage:@"没有数据了" withHud:YES];
+    }
 }
 
 //点击导航数据

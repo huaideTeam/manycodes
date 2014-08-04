@@ -20,4 +20,7 @@
  */
 - (void)refreshParkingList:(NSArray *)parkingList;
 
+//取消loading
+- (void)endFreshLoading;
+
 @end

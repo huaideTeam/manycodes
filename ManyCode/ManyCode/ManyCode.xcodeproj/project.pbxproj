@@ -199,6 +199,10 @@
 		71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6B1988FA8800EAD183 /* 未勾选.png */; };
 		71CD7F6F1989105B00EAD183 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CD7F6E1989105B00EAD183 /* libxml2.dylib */; };
 		71CD7F7119891E4500EAD183 /* 日历图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F7019891E4500EAD183 /* 日历图标.png */; };
+		71E7529A198FB29B00242962 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71E75292198FB29B00242962 /* MJRefresh.bundle */; };
+		71E7529B198FB29B00242962 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E75295198FB29B00242962 /* MJRefreshBaseView.m */; };
+		71E7529C198FB29B00242962 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E75297198FB29B00242962 /* MJRefreshFooterView.m */; };
+		71E7529D198FB29B00242962 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E75299198FB29B00242962 /* MJRefreshHeaderView.m */; };
 		71F6866C198A495500FB4836 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866A198A495500FB4836 /* icon.png */; };
 		71F6866D198A495500FB4836 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866B198A495500FB4836 /* Default.png */; };
 		71F6866F198A4C4500FB4836 /* iphoneDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866E198A4C4500FB4836 /* iphoneDefault.png */; };
@@ -589,6 +593,14 @@
 		71CD7F6B1988FA8800EAD183 /* 未勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未勾选.png"; sourceTree = "<group>"; };
 		71CD7F6E1989105B00EAD183 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		71CD7F7019891E4500EAD183 /* 日历图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历图标.png"; sourceTree = "<group>"; };
+		71E75292198FB29B00242962 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		71E75293198FB29B00242962 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		71E75294198FB29B00242962 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		71E75295198FB29B00242962 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		71E75296198FB29B00242962 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		71E75297198FB29B00242962 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		71E75298198FB29B00242962 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		71E75299198FB29B00242962 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		71F6866A198A495500FB4836 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		71F6866B198A495500FB4836 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		71F6866E198A4C4500FB4836 /* iphoneDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneDefault.png; sourceTree = "<group>"; };
@@ -926,6 +938,7 @@
 		712FBFE9197CB6B600EA9F32 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				71E75291198FB29B00242962 /* MJRefresh */,
 				71282AE11986433E00A3FE09 /* upomp_bypay */,
 				28F00FE519837DB800406294 /* Calendar */,
 				714C6D951983459B007684CA /* iosPot */,
@@ -1398,6 +1411,21 @@
 			path = FlijayFille;
 			sourceTree = "<group>";
 		};
+		71E75291198FB29B00242962 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				71E75292198FB29B00242962 /* MJRefresh.bundle */,
+				71E75293198FB29B00242962 /* MJRefresh.h */,
+				71E75294198FB29B00242962 /* MJRefreshBaseView.h */,
+				71E75295198FB29B00242962 /* MJRefreshBaseView.m */,
+				71E75296198FB29B00242962 /* MJRefreshFooterView.h */,
+				71E75297198FB29B00242962 /* MJRefreshFooterView.m */,
+				71E75298198FB29B00242962 /* MJRefreshHeaderView.h */,
+				71E75299198FB29B00242962 /* MJRefreshHeaderView.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1489,6 +1517,7 @@
 				71F6866D198A495500FB4836 /* Default.png in Resources */,
 				717D021F19868EC600667746 /* 背景.png in Resources */,
 				71282B0519864CF300A3FE09 /* 返回按钮效果.png in Resources */,
+				71E7529A198FB29B00242962 /* MJRefresh.bundle in Resources */,
 				71F6866F198A4C4500FB4836 /* iphoneDefault.png in Resources */,
 				714C6D4619828E4A007684CA /* 1.png in Resources */,
 				717D020E19867D8500667746 /* 立即登录按钮效果.png in Resources */,
@@ -1609,6 +1638,7 @@
 				717667D91980F49600A635DA /* CJSONSerializedData.m in Sources */,
 				71B0B749197E3F3E00B06945 /* UIWebView+AFNetworking.m in Sources */,
 				71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */,
+				71E7529D198FB29B00242962 /* MJRefreshHeaderView.m in Sources */,
 				71B0B705197E3B4D00B06945 /* UIButton+WebCache.m in Sources */,
 				717667FF19814D6F00A635DA /* SearchCell.m in Sources */,
 				717667DC1980F49600A635DA /* NSDictionary_JSONExtensions.m in Sources */,
@@ -1630,6 +1660,7 @@
 				717667DA1980F49600A635DA /* CDataScanner_Extensions.m in Sources */,
 				717667E31980F49600A635DA /* BNaviSoundManager.m in Sources */,
 				71B0B6FE197E3B4D00B06945 /* SDWebImageCompat.m in Sources */,
+				71E7529C198FB29B00242962 /* MJRefreshFooterView.m in Sources */,
 				712FC0D1197D421100EA9F32 /* ViewController.m in Sources */,
 				71B0B743197E3F3E00B06945 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				71B0B6FF197E3B4D00B06945 /* SDWebImageDecoder.m in Sources */,
@@ -1655,6 +1686,7 @@
 				71B0B73B197E3F3E00B06945 /* AFHTTPRequestOperationManager.m in Sources */,
 				717667D51980F49600A635DA /* CDataScanner.m in Sources */,
 				285B02FB198165E100B4D225 /* RegisterSecondStepViewController.m in Sources */,
+				71E7529B198FB29B00242962 /* MJRefreshBaseView.m in Sources */,
 				712FBFF1197CBB0E00EA9F32 /* MainViewController.m in Sources */,
 				7149002F197FB2B800DEFD83 /* SBTickView.m in Sources */,
 				717667E11980F49600A635DA /* CJSONSerializer.m in Sources */,
