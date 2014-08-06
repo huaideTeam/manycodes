@@ -12,10 +12,14 @@
 #import "CalendarView.h"
 #import "Common.h"
 #import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
 
 static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHistory";
 
-@interface ConsumptionHistoryViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ConsumptionHistoryViewController ()<UITableViewDataSource, UITableViewDelegate,MJRefreshBaseViewDelegate>
+{
+    MJRefreshFooterView *_footer;
+}
 
 @property (nonatomic, strong) UITableView *consumptionHistoryTableView;
 
@@ -60,11 +64,15 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     _consumptionHistoryTableView.separatorColor = COLOR(212, 212, 211);
     [self.view addSubview:_consumptionHistoryTableView];
     
+    _footer = [[MJRefreshFooterView alloc] init];
+    _footer.delegate = self;
+    _footer.scrollView = _consumptionHistoryTableView;
+    
     UIButton *calendar = [UIButton buttonWithType:UIButtonTypeCustom];
     calendar.backgroundColor = [UIColor clearColor];
     [calendar setBackgroundImage:[UIImage imageNamed:@"日历图标.png"] forState:UIControlStateNormal];
     [calendar addTarget:self action:@selector(showCalendarView) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:calendar];
+    [self.consumptionHistoryTableView addSubview:calendar];
     calendar.frame = CGRectMake(5.f, 75.f, 25.f, 30.f);
 }
 
@@ -74,9 +82,21 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark- refresh view
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
+{
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(loadOrderData) userInfo:nil repeats:NO];
+}
+
+- (void)loadOrderData
+{
+    [self requestDataSourceFromServerShouldShowHud:NO];
+}
+
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    [_footer endRefreshing];
     return self.consumptionHistoryDataSource.count;
 }
 
