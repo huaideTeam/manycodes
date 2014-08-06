@@ -25,31 +25,30 @@
         _consumptionTimeLabel.textAlignment = NSTextAlignmentCenter;
         _consumptionTimeLabel.numberOfLines = 2;
         _consumptionTimeLabel.backgroundColor = [UIColor clearColor];
-        _consumptionTimeLabel.font = [UIFont systemFontOfSize:10.f];
+        _consumptionTimeLabel.font = [UIFont systemFontOfSize:11.f];
         [self.contentView addSubview:_consumptionTimeLabel];
         
-        _consumptionTypeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10.f, 20.f, 20.f)];
-        _consumptionTypeImageView.center = CGPointMake(CGRectGetMaxX(_consumptionTimeLabel.frame), _consumptionTypeImageView.center.y);
-        _consumptionTypeImageView.layer.cornerRadius = 10.f;
-        _consumptionTypeImageView.backgroundColor = [UIColor redColor];
+        _consumptionTypeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 9.f, 23.f, 25.f)];
+        _consumptionTypeImageView.center = CGPointMake(CGRectGetMaxX(_consumptionTimeLabel.frame)+3, _consumptionTypeImageView.center.y);
+        _consumptionTypeImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_consumptionTypeImageView];
         
-        _consumptionPlaceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_consumptionTypeImageView.frame), CGRectGetMinY(_consumptionTypeImageView.frame), 200.f, 20.f)];
-        _consumptionPlaceLabel.textColor = COLOR(106, 106, 106);
+        _consumptionPlaceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_consumptionTypeImageView.frame)+5, CGRectGetMinY(_consumptionTypeImageView.frame), 200.f, 20.f)];
+        _consumptionPlaceLabel.textColor = COLOR(0, 0, 0);
         _consumptionPlaceLabel.backgroundColor = [UIColor clearColor];
-        _consumptionPlaceLabel.font = [UIFont systemFontOfSize:10.f];
+        _consumptionPlaceLabel.font = [UIFont systemFontOfSize:17.f];
         [self.contentView addSubview:_consumptionPlaceLabel];
         
-        _consumptionDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_consumptionPlaceLabel.frame), CGRectGetMinY(_consumptionTimeLabel.frame) + 10.f, 135.f, 20.f)];
+        _consumptionDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_consumptionPlaceLabel.frame)+5, CGRectGetMinY(_consumptionTimeLabel.frame) + 10.f, 125.f, 20.f)];
         _consumptionDetailLabel.textColor = COLOR(128, 127, 127);
         _consumptionDetailLabel.backgroundColor = [UIColor clearColor];
-        _consumptionDetailLabel.font = [UIFont systemFontOfSize:10.f];
+        _consumptionDetailLabel.font = [UIFont systemFontOfSize:12.f];
         [self.contentView addSubview:_consumptionDetailLabel];
         
         _consumptionReduceMoney = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_consumptionDetailLabel.frame), CGRectGetMinY(_consumptionDetailLabel.frame), 100.f, 20.f)];
         _consumptionReduceMoney.textColor = COLOR(128, 127, 127);
         _consumptionReduceMoney.backgroundColor = [UIColor clearColor];
-        _consumptionReduceMoney.font = [UIFont systemFontOfSize:10.f];
+        _consumptionReduceMoney.font = [UIFont systemFontOfSize:12.f];
         [self.contentView addSubview:_consumptionReduceMoney];
         
     }

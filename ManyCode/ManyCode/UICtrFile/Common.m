@@ -210,6 +210,26 @@
 }
 
 /**
+ *  将时间戳转化为字符串
+ *
+ *  @param date date日期
+ *
+ *  @return 字符串
+ */
++ (NSString *)getDateWithSeconds:(long long)timeNum
+{
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeNum];
+    NSString *format = @"yyyy-MM-dd hh-mm";
+    NSTimeZone *localZone = [NSTimeZone systemTimeZone];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    [formatter setTimeZone:localZone];
+	NSString* dateStr = [formatter stringFromDate:date];
+	return dateStr;
+}
+
+/**
  *  将nsdate转化为字符串
  *
  *  @param date date日期

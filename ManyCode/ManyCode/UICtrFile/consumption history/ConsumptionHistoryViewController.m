@@ -83,19 +83,19 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CosumptionHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierForCosumptionHistory forIndexPath:indexPath];
     ConsumptionHistoryItemModel *item = self.consumptionHistoryDataSource[indexPath.row];
-    cell.consumptionTimeLabel.text = item.chgtime;
-    cell.consumptionPlaceLabel.text = item.chginfo;
-    cell.consumptionDetailLabel.text = item.remark;
-    cell.consumptionReduceMoney.text = item.money;
+    cell.consumptionTimeLabel.text = [Common getDateWithSeconds:[item.chgtime longLongValue]];
+    cell.consumptionPlaceLabel.text = item.remark;
+//    cell.consumptionDetailLabel.text = item.remark;
+    cell.consumptionReduceMoney.text = [NSString stringWithFormat:@"扣除费用：%@元",item.money];
     switch ([item.chgtype intValue]) {
         case 0:
         {
-            cell.consumptionTypeImageView.backgroundColor = [UIColor redColor];
+            cell.consumptionTypeImageView.image = [UIImage imageNamed:@"停车图标.png"];
         }
             break;
         case 1 :
         {
-            cell.consumptionTypeImageView.backgroundColor = [UIColor greenColor];
+            cell.consumptionTypeImageView.image = [UIImage imageNamed:@"充值图标.png"];
         }
         default:
             break;
@@ -181,11 +181,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
          [strongSelf.consumptionHistoryTableView reloadData];
          
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        if (show) {
-//            ConsumptionHistoryViewController *strongSelf = weakSelf;
-//            [[Hud defaultInstance] hide:strongSelf.view];
-//        }
-//        [[Hud defaultInstance] showMessage:@"加载数据失败"];
+
     }];
 }
 

@@ -102,6 +102,15 @@
  */
 + (NSString *)getDateString:(NSDate *)date;
 
+/**
+ *  将时间戳转化为字符串
+ *
+ *  @param date date日期
+ *
+ *  @return 字符串
+ */
++ (NSString *)getDateWithSeconds:(long long)timeNum;
+
 
 /**
  *  将nsdate转化为字符串

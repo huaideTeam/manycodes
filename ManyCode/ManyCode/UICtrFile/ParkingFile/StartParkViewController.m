@@ -122,10 +122,8 @@
     
     self.cbCentralMgr = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     self.cbCentralMgr.delegate = self;
-    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:false],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
-    
-    [self.cbCentralMgr scanForPeripheralsWithServices:nil options:dic];
-    
+    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
+ [self.cbCentralMgr scanForPeripheralsWithServices:nil options:dic];
     hourNumber1_ = 0;
     hourNumber2_ = 0;
     hourNumber3_ = 0;
@@ -476,6 +474,20 @@
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
     NSLog(@"123");
+    NSLog(@"123");
+
+    NSLog(@"123");
+
+    NSLog(@"123");
+
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+{
+    NSLog(@"3333");
+    NSLog(@"3333");
+    NSLog(@"3333");
+
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -486,8 +498,10 @@
         case CBCentralManagerStatePoweredOn:
         {
             NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:false],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
+//            NSArray *array = @[[CBUUID UUIDWithString:@"2A23"]];
             [self.cbCentralMgr scanForPeripheralsWithServices:nil options:dic];
             break;
+//
         }
             
         default:
@@ -497,6 +511,27 @@
             break;
             
     }
+}
+
+
+- (void)peripheralDidInvalidateServices:(CBPeripheral *)peripheral{
+     NSLog(@"peripheralDidInvalidateServices");
+}
+
+
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+{
+     NSLog(@"didConnectPeripheral");
+}
+
+- (void)centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals
+{
+    NSLog(@"didRetrievePeripherals");
+}
+
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    NSLog(@"didFailToConnectPeripheral");
 }
 
 @end
