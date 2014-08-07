@@ -14,11 +14,13 @@
 #import "Common.h"
 #import "UINavigationItem+Items.h"
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "JSONKit.h"
 
+static NSString * const kIdentifier = @"SomeIdentifier";
 
 #define PIE_HEIGHT 200
 
-@interface StartParkViewController ()<UIAlertViewDelegate,CBCentralManagerDelegate,CBPeripheralDelegate>
+@interface StartParkViewController ()<UIAlertViewDelegate,CLLocationManagerDelegate, CBPeripheralManagerDelegate>
 {
     NSInteger hourNumber1_;
     NSInteger hourNumber2_;
@@ -28,7 +30,6 @@
     UIScrollView *mainScrollView_;
     UIButton *openDoorBtn_;
     NSMutableArray *currentWifiArray_;
-    NSTimer * wifiTime_;
     NSTimer *hourTime_;
     NSDictionary *deviceDic_;
     UIView *centerView_;
@@ -41,9 +42,10 @@
 @property (nonatomic, strong)  SBTickerView *clockTickerViewHour2;
 @property (nonatomic, strong)  SBTickerView *clockTickerViewMinute1;
 @property (nonatomic, strong)  SBTickerView *clockTickerViewMinute2;
-@property (nonatomic,strong) NSMutableArray *valueArray;
-@property (nonatomic,strong) NSMutableArray *colorArray;
-@property (nonatomic, strong) CBCentralManager *cbCentralMgr;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLBeaconRegion *beaconRegion;
+@property (nonatomic, strong) CBPeripheralManager *peripheralManager;
+@property (nonatomic, strong) NSArray *detectedBeacons;
 
 @end
 
@@ -70,7 +72,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,13 +82,13 @@
     {
          hourTime_ =  [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTimeView) userInfo:nil repeats:YES];
     }
-   
-//    wifiTime_ = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(wifiInfo) userInfo:nil repeats:YES];
+    
+    //获取停车场的uuid
+    [self getParkUuid];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [hourTime_ invalidate];
-    [wifiTime_ invalidate];
 }
 
 
@@ -95,6 +96,12 @@
 
 - (void)loadFunctionView
 {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.activityType = CLActivityTypeFitness;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
     currentDate_ = [NSDate date];
     self.view.backgroundColor = COLOR(229, 228, 225);
     
@@ -120,10 +127,6 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
     
-    self.cbCentralMgr = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    self.cbCentralMgr.delegate = self;
-    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
- [self.cbCentralMgr scanForPeripheralsWithServices:nil options:dic];
     hourNumber1_ = 0;
     hourNumber2_ = 0;
     hourNumber3_ = 0;
@@ -311,7 +314,6 @@
     {
          [self comeInPark:@"1"];
     }
-
 }
 
 
@@ -360,33 +362,23 @@
 }
 
 #pragma mark - 获取设备信息
-// 获取停车场的wifi列表
-- (void)wifiInfo
+// 获取停车场的UUID
+
+- (void)getParkUuid
 {
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
-    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCarparkWiFi" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
-        if (!currentWifiArray_) {
-            if ([resultDic[@"wifiinfo"] count]>0) {
-                currentWifiArray_ = [[NSMutableArray alloc] initWithArray:resultDic[@"wifiinfo"]];
-            }
-        }else
-        {
-            NSArray * array = resultDic[@"wifiinfo"];
-            for (int k = 0; k<currentWifiArray_.count; k++) {
-                NSDictionary *dic = [currentWifiArray_ objectAtIndex:k];
-                for (int j = 0; j < array.count; j++) {
-                    NSDictionary *tempDic = [array objectAtIndex:k];
-                    if([dic[@"wifibssid"] isEqualToString:tempDic[@"wifibssid"]])
-                    {
-                        [self getDeviceInfo:array];
-                        return ;
-                    }
-                }
-            }
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCarparkBluetooth" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        currentWifiArray_ = resultDic[@"bluetoothinfo"];
+        if (currentWifiArray_.count>0) {
+            NSDictionary *dic = [currentWifiArray_ objectAtIndex:0];
+            NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:dic[@"bluetoothuuid"]];
+            self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:kIdentifier];
+            [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
         }
+        
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -396,12 +388,18 @@
 //获取当前设备信息
 - (void)getDeviceInfo:(NSArray *)wifiArray
 {
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:wifiArray
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:nil];
+    NSString *string = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[_parkDic objectForKey:@"carparkid"] forKey:@"carparkid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
-    [tempDic setObject:wifiArray forKey:@"wifiinfo"];
-    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getDevRoadNum" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+    [tempDic setObject:string forKey:@"bluetoothinfo"];
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getDevRoadNumBluetooth" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         deviceDic_ = resultDic;
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -469,69 +467,51 @@
     }
 }
 
-#pragma mark - blue delegate
-
-- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
+#pragma mark - Beacon advertising delegate methods
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheralManager error:(NSError *)error
 {
-    NSLog(@"123");
-    NSLog(@"123");
-
-    NSLog(@"123");
-
-    NSLog(@"123");
-
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
-{
-    NSLog(@"3333");
-    NSLog(@"3333");
-    NSLog(@"3333");
-
-}
-
-- (void)centralManagerDidUpdateState:(CBCentralManager *)central
-{
-    NSLog(@"4443");
-    switch (central.state) {
-            
-        case CBCentralManagerStatePoweredOn:
-        {
-            NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:false],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
-//            NSArray *array = @[[CBUUID UUIDWithString:@"2A23"]];
-            [self.cbCentralMgr scanForPeripheralsWithServices:nil options:dic];
-            break;
-//
-        }
-            
-        default:
-            
-            NSLog(@"Central Manager did change state");
-            
-            break;
-            
+    if (error) {
+        NSLog(@"Couldn't turn on advertising: %@", error);
+        return;
+    }
+    
+    if (peripheralManager.isAdvertising) {
+        NSLog(@"Turned on advertising.");
     }
 }
 
-
-- (void)peripheralDidInvalidateServices:(CBPeripheral *)peripheral{
-     NSLog(@"peripheralDidInvalidateServices");
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheralManager
+{
+    if (peripheralManager.state != 5) {
+        NSLog(@"Peripheral manager is off.");
+        return;
+    }
 }
 
-
-- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
-{
-     NSLog(@"didConnectPeripheral");
-}
-
-- (void)centralManager:(CBCentralManager *)central didRetrievePeripherals:(NSArray *)peripherals
-{
-    NSLog(@"didRetrievePeripherals");
-}
-
-- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
-{
-    NSLog(@"didFailToConnectPeripheral");
+- (void)locationManager:(CLLocationManager *)manager
+        didRangeBeacons:(NSArray *)beacons
+               inRegion:(CLBeaconRegion *)region {
+    if ([beacons count] == 0) {
+        NSLog(@"No beacons found nearby.");
+    } else {
+        NSLog(@"Found beacons!");
+    }
+    
+    self.detectedBeacons = beacons;
+    if (beacons.count>0) {
+        CLBeacon *beacon = [beacons objectAtIndex:0];
+        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:12];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:12];
+        [dic setObject:[beacon.proximityUUID UUIDString] forKey:@"bluetoothuuid"];
+        [dic setObject:beacon.major forKey:@"bluetoothmajor"];
+        [dic setObject:beacon.minor forKey:@"bluetoothminor"];
+        [dic setObject:@"3" forKey:@"bluetoothdistance"];
+        [dic setObject:[NSNumber numberWithInteger:beacon.rssi] forKey:@"bluetoothrssi"];
+        [array addObject:dic];
+        if (!deviceDic_) {
+            [self getDeviceInfo:array];
+        }
+    }
 }
 
 @end
