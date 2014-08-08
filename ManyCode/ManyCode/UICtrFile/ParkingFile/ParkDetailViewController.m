@@ -291,27 +291,35 @@
 - (void)startParking:(UIButton *)button
 {
     if ([NetworkCenter instanceManager].isLogin) {
-        NSArray *array = [NetworkCenter instanceManager].devroadArray;
-        if (array.count>0) {
-            NSDictionary *dic = [array objectAtIndex:0];
-            NSString *msg = [NSString stringWithFormat:@"当前所在停车场：%@",dic[@"carparkname"]];
-            if ([dic[@"carparkid"] isEqualToString:_parkInfoDic[@"carparkid"]]) {
-                StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
-                viewCtr.parkDic = _parkInfoDic;
-                [self.navigationController pushViewController:viewCtr animated:YES];
+        [[Hud defaultInstance] showMessage:@"获取用户停车状态" withHud:YES];
+        NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+        [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
+        [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
+        [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserDevRoadStatus" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+            NSNumber *logicCode = resultDic[@"statusCode"];
+            if (logicCode.intValue==216) {
+                if ([resultDic[@"carparkid"] isEqualToString:_parkInfoDic[@"carparkid"]]) {
+                    //判断是不是和当前的停车场
+                    StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+                    viewCtr.parkDic = _parkInfoDic;
+                    [self.navigationController pushViewController:viewCtr animated:YES];
+                }else
+                {
+                    NSString *msg = [NSString stringWithFormat:@"当前所在停车场：%@",resultDic[@"carparkname"]];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alertView show];
+                }
             }else
             {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alertView show];
-               
+                StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+                viewCtr.parkDic = _parkInfoDic;
+                viewCtr.isComeIn = YES;
+                [self.navigationController pushViewController:viewCtr animated:YES];
             }
-        }else
-        {
-            StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
-             viewCtr.parkDic = _parkInfoDic;
-            viewCtr.isComeIn = YES;
-            [self.navigationController pushViewController:viewCtr animated:YES];
-        }
+        } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+        
     }else
     {
         LoginViewController *viewCtr = [[LoginViewController alloc] init];
