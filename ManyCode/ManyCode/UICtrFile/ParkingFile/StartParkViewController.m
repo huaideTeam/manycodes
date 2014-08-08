@@ -36,6 +36,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     NSDictionary *accountInfoDic_; //账户信息
     NSDictionary *currentInfoDic_;
     long long oldTimeNum_;
+    UILabel *desLabel_;
 }
 
 @property (nonatomic, strong)  SBTickerView *clockTickerViewHour1;
@@ -45,7 +46,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
-@property (nonatomic, strong) NSArray *detectedBeacons;
+@property (nonatomic, strong) NSMutableArray *currentBeacons;
 
 @end
 
@@ -174,16 +175,27 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     titleLable.textAlignment = NSTextAlignmentCenter;
     [mainScrollView_ addSubview:titleLable];
     
+    
+    desLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(15, 380, 290, 20)];
+    desLabel_.backgroundColor = [UIColor clearColor];
+    desLabel_.text = @"未到达停车场范围内，不能停车";
+    desLabel_.textColor = COLOR(125, 119, 100);
+    [mainScrollView_ addSubview:desLabel_];
+    
     openDoorBtn_ = [[UIButton alloc] initWithFrame:CGRectMake(15, 400, 290, 38)];
     [openDoorBtn_ addTarget:self action:@selector(openClick:) forControlEvents:UIControlEventTouchUpInside];
     [openDoorBtn_ setTitle:@"点击开闸" forState:UIControlStateNormal];
-    [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
     [mainScrollView_ addSubview:openDoorBtn_];
     if (self.isComeIn) {
         openDoorBtn_.tag = 100;
+        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
     }else
     {
         openDoorBtn_.tag = 101;
+        desLabel_.hidden = YES;
+        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸进入后.png"] forState:UIControlStateNormal];
+        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸点击效果.png"] forState:UIControlStateHighlighted];
+
     }
      [self getUserBalanceInfo];
     
@@ -405,6 +417,16 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [tempDic setObject:string forKey:@"bluetoothinfo"];
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getDevRoadNumBluetooth" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         deviceDic_ = resultDic;
+        
+        if ([deviceDic_[@"openflg"] integerValue]) {
+            openDoorBtn_.enabled = YES;
+            desLabel_.hidden = YES;
+        }else
+        {
+            desLabel_.hidden = NO;
+            openDoorBtn_.enabled = NO;
+        }
+        
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -501,21 +523,53 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         NSLog(@"Found beacons!");
     }
     
-    self.detectedBeacons = beacons;
-    if (beacons.count>0) {
-        CLBeacon *beacon = [beacons objectAtIndex:0];
-        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:12];
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:12];
-        [dic setObject:[beacon.proximityUUID UUIDString] forKey:@"bluetoothuuid"];
-        [dic setObject:beacon.major forKey:@"bluetoothmajor"];
-        [dic setObject:beacon.minor forKey:@"bluetoothminor"];
-        [dic setObject:@"3" forKey:@"bluetoothdistance"];
-        [dic setObject:[NSNumber numberWithInteger:beacon.rssi] forKey:@"bluetoothrssi"];
-        [array addObject:dic];
-        if (!deviceDic_) {
-            [self getDeviceInfo:array];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:12];
+    
+    for (int k = 0 ; k < currentWifiArray_.count; k++) {
+        NSDictionary *dic = [currentWifiArray_ objectAtIndex:k];
+        for (int index = 0; index<beacons.count; index ++) {
+            CLBeacon *beacon = [beacons objectAtIndex:index];
+            NSLog(@"++++++%d",beacon.rssi);
+             NSLog(@"------%f",beacon.accuracy);
+            
+            if ([[beacon.minor stringValue] isEqualToString:dic[@"bluetoothmajor"]] &&(beacon.accuracy < [dic[@"bluetoothdistance"] floatValue] || abs(beacon.rssi) < [dic[@"bluetoothrssi"] floatValue] )) {
+                
+                NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:12];
+                [dic setObject:[beacon.proximityUUID UUIDString] forKey:@"bluetoothuuid"];
+                [dic setObject:beacon.major forKey:@"bluetoothmajor"];
+                [dic setObject:beacon.minor forKey:@"bluetoothminor"];
+                [dic setObject:[NSNumber numberWithFloat:beacon.accuracy] forKey:@"bluetoothdistance"];
+                [dic setObject:[NSNumber numberWithInteger:beacon.rssi] forKey:@"bluetoothrssi"];
+                [array addObject:dic];
+            }
         }
     }
+    
+    if (array.count == 0) {
+        self.currentBeacons = array;
+        deviceDic_ = nil;
+        return;
+    }
+    
+    if (self.currentBeacons.count != array.count) {
+        [self getDeviceInfo:array];
+         self.currentBeacons = array;
+        return;
+    }
+    
+    for (int k = 0; k <array.count; k++) {
+        NSDictionary *dic = [array objectAtIndex:k];
+        for (int j = 0; j <self.currentBeacons.count; j++) {
+            NSDictionary *tempDic = [array objectAtIndex:k];
+            if (![[dic[@"bluetoothmajor"] stringValue] isEqualToString:[tempDic[@"bluetoothmajor"] stringValue]]) {
+                [self getDeviceInfo:array];
+                self.currentBeacons = array;
+                return;
+
+            }
+        }
+    }
+    
 }
 
 @end
