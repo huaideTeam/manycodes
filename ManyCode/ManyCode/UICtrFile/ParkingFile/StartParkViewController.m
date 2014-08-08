@@ -331,6 +331,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     }else
     {
         [[Hud defaultInstance] showMessage:@"当前设备不存在"];
+        return;
     }
     [tempDic setObject:passkind forKey:@"passkind"];
     
@@ -374,9 +375,12 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         currentWifiArray_ = resultDic[@"bluetoothinfo"];
         if (currentWifiArray_.count>0) {
             NSDictionary *dic = [currentWifiArray_ objectAtIndex:0];
-            NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:dic[@"bluetoothuuid"]];
-            self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:kIdentifier];
-            [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+            
+            if ([dic[@"bluetoothuuid"] length]>0) {
+                NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:dic[@"bluetoothuuid"]];
+                self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:kIdentifier];
+                [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+            }
         }
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
