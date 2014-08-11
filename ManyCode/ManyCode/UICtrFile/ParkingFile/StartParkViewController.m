@@ -304,6 +304,12 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         currentInfoDic_ = resultDic;
         [self getOldTimeInfo:resultDic];
         [[Hud defaultInstance] hide:self.view];
+        
+        if ([accountInfoDic_[@"balance"] floatValue] < [resultDic[@"money"] floatValue]) {
+            UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"你的账户余额不足" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"充值", nil];
+            alert.tag = 1000;
+            [alert show];
+        }
         [self addPieView:[accountInfoDic_[@"balance"] floatValue] Consumption:[resultDic[@"money"] floatValue]];
         
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -342,7 +348,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         [tempDic setObject:[deviceDic_ objectForKey:@"deviceid"] forKey:@"deviceid"];
     }else
     {
-        [[Hud defaultInstance] showMessage:@"当前设备不存在"];
+        [[Hud defaultInstance] showMessage:@"当前没有搜索到设备"];
         return;
     }
     [tempDic setObject:passkind forKey:@"passkind"];
