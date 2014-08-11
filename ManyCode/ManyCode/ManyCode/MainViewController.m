@@ -447,6 +447,7 @@
     if (dataArray_.count == 0) {
         return;
     }
+    
     NSDictionary *dic = [dataArray_ objectAtIndex:index];
     ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
     viewCtr.parkInfoDic = dic;

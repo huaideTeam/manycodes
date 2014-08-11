@@ -236,9 +236,7 @@
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
     NSMutableArray *picArray = [[NSMutableArray alloc] initWithCapacity:12];
     [picArray addObject:imageData];
-    
-//    [tempDic setObject:imageData forKey:@"headimage"];
-//    [self postPersonInfo:tempDic pic:picArray];
+
     
      [self saveImage:originImage WithName:@"salesImageMid.jpg"];
 
@@ -260,6 +258,7 @@
         NSDictionary *dic = (NSDictionary *)responseObject;
         NSInteger status = [[dic objectForKey:@"statusCode"] integerValue];
         if (status == 200) {
+            [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"head_img"] forKey:kHead_img];
               [photoBtn_.titleImageView setImageWithURL:[dic objectForKey:@"head_img"] placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -271,8 +270,13 @@
 
 -(void)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
 {
-    
-    NSData* imageData = UIImagePNGRepresentation(tempImage);
+    NSData *imageData;
+    if (tempImage.size.width/4>320) {
+      UIImage *  avatarImage = [Common  scaleToSize:tempImage size:CGSizeMake(tempImage.size.width/2, tempImage.size.height/2)];
+        imageData = UIImageJPEGRepresentation(avatarImage, 0.1);
+    }else{
+        imageData = UIImageJPEGRepresentation(tempImage, 0.1);
+    }
     
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     

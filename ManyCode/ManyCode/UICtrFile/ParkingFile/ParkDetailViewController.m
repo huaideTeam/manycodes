@@ -56,10 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (![NetworkCenter instanceManager].isLogin) {
-        LoginViewController *viewCtr = [[LoginViewController alloc] init];
-        [self.navigationController pushViewController:viewCtr animated:YES];
-    }
+
 }
 
 #pragma mark - use define

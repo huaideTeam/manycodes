@@ -193,12 +193,12 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
 #pragma mark - 注销登录
 - (void)logoutButtonClicked:(UIButton *)button
 {
-    [[Hud defaultInstance] loading:self.view withText:@"推出登陆中"];
+    [[Hud defaultInstance] loading:self.view withText:@"退出登陆中"];
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
     
-    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getCalculateCharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"logout" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         [[Hud defaultInstance] showMessage:@"退出登录成功" withHud:YES];
         button.hidden = YES;
         [[NetworkCenter instanceManager] setIsLogin:NO];

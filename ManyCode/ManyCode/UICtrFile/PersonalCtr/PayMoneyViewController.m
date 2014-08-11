@@ -157,8 +157,8 @@
         
         [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"userRecharge" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
             [[Hud defaultInstance] hide:self.view];
-//            NSString *xmlString = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>%@</merchantId><merchantOrderId>%@</merchantOrderId><merchantOrderTime>%@</merchantOrderTime><sign>%@</sign></upomp>",resultDic[@"merchantId"],resultDic[@"merchantOrderId"],resultDic[@"merchantOrderTime"],resultDic[@"sign"]];
-            NSString *xmlString = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>898320157320894</merchantId><merchantOrderId>0f34032c7637a92a841a60f1478d03ca</merchantOrderId><merchantOrderTime>20140804182654</merchantOrderTime><sign>RZPn4n5P8VSmVMXClXuOM/vl1NWw9MxV4DllAF1v8Vc+djSQNfU6nq8J+MiyQZNu6hey9zrF9XxkeRNOFRVLoXiyFgxYjcaDiZOl65kTCHPN9NJrmD50GBavp8SHkl2hkMzuCfHvu5/+jRwGyg6WJbCgSxRVD5O1+s/NyDZHdug=</sign></upomp>" ;
+        NSString *xmlString = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>%@</merchantId><merchantOrderId>%@</merchantOrderId><merchantOrderTime>%@</merchantOrderTime><sign>%@</sign></upomp>",resultDic[@"merchantId"],resultDic[@"merchantOrderId"],resultDic[@"merchantOrderTime"],resultDic[@"sign"]];
+//            NSString *xmlString = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?><upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>898320157320894</merchantId><merchantOrderId>0f34032c7637a92a841a60f1478d03ca</merchantOrderId><merchantOrderTime>20140804182654</merchantOrderTime><sign>RZPn4n5P8VSmVMXClXuOM/vl1NWw9MxV4DllAF1v8Vc+djSQNfU6nq8J+MiyQZNu6hey9zrF9XxkeRNOFRVLoXiyFgxYjcaDiZOl65kTCHPN9NJrmD50GBavp8SHkl2hkMzuCfHvu5/+jRwGyg6WJbCgSxRVD5O1+s/NyDZHdug=</sign></upomp>" ;
             NSData *data = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
             cpView_=[UPOMP new];
             cpView_.viewDelegate=self;
