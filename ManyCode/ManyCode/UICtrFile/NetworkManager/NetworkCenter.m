@@ -49,6 +49,8 @@
 - (void)requestWebWithParaWithURL:(NSString*)webApi Parameter:(NSDictionary *)para Finish:(HttpResponseSucBlock)completeBlock Error:(HttpResponseErrBlock)errorBlock
 {
     NSLog(@"请求报文:%@", para);
+    self.httpClient.responseSerializer= [AFJSONResponseSerializer serializer];
+//    self.httpClient.requestSerializer=[AFJSONRequestSerializer serializer];
     [self.httpClient POST:webApi parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"URL:%@,Responese:%@",operation.request.URL,responseObject);
@@ -80,6 +82,7 @@
          [[Hud defaultInstance] hide:[UIApplication sharedApplication].keyWindow];
         if (![self isExistenceNetwork]) {
             NSError *error = [NSError errorWithDomain:@"网络不可用" code:404 userInfo:nil];
+            [[NotifyManager instanceManager] showHttpResponseErrorWith:error WithAlertView:NO];
             errorBlock(operation,error);
         }
         else{

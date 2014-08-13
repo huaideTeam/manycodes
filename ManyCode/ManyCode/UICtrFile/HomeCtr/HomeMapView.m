@@ -94,6 +94,7 @@
  */
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
+    
     if (userLocation.location) {
         if (!location_) {
             BMKCoordinateSpan theSpan;
@@ -105,9 +106,9 @@
             
             theRegion.center= userLocation.location.coordinate;
             theRegion.span = theSpan;
-            
-//            [self.delegate LoadCurrentInfo:location_.location.coordinate isFirst:YES];
             [mymapkit_ setRegion:theRegion];
+             location_ = userLocation;
+            [self.delegate LoadCurrentInfo:location_.location.coordinate isFirst:YES];
         }else
         {
             CLLocation *current=[[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.latitude];
@@ -120,10 +121,10 @@
             }
         }
         
-            location_ = userLocation;
+        location_ = userLocation;
+
         [[NetworkCenter instanceManager] setCurrentPoint:location_.location.coordinate];
     }
-//    [mymapkit_ updateLocationData:userLocation];
 }
 
 - (void)mapView:(BMKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -133,8 +134,9 @@
         
     }else
     {
-        [self.delegate LoadCurrentInfo:location_.location.coordinate isFirst:NO];
-
+        if (location_) {
+            [self.delegate LoadCurrentInfo:location_.location.coordinate isFirst:NO];
+        }
     }
     NSLog(@"++++%d+++",zoom);
 }
