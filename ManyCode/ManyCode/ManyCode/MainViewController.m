@@ -71,7 +71,7 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     self.title = @"抢车位";
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = COLOR(230.0, 232.0, 237.0);
     
     currentIndex_ = 1;
     
@@ -115,6 +115,7 @@
     headView.backgroundColor = [UIColor clearColor];
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
     backImage.backgroundColor = COLOR(197.0, 206.0, 195.0);
+    backImage.alpha = 0.8;
     [headView addSubview:backImage];
     
     UIImageView *searchImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 262, 30)];
@@ -139,7 +140,7 @@
     changeButton.tag = 100;
     [headView addSubview:changeButton];
     
-    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40-kStatueHeight)];
+    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-kTopImageHeight-kStatueHeight)];
     mapView_.delegate = self;
     [self.view addSubview:mapView_];
     

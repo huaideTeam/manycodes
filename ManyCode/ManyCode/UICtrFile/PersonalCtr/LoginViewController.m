@@ -58,7 +58,7 @@
         [self setExtendedLayoutIncludesOpaqueBars:NO];
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
-    self.title = @"登陆";
+    self.title = @"登录";
     self.view.backgroundColor = COLOR(229.0, 228.0, 225.0);
     
     //返回按钮
@@ -67,6 +67,7 @@
     [backHome setBackgroundColor:[UIColor clearColor]];
     [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
+    [backHome setTitle:@"返回" forState:UIControlStateNormal];
 	[backHome addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:backHome]];
@@ -156,11 +157,11 @@
     [passwordImage addSubview:passwordText_];
     
     UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 130, 300, 55)];
-    [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
+    [loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
     loginButton.backgroundColor = [UIColor clearColor];
     [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮常态.png"] forState:UIControlStateNormal];
-    [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮效果.png"] forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮效果.png"] forState:UIControlStateHighlighted];
     [accountView addSubview:loginButton];
     
    UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
@@ -201,7 +202,7 @@
     [self.view endEditing:YES];
     [self.view endEditing:NO];
     
-    [[Hud defaultInstance] loading:self.view withText:@"登陆中...."];
+    [[Hud defaultInstance] loading:self.view withText:@"登录中...."];
     //判断账户和密码不能为空
     if (accountText_.text.length == 0 || passwordText_.text.length == 0) {
         [[Hud defaultInstance] showMessage:@"手机号码或者密码为空"];
@@ -229,7 +230,7 @@
         
         [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"checkLogin" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
             [self saveLoginInfo:resultDic];
-            [[Hud defaultInstance] showMessage:@"登陆成功" withHud:YES];
+            [[Hud defaultInstance] showMessage:@"登录成功" withHud:YES];
             [[NetworkCenter instanceManager] setIsLogin:YES];
             [[NetworkCenter instanceManager] setDevroadArray:resultDic[@"devroadstatus"]];
             
@@ -263,7 +264,7 @@
     [self.view endEditing:YES];
 }
 
-#pragma mark - 保存登陆信息
+#pragma mark - 保存登录信息
 
 - (void)saveLoginInfo:(NSDictionary *)dic
 {

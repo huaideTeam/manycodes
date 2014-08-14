@@ -13,11 +13,11 @@
 @implementation CustomButton1
 
 - (CGRect)imageRectForContentRect:(CGRect)contentRect {
-    return CGRectMake(CGRectGetMidX(contentRect) - 15.f, CGRectGetHeight(contentRect) / 2.f - 6.f, 14.f, 12.f);
+    return CGRectMake(CGRectGetMidX(contentRect) - 24.f, CGRectGetHeight(contentRect) / 2.f - 6.f, 14.f, 12.f);
 }
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
-    return CGRectMake(CGRectGetMidX(contentRect) + 5.f, 0.f, CGRectGetWidth(contentRect) / 2 -10.f, CGRectGetHeight(contentRect));
+    return CGRectMake(CGRectGetMidX(contentRect) - 4.f, 0.f, CGRectGetWidth(contentRect) / 2 -10.f, CGRectGetHeight(contentRect));
 }
 @end
 
@@ -82,7 +82,7 @@
         _parkingNavigation.frame = CGRectMake(0.f, CGRectGetMaxY(lineImageView.frame), CGRectGetWidth(tempView.frame) / 2 - 10.f, 35.f);
         [tempView addSubview:_parkingNavigation];
         
-        UIImageView *seperateLine = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_parkingNavigation.frame), CGRectGetMinY(_parkingNavigation.frame) + 4.f, 2.f, CGRectGetHeight(_parkingNavigation.frame) - 8.f)];
+        UIImageView *seperateLine = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_parkingNavigation.frame)+10, CGRectGetMinY(_parkingNavigation.frame) + 4.f, 2.f, CGRectGetHeight(_parkingNavigation.frame) - 8.f)];
         seperateLine.image = [UIImage imageNamed:@""];
         [seperateLine setBackgroundColor:COLOR(228, 228, 228)];
         [tempView addSubview:seperateLine];
