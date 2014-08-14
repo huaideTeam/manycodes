@@ -196,6 +196,8 @@
 		71B3C940198228BA0050045B /* 详情图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B3C93F198228BA0050045B /* 详情图标.png */; };
 		71B60D70197CE58E00C26E48 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B60D6F197CE58E00C26E48 /* tabbar@2x.png */; };
 		71B60D79197CEEBD00C26E48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B60D78197CEEBD00C26E48 /* Security.framework */; };
+		71B88090199C9830000CD943 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B8808F199C9830000CD943 /* Default~iphone.png */; };
+		71B88092199C987A000CD943 /* default480.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B88091199C987A000CD943 /* default480.png */; };
 		71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6A1988FA8800EAD183 /* 同意勾选.png */; };
 		71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */ = {isa = PBXBuildFile; fileRef = 71CD7F6B1988FA8800EAD183 /* 未勾选.png */; };
 		71CD7F6F1989105B00EAD183 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CD7F6E1989105B00EAD183 /* libxml2.dylib */; };
@@ -591,6 +593,8 @@
 		71B3C93F198228BA0050045B /* 详情图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "详情图标.png"; sourceTree = "<group>"; };
 		71B60D6F197CE58E00C26E48 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		71B60D78197CEEBD00C26E48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		71B8808F199C9830000CD943 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		71B88091199C987A000CD943 /* default480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default480.png; sourceTree = "<group>"; };
 		71CD7F6A1988FA8800EAD183 /* 同意勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同意勾选.png"; sourceTree = "<group>"; };
 		71CD7F6B1988FA8800EAD183 /* 未勾选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未勾选.png"; sourceTree = "<group>"; };
 		71CD7F6E1989105B00EAD183 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -877,6 +881,8 @@
 			children = (
 				289203EB198FB91800D78ED4 /* ConsumptionHistory@2x.png */,
 				71F68670198A4C9300FB4836 /* iphoneDefault1136.png */,
+				71B88091199C987A000CD943 /* default480.png */,
+				71B8808F199C9830000CD943 /* Default~iphone.png */,
 				71F6866E198A4C4500FB4836 /* iphoneDefault.png */,
 				716A867B1991FD0F004D6356 /* 充值图标.png */,
 				716A867C1991FD0F004D6356 /* 停车图标.png */,
@@ -1532,6 +1538,7 @@
 				717D020D19867D8500667746 /* 立即登录按钮常态.png in Resources */,
 				717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */,
 				717D020919867B6000667746 /* 示意头像 描边.png in Resources */,
+				71B88092199C987A000CD943 /* default480.png in Resources */,
 				712FBFCC197CB2F400EA9F32 /* Images.xcassets in Resources */,
 				714C6D4919828E4A007684CA /* 4.png in Resources */,
 				717667F81981238F00A635DA /* listButtonclick.png in Resources */,
@@ -1546,6 +1553,7 @@
 				714C6D4819828E4A007684CA /* 3.png in Resources */,
 				717D02171986833F00667746 /* 注册 登录按钮效果.png in Resources */,
 				71B3C940198228BA0050045B /* 详情图标.png in Resources */,
+				71B88090199C9830000CD943 /* Default~iphone.png in Resources */,
 				714C6D4D19828E4A007684CA /* 8.png in Resources */,
 				7149004C197FCC6000DEFD83 /* shadow.png in Resources */,
 				717D0213198680D500667746 /* 手机号码图标.png in Resources */,
