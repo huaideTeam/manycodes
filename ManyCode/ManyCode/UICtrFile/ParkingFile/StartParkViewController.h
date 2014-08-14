@@ -10,7 +10,7 @@
 
 @interface StartParkViewController : UIViewController
 
-@property (nonatomic, assign) BOOL isComeIn;
+@property (nonatomic, assign) BOOL isComeIn;   //yes 表示进扎
 
 @property (nonatomic, strong) NSDictionary *parkDic;
 

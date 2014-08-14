@@ -164,6 +164,16 @@
     [loginButton setBackgroundImage:[UIImage imageNamed:@"注册 登录按钮效果.png"] forState:UIControlStateHighlighted];
     [accountView addSubview:loginButton];
     
+    
+    UIButton *storeButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 190, 30, 30)];
+    storeButton.backgroundColor = [UIColor redColor];
+    [storeButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [storeButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
+    [storeButton addTarget:self action:@selector(storeClick:) forControlEvents:UIControlEventTouchUpInside];
+   storeButton.selected = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isStoreLogin"] boolValue];
+    [accountView addSubview:storeButton];
+    
+    
    UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
    passwordLable.shouldUnderline = YES;
     passwordLable.backgroundColor = [UIColor clearColor];
@@ -172,17 +182,15 @@
    [passwordLable addTarget:self action:@selector(forgotPasswdClick:)];
     [accountView addSubview:passwordLable];
     
-//    UnderLineLabel *changePasswordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
-//    changePasswordLable.shouldUnderline = YES;
-//    changePasswordLable.text = @"修改密码";
-//    changePasswordLable.textColor = [UIColor darkGrayColor];
-//    changePasswordLable.backgroundColor = [UIColor clearColor];
-//    [changePasswordLable addTarget:self action:@selector(changePasswdClick:)];
-//    [accountView addSubview:changePasswordLable];
-    
     [mainScrollView_ addSubview:accountView];
 }
 
+//是不是记住登陆
+- (void)storeClick:(UIButton *)button
+{
+    button.selected = !button.selected;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:button.selected] forKey:@"isStoreLogin"];
+}
 
 #pragma mark - 返回按钮
 
@@ -233,7 +241,7 @@
             [[Hud defaultInstance] showMessage:@"登录成功" withHud:YES];
             [[NetworkCenter instanceManager] setIsLogin:YES];
             [[NetworkCenter instanceManager] setDevroadArray:resultDic[@"devroadstatus"]];
-            
+             [[NSUserDefaults standardUserDefaults] setObject:passwordText_.text forKey:kPassWord];
             [self.navigationController popViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"loginNotification" object:nil];
             

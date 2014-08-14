@@ -161,6 +161,31 @@
     [mainTable_ setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [grayView_ addSubview:mainTable_];
     
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:kIsLogin] boolValue]) {
+        NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
+        [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile] forKey:@"mobile"];
+        
+        [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kPassWord] forKey:@"password"];
+        [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"checkLogin" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            
+            [[NetworkCenter instanceManager] setIsLogin:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"loginNotification" object:nil];
+            
+            NSArray *array = resultDic[@"devroadstatus"];
+            if (array.count>0) {
+                StartParkViewController *viewCtr = [[StartParkViewController alloc] init];
+                viewCtr.parkDic = array[0];
+                [self.navigationController pushViewController:viewCtr animated:YES];
+            }
+        } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+    }
+
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification

@@ -371,9 +371,15 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [tempDic setObject:sourceid forKey:@"sourceid"];
     [tempDic setObject:deviceId forKey:@"devid"];
     
-    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserDevRoadStatus" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
-        [[Hud defaultInstance] hide:self.view];
-        
+    [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getOpenDevRoadStatus" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        if (self.isComeIn) {
+            [[Hud defaultInstance] showMessage:@"开闸成功，欢迎光临" withHud:YES];
+        }else
+        {
+            NSString *tempString = [NSString stringWithFormat:@"开闸成功，你本次停车共花费%@元，欢迎下次光临",resultDic[@"money"]];
+            [[Hud defaultInstance] showMessage:tempString withHud:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];

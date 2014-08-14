@@ -206,7 +206,7 @@
 //				CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 3);
 				
 				//float text_x = x + 10;
-				NSString *percentageText = [NSString stringWithFormat:@"%.1f%%", component.value/total*100];
+				NSString *percentageText = [NSString stringWithFormat:@"%.1f%元", component.value];
 				CGSize optimumSize = [percentageText sizeWithFont:self.percentageFont constrainedToSize:CGSizeMake(max_text_width,100)];
 				CGRect percFrame = CGRectMake(5, left_label_y,  max_text_width, optimumSize.height);
 				[percentageText drawInRect:percFrame withFont:self.percentageFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentRight];
@@ -340,7 +340,7 @@
 //				CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 2);
 				
 				float text_x = x + diameter + 10;
-				NSString *percentageText = [NSString stringWithFormat:@"%.1f%%", component.value/total*100];
+				NSString *percentageText = [NSString stringWithFormat:@"%.1f%元", component.value];
 				CGSize optimumSize = [percentageText sizeWithFont:self.percentageFont constrainedToSize:CGSizeMake(max_text_width,100)];
 				CGRect percFrame = CGRectMake(text_x, right_label_y, optimumSize.width, optimumSize.height);
 				[percentageText drawInRect:percFrame withFont:self.percentageFont];
