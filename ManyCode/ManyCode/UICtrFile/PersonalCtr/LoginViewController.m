@@ -68,6 +68,7 @@
     [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [backHome setTitle:@"返回" forState:UIControlStateNormal];
+    backHome.titleLabel.font = FONT(12);
 	[backHome addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
     if (IOS7) {
         [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:backHome]];
@@ -165,10 +166,10 @@
     [accountView addSubview:loginButton];
     
     
-    UIButton *storeButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 190, 30, 30)];
-    storeButton.backgroundColor = [UIColor redColor];
-    [storeButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [storeButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
+    UIButton *storeButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 190, 25, 25)];
+    storeButton.backgroundColor = [UIColor clearColor];
+    [storeButton setBackgroundImage:[UIImage imageNamed:@"未勾选.png"] forState:UIControlStateNormal];
+    [storeButton setBackgroundImage:[UIImage imageNamed:@"同意勾选.png"] forState:UIControlStateSelected];
     [storeButton addTarget:self action:@selector(storeClick:) forControlEvents:UIControlEventTouchUpInside];
    storeButton.selected = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isStoreLogin"] boolValue];
     [accountView addSubview:storeButton];

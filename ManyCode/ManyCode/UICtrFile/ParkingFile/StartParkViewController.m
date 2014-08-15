@@ -15,6 +15,7 @@
 #import "UINavigationItem+Items.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "JSONKit.h"
+#import <AVFoundation/AVFoundation.h>
 
 static NSString * const kIdentifier = @"SomeIdentifier";
 
@@ -121,6 +122,8 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
+    btnHome.titleLabel.font = FONT(12);
     if (IOS7) {
         [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
     }
@@ -353,6 +356,11 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     }
     [tempDic setObject:passkind forKey:@"passkind"];
     
+    
+    //播放语音
+    SystemSoundID soundID = [self loadId:[self fileNameFromPath:deviceDic_[@"voice"]]];
+    AudioServicesPlaySystemSound(soundID);
+    
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"openDevRoadNum" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         [self getDeviceStatue:resultDic[@"sourceid"] devId:[deviceDic_ objectForKey:@"devid"]];
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -399,9 +407,8 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         currentWifiArray_ = resultDic[@"bluetoothinfo"];
         if (currentWifiArray_.count>0) {
             NSDictionary *dic = [currentWifiArray_ objectAtIndex:0];
-            
             if ([dic[@"bluetoothuuid"] length]>0) {
-                NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:dic[@"bluetoothuuid"]];
+                NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];
                 self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:kIdentifier];
                 [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
             }
@@ -430,11 +437,21 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getDevRoadNumBluetooth" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         deviceDic_ = resultDic;
         
+        //不存在文件重新下载
+         if (![[NSFileManager defaultManager]  fileExistsAtPath:[self imageDownloadDestinationPath:resultDic[@"voice"]]])
+         {
+              [self downLoadWavFile:resultDic[@"voice"]];
+         }
+       
         if ([deviceDic_[@"openflg"] integerValue]) {
             openDoorBtn_.enabled = YES;
             desLabel_.hidden = YES;
+            
+            [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸进入后.png"] forState:UIControlStateNormal];
+            [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸点击效果.png"] forState:UIControlStateHighlighted];
         }else
         {
+            [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
             desLabel_.hidden = NO;
             openDoorBtn_.enabled = NO;
         }
@@ -443,6 +460,52 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         
     }];
 }
+
+#pragma mark - 下载音频文件
+
+- (void)downLoadWavFile:(NSString *)filePath
+{
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:filePath]];
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    NSString *path = [self imageDownloadDestinationPath:filePath];
+    op.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"下载成功");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"下载失败");
+    }];
+    [[NetworkCenter instanceManager].httpClient.operationQueue addOperation:op];
+}
+
+
+- (NSString *)imageDownloadDestinationPath:(NSString *)strUrl
+{
+    [strUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSMutableString *stringSep = [NSMutableString stringWithString:@"/"];
+    NSArray *arrayUrlInfo = [strUrl componentsSeparatedByString:stringSep];
+    NSMutableString *tempFileName = [NSMutableString stringWithFormat:@"%@", [arrayUrlInfo lastObject]];
+    NSString *thePath = GET_FILE_URL(([NSString stringWithFormat:@"%@",tempFileName]));
+    return thePath;
+}
+
+
+- (NSString *)fileNameFromPath:(NSString *)stringPath
+{
+    NSMutableString *stringSep = [NSMutableString stringWithString:@"/"];
+    NSArray *arrayUrlInfo = [stringPath componentsSeparatedByString:stringSep];
+    NSMutableString *tempFileName = [NSMutableString stringWithFormat:@"%@", [arrayUrlInfo lastObject]];
+    return tempFileName;
+}
+
+- (SystemSoundID)loadId:(NSString *)filename
+{
+    SystemSoundID ID;
+    NSURL *url = [NSURL fileURLWithPath:GET_FILE_URL(filename)];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &ID);
+    return ID;
+}
+
 #pragma mark - 获取分钟和小时数
 
 

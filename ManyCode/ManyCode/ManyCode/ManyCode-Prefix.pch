@@ -56,6 +56,9 @@
 #define kPassWord       @"password"
 #define kIsLogin        @"isStoreLogin"
 
+
+#define GET_FILE_URL(FILE_NAME) [NSString stringWithFormat:@"%@/%@",[NSMutableString stringWithString:[ NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]],FILE_NAME]
+
 #define BALANCE  [NSString stringWithFormat:@"当前余额：%@元",[[NSUserDefaults standardUserDefaults] objectForKey:kAccountBalance]]
 #define ACCOUNTNAME  [[NSUserDefaults standardUserDefaults] objectForKey:kAccountMobile]
 #define HEADIMG   [[NSUserDefaults standardUserDefaults] objectForKey:kHead_img]
