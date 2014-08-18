@@ -54,8 +54,8 @@
                                         self.frame.size.height);
         CGPoint rightPoint = CGPointMake(fontSize.width,
                                          self.frame.size.height);
-        CGContextMoveToPoint(ctx, leftPoint.x, leftPoint.y);
-        CGContextAddLineToPoint(ctx, rightPoint.x, rightPoint.y);
+        CGContextMoveToPoint(ctx, leftPoint.x, leftPoint.y-4);
+        CGContextAddLineToPoint(ctx, rightPoint.x, rightPoint.y-4);
         CGContextStrokePath(ctx);
     }
 }

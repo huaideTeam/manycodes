@@ -245,28 +245,30 @@
     darkLable1.textColor =COLOR(75, 75, 75);
     [mainImage addSubview:darkLable1];
     
-    smallDayPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 93, 30)];
+    smallDayPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 93, 30)];
     smallDayPrice_.textAlignment = NSTextAlignmentCenter;
     smallDayPrice_.font = FONT(20);
     smallDayPrice_.textColor =COLOR(75, 75, 75);
     [mainImage addSubview:smallDayPrice_];
     
     
-    smallPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(192, 20, 93, 30)];
+    smallPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(192, 100, 93, 30)];
     smallPrice_.textAlignment = NSTextAlignmentCenter;
     smallPrice_.textColor =COLOR(75, 75, 75);
+    smallPrice_.font = FONT(20);
     [mainImage addSubview:smallPrice_];
     
-    bigDayPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 93, 30)];
+    bigDayPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(100, 160, 93, 30)];
     bigDayPrice_.textAlignment = NSTextAlignmentCenter;
     bigDayPrice_.font = FONT(20);
     bigDayPrice_.textColor =COLOR(75, 75, 75);
     [mainImage addSubview:bigDayPrice_];
     
     
-    bigPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(192, 20, 93, 30)];
+    bigPrice_ = [[UILabel alloc] initWithFrame:CGRectMake(192, 160, 93, 30)];
     bigPrice_.textAlignment = NSTextAlignmentCenter;
     bigPrice_.textColor =COLOR(75, 75, 75);
+    bigPrice_.font = FONT(20);
     [mainImage addSubview:bigPrice_];
     
     return footView;

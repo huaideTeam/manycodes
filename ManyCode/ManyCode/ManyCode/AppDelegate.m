@@ -36,7 +36,6 @@
     
     MainViewController *viewCtr =   [[MainViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewCtr];
-    
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     
@@ -80,6 +79,8 @@
                                                           [UIColor whiteColor], UITextAttributeTextColor,
                                                           [UIColor blackColor], UITextAttributeTextShadowColor,
                                                           [UIFont boldSystemFontOfSize:20.f],UITextAttributeFont,nil]];
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor greenColor]];
     [[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, 1.0) forBarMetrics:UIBarMetricsDefault];
 }
 

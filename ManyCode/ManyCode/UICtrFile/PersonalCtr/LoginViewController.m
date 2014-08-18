@@ -167,13 +167,18 @@
     [accountView addSubview:loginButton];
     
     
-    storeButton_ = [[UIButton alloc] initWithFrame:CGRectMake(10, 190, 25, 25)];
+    storeButton_ = [[UIButton alloc] initWithFrame:CGRectMake(10, 192, 25, 25)];
     storeButton_.backgroundColor = [UIColor clearColor];
     [storeButton_ setBackgroundImage:[UIImage imageNamed:@"未勾选.png"] forState:UIControlStateNormal];
     [storeButton_ setBackgroundImage:[UIImage imageNamed:@"同意勾选.png"] forState:UIControlStateSelected];
     [storeButton_ addTarget:self action:@selector(storeClick:) forControlEvents:UIControlEventTouchUpInside];
     storeButton_.selected = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isStoreLogin"] boolValue];
     [accountView addSubview:storeButton_];
+    
+    UILabel * nameLable = [[UILabel alloc] initWithFrame:CGRectMake(40, 192, 100, 25)];
+    nameLable.text = @"忘记密码";
+    nameLable.textColor = [UIColor darkGrayColor];
+    [accountView addSubview:nameLable];
     
     
    UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];

@@ -84,7 +84,7 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
     
-    nameArray_ = @[@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新"];
+    nameArray_ = @[@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新",@"关于我们"];
     mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight- kTopImageHeight- kStatueHeight)];
     mainTableView_.delegate = self;
     mainTableView_.dataSource = self;
@@ -326,6 +326,13 @@
     cell.titleLabel.text = nameArray_[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.backgroundColor = [UIColor clearColor];
+    if (indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 5) {
+        cell.titleLabel.textColor = COLOR(199, 199, 199);
+    }else
+    {
+        cell.titleLabel.textColor = COLOR(146, 146, 146);
+    }
+    
     return cell;
 }
 
