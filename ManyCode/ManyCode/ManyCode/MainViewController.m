@@ -430,7 +430,7 @@
      NSDictionary *currentDic = [dataArray_ objectAtIndex:index];
 
     if ([NetworkCenter instanceManager].isLogin) {
-        [[Hud defaultInstance] showMessage:@"获取用户停车状态" withHud:YES];
+        [[Hud defaultInstance] loading:self.view];
         NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
         [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountid] forKey:@"userid"];
         [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
@@ -456,7 +456,7 @@
                 [self.navigationController pushViewController:viewCtr animated:YES];
             }
         } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
+            [[Hud defaultInstance] hide:self.view];
         }];
         
     }else

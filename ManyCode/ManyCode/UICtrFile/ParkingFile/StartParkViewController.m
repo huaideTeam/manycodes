@@ -356,11 +356,6 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     }
     [tempDic setObject:passkind forKey:@"passkind"];
     
-    
-    //播放语音
-    SystemSoundID soundID = [self loadId:[self fileNameFromPath:deviceDic_[@"voice"]]];
-    AudioServicesPlaySystemSound(soundID);
-    
     NSMutableDictionary *modleDic = [NSMutableDictionary dictionaryWithDictionary:deviceDic_];
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"openDevRoadNum" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         [self getDeviceStatue:resultDic[@"sourceid"] devId:[modleDic objectForKey:@"devid"]];
@@ -450,6 +445,9 @@ static NSString * const kIdentifier = @"SomeIdentifier";
             
             [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸进入后.png"] forState:UIControlStateNormal];
             [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸点击效果.png"] forState:UIControlStateHighlighted];
+            //播放语音
+            SystemSoundID soundID = [self loadId:[self fileNameFromPath:deviceDic_[@"voice"]]];
+            AudioServicesPlaySystemSound(soundID);
         }else
         {
             [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
