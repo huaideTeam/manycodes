@@ -53,7 +53,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     
     self.title = @"缴费记录";
     _pageIndex = 0;
-    _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight)];
+    _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight-kStatueHeight)];
     [_consumptionHistoryTableView registerClass:[CosumptionHistoryTableViewCell class] forCellReuseIdentifier:identifierForCosumptionHistory];
     _consumptionHistoryTableView.delegate = self;
     _consumptionHistoryTableView.dataSource = self;

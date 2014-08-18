@@ -29,7 +29,7 @@
         [self.contentView addSubview:_consumptionTimeLabel];
         
         _consumptionTypeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 9.f, 23.f, 25.f)];
-        _consumptionTypeImageView.center = CGPointMake(CGRectGetMaxX(_consumptionTimeLabel.frame), _consumptionTypeImageView.center.y);
+        _consumptionTypeImageView.center = CGPointMake(CGRectGetMaxX(_consumptionTimeLabel.frame)+8, _consumptionTypeImageView.center.y);
         _consumptionTypeImageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_consumptionTypeImageView];
         
