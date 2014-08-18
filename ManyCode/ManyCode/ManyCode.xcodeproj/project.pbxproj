@@ -206,6 +206,7 @@
 		71E7529B198FB29B00242962 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E75295198FB29B00242962 /* MJRefreshBaseView.m */; };
 		71E7529C198FB29B00242962 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E75297198FB29B00242962 /* MJRefreshFooterView.m */; };
 		71E7529D198FB29B00242962 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E75299198FB29B00242962 /* MJRefreshHeaderView.m */; };
+		71E764E019A1F9620022B6B2 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E764DF19A1F9620022B6B2 /* CustomViewController.m */; };
 		71F6866C198A495500FB4836 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866A198A495500FB4836 /* icon.png */; };
 		71F6866D198A495500FB4836 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866B198A495500FB4836 /* Default.png */; };
 		71F6866F198A4C4500FB4836 /* iphoneDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866E198A4C4500FB4836 /* iphoneDefault.png */; };
@@ -607,6 +608,8 @@
 		71E75297198FB29B00242962 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		71E75298198FB29B00242962 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		71E75299198FB29B00242962 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		71E764DE19A1F9620022B6B2 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		71E764DF19A1F9620022B6B2 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		71F6866A198A495500FB4836 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		71F6866B198A495500FB4836 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		71F6866E198A4C4500FB4836 /* iphoneDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneDefault.png; sourceTree = "<group>"; };
@@ -983,6 +986,8 @@
 				71B0B6C9197E3AEA00B06945 /* NetworkManager */,
 				712FC07C197D396100EA9F32 /* ExproAnnotation.h */,
 				712FC07D197D396100EA9F32 /* ExproAnnotation.m */,
+				71E764DE19A1F9620022B6B2 /* CustomViewController.h */,
+				71E764DF19A1F9620022B6B2 /* CustomViewController.m */,
 				714C6DA819836B85007684CA /* Common.h */,
 				714C6DA919836B85007684CA /* Common.m */,
 				714C6DAB19836BB5007684CA /* BlockUI */,
@@ -1619,6 +1624,7 @@
 				71B0B6FD197E3B4D00B06945 /* SDImageCache.m in Sources */,
 				71B0B742197E3F3E00B06945 /* AFURLSessionManager.m in Sources */,
 				2891A04419829CEB00538FC0 /* ChangePasswordViewController.m in Sources */,
+				71E764E019A1F9620022B6B2 /* CustomViewController.m in Sources */,
 				717667DD1980F49600A635DA /* NSScanner_Extensions.m in Sources */,
 				71490029197FB00500DEFD83 /* SBDoubleSidedLayer.m in Sources */,
 				28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */,

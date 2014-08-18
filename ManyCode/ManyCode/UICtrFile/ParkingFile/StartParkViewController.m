@@ -243,7 +243,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     centerView_.layer.cornerRadius = 40.0;
     centerView_.backgroundColor = [UIColor whiteColor];
     UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 80, 20)];
-    lable.text = [NSString stringWithFormat:@"%@元",[[NSUserDefaults standardUserDefaults] objectForKey:kAccountBalance]];
+    lable.text = [NSString stringWithFormat:@"%.1f元",surplusMoney];
     lable.textColor = COLOR(219, 44, 0);
     lable.textAlignment = NSTextAlignmentCenter;
     [centerView_ addSubview:lable];

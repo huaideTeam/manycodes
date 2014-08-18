@@ -143,7 +143,7 @@
     centerView.layer.cornerRadius = 40.0;
     centerView.backgroundColor = [UIColor whiteColor];
     UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 80, 20)];
-    lable.text = [NSString stringWithFormat:@"%.f元",surplusMoney];
+    lable.text = [NSString stringWithFormat:@"%.1f元",surplusMoney];
     lable.textColor = COLOR(219, 44, 0);
     lable.textAlignment = NSTextAlignmentCenter;
     [centerView addSubview:lable];
