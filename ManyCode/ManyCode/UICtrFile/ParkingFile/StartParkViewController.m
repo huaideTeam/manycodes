@@ -361,8 +361,9 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     SystemSoundID soundID = [self loadId:[self fileNameFromPath:deviceDic_[@"voice"]]];
     AudioServicesPlaySystemSound(soundID);
     
+    NSMutableDictionary *modleDic = [NSMutableDictionary dictionaryWithDictionary:deviceDic_];
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"openDevRoadNum" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
-        [self getDeviceStatue:resultDic[@"sourceid"] devId:[deviceDic_ objectForKey:@"devid"]];
+        [self getDeviceStatue:resultDic[@"sourceid"] devId:[modleDic objectForKey:@"devid"]];
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -386,8 +387,8 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         {
             NSString *tempString = [NSString stringWithFormat:@"开闸成功，你本次停车共花费%@元，欢迎下次光临",resultDic[@"money"]];
             [[Hud defaultInstance] showMessage:tempString withHud:YES];
-            [self.navigationController popToRootViewControllerAnimated:YES];
         }
+        [self.navigationController popToRootViewControllerAnimated:YES];
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -408,7 +409,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         if (currentWifiArray_.count>0) {
             NSDictionary *dic = [currentWifiArray_ objectAtIndex:0];
             if ([dic[@"bluetoothuuid"] length]>0) {
-                NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];
+                NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:dic[@"bluetoothuuid"]];
                 self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:kIdentifier];
                 [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
             }
@@ -607,7 +608,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
             NSLog(@"++++++%d",beacon.rssi);
              NSLog(@"------%f",beacon.accuracy);
             
-            if ([[beacon.minor stringValue] isEqualToString:dic[@"bluetoothmajor"]] &&(beacon.accuracy < [dic[@"bluetoothdistance"] floatValue] || abs(beacon.rssi) < [dic[@"bluetoothrssi"] floatValue] )) {
+            if ([[beacon.minor stringValue] isEqualToString:dic[@"bluetoothmajor"]] &&(beacon.accuracy < [dic[@"bluetoothdistance"] floatValue] || abs(beacon.rssi) < [dic[@"bluetoothrssi"] floatValue])) {
                 
                 NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:12];
                 [dic setObject:[beacon.proximityUUID UUIDString] forKey:@"bluetoothuuid"];
@@ -621,14 +622,14 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     }
     
     if (array.count == 0) {
-        self.currentBeacons = array;
+        self.currentBeacons = [NSMutableArray arrayWithArray:array];
         deviceDic_ = nil;
         return;
     }
     
     if (self.currentBeacons.count != array.count) {
+         self.currentBeacons = [NSMutableArray arrayWithArray:array];
         [self getDeviceInfo:array];
-         self.currentBeacons = array;
         return;
     }
     
@@ -637,8 +638,8 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         for (int j = 0; j <self.currentBeacons.count; j++) {
             NSDictionary *tempDic = [array objectAtIndex:k];
             if (![[dic[@"bluetoothmajor"] stringValue] isEqualToString:[tempDic[@"bluetoothmajor"] stringValue]]) {
+                 self.currentBeacons = [NSMutableArray arrayWithArray:array];
                 [self getDeviceInfo:array];
-                self.currentBeacons = array;
                 return;
 
             }

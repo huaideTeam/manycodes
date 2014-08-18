@@ -116,7 +116,7 @@
         backImage.image = [UIImage  imageNamed:@"头像背景.png"];
         [headView addSubview:backImage];
         
-        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,75,90, 90)];
+        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(15,75,90, 90)];
         titleImage.image = [UIImage  imageNamed:@"示意头像 描边.png"];
         titleImage.userInteractionEnabled = YES;
         [headView addSubview:titleImage];
@@ -129,14 +129,14 @@
         [titleImage addSubview:photoBtn_];
         
         
-        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 100, 150, 20)];
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 100, 150, 20)];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.font = FONT(18);
         nameLabel.textColor = [UIColor whiteColor];
         nameLabel.text = ACCOUNTNAME;
         [headView addSubview:nameLabel];
         
-        UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(130, 125, 150, 20)];
+        UIButton  *priceBtn = [[UIButton alloc] initWithFrame:CGRectMake(120, 125, 150, 20)];
         priceBtn.backgroundColor = [UIColor clearColor];
         [priceBtn setTitle:BALANCE forState:UIControlStateNormal];
         priceBtn.titleLabel.font = FONT(18);
@@ -153,7 +153,7 @@
         backImage.image = [UIImage  imageNamed:@"头像背景.png"];
         [headView addSubview:backImage];
         
-        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(25,75,90, 90)];
+        UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(15,75,90, 90)];
         titleImage.image = [UIImage  imageNamed:@"示意头像 描边.png"];
         titleImage.userInteractionEnabled = YES;
         [headView addSubview:titleImage];
@@ -164,7 +164,7 @@
         [photoBtn_ addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
         [titleImage addSubview:photoBtn_];
         
-        UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(130, 135, 100, 30)];
+        UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(120, 135, 100, 30)];
         loginButton.backgroundColor = [UIColor clearColor];
         [loginButton setBackgroundImage:[UIImage imageNamed:@"立即登录按钮常态.png"] forState:UIControlStateNormal];
          [loginButton setBackgroundImage:[UIImage imageNamed:@"立即登录按钮效果.png"] forState:UIControlStateNormal];

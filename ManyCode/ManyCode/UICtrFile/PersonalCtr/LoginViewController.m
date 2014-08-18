@@ -19,6 +19,7 @@
     UIScrollView *mainScrollView_;
     UITextField *accountText_;
     UITextField *passwordText_;
+    UIButton *storeButton_;
 }
 
 @end
@@ -166,13 +167,13 @@
     [accountView addSubview:loginButton];
     
     
-    UIButton *storeButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 190, 25, 25)];
-    storeButton.backgroundColor = [UIColor clearColor];
-    [storeButton setBackgroundImage:[UIImage imageNamed:@"未勾选.png"] forState:UIControlStateNormal];
-    [storeButton setBackgroundImage:[UIImage imageNamed:@"同意勾选.png"] forState:UIControlStateSelected];
-    [storeButton addTarget:self action:@selector(storeClick:) forControlEvents:UIControlEventTouchUpInside];
-   storeButton.selected = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isStoreLogin"] boolValue];
-    [accountView addSubview:storeButton];
+    storeButton_ = [[UIButton alloc] initWithFrame:CGRectMake(10, 190, 25, 25)];
+    storeButton_.backgroundColor = [UIColor clearColor];
+    [storeButton_ setBackgroundImage:[UIImage imageNamed:@"未勾选.png"] forState:UIControlStateNormal];
+    [storeButton_ setBackgroundImage:[UIImage imageNamed:@"同意勾选.png"] forState:UIControlStateSelected];
+    [storeButton_ addTarget:self action:@selector(storeClick:) forControlEvents:UIControlEventTouchUpInside];
+    storeButton_.selected = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isStoreLogin"] boolValue];
+    [accountView addSubview:storeButton_];
     
     
    UnderLineLabel *passwordLable = [[UnderLineLabel alloc] initWithFrame:CGRectMake(220, 190, 80, 30)];
@@ -190,7 +191,6 @@
 - (void)storeClick:(UIButton *)button
 {
     button.selected = !button.selected;
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:button.selected] forKey:@"isStoreLogin"];
 }
 
 #pragma mark - 返回按钮
@@ -277,6 +277,8 @@
 
 - (void)saveLoginInfo:(NSDictionary *)dic
 {
+    
+     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:storeButton_.selected] forKey:@"isStoreLogin"];
     [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"mobile"] forKey:kAccountMobile];
     [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"userid"] forKey:kAccountid];
     [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"sessionid"] forKey:kAccountSession];
