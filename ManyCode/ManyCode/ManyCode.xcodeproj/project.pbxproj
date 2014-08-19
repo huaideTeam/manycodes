@@ -48,7 +48,6 @@
 		712FBFD4197CB2F400EA9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712FBFB3197CB2F400EA9F32 /* Foundation.framework */; };
 		712FBFDD197CB2F400EA9F32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712FBFDB197CB2F400EA9F32 /* InfoPlist.strings */; };
 		712FBFDF197CB2F400EA9F32 /* ManyCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFDE197CB2F400EA9F32 /* ManyCodeTests.m */; };
-		712FBFEE197CB72A00EA9F32 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFED197CB72A00EA9F32 /* DDMenuController.m */; };
 		712FBFF1197CBB0E00EA9F32 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFF0197CBB0E00EA9F32 /* MainViewController.m */; };
 		712FBFF8197CBED700EA9F32 /* UINavigationItem+Items.m in Sources */ = {isa = PBXBuildFile; fileRef = 712FBFF7197CBED700EA9F32 /* UINavigationItem+Items.m */; };
 		712FC07B197D38D100EA9F32 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 712FC07A197D38D100EA9F32 /* mapapi.bundle */; };
@@ -303,8 +302,6 @@
 		712FBFDA197CB2F400EA9F32 /* ManyCodeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ManyCodeTests-Info.plist"; sourceTree = "<group>"; };
 		712FBFDC197CB2F400EA9F32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		712FBFDE197CB2F400EA9F32 /* ManyCodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManyCodeTests.m; sourceTree = "<group>"; };
-		712FBFEC197CB72A00EA9F32 /* DDMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuController.h; sourceTree = "<group>"; };
-		712FBFED197CB72A00EA9F32 /* DDMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuController.m; sourceTree = "<group>"; };
 		712FBFEF197CBB0E00EA9F32 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		712FBFF0197CBB0E00EA9F32 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		712FBFF6197CBED700EA9F32 /* UINavigationItem+Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+Items.h"; sourceTree = "<group>"; };
@@ -960,7 +957,6 @@
 				71B0B6D0197E3B4D00B06945 /* Reachbility */,
 				712FC04F197D38D100EA9F32 /* BaiduMapSDK */,
 				712FBFF5197CBED700EA9F32 /* ItemFile */,
-				712FBFEB197CB72A00EA9F32 /* MENU */,
 			);
 			path = ThirdPart;
 			sourceTree = "<group>";
@@ -985,15 +981,6 @@
 				714C6DAB19836BB5007684CA /* BlockUI */,
 			);
 			path = UICtrFile;
-			sourceTree = "<group>";
-		};
-		712FBFEB197CB72A00EA9F32 /* MENU */ = {
-			isa = PBXGroup;
-			children = (
-				712FBFEC197CB72A00EA9F32 /* DDMenuController.h */,
-				712FBFED197CB72A00EA9F32 /* DDMenuController.m */,
-			);
-			path = MENU;
 			sourceTree = "<group>";
 		};
 		712FBFF5197CBED700EA9F32 /* ItemFile */ = {
@@ -1682,7 +1669,6 @@
 				717666F7197FE3FF00A635DA /* UnderLineLabel.m in Sources */,
 				71B0B715197E3EE600B06945 /* NetworkCenter.m in Sources */,
 				717667D81980F49600A635DA /* CJSONSerialization.m in Sources */,
-				712FBFEE197CB72A00EA9F32 /* DDMenuController.m in Sources */,
 				71B0B744197E3F3E00B06945 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				712FBFC0197CB2F400EA9F32 /* main.mm in Sources */,
 				717667E21980F49600A635DA /* CSerializedJSONData.m in Sources */,
