@@ -172,16 +172,14 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [openDoorBtn_ addTarget:self action:@selector(openClick:) forControlEvents:UIControlEventTouchUpInside];
     [openDoorBtn_ setTitle:@"点击开闸" forState:UIControlStateNormal];
     [mainScrollView_ addSubview:openDoorBtn_];
+    [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
     if (self.isComeIn) {
         openDoorBtn_.tag = 100;
-        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
+        
     }else
     {
+        desLabel_.text = @"未到达闸机范围内，不能开闸";
         openDoorBtn_.tag = 101;
-        desLabel_.hidden = YES;
-        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸进入后.png"] forState:UIControlStateNormal];
-        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸点击效果.png"] forState:UIControlStateHighlighted];
-
     }
      [self getUserBalanceInfo];
     

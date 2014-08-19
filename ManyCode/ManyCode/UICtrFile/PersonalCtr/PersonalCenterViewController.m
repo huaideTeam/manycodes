@@ -106,7 +106,7 @@
         photoBtn_ = [[CustomButon alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
         photoBtn_.backgroundColor = [UIColor clearColor];
 //        [photoBtn_ setBackgroundImage:[UIImage imageNamed:@"示意头像 图片.png"] forState:UIControlStateNormal];
-         [photoBtn_.titleImageView setImageWithURL:HEADIMG placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
+         [photoBtn_.titleImageView setImageWithURL:HEADIMG placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"] options:SDWebImageLowPriority];
         [photoBtn_ addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
         [titleImage addSubview:photoBtn_];
         
@@ -142,7 +142,7 @@
         
         photoBtn_ = [[CustomButon alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
         photoBtn_.backgroundColor = [UIColor clearColor];
-        [photoBtn_.titleImageView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
+        [photoBtn_.titleImageView setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"] options:SDWebImageLowPriority];
         [photoBtn_ addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
         [titleImage addSubview:photoBtn_];
         
@@ -241,7 +241,7 @@
         NSInteger status = [[dic objectForKey:@"statusCode"] integerValue];
         if (status == 200) {
             [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"head_img"] forKey:kHead_img];
-              [photoBtn_.titleImageView setImageWithURL:[dic objectForKey:@"head_img"] placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"]];
+              [photoBtn_.titleImageView setImageWithURL:[dic objectForKey:@"head_img"] placeholderImage:[UIImage imageNamed:@"示意头像 图片.png"] options:SDWebImageLowPriority];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
