@@ -29,6 +29,7 @@
     NSMutableArray *textArray_;
     UIView *grayView_;
     UIButton *leftBtn_;
+    UIView *backView_;
     CLLocationCoordinate2D currentSelfPoint_;
     NSInteger currentIndex_;
     BOOL isContinue_;
@@ -94,24 +95,27 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
     }
     
-    
+    backView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0.f, 45, 30.f)];
+    backView_.backgroundColor = [UIColor clearColor];
     //返回按钮
     leftBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn_.frame = CGRectMake(0, 0.f, 50, 28.f);
+    leftBtn_.frame = CGRectMake(0, 0.f, 45, 27.f);
     [leftBtn_ setBackgroundColor:[UIColor clearColor]];
     [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [leftBtn_ setTitle:@"返回" forState:UIControlStateNormal];
+    leftBtn_.titleEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
     leftBtn_.titleLabel.font = FONT(12);
     [leftBtn_ addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
+    [backView_ addSubview:leftBtn_];
     if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:leftBtn_]];
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:backView_]];
     }
     else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn_];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView_];
     }
  
-    leftBtn_.hidden = YES;
+    backView_.hidden = YES;
     
     //搜索界面
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
@@ -208,7 +212,7 @@
 
 - (void)showLeftClick:(UIButton *)button
 {
-    leftBtn_.hidden = YES;
+    backView_.hidden = YES;
     searchText_.text = @"";
     [searchText_ resignFirstResponder];
     [textArray_ removeAllObjects];
@@ -275,7 +279,7 @@
     [textArray_ removeAllObjects];
     [mainTable_ reloadData];
     [self.view addSubview:grayView_];
-    leftBtn_.hidden = NO;
+    backView_.hidden = NO;
 }
 
 - (void)textFieldChange:(NSNotification *)notify

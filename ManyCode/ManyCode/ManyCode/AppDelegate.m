@@ -80,8 +80,7 @@
                                                           [UIColor blackColor], UITextAttributeTextShadowColor,
                                                           [UIFont boldSystemFontOfSize:20.f],UITextAttributeFont,nil]];
     
-    [[UINavigationBar appearance] setBarTintColor:[UIColor greenColor]];
-    [[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, 1.0) forBarMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(50, 50.0) forBarMetrics:UIBarMetricsDefault];
 }
 
 

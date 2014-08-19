@@ -75,7 +75,7 @@
     
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.contentsScale = [UIScreen mainScreen].scale;
-    textLayer.frame = CGRectMake(0.f, 30.f, CGRectGetWidth(self.view.frame), 29.f);
+    textLayer.frame = CGRectMake(0.f, 26.f, CGRectGetWidth(self.view.frame), 29.f);
     textLayer.alignmentMode = kCAAlignmentCenter;
     textLayer.backgroundColor = [UIColor clearColor].CGColor;
     textLayer.foregroundColor = [UIColor colorWithRed:51/255.f green:51/255.f blue:51/255.f alpha:1.f].CGColor;

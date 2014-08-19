@@ -33,20 +33,24 @@
     }
     self.view.backgroundColor = COLOR(233, 232, 230);
     
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 0.f, 45, 30.f)];
+    tempView.backgroundColor = [UIColor clearColor];
+    
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 50, 30.f);
+    btnHome.frame = CGRectMake(0, 0.f, 45, 27.f);
     [btnHome setBackgroundColor:[UIColor clearColor]];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    btnHome.titleEdgeInsets = UIEdgeInsetsMake(0,7, 0, 0);
+    btnHome.titleEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
     [btnHome setTitle:@"返回" forState:UIControlStateNormal];
     btnHome.titleLabel.font = FONT(12);
+    [tempView addSubview:btnHome];
     if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
+        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:tempView]];
     }
     else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tempView];
     }
 }
 
