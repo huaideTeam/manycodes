@@ -82,8 +82,6 @@
     UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
     btnHome.frame = CGRectMake(0, 0.f, 30, 25.f);
     [btnHome setBackgroundColor:[UIColor clearColor]];
-//    [btnHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
-//    [btnHome setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateHighlighted];
     UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     titleImage.image = [UIImage imageNamed:@"personButton.png"];
     [btnHome addSubview:titleImage];
