@@ -26,8 +26,6 @@
 	<string>WIFI信号不存在，无法判断当前位置(用户离开，检测道闸机信息)</string>
 	<key>212</key>
 	<string>获取设备状态失败，未找到该指令发送记录</string>
-	<key>213</key>
-	<string>当前状态服务器还未收到设备指令(设备状态查询)</string>
 	<key>214</key>
 	<string>设备开启失败，不符合开启条件(设备状态查询)</string>
 	<key>215</key>

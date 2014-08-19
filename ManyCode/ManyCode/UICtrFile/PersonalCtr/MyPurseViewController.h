@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 lichengfei. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ModelViewController.h"
 
-@interface MyPurseViewController : UIViewController
+@interface MyPurseViewController : ModelViewController
 
 @end

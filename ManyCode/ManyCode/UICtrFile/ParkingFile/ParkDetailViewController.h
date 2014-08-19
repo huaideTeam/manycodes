@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 lichengfei. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ModelViewController.h"
 
 // 停车场详情
-@interface ParkDetailViewController : UIViewController
+@interface ParkDetailViewController : ModelViewController
 
 @property (nonatomic, strong) NSDictionary *parkInfoDic;
 

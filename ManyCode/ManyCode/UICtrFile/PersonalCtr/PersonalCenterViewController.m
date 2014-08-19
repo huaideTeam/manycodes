@@ -61,28 +61,8 @@
 
 - (void)loadFunctionView
 {
-    if (IOS7) {
-        [self setExtendedLayoutIncludesOpaqueBars:NO];
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
     self.view.backgroundColor = COLOR(220, 220, 220);
     self.title = @"个人中心";
-    
-    //返回按钮
-    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
-    [btnHome setBackgroundColor:[UIColor clearColor]];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
-    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
-    btnHome.titleLabel.font = FONT(12);
-    if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
-    }
     
     nameArray_ = @[@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新",@"关于我们"];
     mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight- kTopImageHeight- kStatueHeight)];
@@ -99,14 +79,9 @@
 
 }
 
-#pragma mark - 返回按钮
-- (void)backClick:(UIButton *)button
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
-#pragma makr - 自定义view
+#pragma mark- 自定义view
 - (UIView *)creatHeadView:(BOOL )isLogin
 {
     if (isLogin) {
@@ -330,7 +305,7 @@
         cell.titleLabel.textColor = COLOR(199, 199, 199);
     }else
     {
-        cell.titleLabel.textColor = COLOR(146, 146, 146);
+        cell.titleLabel.textColor = COLOR(22, 22, 22);
     }
     
     return cell;

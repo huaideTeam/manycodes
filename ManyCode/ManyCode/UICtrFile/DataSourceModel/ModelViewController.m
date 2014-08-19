@@ -39,6 +39,7 @@
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
     [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
     [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    btnHome.titleEdgeInsets = UIEdgeInsetsMake(0,7, 0, 0);
     [btnHome setTitle:@"返回" forState:UIControlStateNormal];
     btnHome.titleLabel.font = FONT(12);
     if (IOS7) {

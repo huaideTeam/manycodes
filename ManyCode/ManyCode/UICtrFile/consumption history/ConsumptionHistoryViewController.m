@@ -110,12 +110,13 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     switch ([item.chgtype intValue]) {
         case 0:
         {
-            cell.consumptionTypeImageView.image = [UIImage imageNamed:@"停车图标.png"];
+            cell.consumptionTypeImageView.image = [UIImage imageNamed:@"充值图标.png"];
+           
         }
             break;
         case 1 :
         {
-            cell.consumptionTypeImageView.image = [UIImage imageNamed:@"充值图标.png"];
+             cell.consumptionTypeImageView.image = [UIImage imageNamed:@"停车图标.png"];
         }
         default:
             break;

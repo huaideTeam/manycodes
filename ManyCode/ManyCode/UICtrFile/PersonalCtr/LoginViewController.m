@@ -55,28 +55,8 @@
 
 - (void)loadFunctionView
 {
-    if (IOS7) {
-        [self setExtendedLayoutIncludesOpaqueBars:NO];
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
     self.title = @"登录";
     self.view.backgroundColor = COLOR(229.0, 228.0, 225.0);
-    
-    //返回按钮
-    UIButton *backHome = [UIButton buttonWithType:UIButtonTypeCustom];
-     backHome.frame = CGRectMake(0, 0.f, 50, 28.f);
-    [backHome setBackgroundColor:[UIColor clearColor]];
-    [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
-    [backHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
-    [backHome setTitle:@"返回" forState:UIControlStateNormal];
-    backHome.titleLabel.font = FONT(12);
-	[backHome addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
-    if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:backHome]];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backHome];
-    }
     
     //注册按钮
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -172,11 +152,11 @@
     [storeButton_ setBackgroundImage:[UIImage imageNamed:@"未勾选.png"] forState:UIControlStateNormal];
     [storeButton_ setBackgroundImage:[UIImage imageNamed:@"同意勾选.png"] forState:UIControlStateSelected];
     [storeButton_ addTarget:self action:@selector(storeClick:) forControlEvents:UIControlEventTouchUpInside];
-    storeButton_.selected = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isStoreLogin"] boolValue];
+    storeButton_.selected = YES;
     [accountView addSubview:storeButton_];
     
     UILabel * nameLable = [[UILabel alloc] initWithFrame:CGRectMake(40, 192, 100, 25)];
-    nameLable.text = @"忘记密码";
+    nameLable.text = @"记住密码";
     nameLable.textColor = [UIColor darkGrayColor];
     [accountView addSubview:nameLable];
     
@@ -200,10 +180,6 @@
 
 #pragma mark - 返回按钮
 
-- (void)showLeftClick:(UIButton *)button
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)registClick:(UIButton *)button
 {

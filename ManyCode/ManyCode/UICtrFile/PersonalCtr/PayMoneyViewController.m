@@ -53,29 +53,9 @@
 
 - (void)loadFunctionView
 {
-    if (IOS7) {
-        [self setExtendedLayoutIncludesOpaqueBars:NO];
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
     
     self.title = @"充值缴费";
     
-    //返回按钮
-    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
-    [btnHome setBackgroundColor:[UIColor clearColor]];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
-    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
-    btnHome.titleLabel.font = FONT(12);
-    if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
-    }
-
     self.view.backgroundColor = COLOR(229, 228, 225);
     UIScrollView *mainView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
     mainView.contentSize = CGSizeMake(320, 560);
@@ -135,13 +115,6 @@
 {
     [mainTextField_ resignFirstResponder];
 }
-
-#pragma mark - 返回按钮
-- (void)backClick:(UIButton *)button
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 
 #pragma mark - 支付
 

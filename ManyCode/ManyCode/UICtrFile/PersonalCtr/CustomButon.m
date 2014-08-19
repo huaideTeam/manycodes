@@ -14,10 +14,10 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _titleImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10,frame.size.width - 20, frame.size.height-20)];
         _titleImageView.backgroundColor = [UIColor clearColor];
         _titleImageView.layer.masksToBounds = YES;
-        _titleImageView.layer.cornerRadius = self.bounds.size.height/2;
+        _titleImageView.layer.cornerRadius = _titleImageView.bounds.size.height/2;
         [self addSubview:_titleImageView];
     }
     return self;

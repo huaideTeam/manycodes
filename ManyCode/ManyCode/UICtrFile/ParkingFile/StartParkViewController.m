@@ -38,6 +38,9 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     NSDictionary *currentInfoDic_;
     long long oldTimeNum_;
     UILabel *desLabel_;
+    NSInteger currentNum_; //调用次数
+    NSMutableDictionary *modleDic_;
+    NSDictionary *openDevDic_;
 }
 
 @property (nonatomic, strong)  SBTickerView *clockTickerViewHour1;
@@ -110,27 +113,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
      self.title = @"对账单";
     oldTimeNum_ = 0;
     
-    if (IOS7) {
-        [self setExtendedLayoutIncludesOpaqueBars:NO];
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
-    
-    //返回按钮
-    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
-    [btnHome setBackgroundColor:[UIColor clearColor]];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
-    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
-    btnHome.titleLabel.font = FONT(12);
-    if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
-    }
-    
+   
     hourNumber1_ = 0;
     hourNumber2_ = 0;
     hourNumber3_ = 0;
@@ -252,12 +235,6 @@ static NSString * const kIdentifier = @"SomeIdentifier";
 
 }
 
-#pragma mark - 返回按钮
-
-- (void)backClick:(UIButton *)button
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 #pragma mark - 下载数据 
 
@@ -271,6 +248,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserBalance" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         accountInfoDic_ = resultDic;
+        [[NSUserDefaults standardUserDefaults] setObject:[resultDic objectForKey:@"balance"] forKey:kAccountBalance];
         if ([[resultDic objectForKey:@"balance"] floatValue]>0) {
             
         }else
@@ -355,10 +333,12 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         return;
     }
     [tempDic setObject:passkind forKey:@"passkind"];
-    
-    NSMutableDictionary *modleDic = [NSMutableDictionary dictionaryWithDictionary:deviceDic_];
+    modleDic_ = nil;
+    modleDic_ = [NSMutableDictionary dictionaryWithDictionary:deviceDic_];
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"openDevRoadNum" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
-        [self getDeviceStatue:resultDic[@"sourceid"] devId:[modleDic objectForKey:@"devid"]];
+        currentNum_ = 0;
+        openDevDic_ = resultDic;
+        [self getDeviceStatue:resultDic[@"sourceid"] devId:[modleDic_ objectForKey:@"devid"]];
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -376,16 +356,29 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [tempDic setObject:deviceId forKey:@"devid"];
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getOpenDevRoadStatus" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [[Hud defaultInstance] hide:self.view];
         if (self.isComeIn) {
-            [[Hud defaultInstance] showMessage:@"开闸成功，欢迎光临" withHud:YES];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"开闸成功，欢迎光临" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert   show];
         }else
         {
             NSString *tempString = [NSString stringWithFormat:@"开闸成功，你本次停车共花费%@元，欢迎下次光临",resultDic[@"money"]];
-            [[Hud defaultInstance] showMessage:tempString withHud:YES];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:tempString delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert   show];
         }
         [self.navigationController popToRootViewControllerAnimated:YES];
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        if (error.code == 208) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"用户3秒钟内重复发送开启指令,当前状态设备开启成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert   show];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else if(error.code == 213)
+        {
+            currentNum_ ++;
+            if (currentNum_ < 10) {
+                 [self getDeviceStatue:openDevDic_[@"sourceid"] devId:[modleDic_ objectForKey:@"devid"]];
+            }
+        }
     }];
 
 }
@@ -606,7 +599,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
             NSLog(@"++++++%d",beacon.rssi);
              NSLog(@"------%f",beacon.accuracy);
             
-            if ([[beacon.minor stringValue] isEqualToString:dic[@"bluetoothmajor"]] &&(beacon.accuracy < [dic[@"bluetoothdistance"] floatValue] || abs(beacon.rssi) < [dic[@"bluetoothrssi"] floatValue])) {
+            if ([[beacon.minor stringValue] isEqualToString:dic[@"bluetoothmajor"]] &&(beacon.accuracy < [dic[@"bluetoothdistance"] floatValue] || (abs(beacon.rssi) < [dic[@"bluetoothrssi"] floatValue] && beacon.rssi != 0))) {
                 
                 NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:12];
                 [dic setObject:[beacon.proximityUUID UUIDString] forKey:@"bluetoothuuid"];

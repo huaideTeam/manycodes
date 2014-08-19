@@ -63,28 +63,7 @@
 
 - (void)loadFunctionView
 {
-    if (IOS7) {
-        [self setExtendedLayoutIncludesOpaqueBars:NO];
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
     self.title = [_parkInfoDic objectForKey:@"carparkname"];
-    
-    //返回按钮
-    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
-    [btnHome setBackgroundColor:[UIColor clearColor]];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
-    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
-    btnHome.titleLabel.font = FONT(12);
-    if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
-    }
-
     
     self.view.backgroundColor = COLOR(235.0, 237.0, 240.0);
    
@@ -133,12 +112,6 @@
         
     }];
 
-}
-
-//返回按钮
-- (void)backClick:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 加载数据

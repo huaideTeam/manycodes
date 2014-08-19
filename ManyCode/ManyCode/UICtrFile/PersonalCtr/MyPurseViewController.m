@@ -53,28 +53,7 @@
 {
     self.view.backgroundColor  = COLOR(229, 228, 225);
     self.title = @"我的钱包";
-    
-    if (IOS7) {
-        [self setExtendedLayoutIncludesOpaqueBars:NO];
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
-    //返回按钮
-    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 50, 28.f);
-    [btnHome setBackgroundColor:[UIColor clearColor]];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
-    [btnHome setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
-    [btnHome addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    [btnHome setTitle:@"返回" forState:UIControlStateNormal];
-    btnHome.titleLabel.font = FONT(12);
-    if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
-    }
 
-    
     UIView *headView = [self headerViewForCosumptionList];
     mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight - kTopImageHeight)];
     [self.view addSubview:mainScrollView_];
@@ -104,6 +83,7 @@
     [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kAccountSession] forKey:@"sessionid"];
     
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getUserBalance" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
+        [[NSUserDefaults standardUserDefaults] setObject:[resultDic objectForKey:@"balance"] forKey:kAccountBalance];
         [self addPieView:[resultDic[@"balance"] floatValue]];
         [priceBtn_ setTitle:[NSString stringWithFormat:@"当前余额：%@元",resultDic[@"balance"]] forState:UIControlStateNormal];
         titleLable_.text = [NSString stringWithFormat:@"账户余额： %@元",resultDic[@"balance"]];
@@ -150,15 +130,6 @@
     
     [pieChart addSubview:centerView];
     
-}
-
-
-
-#pragma mark - 返回按钮
-
-- (void)backClick:(UIButton *)button
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 列表头
