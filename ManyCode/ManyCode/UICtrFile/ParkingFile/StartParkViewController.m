@@ -423,12 +423,6 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     [tempDic setObject:string forKey:@"bluetoothinfo"];
     [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"getDevRoadNumBluetooth" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
         deviceDic_ = resultDic;
-        
-        //不存在文件重新下载
-         if (![[NSFileManager defaultManager]  fileExistsAtPath:[self imageDownloadDestinationPath:resultDic[@"voice"]]])
-         {
-              [self downLoadWavFile:resultDic[@"voice"]];
-         }
        
         if ([deviceDic_[@"openflg"] integerValue]) {
             openDoorBtn_.enabled = YES;
@@ -436,9 +430,18 @@ static NSString * const kIdentifier = @"SomeIdentifier";
             
             [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸进入后.png"] forState:UIControlStateNormal];
             [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸点击效果.png"] forState:UIControlStateHighlighted];
-            //播放语音
-            SystemSoundID soundID = [self loadId:[self fileNameFromPath:deviceDic_[@"voice"]]];
-            AudioServicesPlaySystemSound(soundID);
+            
+            //不存在文件重新下载
+            if (![[NSFileManager defaultManager]  fileExistsAtPath:[self imageDownloadDestinationPath:resultDic[@"voice"]]])
+            {
+                [self downLoadWavFile:resultDic[@"voice"]];
+            }else
+            {
+                //播放语音
+                SystemSoundID soundID = [self loadId:[self fileNameFromPath:deviceDic_[@"voice"]]];
+                AudioServicesPlaySystemSound(soundID);
+            }
+           
         }else
         {
             [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
@@ -462,6 +465,9 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"下载成功");
+        //播放语音
+        SystemSoundID soundID = [self loadId:[self fileNameFromPath:filePath]];
+        AudioServicesPlaySystemSound(soundID);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"下载失败");
     }];

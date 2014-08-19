@@ -19,13 +19,359 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ThirdPart/iosPot/PCPieChart.m"
-            timestampString = "430122425.101859"
+            filePath = "UICtrFile/NetworkManager/NetworkCenter.m"
+            timestampString = "430144604.541088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
-            landmarkName = "-drawRect:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-requestWebWithParaWithURL:Parameter:Finish:Error:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdPart/SDWebImage/SDWebImageManager.m"
+            timestampString = "430151209.795577"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-downloadWithURL:options:progress:completed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdPart/SDWebImage/SDWebImageManager.m"
+            timestampString = "430151227.437598"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-downloadWithURL:options:progress:completed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdPart/SDWebImage/SDWebImageDownloader.m"
+            timestampString = "430151259.219778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-downloadImageWithURL:options:progress:completed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDWebImageDownloader downloadImageWithURL:options:progress:completed:]"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageDownloader.m"
+                  timestampString = "430152579.709156"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDWebImageDownloader downloadImageWithURL:options:progress:completed:]"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageDownloader.m"
+                  timestampString = "430152579.709396"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "382">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDWebImageDownloader downloadImageWithURL:options:progress:completed:]"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageDownloader.m"
+                  timestampString = "430152579.70971"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "564">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SDWebImageDownloader downloadImageWithURL:options:progress:completed:]"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageDownloader.m"
+                  timestampString = "430152579.710031"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "614">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdPart/SDWebImage/SDWebImageManager.m"
+            timestampString = "430151417.367339"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-downloadWithURL:options:progress:completed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdPart/SDWebImage/SDWebImageManager.m"
+            timestampString = "430151485.949082"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-downloadWithURL:options:progress:completed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__64-[SDWebImageManager downloadWithURL:options:progress:completed:]_block_invoke104"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.710689"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__64-[SDWebImageManager downloadWithURL:options:progress:completed:]_block_invoke_2105"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.710894"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "14">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_106"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.71113"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_107"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.711367"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "14">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__64-[SDWebImageManager downloadWithURL:options:progress:completed:]_block_invoke109"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.711562"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "14">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_110"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.711807"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_111"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.712155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdPart/SDWebImage/SDWebImageManager.m"
+            timestampString = "430151496.308997"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-downloadWithURL:options:progress:completed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdPart/SDWebImage/SDWebImageManager.m"
+            timestampString = "430151507.765197"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-downloadWithURL:options:progress:completed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__64-[SDWebImageManager downloadWithURL:options:progress:completed:]_block_invoke81"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.712749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "110">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__64-[SDWebImageManager downloadWithURL:options:progress:completed:]_block_invoke81"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.712946"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "2676">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__64-[SDWebImageManager downloadWithURL:options:progress:completed:]_block_invoke81"
+                  moduleName = "ManyCode"
+                  urlString = "file:///Users/xuxingdu/Desktop/test11/ThirdPart/SDWebImage/SDWebImageManager.m"
+                  timestampString = "430152579.713133"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "2732">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UICtrFile/PersonalCtr/PersonalCenterViewController.m"
+            timestampString = "430152661.129717"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-creatHeadView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UICtrFile/PersonalCtr/PersonalCenterViewController.m"
+            timestampString = "430152677.966013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-fileNameFromPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
