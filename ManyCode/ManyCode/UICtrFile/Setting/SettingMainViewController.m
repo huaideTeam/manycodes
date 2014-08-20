@@ -36,8 +36,8 @@ static NSString *identifierForSecondSectionCellSetting = @"identifierForSecondSe
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"设置";
-    settingListTableView_ = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.titleLable.text = @"设置";
+    settingListTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight - kTopImageHeight - kStatueHeight) style:UITableViewStyleGrouped];
     settingListTableView_.contentInset = UIEdgeInsetsMake(-35.f, 0, 0, 0);
     settingListTableView_.dataSource = self;
     settingListTableView_.delegate = self;

@@ -28,8 +28,8 @@
     UITableView *mainTable_;
     NSMutableArray *textArray_;
     UIView *grayView_;
-    UIButton *leftBtn_;
-    UIView *backView_;
+//    UIButton *leftBtn_;
+//    UIView *self.leftButton;
     CLLocationCoordinate2D currentSelfPoint_;
     NSInteger currentIndex_;
     BOOL isContinue_;
@@ -67,57 +67,19 @@
 
 - (void)loadFunctionView
 {
-    if (IOS7) {
-        [self setExtendedLayoutIncludesOpaqueBars:NO];
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
-    self.title = @"抢车位";
-    self.view.backgroundColor = COLOR(230.0, 232.0, 237.0);
+    self.titleLable.text = @"抢车位";
     
     currentIndex_ = 1;
     
     dataArray_ = [[NSMutableArray alloc] initWithCapacity:12];
-    
-    //返回按钮
-    UIButton *btnHome = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnHome.frame = CGRectMake(0, 0.f, 30, 25.f);
-    [btnHome setBackgroundColor:[UIColor clearColor]];
-    UIImageView *titleImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    titleImage.image = [UIImage imageNamed:@"personButton.png"];
-    [btnHome addSubview:titleImage];
-    [btnHome addTarget:self action:@selector(showRightClick:) forControlEvents:UIControlEventTouchUpInside];
-    if (IOS7) {
-        [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:btnHome]];
-    }
-    else {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnHome];
-    }
-    
-    backView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0.f, 45, 30.f)];
-    backView_.backgroundColor = [UIColor clearColor];
-    //返回按钮
-    leftBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn_.frame = CGRectMake(0, 0.f, 45, 27.f);
-    [leftBtn_ setBackgroundColor:[UIColor clearColor]];
 
-    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateNormal];
-    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateHighlighted];
-    [leftBtn_ setTitle:@"返回" forState:UIControlStateNormal];
-    leftBtn_.titleEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
-    leftBtn_.titleLabel.font = FONT(12);
-    [leftBtn_ addTarget:self action:@selector(showLeftClick:) forControlEvents:UIControlEventTouchUpInside];
-    [backView_ addSubview:leftBtn_];
-    if (IOS7) {
-        [self.navigationItem setLeftBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:backView_]];
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView_];
-    }
- 
-    backView_.hidden = YES;
+    [self.rightButton setImage:[UIImage imageNamed:@"personButton.png"] forState:UIControlStateNormal];
+    self.rightButton.hidden = NO;
+
+    self.leftButton.hidden = YES;
     
     //搜索界面
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, 40)];
     headView.backgroundColor = [UIColor clearColor];
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:headView.bounds];
     backImage.backgroundColor = COLOR(197.0, 206.0, 195.0);
@@ -146,18 +108,18 @@
     changeButton.tag = 100;
     [headView addSubview:changeButton];
     
-    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-kTopImageHeight-kStatueHeight)];
+    mapView_ = [[HomeMapView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight-kStatueHeight)];
     mapView_.delegate = self;
     [self.view addSubview:mapView_];
     
-    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40- kStatueHeight)];
+    listView_ = [[HomeListView alloc] initWithFrame:CGRectMake(0, 40+kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight-40- kStatueHeight)];
     listView_.hidden = YES;
     listView_.delegate = self;
     [self.view addSubview:listView_];
     
     [self.view addSubview:headView];
     
-    grayView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 320, kCurrentWindowHeight-kTopImageHeight-40-kStatueHeight)];
+    grayView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 40+kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight-40-kStatueHeight)];
     grayView_.backgroundColor = COLOR(224, 224, 224);
     mainTable_ = [[UITableView alloc] initWithFrame:CGRectMake(5, 0, 310, kCurrentWindowHeight-kTopImageHeight-40-kStatueHeight)];
     mainTable_.delegate = self;
@@ -209,9 +171,9 @@
 }
 
 
-- (void)showLeftClick:(UIButton *)button
+- (void)backClick:(UIButton *)button
 {
-    backView_.hidden = YES;
+    self.leftButton.hidden = YES;
     searchText_.text = @"";
     [searchText_ resignFirstResponder];
     [textArray_ removeAllObjects];
@@ -220,7 +182,7 @@
     [self LoadCurrentInfo:[[NetworkCenter instanceManager] currentPoint] isFirst:YES];
 }
 
-- (void)showRightClick:(UIButton *)button
+- (void)rightClick:(UIButton *)button
 {
     PersonalCenterViewController *viewCtr = [[PersonalCenterViewController alloc] init];
     //    ParkDetailViewController *viewCtr = [[ParkDetailViewController alloc] init];
@@ -278,7 +240,7 @@
     [textArray_ removeAllObjects];
     [mainTable_ reloadData];
     [self.view addSubview:grayView_];
-    backView_.hidden = NO;
+    self.leftButton.hidden = NO;
 }
 
 - (void)textFieldChange:(NSNotification *)notify

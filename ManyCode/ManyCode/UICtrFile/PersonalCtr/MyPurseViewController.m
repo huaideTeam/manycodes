@@ -51,13 +51,13 @@
 
 - (void)loadFunctionView
 {
-    self.view.backgroundColor  = COLOR(229, 228, 225);
-    self.title = @"我的钱包";
+    self.titleLable.text = @"我的钱包";
 
     UIView *headView = [self headerViewForCosumptionList];
-    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight - kTopImageHeight)];
+    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight - kTopImageHeight)];
     [self.view addSubview:mainScrollView_];
     
+    mainScrollView_.backgroundColor = COLOR(229, 228, 225);
     [mainScrollView_ addSubview:headView];
     
     
@@ -145,7 +145,7 @@
     titleImage.userInteractionEnabled = YES;
     [headView addSubview:titleImage];
     
-   UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
+   UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 65, 65)];
     photoImage.backgroundColor = [UIColor clearColor];
     photoImage.layer.masksToBounds = YES;
     photoImage.layer.cornerRadius = photoImage.frame.size.height/2;

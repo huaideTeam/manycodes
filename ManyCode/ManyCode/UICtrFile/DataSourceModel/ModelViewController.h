@@ -10,4 +10,10 @@
 
 @interface ModelViewController : UIViewController
 
+@property (nonatomic, strong) UIButton *leftButton;
+
+@property (nonatomic, strong) UIButton *rightButton;
+
+@property (nonatomic, strong) UILabel *titleLable;
+
 @end

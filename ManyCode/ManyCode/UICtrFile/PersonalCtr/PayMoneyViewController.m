@@ -54,13 +54,12 @@
 - (void)loadFunctionView
 {
     
-    self.title = @"充值缴费";
+    self.titleLable.text = @"充值缴费";
     
-    self.view.backgroundColor = COLOR(229, 228, 225);
-    UIScrollView *mainView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+    UIScrollView *mainView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight -kStatueHeight)];
     mainView.contentSize = CGSizeMake(320, 560);
     mainView.userInteractionEnabled = YES;
-    mainView.backgroundColor = [UIColor clearColor];
+    mainView.backgroundColor = COLOR(229, 228, 225);
     [self.view addSubview:mainView];
     
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(12, 50, 295, 280)];
@@ -73,7 +72,7 @@
     titleImage.userInteractionEnabled = YES;
     [backImage addSubview:titleImage];
     
-    UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65, 65)];
+    UIImageView * photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 55, 55)];
     photoImage.backgroundColor = [UIColor clearColor];
     photoImage.layer.masksToBounds = YES;
     photoImage.layer.cornerRadius = photoImage.frame.size.height/2;

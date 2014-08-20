@@ -68,14 +68,13 @@
 
 - (void)loadFunctionView
 {
-    self.view.backgroundColor = COLOR(220, 220, 220);
-    self.title = @"个人中心";
+    self.titleLable.text = @"个人中心";
     
     nameArray_ = @[@"我的钱包",@"停车扣费记录",@"快捷支付",@"设置",@"版本更新",@"关于我们"];
-    mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight- kTopImageHeight- kStatueHeight)];
+    mainTableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight- kTopImageHeight- kStatueHeight)];
     mainTableView_.delegate = self;
     mainTableView_.dataSource = self;
-    mainTableView_.backgroundColor = [UIColor clearColor];
+    mainTableView_.backgroundColor = COLOR(220, 220, 220);
     mainTableView_.backgroundView = nil;
     [mainTableView_ setTableHeaderView:[self creatHeadView:[NetworkCenter instanceManager].isLogin]];
     [mainTableView_ setSeparatorStyle:UITableViewCellSeparatorStyleNone];

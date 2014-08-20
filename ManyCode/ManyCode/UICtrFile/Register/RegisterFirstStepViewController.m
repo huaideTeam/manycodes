@@ -46,9 +46,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"个人中心";
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-44)];
-    _mainScrollView.backgroundColor = [UIColor clearColor];
+    self.titleLable.text = @"个人中心";
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight -kStatueHeight)];
+    _mainScrollView.backgroundColor = COLOR(229, 228, 225);
     _mainScrollView.contentSize = CGSizeMake(320, kCurrentWindowHeight-44);
     [self.view addSubview:_mainScrollView];
     
@@ -188,7 +188,7 @@
     CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        CGRect viewFrame = CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight- kStatueHeight);
         viewFrame.size.height -= kbSize.height;
         _mainScrollView.frame = viewFrame;
     }];
@@ -204,7 +204,7 @@
 - (void)keyboardWillHide:(NSNotification *)notification
 {
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        CGRect viewFrame = CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight- kStatueHeight);
         _mainScrollView.frame = viewFrame;
     }];
     

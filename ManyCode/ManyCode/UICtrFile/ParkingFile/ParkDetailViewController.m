@@ -63,13 +63,12 @@
 
 - (void)loadFunctionView
 {
-    self.title = [_parkInfoDic objectForKey:@"carparkname"];
+    self.titleLable.text = [_parkInfoDic objectForKey:@"carparkname"];
     
-    self.view.backgroundColor = COLOR(235.0, 237.0, 240.0);
    
     
-    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight)];
-    mainScrollView_.backgroundColor =[UIColor clearColor];
+    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight)];
+    mainScrollView_.backgroundColor =COLOR(229, 228, 225);
     [self.view addSubview:mainScrollView_];
     
     UIView *titleView = [self creatTitleView];

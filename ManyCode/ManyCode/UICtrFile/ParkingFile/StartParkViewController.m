@@ -108,9 +108,8 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     currentDate_ = [NSDate date];
-    self.view.backgroundColor = COLOR(229, 228, 225);
     
-     self.title = @"对账单";
+     self.titleLable.text = @"对账单";
     oldTimeNum_ = 0;
     
    
@@ -119,8 +118,9 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     hourNumber3_ = 0;
     hourNumber4_ = 0;
     
-    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight - kTopImageHeight)];
+    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight - kTopImageHeight)];
     mainScrollView_.contentSize = CGSizeMake(320, 568);
+    mainScrollView_.backgroundColor = COLOR(229, 228, 225);
     [self.view addSubview:mainScrollView_];
     
     

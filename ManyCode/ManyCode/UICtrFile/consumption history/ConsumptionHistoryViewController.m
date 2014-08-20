@@ -51,13 +51,13 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 {
     [super viewDidLoad];
     
-    self.title = @"缴费记录";
+    self.titleLable.text = @"缴费记录";
     _pageIndex = 0;
-    _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight-kStatueHeight)];
+    _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight-kStatueHeight)];
     [_consumptionHistoryTableView registerClass:[CosumptionHistoryTableViewCell class] forCellReuseIdentifier:identifierForCosumptionHistory];
     _consumptionHistoryTableView.delegate = self;
     _consumptionHistoryTableView.dataSource = self;
-    _consumptionHistoryTableView.backgroundColor = [UIColor clearColor];
+    _consumptionHistoryTableView.backgroundColor = COLOR(229, 228, 225);
     _consumptionHistoryTableView.backgroundView = nil;
     [_consumptionHistoryTableView setTableHeaderView:[self headerViewForCosumptionList]];
     [_consumptionHistoryTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];

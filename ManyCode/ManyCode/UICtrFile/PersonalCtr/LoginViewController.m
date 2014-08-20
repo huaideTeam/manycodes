@@ -55,29 +55,18 @@
 
 - (void)loadFunctionView
 {
-    self.title = @"登录";
-    self.view.backgroundColor = COLOR(229.0, 228.0, 225.0);
-    
+    self.titleLable.text = @"登录";    
     //注册按钮
-    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(0, 0.f, 41, 28.f);
-    [leftButton setBackgroundColor:[UIColor clearColor]];
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮常态.png"] forState:UIControlStateNormal];
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮效果.png"] forState:UIControlStateHighlighted];
-    [leftButton setTitle:@"注册" forState:UIControlStateNormal];
-    leftButton.titleLabel.font = FONT(12);
-	[leftButton addTarget:self action:@selector(registClick:) forControlEvents:UIControlEventTouchUpInside];
-    if (IOS7) {
-        [self.navigationItem setRightBarButtonItemInIOS7:[[UIBarButtonItem alloc] initWithCustomView:leftButton]];
-    }
-    else {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    }
+    self.rightButton.frame = CGRectMake(270, 5, 42, 30);
+    [self.rightButton setBackgroundColor:[UIColor clearColor]];
+    [self.rightButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮常态.png"] forState:UIControlStateNormal];
+    [self.rightButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮效果.png"] forState:UIControlStateHighlighted];
+    [self.rightButton setTitle:@"注册" forState:UIControlStateNormal];
+    self.rightButton.titleLabel.font = FONT(12);
+    self.rightButton.hidden = NO;
     
-    
-    
-    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-44)];
-    mainScrollView_.backgroundColor = [UIColor clearColor];
+    mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight- kStatueHeight)];
+    mainScrollView_.backgroundColor = COLOR(229, 228, 225);
     mainScrollView_.contentSize = CGSizeMake(320, kCurrentWindowHeight-44);
     [self.view addSubview:mainScrollView_];
     
@@ -181,7 +170,7 @@
 #pragma mark - 返回按钮
 
 
-- (void)registClick:(UIButton *)button
+- (void)rightClick:(UIButton *)button
 {
     RegisterFirstStepViewController *viewController = [[RegisterFirstStepViewController alloc] init];
     [self.navigationController pushViewController:viewController animated:YES];
@@ -273,7 +262,7 @@
     CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        CGRect viewFrame = CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight- kStatueHeight);
         viewFrame.size.height -= kbSize.height;
         mainScrollView_.frame = viewFrame;
     }];
@@ -289,7 +278,7 @@
 - (void)keyboardWillHide:(NSNotification *)notification
 {
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        CGRect viewFrame =CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight- kStatueHeight);
         mainScrollView_.frame = viewFrame;
     }];
     

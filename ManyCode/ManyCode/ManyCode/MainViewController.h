@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ModelViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : ModelViewController
+
 
 @end

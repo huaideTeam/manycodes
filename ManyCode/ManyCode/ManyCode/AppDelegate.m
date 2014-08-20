@@ -36,6 +36,7 @@
     
     MainViewController *viewCtr =   [[MainViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewCtr];
+    [navController setNavigationBarHidden:YES];
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     

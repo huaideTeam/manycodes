@@ -54,10 +54,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"找回密码";
+    self.titleLable.text = @"找回密码";
     
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, kCurrentWindowHeight-44)];
-    _mainScrollView.backgroundColor = [UIColor clearColor];
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-44- kTopImageHeight)];
+    _mainScrollView.backgroundColor = COLOR(229, 228, 225);
     _mainScrollView.contentSize = CGSizeMake(320, kCurrentWindowHeight-44);
     [self.view addSubview:_mainScrollView];
     
@@ -71,7 +71,7 @@
     iconImageView.image = [UIImage imageNamed:@"phoneNumber_logo"];
     [tempView addSubview:iconImageView];
     
-    UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 20.f, 10.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 30.f, 30.f)];
+    UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 10.f, 10.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
     inputTextField.placeholder = @"请输入您的手机号码";
     [inputTextField addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     inputTextField.font = [UIFont systemFontOfSize:13.f];
@@ -99,7 +99,7 @@
     [nextIconImageView setBackgroundColor:[UIColor clearColor]];
     [nextTempView addSubview:nextIconImageView];
     
-    UITextField *nextInputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nextIconImageView.frame) + 3.f, 15.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
+    UITextField *nextInputTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nextIconImageView.frame) + 10.f, 10.f, CGRectGetWidth(tempView.frame) - CGRectGetMaxX(iconImageView.frame) - 20.f, 30.f)];
     nextInputTextField.placeholder = @"请输入短信验证码";
     [nextTempView addSubview:nextInputTextField];
     [nextInputTextField addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
@@ -190,7 +190,7 @@
     CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        CGRect viewFrame = CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight- kStatueHeight);
         viewFrame.size.height -= kbSize.height;
         _mainScrollView.frame = viewFrame;
     }];
@@ -206,7 +206,7 @@
 - (void)keyboardWillHide:(NSNotification *)notification
 {
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect viewFrame = CGRectMake(0.f, 0.f, SCREENWIDTH, SCREENHEIGHT - 44.f);
+        CGRect viewFrame = CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight-kTopImageHeight- kStatueHeight);
         _mainScrollView.frame = viewFrame;
     }];
     
