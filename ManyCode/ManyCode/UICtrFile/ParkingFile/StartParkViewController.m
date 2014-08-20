@@ -600,10 +600,10 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         NSDictionary *dic = [currentWifiArray_ objectAtIndex:k];
         for (int index = 0; index<beacons.count; index ++) {
             CLBeacon *beacon = [beacons objectAtIndex:index];
-            NSLog(@"++++++%d",beacon.rssi);
-             NSLog(@"------%f",beacon.accuracy);
+            NSLog(@"信号++++++%d  bluetoothrssi == %d",abs((int)beacon.rssi),[dic[@"bluetoothrssi"] integerValue]);
+             NSLog(@"距离------+++%f bluetoothdistance ==%f",beacon.accuracy,[dic[@"bluetoothdistance"] floatValue]);
             
-            if ([[beacon.minor stringValue] isEqualToString:dic[@"bluetoothmajor"]] &&(beacon.accuracy < [dic[@"bluetoothdistance"] floatValue] || (abs(beacon.rssi) < [dic[@"bluetoothrssi"] floatValue] && beacon.rssi != 0))) {
+            if ([[beacon.major stringValue] isEqualToString:dic[@"bluetoothmajor"]] &&(beacon.accuracy < [dic[@"bluetoothdistance"] floatValue] || (abs((int)beacon.rssi) < [dic[@"bluetoothrssi"] integerValue])) &&!(abs((int)beacon.rssi)== 0 && beacon.accuracy == -1)) {
                 
                 NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:12];
                 [dic setObject:[beacon.proximityUUID UUIDString] forKey:@"bluetoothuuid"];
@@ -612,19 +612,27 @@ static NSString * const kIdentifier = @"SomeIdentifier";
                 [dic setObject:[NSNumber numberWithFloat:beacon.accuracy] forKey:@"bluetoothdistance"];
                 [dic setObject:[NSNumber numberWithInteger:beacon.rssi] forKey:@"bluetoothrssi"];
                 [array addObject:dic];
+            }else
+            {
+                NSLog(@"bearcons=====");
             }
         }
     }
     
     if (array.count == 0) {
         self.currentBeacons = [NSMutableArray arrayWithArray:array];
-        deviceDic_ = nil;
         return;
     }
     
     if (self.currentBeacons.count != array.count) {
+        
+        NSLog(@"beacons %d  array == %d",self.currentBeacons.count,array.count);
+        
          self.currentBeacons = [NSMutableArray arrayWithArray:array];
-        [self getDeviceInfo:array];
+          NSLog(@"beacons111 %d  array111 == %d",self.currentBeacons.count,array.count);
+        if (self.currentBeacons.count>0) {
+             [self getDeviceInfo:array];
+        }
         return;
     }
     

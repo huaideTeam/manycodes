@@ -99,8 +99,9 @@
     leftBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBtn_.frame = CGRectMake(0, 0.f, 45, 27.f);
     [leftBtn_ setBackgroundColor:[UIColor clearColor]];
-    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateNormal];
-    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateHighlighted];
+
+    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮效果.png"] forState:UIControlStateNormal];
+    [leftBtn_ setBackgroundImage:[UIImage imageNamed:@"返回按钮常态.png"] forState:UIControlStateHighlighted];
     [leftBtn_ setTitle:@"返回" forState:UIControlStateNormal];
     leftBtn_.titleEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
     leftBtn_.titleLabel.font = FONT(12);
