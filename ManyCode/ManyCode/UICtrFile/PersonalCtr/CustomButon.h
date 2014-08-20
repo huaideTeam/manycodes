@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class EGOImageView;
 
 @interface CustomButon : UIButton
 
-@property (nonatomic, strong) UIImageView *titleImageView;
+@property (nonatomic, strong) EGOImageView *titleImageView;
 
 @end

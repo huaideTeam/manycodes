@@ -7,6 +7,7 @@
 //
 
 #import "CustomButon.h"
+#import "EGOImageView.h"
 
 @implementation CustomButon
 
@@ -14,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10,frame.size.width - 20, frame.size.height-20)];
+        _titleImageView = [[EGOImageView alloc] initWithFrame:CGRectMake(10, 10,frame.size.width - 20, frame.size.height-20)];
         _titleImageView.backgroundColor = [UIColor clearColor];
         _titleImageView.layer.masksToBounds = YES;
         _titleImageView.layer.cornerRadius = _titleImageView.bounds.size.height/2;

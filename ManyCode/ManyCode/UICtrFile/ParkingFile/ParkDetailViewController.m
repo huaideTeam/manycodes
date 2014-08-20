@@ -12,8 +12,8 @@
 #import "MapFootView.h"
 #import "AppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
-#import "UIImageView+WebCache.h"
 #import "LoginViewController.h"
+#import "EGOImageView.h"
 
 @interface ParkDetailViewController ()
 {
@@ -155,9 +155,10 @@
     UIView *middleView = [[UIView alloc] initWithFrame:CGRectMake(10, 130, 300, 100)];
     middleView.backgroundColor = [UIColor whiteColor];
     
-    UIImageView *iconImage = [[UIImageView  alloc] initWithFrame:CGRectMake(10, 10, 85, 75)];
+    EGOImageView *iconImage = [[EGOImageView  alloc] initWithFrame:CGRectMake(10, 10, 85, 75)];
     iconImage.backgroundColor = [UIColor clearColor];
-    [iconImage setImageWithURL:[_parkInfoDic objectForKey:@"images"] placeholderImage:[UIImage imageNamed:@""]];
+    iconImage.placeholderImage = [UIImage imageNamed:@""];
+    iconImage.imageURL = [NSURL URLWithString:[_parkInfoDic objectForKey:@"images"]];
     [middleView addSubview:iconImage];
     
     UILabel *nameLable = [[UILabel alloc] initWithFrame:CGRectMake(110, 10, 180, 30)];
