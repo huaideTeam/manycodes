@@ -44,6 +44,7 @@
 @property (nonatomic, assign) float value, startDeg, endDeg;
 @property (nonatomic, retain) UIColor *colour;
 @property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) UIColor *detailColour;
 
 
 - (id)initWithTitle:(NSString*)_title value:(float)_value;

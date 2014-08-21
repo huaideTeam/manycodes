@@ -116,6 +116,7 @@
     PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:surplusMoney];
     [components addObject:component];
     [component setColour:COLOR(64, 163, 104)];
+    [component setDetailColour:COLOR(101.0, 203.0, 149.0)];
     [pieChart setComponents:components];
     
    UIView *  centerView = [[UIView alloc] initWithFrame:CGRectMake(120, 35, 80, 80)];

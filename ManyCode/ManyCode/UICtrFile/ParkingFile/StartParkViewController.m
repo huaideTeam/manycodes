@@ -201,6 +201,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:surplusMoney];
         [components addObject:component];
         [component setColour:COLOR(64, 163, 104)];
+        [component setDetailColour:COLOR(101.0, 203.0, 149.0)];
         [pieChart setComponents:components];
         
     }else
@@ -209,11 +210,13 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         
         PCPieComponent *component = [PCPieComponent pieComponentWithTitle:@"账户余额" value:surplusMoney];
         [component setColour:COLOR(64, 163, 104)];
+        [component setDetailColour:COLOR(101.0, 203.0, 149.0)];
         [components addObject:component];
         
         
         PCPieComponent *component1 = [PCPieComponent pieComponentWithTitle:@"预计消费" value:consumMoney];
         [component1  setColour:COLOR(226, 90, 60)];
+        [component setDetailColour:COLOR(241.0, 155.0, 128.0)];
         [components addObject:component1];
         
         [pieChart setComponents:components];
