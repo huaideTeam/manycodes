@@ -42,7 +42,7 @@
     [topView addSubview:backImage];
     [self.view addSubview:topView];
     
-    self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 12, 150, 20)];
+    self.titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, 150, 20)];
     self.titleLable.backgroundColor = [UIColor clearColor];
     self.titleLable.textColor = [UIColor whiteColor];
     self.titleLable.textAlignment = NSTextAlignmentCenter;

@@ -41,6 +41,13 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     NSInteger currentNum_; //调用次数
     NSMutableDictionary *modleDic_;
     NSDictionary *openDevDic_;
+    NSString *currentDevId_;
+    
+    NSString *beaconMajor_;
+    NSString *beaconMinjor_;
+    
+    NSInteger searchIndex_;
+    
 }
 
 @property (nonatomic, strong)  SBTickerView *clockTickerViewHour1;
@@ -109,7 +116,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     
     currentDate_ = [NSDate date];
     
-     self.titleLable.text = @"对账单";
+     self.titleLable.text = _parkDic[@"carparkname"];
     oldTimeNum_ = 0;
     
    
@@ -216,7 +223,7 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         
         PCPieComponent *component1 = [PCPieComponent pieComponentWithTitle:@"预计消费" value:consumMoney];
         [component1  setColour:COLOR(226, 90, 60)];
-        [component setDetailColour:COLOR(241.0, 155.0, 128.0)];
+        [component1 setDetailColour:COLOR(241.0, 155.0, 128.0)];
         [components addObject:component1];
         
         [pieChart setComponents:components];
@@ -593,8 +600,17 @@ static NSString * const kIdentifier = @"SomeIdentifier";
                inRegion:(CLBeaconRegion *)region {
     if ([beacons count] == 0) {
         NSLog(@"No beacons found nearby.");
+        
     } else {
         NSLog(@"Found beacons!");
+    }
+    
+    searchIndex_--;
+    if (searchIndex_>0) {
+        return;
+    }else
+    {
+        searchIndex_ = 0;
     }
     
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:12];
@@ -624,8 +640,18 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     
     if (array.count == 0) {
         self.currentBeacons = [NSMutableArray arrayWithArray:array];
+        if (deviceDic_) {
+            [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
+            desLabel_.hidden = NO;
+            openDoorBtn_.enabled = NO;
+        }
         return;
+    }else
+    {
+        searchIndex_ = 10;
     }
+    
+    
     
     if (self.currentBeacons.count != array.count) {
         
@@ -633,8 +659,23 @@ static NSString * const kIdentifier = @"SomeIdentifier";
         
          self.currentBeacons = [NSMutableArray arrayWithArray:array];
           NSLog(@"beacons111 %d  array111 == %d",self.currentBeacons.count,array.count);
+
         if (self.currentBeacons.count>0) {
-             [self getDeviceInfo:array];
+            
+            NSDictionary *tempDic = [self.currentBeacons objectAtIndex:0];
+            
+            if (![[tempDic[@"bluetoothmajor"] stringValue] isEqualToString:beaconMajor_] || ![[tempDic[@"bluetoothminor"] stringValue] isEqualToString:beaconMinjor_]) {
+                [self getDeviceInfo:array];
+            }
+            int rssi = 10000;
+            for (int k = 0; k < self.currentBeacons.count; k++) {
+                NSDictionary *dic = [self.currentBeacons objectAtIndex:k];
+                if (rssi < abs([dic[@"bluetoothrssi"] intValue])) {
+                    rssi = abs([dic[@"bluetoothrssi"] intValue]);
+                    beaconMajor_ = [[dic objectForKey:@"bluetoothmajor"] stringValue];
+                    beaconMinjor_ = [[dic objectForKey:@"bluetoothminor"] stringValue];
+                }
+            }
         }
         return;
     }
@@ -645,11 +686,36 @@ static NSString * const kIdentifier = @"SomeIdentifier";
             NSDictionary *tempDic = [array objectAtIndex:k];
             if (![[dic[@"bluetoothmajor"] stringValue] isEqualToString:[tempDic[@"bluetoothmajor"] stringValue]]) {
                  self.currentBeacons = [NSMutableArray arrayWithArray:array];
-                [self getDeviceInfo:array];
+                NSDictionary *tempDic = [self.currentBeacons objectAtIndex:0];
+                if (![[tempDic[@"bluetoothmajor"] stringValue] isEqualToString:beaconMajor_] || ![[tempDic[@"bluetoothminor"] stringValue] isEqualToString:beaconMinjor_]) {
+                    [self getDeviceInfo:array];
+                }
+                int rssi = 10000;
+                for (int k = 0; k < self.currentBeacons.count; k++) {
+                    NSDictionary *dic = [self.currentBeacons objectAtIndex:k];
+                    if (rssi < abs([dic[@"bluetoothrssi"] intValue])) {
+                        rssi = abs([dic[@"bluetoothrssi"] intValue]);
+                        beaconMajor_ = [[dic objectForKey:@"bluetoothmajor"] stringValue];
+                        beaconMinjor_ = [[dic objectForKey:@"bluetoothminor"] stringValue];
+                    }
+                }
                 return;
 
             }
         }
+    }
+    
+    if (array.count>0 && deviceDic_) {
+        openDoorBtn_.enabled = YES;
+        desLabel_.hidden = YES;
+        
+        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸进入后.png"] forState:UIControlStateNormal];
+        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸点击效果.png"] forState:UIControlStateHighlighted];
+    }else
+    {
+        [openDoorBtn_ setBackgroundImage:[UIImage imageNamed:@"点击开闸未进入常态.png"] forState:UIControlStateNormal];
+        desLabel_.hidden = NO;
+        openDoorBtn_.enabled = NO;
     }
     
 }

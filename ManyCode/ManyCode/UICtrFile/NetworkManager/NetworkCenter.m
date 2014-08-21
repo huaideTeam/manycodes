@@ -22,6 +22,8 @@
         _instanceManager = [[NetworkCenter alloc] init];
         _instanceManager.httpClient = [ExproHttpClient sharedClient];
         _instanceManager.notiCenter = [NotifyManager instanceManager];
+        _instanceManager.manager = [[CBCentralManager alloc] initWithDelegate:_instanceManager queue:nil];
+
     });
     
     return _instanceManager;
@@ -112,6 +114,24 @@
     }
     
     return isExistenceNetwork;
+}
+
+#pragma mark - peripheral
+
+-(void)centralManagerDidUpdateState:(CBCentralManager *)central{
+    switch (central.state) {
+        case CBCentralManagerStatePoweredOn:
+        {
+            self.isOpen = YES;
+          
+            break;
+        }
+        default:
+        {
+            self.isOpen = NO;
+            break;
+        }
+    }
 }
 
 @end

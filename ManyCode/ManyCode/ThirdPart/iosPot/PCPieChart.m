@@ -83,8 +83,8 @@
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
 		
-		self.titleFont = [UIFont fontWithName:@"GeezaPro" size:10];//[UIFont boldSystemFontOfSize:20];
-		self.percentageFont = [UIFont fontWithName:@"GeezaPro" size:10];//[UIFont boldSystemFontOfSize:14];
+		self.titleFont = [UIFont fontWithName:@"GeezaPro" size:12];//[UIFont boldSystemFontOfSize:20];
+		self.percentageFont = [UIFont fontWithName:@"GeezaPro" size:12];//[UIFont boldSystemFontOfSize:14];
 		self.showArrow = YES;
 		self.sameColorLabel = NO;
 		
@@ -324,7 +324,7 @@
 				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
 				left_label_y += optimumSize.height - 4;
 				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
-				CGRect titleFrame = CGRectMake(5, left_label_y, max_text_width, optimumSize.height);
+				CGRect titleFrame = CGRectMake(5, left_label_y+5, max_text_width, optimumSize.height);
                 if (i != 0) {
                     [component.title drawInRect:titleFrame withFont:self.titleFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentRight];
                 }
@@ -449,7 +449,7 @@
 				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
 				right_label_y += optimumSize.height - 4;
 				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
-				CGRect titleFrame = CGRectMake(text_x, right_label_y, optimumSize.width, optimumSize.height);
+				CGRect titleFrame = CGRectMake(text_x, right_label_y+5, optimumSize.width, optimumSize.height);
                 if (i != 0) {
                     [component.title drawInRect:titleFrame withFont:self.titleFont];
                 }

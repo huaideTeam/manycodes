@@ -392,6 +392,11 @@
 //点击停车数据
 - (void)currentParkView:(UIView *)ctView clickIndex:(NSInteger)index
 {
+    if (![NetworkCenter instanceManager].isOpen) {
+        UIAlertView *arert = [[UIAlertView alloc] initWithTitle:@"请打开蓝牙" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [arert show];
+        return;
+    }
     if (dataArray_.count == 0) {
         return;
     }

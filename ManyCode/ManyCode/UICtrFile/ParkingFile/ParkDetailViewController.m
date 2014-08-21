@@ -15,6 +15,7 @@
 #import "LoginViewController.h"
 #import "EGOImageView.h"
 
+
 @interface ParkDetailViewController ()
 {
     UIScrollView *mainScrollView_;
@@ -23,7 +24,6 @@
     UILabel *smallPrice_;     //小型车黑天
     UILabel *bigDayPrice_;  //大车白天
     UILabel *bigPrice_; //大车黑天
-
 }
 
 @end
@@ -44,6 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self loadFunctionView];
 	// Do any additional setup after loading the view.
 }
@@ -262,6 +263,12 @@
 
 - (void)startParking:(UIButton *)button
 {
+    if (![NetworkCenter instanceManager].isOpen) {
+        UIAlertView *arert = [[UIAlertView alloc] initWithTitle:@"请打开蓝牙" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [arert show];
+        return;
+    }
+    
     if ([NetworkCenter instanceManager].isLogin) {
         [[Hud defaultInstance] showMessage:@"获取用户停车状态" withHud:YES];
         NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] initWithCapacity:12];
