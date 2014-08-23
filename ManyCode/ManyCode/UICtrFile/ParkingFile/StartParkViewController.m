@@ -164,7 +164,6 @@ static NSString * const kIdentifier = @"SomeIdentifier";
     UILabel * titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, 320, 20)];
     titleLable.backgroundColor = [UIColor clearColor];
     titleLable.text = @"账户余额";
-    titleLable.font = FONT(12);
     titleLable.textAlignment = NSTextAlignmentCenter;
     [mainScrollView_ addSubview:titleLable];
     

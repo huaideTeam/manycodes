@@ -75,24 +75,32 @@
     titleImageView.backgroundColor = COLOR(97, 89, 77);
     [self addSubview:titleImageView];
 
-    NSDateComponents *currentCommpent = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
-    NSInteger day = currentCommpent.day;
+     NSDateComponents *currentCommpent1 = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.selectedDate];
+    NSDateComponents *currentCommpent = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.currentChoosedDate];
+    NSInteger day = currentCommpent1.day;
     NSInteger month = currentCommpent.month;
     
-    UILabel *dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 10.f, 100.f, 20.f)];
-    [dayLabel setBackgroundColor:[UIColor clearColor]];
-    dayLabel.font = [UIFont boldSystemFontOfSize:18.f];
-    dayLabel.textColor = [UIColor whiteColor];
-    dayLabel.text = [NSString stringWithFormat:@"%d", day];
-    [titleImageView addSubview:dayLabel];
+    _dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 10.f, 100.f, 20.f)];
+    [_dayLabel setBackgroundColor:[UIColor clearColor]];
+    _dayLabel.font = [UIFont boldSystemFontOfSize:18.f];
+    _dayLabel.textColor = [UIColor whiteColor];
+    _dayLabel.text = [NSString stringWithFormat:@"%d", day];
+    [titleImageView addSubview:_dayLabel];
     
-    NSArray *months = @[@"", @"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"Septemper", @"October", @"November", @"December"];
-    UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(dayLabel.frame), CGRectGetMaxY(dayLabel.frame), CGRectGetWidth(dayLabel.frame), CGRectGetHeight(dayLabel.frame))];
-    [monthLabel setBackgroundColor:[UIColor clearColor]];
-    monthLabel.font = [UIFont boldSystemFontOfSize:18.f];
-    monthLabel.textColor = [UIColor whiteColor];
-    monthLabel.text = [NSString stringWithFormat:@"%@", months[month]];
-    [titleImageView addSubview:monthLabel];
+    if (self.selectedDate!=self.currentChoosedDate) {
+        _dayLabel.hidden = YES;
+    } else
+    {
+        _dayLabel.hidden = NO;
+    }
+    
+    _months = @[@"", @"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"Septemper", @"October", @"November", @"December"];
+    _monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_dayLabel.frame), CGRectGetMaxY(_dayLabel.frame), CGRectGetWidth(_dayLabel.frame), CGRectGetHeight(_dayLabel.frame))];
+    [_monthLabel setBackgroundColor:[UIColor clearColor]];
+    _monthLabel.font = [UIFont boldSystemFontOfSize:18.f];
+    _monthLabel.textColor = [UIColor whiteColor];
+    _monthLabel.text = [NSString stringWithFormat:@"%@", _months[month]];
+    [titleImageView addSubview:_monthLabel];
     
     NSInteger columns = 7;
     CGFloat width = CGRectGetWidth(self.bounds) / columns;
@@ -202,7 +210,7 @@
 - (NSDate *)dateForMonth:(NSInteger)month day:(NSInteger)day {
     NSDateComponents *components = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.currentChoosedDate];
     if (0 == month) {
-        components.day = day + 2;
+        components.day = day + 1;
     } else if (-1 == month) {
         components.day = day + 1;
     } else if (1 == month) {
@@ -228,6 +236,7 @@
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^ { [self setNeedsDisplay]; }
                         completion:nil];
+        
     } else if (gestureRecognizer.direction == UISwipeGestureRecognizerDirectionRight) {
         [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         NSDateComponents *components = [_gregorian components:(NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.currentChoosedDate];

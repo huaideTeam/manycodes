@@ -67,7 +67,7 @@
 
 - (void)loadFunctionView
 {
-    self.titleLable.text = @"抢车位";
+    self.titleLable.text = @"魅力车库";
     
     currentIndex_ = 1;
     
@@ -137,7 +137,7 @@
         [tempDic setObject:[[NSUserDefaults standardUserDefaults] objectForKey:kPassWord] forKey:@"password"];
         [[NetworkCenter instanceManager] requestWebWithParaWithURL:@"checkLogin" Parameter:tempDic Finish:^(NSDictionary *resultDic) {
             [self.navigationController popToRootViewControllerAnimated:NO];
-            
+            [self saveLoginInfo:resultDic];
             [[NetworkCenter instanceManager] setIsLogin:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"loginNotification" object:nil];
             
@@ -168,6 +168,16 @@
                                                object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldChange:) name:@"UITextFieldTextDidChangeNotification" object:nil];
     
+}
+
+
+- (void)saveLoginInfo:(NSDictionary *)dic
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"mobile"] forKey:kAccountMobile];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"userid"] forKey:kAccountid];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"sessionid"] forKey:kAccountSession];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"balance"] forKey:kAccountBalance];
+    [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"head_img"] forKey:kHead_img];
 }
 
 

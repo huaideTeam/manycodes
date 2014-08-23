@@ -23,7 +23,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
 
 @property (nonatomic, strong) UITableView *consumptionHistoryTableView;
 
-@property (nonatomic, strong) NSArray *consumptionHistoryDataSource;
+@property (nonatomic, strong) NSMutableArray *consumptionHistoryDataSource;
 
 @property (nonatomic, strong) NSDate *currentFilterDate;
 
@@ -52,7 +52,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
     [super viewDidLoad];
     
     self.titleLable.text = @"缴费记录";
-    _pageIndex = 0;
+    _pageIndex = 1;
     _consumptionHistoryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, CGRectGetWidth(self.view.frame), kCurrentWindowHeight- kTopImageHeight-kStatueHeight)];
     [_consumptionHistoryTableView registerClass:[CosumptionHistoryTableViewCell class] forCellReuseIdentifier:identifierForCosumptionHistory];
     _consumptionHistoryTableView.delegate = self;
@@ -194,7 +194,7 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
          ConsumptionHistoryViewController *strongSelf = weakSelf;
          ConsumptionHistoryModel *model = [[ConsumptionHistoryModel alloc] init];
          [model initializeTheDataSourceWithDictionary:resultDic];
-         strongSelf.consumptionHistoryDataSource = [NSArray arrayWithArray:model.banchglist];
+         strongSelf.consumptionHistoryDataSource = [NSMutableArray arrayWithArray:model.banchglist];
          if (show) {
              [[Hud defaultInstance] hide:strongSelf.view];
          }
@@ -203,6 +203,11 @@ static NSString *identifierForCosumptionHistory = @"identifierForCosumptionHisto
          
     } Error:^(AFHTTPRequestOperation *operation, NSError *error) {
 
+        if (error.code == 219) {
+            _pageIndex = 1;
+            [self.consumptionHistoryDataSource removeAllObjects];
+            [self.consumptionHistoryTableView reloadData];
+        }
     }];
 }
 

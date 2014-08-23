@@ -19,4 +19,10 @@ typedef void (^CalendarSelectedSomeDate)(CalendarView *view);       //选择某�
 
 @property (nonatomic, strong) CalendarSelectedSomeDate choosedSomeDate; //选中某个日期回调函数
 
+@property (nonatomic, strong) UILabel *dayLabel;
+
+@property (nonatomic, strong) UILabel *monthLabel;
+
+@property (nonatomic, strong) NSArray *months;
+
 @end

@@ -83,8 +83,8 @@
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
 		
-		self.titleFont = [UIFont fontWithName:@"GeezaPro" size:12];//[UIFont boldSystemFontOfSize:20];
-		self.percentageFont = [UIFont fontWithName:@"GeezaPro" size:12];//[UIFont boldSystemFontOfSize:14];
+		self.titleFont = [UIFont fontWithName:@"GeezaPro" size:17];//[UIFont boldSystemFontOfSize:20];
+		self.percentageFont = [UIFont fontWithName:@"GeezaPro" size:17];//[UIFont boldSystemFontOfSize:14];
 		self.showArrow = YES;
 		self.sameColorLabel = NO;
 		
