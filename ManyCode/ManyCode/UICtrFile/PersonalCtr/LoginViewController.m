@@ -103,7 +103,6 @@
     
     accountText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 10, 250, 30)];
     accountText_.placeholder = @"请输入手机号码";
-    accountText_.text = @"18951682389";
     [accountText_ addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     accountText_.borderStyle = UITextBorderStyleNone;
     accountText_.keyboardType = UIKeyboardTypeNumberPad;
@@ -121,7 +120,6 @@
     
     passwordText_ = [[UITextField alloc] initWithFrame:CGRectMake(50, 10, 250, 30)];
     passwordText_.placeholder = @"请输入密码";
-    passwordText_.text = @"123";
     [passwordText_ addDoneOnKeyboardWithTarget:self action:@selector(doneClicked:)];
     passwordText_.borderStyle = UITextBorderStyleNone;
     passwordText_.keyboardType = UIKeyboardTypeNumberPad;

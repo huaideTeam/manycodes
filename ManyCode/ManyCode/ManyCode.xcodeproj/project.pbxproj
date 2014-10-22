@@ -112,6 +112,8 @@
 		714C6DB119836BB6007684CA /* BUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714C6DAE19836BB6007684CA /* BUIView.m */; };
 		714C6DB519836E2B007684CA /* MyPurseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714C6DB419836E2B007684CA /* MyPurseViewController.m */; };
 		714C6DB719837B69007684CA /* ErrCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 714C6DB619837B69007684CA /* ErrCode.plist */; };
+		7154D7EA19A8586100C83CC1 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7154D7E919A8586100C83CC1 /* icon1.png */; };
+		7154D7EC19A858F100C83CC1 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7154D7EB19A858F100C83CC1 /* icon3.png */; };
 		715A89ED19A42F97004100B3 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 715A89E119A42F97004100B3 /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		715A89EE19A42F97004100B3 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 715A89E419A42F97004100B3 /* EGOImageButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		715A89EF19A42F97004100B3 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 715A89E719A42F97004100B3 /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -212,7 +214,7 @@
 		71F6866C198A495500FB4836 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866A198A495500FB4836 /* icon.png */; };
 		71F6866D198A495500FB4836 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866B198A495500FB4836 /* Default.png */; };
 		71F6866F198A4C4500FB4836 /* iphoneDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F6866E198A4C4500FB4836 /* iphoneDefault.png */; };
-		71F68671198A4C9300FB4836 /* iphoneDefault1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F68670198A4C9300FB4836 /* iphoneDefault1136.png */; };
+		71F68671198A4C9300FB4836 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71F68670198A4C9300FB4836 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -451,6 +453,8 @@
 		714C6DB319836E2B007684CA /* MyPurseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPurseViewController.h; sourceTree = "<group>"; };
 		714C6DB419836E2B007684CA /* MyPurseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPurseViewController.m; sourceTree = "<group>"; };
 		714C6DB619837B69007684CA /* ErrCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ErrCode.plist; sourceTree = "<group>"; };
+		7154D7E919A8586100C83CC1 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
+		7154D7EB19A858F100C83CC1 /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
 		715A89E019A42F97004100B3 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		715A89E119A42F97004100B3 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		715A89E319A42F97004100B3 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
@@ -619,7 +623,7 @@
 		71F6866A198A495500FB4836 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		71F6866B198A495500FB4836 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		71F6866E198A4C4500FB4836 /* iphoneDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneDefault.png; sourceTree = "<group>"; };
-		71F68670198A4C9300FB4836 /* iphoneDefault1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphoneDefault1136.png; sourceTree = "<group>"; };
+		71F68670198A4C9300FB4836 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -927,11 +931,13 @@
 			isa = PBXGroup;
 			children = (
 				289203EB198FB91800D78ED4 /* ConsumptionHistory@2x.png */,
-				71F68670198A4C9300FB4836 /* iphoneDefault1136.png */,
+				71F68670198A4C9300FB4836 /* Default-568h@2x.png */,
 				71B88091199C987A000CD943 /* default480.png */,
 				71B8808F199C9830000CD943 /* Default~iphone.png */,
 				71F6866E198A4C4500FB4836 /* iphoneDefault.png */,
+				7154D7E919A8586100C83CC1 /* icon1.png */,
 				716A867B1991FD0F004D6356 /* 充值图标.png */,
+				7154D7EB19A858F100C83CC1 /* icon3.png */,
 				716A867C1991FD0F004D6356 /* 停车图标.png */,
 				71F6866A198A495500FB4836 /* icon.png */,
 				71F6866B198A495500FB4836 /* Default.png */,
@@ -1583,6 +1589,7 @@
 				717D020E19867D8500667746 /* 立即登录按钮效果.png in Resources */,
 				71282B0319864CF300A3FE09 /* 单条列表背景.png in Resources */,
 				717D020D19867D8500667746 /* 立即登录按钮常态.png in Resources */,
+				7154D7EC19A858F100C83CC1 /* icon3.png in Resources */,
 				717667EC1980F65200A635DA /* baiduNaviSDK.bundle in Resources */,
 				717D020919867B6000667746 /* 示意头像 描边.png in Resources */,
 				71B88092199C987A000CD943 /* default480.png in Resources */,
@@ -1609,7 +1616,7 @@
 				717667FA1981238F00A635DA /* mapButtonclick.png in Resources */,
 				717667F91981238F00A635DA /* mapButton.png in Resources */,
 				712FC08D197D3CE100EA9F32 /* Main.storyboard in Resources */,
-				71F68671198A4C9300FB4836 /* iphoneDefault1136.png in Resources */,
+				71F68671198A4C9300FB4836 /* Default-568h@2x.png in Resources */,
 				71CD7F6D1988FA8800EAD183 /* 未勾选.png in Resources */,
 				71282B0419864CF300A3FE09 /* 返回按钮常态.png in Resources */,
 				71CD7F6C1988FA8800EAD183 /* 同意勾选.png in Resources */,
@@ -1623,6 +1630,7 @@
 				714C6D4B19828E4A007684CA /* 6.png in Resources */,
 				716300001982593C0013A776 /* tingchechangkuang.png in Resources */,
 				28BAF1D31986853E00FF8368 /* register_normal@2x.png in Resources */,
+				7154D7EA19A8586100C83CC1 /* icon1.png in Resources */,
 				717667F71981238F00A635DA /* listButton.png in Resources */,
 				28BAF1D0198681B700FF8368 /* UPOMPImage.bundle in Resources */,
 				717D02191986851100667746 /* 注册登录按钮效果.png in Resources */,
@@ -1885,9 +1893,8 @@
 		712FBFE3197CB2F400EA9F32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: chen liezhou (EH3DHS334D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: chen liezhou (EH3DHS334D)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManyCode/ManyCode-Prefix.pch";
 				INFOPLIST_FILE = "ManyCode/ManyCode-Info.plist";
@@ -1904,7 +1911,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fc48f94a-9f1c-4aa2-a843-10f2d10e2830";
+				PROVISIONING_PROFILE = "e9d3965b-a289-4758-a89a-1cdf893d4332";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1913,9 +1920,8 @@
 		712FBFE4197CB2F400EA9F32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: chen liezhou (EH3DHS334D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: chen liezhou (EH3DHS334D)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManyCode/ManyCode-Prefix.pch";
 				INFOPLIST_FILE = "ManyCode/ManyCode-Info.plist";
@@ -1932,7 +1938,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fc48f94a-9f1c-4aa2-a843-10f2d10e2830";
+				PROVISIONING_PROFILE = "e9d3965b-a289-4758-a89a-1cdf893d4332";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
