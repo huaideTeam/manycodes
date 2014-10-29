@@ -52,6 +52,15 @@
 - (void)loadFunctionView
 {
     self.titleLable.text = @"我的钱包";
+    
+    //注册按钮
+    self.rightButton.frame = CGRectMake(270, 5, 42, 30);
+    [self.rightButton setBackgroundColor:[UIColor clearColor]];
+    [self.rightButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮常态.png"] forState:UIControlStateNormal];
+    [self.rightButton setBackgroundImage:[UIImage imageNamed:@"注册登录按钮效果.png"] forState:UIControlStateHighlighted];
+    [self.rightButton setTitle:@"充值" forState:UIControlStateNormal];
+    self.rightButton.titleLabel.font = FONT(12);
+    self.rightButton.hidden = NO;
 
     UIView *headView = [self headerViewForCosumptionList];
     mainScrollView_ = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kTopImageHeight, 320, kCurrentWindowHeight - kTopImageHeight)];
@@ -72,6 +81,13 @@
     [self getUserBalanceInfo];
     
 }
+
+- (void)rightClick:(UIButton *)button
+{
+    PayMoneyViewController *viewCtr = [[PayMoneyViewController alloc] init];
+    [self.navigationController pushViewController:viewCtr animated:YES];
+}
+
 
 #pragma mark - 获取数据
 //获取账余额

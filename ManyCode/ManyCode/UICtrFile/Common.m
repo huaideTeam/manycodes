@@ -359,11 +359,11 @@
 + (void) jumpToAppStoreAndMarkApp
 {
     if (IOS7) {
-        NSString *str = @"itms-apps://itunes.apple.com/app/id839908137";
+        NSString *str = @"itms-apps://itunes.apple.com/app/id912063807";
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
         
     }else{
-        NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=839908137";
+        NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=912063807";
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
         
     }
@@ -379,7 +379,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",1233]]];
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%d",912063807]]];
         
         [request setHTTPMethod:@"GET"];
         

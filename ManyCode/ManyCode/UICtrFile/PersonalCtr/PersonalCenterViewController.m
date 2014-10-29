@@ -19,6 +19,7 @@
 #import "JSONKit.h"
 #import "CustomButon.h"
 #import "EGOImageView.h"
+#import "AboutViewController.h"
 
 @interface PersonalCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 {
@@ -312,7 +313,7 @@
     cell.titleLabel.text = nameArray_[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.backgroundColor = [UIColor clearColor];
-    if (indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 5) {
+    if (indexPath.row == 2) {
         cell.titleLabel.textColor = COLOR(199, 199, 199);
     }else
     {
@@ -369,6 +370,12 @@
             [Common checkUpdateVersion:YES];
         }
             break;
+        case 5:
+        {
+            AboutViewController *viewCtr = [[AboutViewController alloc] init];
+            [self.navigationController pushViewController:viewCtr animated:YES];
+            break;
+        }
             
         default:
             break;

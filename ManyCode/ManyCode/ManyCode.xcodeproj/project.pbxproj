@@ -33,6 +33,7 @@
 		28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE0198351CB00406294 /* ConsumptionHistoryViewController.m */; };
 		28F00FE41983547400406294 /* CosumptionHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */; };
 		28F00FE819837DCF00406294 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F00FE719837DCF00406294 /* CalendarView.m */; };
+		710022071A007DD400467B80 /* 关于我们切图@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 710022061A007DD400467B80 /* 关于我们切图@2x.png */; };
 		71187C1319A63212007938E5 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71187BF519A63212007938E5 /* MKAnnotationView+WebCache.m */; };
 		71187C1419A63212007938E5 /* NSData+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 71187BF719A63212007938E5 /* NSData+GIF.m */; };
 		71187C1519A63212007938E5 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71187BF919A63212007938E5 /* SDImageCache.m */; };
@@ -173,6 +174,7 @@
 		717D0225198690B300667746 /* 立即支付图标.png in Resources */ = {isa = PBXBuildFile; fileRef = 717D0222198690B300667746 /* 立即支付图标.png */; };
 		717D02281987358300667746 /* CustomButon.m in Sources */ = {isa = PBXBuildFile; fileRef = 717D02271987358300667746 /* CustomButon.m */; };
 		717D022A19876B6300667746 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717D022919876B6300667746 /* CoreBluetooth.framework */; };
+		7194446F19F8881E00018101 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7194446E19F8881E00018101 /* AboutViewController.m */; };
 		71B0B6F9197E3B4D00B06945 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6CF197E3B4D00B06945 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		71B0B6FA197E3B4D00B06945 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B6D2197E3B4D00B06945 /* Reachability.m */; };
 		71B0B715197E3EE600B06945 /* NetworkCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0B714197E3EE600B06945 /* NetworkCenter.m */; };
@@ -268,6 +270,7 @@
 		28F00FE31983547400406294 /* CosumptionHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CosumptionHistoryTableViewCell.m; sourceTree = "<group>"; };
 		28F00FE619837DCF00406294 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
 		28F00FE719837DCF00406294 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		710022061A007DD400467B80 /* 关于我们切图@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于我们切图@2x.png"; sourceTree = "<group>"; };
 		71187BF419A63212007938E5 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		71187BF519A63212007938E5 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		71187BF619A63212007938E5 /* NSData+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GIF.h"; sourceTree = "<group>"; };
@@ -550,6 +553,8 @@
 		717D02261987358300667746 /* CustomButon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButon.h; sourceTree = "<group>"; };
 		717D02271987358300667746 /* CustomButon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButon.m; sourceTree = "<group>"; };
 		717D022919876B6300667746 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		7194446D19F8881E00018101 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		7194446E19F8881E00018101 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		71B0B6CE197E3B4D00B06945 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		71B0B6CF197E3B4D00B06945 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		71B0B6D1197E3B4D00B06945 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -932,6 +937,7 @@
 			children = (
 				289203EB198FB91800D78ED4 /* ConsumptionHistory@2x.png */,
 				71F68670198A4C9300FB4836 /* Default-568h@2x.png */,
+				710022061A007DD400467B80 /* 关于我们切图@2x.png */,
 				71B88091199C987A000CD943 /* default480.png */,
 				71B8808F199C9830000CD943 /* Default~iphone.png */,
 				71F6866E198A4C4500FB4836 /* iphoneDefault.png */,
@@ -1441,6 +1447,8 @@
 				714C6DB419836E2B007684CA /* MyPurseViewController.m */,
 				717D02261987358300667746 /* CustomButon.h */,
 				717D02271987358300667746 /* CustomButon.m */,
+				7194446D19F8881E00018101 /* AboutViewController.h */,
+				7194446E19F8881E00018101 /* AboutViewController.m */,
 			);
 			path = PersonalCtr;
 			sourceTree = "<group>";
@@ -1602,6 +1610,7 @@
 				716A867D1991FD0F004D6356 /* 充值图标.png in Resources */,
 				717D0212198680D500667746 /* 密码图标.png in Resources */,
 				717D0225198690B300667746 /* 立即支付图标.png in Resources */,
+				710022071A007DD400467B80 /* 关于我们切图@2x.png in Resources */,
 				717D021D19868B2A00667746 /* payMoneyTitleImage.png in Resources */,
 				71F6866C198A495500FB4836 /* icon.png in Resources */,
 				714C6D4819828E4A007684CA /* 3.png in Resources */,
@@ -1676,6 +1685,7 @@
 				717667DD1980F49600A635DA /* NSScanner_Extensions.m in Sources */,
 				71187C1519A63212007938E5 /* SDImageCache.m in Sources */,
 				71490029197FB00500DEFD83 /* SBDoubleSidedLayer.m in Sources */,
+				7194446F19F8881E00018101 /* AboutViewController.m in Sources */,
 				28F00FE1198351CB00406294 /* ConsumptionHistoryViewController.m in Sources */,
 				71490042197FC0AB00DEFD83 /* RotatedView.m in Sources */,
 				71B0B740197E3F3E00B06945 /* AFURLRequestSerialization.m in Sources */,
@@ -1893,8 +1903,8 @@
 		712FBFE3197CB2F400EA9F32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shouyu Zhu (U743Z6BNT7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shouyu Zhu (U743Z6BNT7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManyCode/ManyCode-Prefix.pch";
 				INFOPLIST_FILE = "ManyCode/ManyCode-Info.plist";
@@ -1911,7 +1921,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e9d3965b-a289-4758-a89a-1cdf893d4332";
+				PROVISIONING_PROFILE = "d176b375-d386-4c6a-9ad3-49ac0bead4e1";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1920,8 +1930,8 @@
 		712FBFE4197CB2F400EA9F32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shouyu Zhu (5H9V6CM438)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shouyu Zhu (U743Z6BNT7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shouyu Zhu (U743Z6BNT7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ManyCode/ManyCode-Prefix.pch";
 				INFOPLIST_FILE = "ManyCode/ManyCode-Info.plist";
@@ -1938,7 +1948,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e9d3965b-a289-4758-a89a-1cdf893d4332";
+				PROVISIONING_PROFILE = "d176b375-d386-4c6a-9ad3-49ac0bead4e1";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
